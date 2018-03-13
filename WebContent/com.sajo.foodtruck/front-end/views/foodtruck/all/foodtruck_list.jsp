@@ -36,7 +36,13 @@
 	<div id="wrap" style="position: relative;">
 		<div id="content" class="container-fluid clearfix"
 			style="background: #fff; max-width: 100%">
-
+				<div class="jumbotron" style="background-color: white !important;">
+					<img class="img-fluid"
+						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
+					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴 보기</h1>
+				</div>
+			
+			
 			<div class="res_content">
 				<!--**레스토랑 지역별-->
 				<div class="dq_title home">
@@ -131,6 +137,7 @@
 										+<br>전체보기
 									</h3>
 								</div>
+								<div class="res_deco2"></div>
 							</a>
 						</div>
 					</div>
@@ -166,16 +173,12 @@
 
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		if (!wcs_add)
-			var wcs_add = {};
-		wcs_add["wa"] = "5ec88f099a4f60";
-		wcs_do();
-	</script>
-	<script type="text/javascript"
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="https://s3.ap-northeast-2.amazonaws.com/dqstatic/assets/js/service/common/doShare.js"></script>
+	
+	<div>
+		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp"/>
+ 	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 </body>
 </html>

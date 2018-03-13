@@ -139,59 +139,30 @@
     background-size: 150% !important;
 }
 .reg_img_box:nth-of-type(1) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("../../../images/menu_list1.jpg") no-repeat;
+    background: url("../../../images/menu/Seoul.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(2) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res02.jpg") no-repeat;
+    background: url("../../../images/menu/Inchun.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(3) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res03.jpg") no-repeat;
+    background: url("../../../images/menu/Geonggi.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(4) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res04.jpg") no-repeat;
+    background: url("../../../images/menu/Daejun.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(5) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res05.jpg") no-repeat;
+    background: url("../../../images/menu/Daegu.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(6) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res06.jpg") no-repeat;
+    background: url("../../../images/menu/Busan.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(7) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res07.jpg") no-repeat;
+    background: url("../../../images/menu/Gita.jpg") no-repeat;
 }
 .reg_img_box:nth-of-type(8) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res08.jpg") no-repeat;
+    background: url("../../../images/menu/All.jpg") no-repeat;
 }
-.reg_img_box:nth-of-type(9) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res09.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(10) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res10.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(11) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res11.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(12) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res12.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(13) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res13.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(14) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res14.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(15) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res15.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(16) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res16.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(17) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res17.jpg") no-repeat;
-}
-.reg_img_box:nth-of-type(18) .reg_img_box_thumbnail .reg_img_card.areas{
-    background: url("./images/res/res18.jpg") no-repeat;
-}
+
 .reg_img_box:hover .reg_img_box_thumbnail .reg_img_card.areas{
     -webkit-transition-duration: 0.1s;
     -moz-transition-duration: 0.1s;
@@ -284,7 +255,7 @@
     -moz-transition-duration: 0.1s;
     -o-transition-duration: 0.1s;
     transition-duration: 0.1s;
-    background: url("./images/res/tv01.jpg") no-repeat;
+    background: url("../../../images/menu/rank.jpg") no-repeat;
     background-position: center;
     background-size:100% auto;
     width: 110%;
@@ -303,7 +274,7 @@
     -moz-transition-duration: 0.1s;
     -o-transition-duration: 0.1s;
     transition-duration: 0.1s;
-    background: url("./images/res/tv02.jpg") no-repeat;
+    background: url("../../../images/menu/new.jpg") no-repeat;
     width: 110%;
     background-position: center;
     background-size:100% auto;
@@ -989,7 +960,7 @@
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* �뿬�윭 以� �옄瑜닿린 異붽� �뒪���씪 */
+    /* 占쎈연占쎌쑎 餓ο옙 占쎌쁽�몴�떯由� �빊遺쏙옙 占쎈뮞占쏙옙占쎌뵬 */
     line-height: 1.6rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -1489,7 +1460,7 @@
 }
 
 
-/*�뒪�넗�뼱 �씠誘몄� 酉�*/
+/*占쎈뮞占쎈꽅占쎈선 占쎌뵠沃섎챷占� �뀎占�*/
 .res_pic {
     position: relative;
     float: none;
@@ -1532,7 +1503,7 @@
 
 
 
-/*�씠誘몄� �뒳�씪�씠�뱶*/
+/*占쎌뵠沃섎챷占� 占쎈뮩占쎌뵬占쎌뵠占쎈굡*/
 #store-picture{
     z-index: 2000;
 }

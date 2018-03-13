@@ -185,7 +185,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 portfolio-item">
 					<a class="portfolio-link" 
-						href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp'/>">
+						href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_list.jsp'/>">
 						<div class="portfolio-hover">
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
