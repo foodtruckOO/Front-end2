@@ -45,10 +45,24 @@
 	<div class="container-fluid">
 	
 		<div class = "row">
-			<div class="col-md-12">
-			<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.content}'/>"/>
+			<div class="col-md-2">
+			<h2>${dto.title}</h2>
+			<h3>기간</h3>
+				<p>${dto.s_date} ~ ${dto.e_date}<p>
+			</div>
+			
+			
+			<div class="col-md-8">
+				<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.content}'/>"/>
+			</div>
+		
 		</div>
 		
+		<div class = "row" style = "padding-bottom: 50px">
+			<div class = "col-md-offset-4 col-md-3">
+				<a href="<c:url value='/com.sajo.foodtruck.event/event.event'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
+								돌아가기</button></a>
+			</div>
 		</div>
 	</div>
 	

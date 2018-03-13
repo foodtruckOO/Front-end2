@@ -19,7 +19,12 @@
 <!-- YangGeum template CSS -->
 <link rel="stylesheet"
 	href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
+
+<link rel="stylesheet" type="text/css"
+	href="<c:url value ='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.css'/>" />
+
 <!-- Custom styles for this template -->
+
 <style>
 body {
 	min-height: 2000px;
@@ -34,6 +39,19 @@ table, table th {
 	border-radius: 50% !important;
 	margin: 0 5px;
 }
+
+.thumbnail { position: relative; 
+			padding-top: 100%; /* 1:1 ratio */ 
+			overflow: hidden; }
+.thumbnail .centered { position: absolute;
+ 	top: 0; left: 0; right: 0; bottom: 0; -webkit-transform: translate(50%,50%); 
+ 	-ms-transform: translate(50%,50%); transform: translate(50%,50%); 
+ } 
+ .thumbnail .centered img { position: absolute; top: 0; left: 0; max-width: 100%; height: auto;
+  -webkit-transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); transform: translate(-50%,-50%); 
+ }
+
+
 </style>
 
 </head>
@@ -58,16 +76,38 @@ table, table th {
 				</div>
 			</div>
 		</div>
-		<div class="row">
+	<%-- 	<div class="row">
 				<c:forEach items="${event}" var ="dto">
-			<div class="col-xs-6 col-lg-4 thumbnail" style="border: none" >
-				<a href="<c:url value='/com.sajo.foodtruck.event/event/view.event?eno=${dto.eno}'/>"> <img class="img-responsive img-rounded"
-					src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.attachedfile}'/>">
-					<h3 style="text-indent: 45px">${dto.title}</h3>
-					<p style="text-indent: 45px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
-				</a>
+			<div class="col-xs-6 col-lg-4 thumbnail-wrapper" style="border: none" >
+				<div class="thumbnail">
+					<a href="<c:url value='/com.sajo.foodtruck.event/event/view.event?eno=${dto.eno}'/>"> 
+					<div class="centered">	
+						<img class="img-responsive img-rounded"
+						src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.attachedfile}'/>">
+					</div>
+						<h3 style="text-indent: 45px">${dto.title}</h3>
+						<p style="text-indent: 45px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
+					</a>
+				</div>
 			</div>
 				</c:forEach>
+		</div> --%>
+		<div class="row">
+			<c:forEach items="${event}" var ="dto">
+			<div class="taste_card col-sm-4 col-xs-6 ">
+						<div class="card_img_wrap" style="position: relative;">
+							<div class="card_img_wrap_thumbnail a">
+								<a href="<c:url value='/com.sajo.foodtruck.event/event/view.event?eno=${dto.eno}'/>"><img
+									src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.attachedfile}'/>"
+									width="100%" /> </a>
+							</div>
+						</div>
+						<div class="card_content" align="center">
+							<h3 style="text-indent: 45px">${dto.title}</h3>
+							<p style="text-indent: 45px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
+						</div>
+			</div>
+			</c:forEach>
 		</div>
 		<!--/row-->
 <!-- 
