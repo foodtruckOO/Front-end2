@@ -101,6 +101,12 @@
 								</ul>
 							</div>
 							<div>
+								<span>인천</span>
+								<ul>
+									<li><a href="#">전체</a></li>
+								</ul>
+							</div>
+							<div>
 								<span>경기</span>
 								<ul>
 									<li><a href="#">전체</a></li>
@@ -131,7 +137,7 @@
 								</ul>
 							</div>
 							<div>
-								<span>다른지역</span>
+								<span>기타지역</span>
 								<ul>
 									<li><a href="#">전체</a></li>
 								</ul>
@@ -143,11 +149,12 @@
 							onchange="viewFilter()">
 							<option class="dq_select_op">전국</option>
 							<option class="dq_select_op">서울</option>
+							<option class="dq_select_op">인천</option>
 							<option class="dq_select_op">경기</option>
 							<option class="dq_select_op">대전</option>
 							<option class="dq_select_op">대구</option>
 							<option class="dq_select_op">부산</option>
-							<option class="dq_select_op">다른지역</option>
+							<option class="dq_select_op">기타지역</option>
 						</select>
 					</div>
 					<div class="dq_select_box"></div>
@@ -164,209 +171,24 @@
 					</div>
 				</div>
 				<div class="row">
-
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp'/>"><img
-									src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>"
-									width="100%" /> </a>
+					<c:forEach items="${foodtruck}" var ="dto">
+						<div class="taste_card col-sm-3 col-xs-6 ">
+							<div class="card_img_wrap" style="position: relative;">
+								<div class="card_img_wrap_thumbnail a">
+									<a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp'/>"><img
+										src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.name}/${dto.attachedfile}'/>"
+										width="100%" /> </a>
+								</div>
+							</div>
+							<div class="card_content">
+								<div class="title_main title clearfix">${dto.tname}</div>
+								<div class="date">
+									<span class="pin a"><i class="fa fa-map-marker"
+										aria-hidden="true"></i>&nbsp;${dto.addr}</span>
+								</div>
 							</div>
 						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">강남 푸드트럭</div>
-							<div class="date">
-								<span class="pin a"><i class="fa fa-map-marker"
-									aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10498.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/34201_thumb_1516860532.jpg"
-									width="100%" /> </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[강남] 에머이 강남대로점</div>
-							<div class="date">
-								<span class="pin a"><i class="fa fa-map-marker"
-									aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10507.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/33686_thumb_1514438582.jpg"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[이태원] 오리지널시카고피자 이태원점</div>
-							<div class="date">
-							 <span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10486.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/32587_thumb_1510034712.jpg"
-									width="100%" />
-								</a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[교대] 미카도스시 교대점</div>
-							<div class="date">
-								<span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서초구</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10479.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/26154_thumb_1485996545.png"
-									width="100%" />
-								</a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[홍대] 대관령 자연 샤브샤브</div>
-							<div class="date">
-								</span> <span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10497.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/29029_thumb_1497424102.jpg"
-									width="100%" />
-								</a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[명동] 레드홍</div>
-							<div class="date">
-								<span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10502.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/34191_thumb_1516855247.jpg"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[송파] 프레시맨 샐러드</div>
-							<div class="date">
-								</span> <span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10499.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/34202_thumb_1516860938.jpg"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[양재] 에머이 양재역점</div>
-							<div class="date">
-								<span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10487.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/33494_thumb_1513657606.jpg"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[마포] 한림돈가 서교점</div>
-							<div class="date">
-								<span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;서울</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10401.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/34673_thumb_1519274450.jpg"
-									width="100%" />
-								</a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[인천] 조선화로집 검단점</div>
-							<div class="date">
-								<span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;인천</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10505.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/33697_thumb_1514449633.jpg"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[청라] 가야밀면</div>
-							<div class="date">
-								</span> <span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;청라</span>
-							</div>
-						</div>
-					</div>
-					<div class="taste_card col-sm-3 col-xs-6 ">
-						<div class="card_img_wrap" style="position: relative;">
-							<div class="card_img_wrap_thumbnail a">
-								<a href="taste/10518.html"><img
-									src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/34801_thumb_1519359092.JPG"
-									width="100%" />
-								 </a>
-							</div>
-						</div>
-						<div class="card_content">
-							<div class="title_main title clearfix">[배송] 빚은 대구수성네거리점</div>
-							<div class="date">
-								 <span class="pin a"><i
-									class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;대구</span>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 
