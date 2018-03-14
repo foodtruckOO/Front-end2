@@ -39,7 +39,8 @@ public class foodtruckController {
 	public String detailOne(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
-		List list = dao.selectImg(req.getParameter("s_no"));
+		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
+		model.addAttribute("tname", list.get(0).getTname());
 		model.addAttribute("foodtruck",list);
 		
 		
