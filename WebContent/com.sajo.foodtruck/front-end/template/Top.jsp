@@ -10,7 +10,7 @@
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>";	//팝업창에 출력될 페이지 URL
 	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
-	} 
+	}
 </script>
 <script type="text/javascript">
 	function popupOpen2(){
