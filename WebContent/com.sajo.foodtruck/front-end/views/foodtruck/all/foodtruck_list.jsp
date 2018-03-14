@@ -129,7 +129,7 @@
 
 					<div class="reg_img_box more col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/com.sajo.foodtruck.foodtruck/list.foodtruck'/>" class="reg_img_card more">
+							<a href="<c:url value='/list.foodtruck'/>" class="reg_img_card more">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>

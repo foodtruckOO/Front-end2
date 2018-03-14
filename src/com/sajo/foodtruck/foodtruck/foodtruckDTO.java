@@ -18,14 +18,15 @@ public class foodtruckDTO {
 	private String addr;
 	private String tel;
 	private String coprorate_no;
-	private String attachedfile;
+	private String img;
 	private Date regidate;
+	private String intro;
 	
 	public foodtruckDTO() {}
 	
 	
 	public foodtruckDTO(String s_no, String id, String pwd, String name, String tname, String addr, String tel,
-			String coprorate_no, String attachedfile, Date regidate) {
+			String coprorate_no, String img, String intro, Date regidate) {
 		this.s_no = s_no;
 		this.id = id;
 		this.pwd = pwd;
@@ -34,9 +35,20 @@ public class foodtruckDTO {
 		this.addr = addr;
 		this.tel = tel;
 		this.coprorate_no = coprorate_no;
-		this.attachedfile = attachedfile;
+		this.img = img;
+		this.intro = intro;
 		this.regidate = regidate;
 		
+	}
+
+
+	public String getIntro() {
+		return intro;
+	}
+
+
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 
 
@@ -113,13 +125,13 @@ public class foodtruckDTO {
 	}
 
 
-	public String getAttachedfile() {
-		return attachedfile;
+	public String getImg() {
+		return img;
 	}
 
 
-	public void setAttachedfile(String attachedfile) {
-		this.attachedfile = attachedfile;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	

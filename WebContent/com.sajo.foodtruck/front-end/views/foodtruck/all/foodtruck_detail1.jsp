@@ -68,7 +68,8 @@ img {
   margin-top: 15px; }
   .preview-thumbnail.nav-tabs li {
     width: 18%;
-    margin-right: 2.5%; }
+    margin-right: 2.0%;
+    margin-bottom: 1.0% }
     .preview-thumbnail.nav-tabs li img {
       max-width: 100%;
       display: block; }
@@ -220,23 +221,33 @@ img {
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>"></div>
-						  <div class="tab-pane" id="pic-2"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/menu_list2.jpg'/>"/></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+							<c:forEach items="${foodtruck}" var ="dto" varStatus="loop">
+								<c:choose>
+									<c:when test="${loop.first}">
+									<div class="tab-pane active" id="pic-${loop.count}"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"></div>
+									</c:when>
+									<c:otherwise>
+									<div class="tab-pane" id="pic-${loop.count}"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"></div>
+									</c:otherwise>
+								</c:choose>
+						  </c:forEach>
 						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>"></a></li>
-						  <li><a data-target="#pic-2" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/menu_list2.jpg'/>" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						</ul>
 						
+						<ul class="preview-thumbnail nav nav-tabs">
+							<c:forEach items="${foodtruck}" var ="dto2" varStatus="loop2">
+								<c:choose>
+									<c:when test="${loop2.first}">
+									<li class="active"><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto2.id}/${dto2.img}'/>"></a></li>
+									</c:when>
+									<c:otherwise>
+									<li><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto2.id}/${dto2.img}'/>"/></a></li>
+									</c:otherwise>
+								</c:choose>
+						  </c:forEach>
+						</ul>
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">푸드트럭 강남점</h3>
+						<h3 class="product-title">${tname}</h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -247,10 +258,7 @@ img {
 							</div>
 							<span class="review-no"> 41명 평가</span>
 						</div>
-						<p class="product-description">국민간식 닭꼬치에 저희 꿈을 담고, 여러분들을 찾아 전국 어디든지 달려가는 - "중독" 푸드트럭입니다.
-							저렴한 가격에 맛있는 닭꼬치는 간식, 술안주로도 정말 좋습니다. 정성이 담긴 저희 닭꼬치를 보시면 주저하지 마시고, 꼭 찾아주세요.
-						</p>
-						
+						<p class="product-description">${intro}</p>
 						<div class="action">
 							<a href ="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail_1_1.jsp'/>"><button class="add-to-cart btn btn-default" type="button">메뉴보기</button></a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart">좋아요</span></button>

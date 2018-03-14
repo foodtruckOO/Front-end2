@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -175,16 +176,20 @@
 						<div class="taste_card col-sm-3 col-xs-6 ">
 							<div class="card_img_wrap" style="position: relative;">
 								<div class="card_img_wrap_thumbnail a">
-									<a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp'/>"><img
-										src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.name}/${dto.attachedfile}'/>"
-										width="100%" /> </a>
+									<a href="<c:url value='/detail1.foodtruck?s_no=${dto.s_no}'/>">
+									<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"width="100%" /> </a>
 								</div>
 							</div>
 							<div class="card_content">
 								<div class="title_main title clearfix">${dto.tname}</div>
 								<div class="date">
 									<span class="pin a"><i class="fa fa-map-marker"
-										aria-hidden="true"></i>&nbsp;${dto.addr}</span>
+										aria-hidden="true"></i>&nbsp;
+											<c:set var ="addrs" value='${fn:split(dto.addr," ")}'/>
+												<c:forEach var = "addr" items="${addrs}" end="1">
+													${addr}&nbsp;
+												</c:forEach>
+									</span>
 								</div>
 							</div>
 						</div>
