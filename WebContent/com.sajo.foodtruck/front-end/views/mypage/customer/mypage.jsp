@@ -80,7 +80,7 @@
 				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 </button>
 				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> 위치 </button>
 				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴 </button>
-				<button type="button" class="btn btn-warning">Warning</button>
+				
 			</div>
 			
 		</div>
