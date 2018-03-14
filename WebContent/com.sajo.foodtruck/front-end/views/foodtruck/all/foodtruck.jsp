@@ -27,13 +27,36 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+	$(function(){
+		if("${area}".length)
+			if("${area}" == 'seoul')
+					$('option:eq(1)').attr("selected","selected");
+			else if("${area}" == 'incheon')
+					$('option:eq(2)').attr("selected","selected");
+			else if("${area}" == 'gyeonggi')
+					$('option:eq(3)').attr("selected","selected");
+			else if("${area}" == 'daejeon')
+					$('option:eq(4)').attr("selected","selected");
+			else if("${area}" == 'daegu')
+					$('option:eq(5)').attr("selected","selected");
+			else if("${area}" == 'busan')
+					$('option:eq(6)').attr("selected","selected");
+			else if("${area}" == 'gita')
+				$('option:eq(7)').attr("selected","selected");
+		
+				
+	});
+	
+	
+	
 	function myFunction() {
 	document.getElementById("myDropdown").classList.toggle("show");
 	document.getElementById("myDropdown-i").classList.toggle("show")
 	}
 	function viewFilter() {
-		$area1 = encodeURIComponent($('[name=_area1]').val());
-		location.href = '/taste?area1=' + $area1;
+		var area1 =$("#area").val();
+		location.href ="<c:url value='/area.foodtruck?area="+area1+"'/>";
+			
 	}
 
 </script>
@@ -146,16 +169,16 @@
 						</div>
 					</div>
 					<div class="dq_select_box">
-						<select class="dq_select form-control solo" name="_area1"
+						<select class="dq_select form-control solo" name="_area1" id = "area"
 							onchange="viewFilter()">
-							<option class="dq_select_op">전국</option>
-							<option class="dq_select_op">서울</option>
-							<option class="dq_select_op">인천</option>
-							<option class="dq_select_op">경기</option>
-							<option class="dq_select_op">대전</option>
-							<option class="dq_select_op">대구</option>
-							<option class="dq_select_op">부산</option>
-							<option class="dq_select_op">기타지역</option>
+							<option class="dq_select_op" value="all">전국</option>
+							<option class="dq_select_op" value="seoul">서울</option>
+							<option class="dq_select_op" value="incheon">인천</option>
+							<option class="dq_select_op" value="gyeonggi">경기</option>
+							<option class="dq_select_op" value="daejeon">대전</option>
+							<option class="dq_select_op" value="daegu">대구</option>
+							<option class="dq_select_op" value="busan">부산</option>
+							<option class="dq_select_op" value="gita">기타지역</option>
 						</select>
 					</div>
 					<div class="dq_select_box"></div>

@@ -51,7 +51,7 @@
 				<div class="list_wrap row" id="area_list">
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/1.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=seoul'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>서울</h3>
@@ -62,7 +62,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/2.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=incheon'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>인천</h3>
@@ -73,7 +73,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/3.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=gyeonggi'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>경기</h3>
@@ -84,7 +84,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/4.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=daejeon'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>대전</h3>
@@ -95,7 +95,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/5.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=daegu'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>대구</h3>
@@ -106,7 +106,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/6.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=busan'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>부산</h3>
@@ -117,7 +117,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="restaurant/area/7.html" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=gita'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>기타지역</h3>
