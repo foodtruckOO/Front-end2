@@ -33,7 +33,7 @@ public class eventDAO {
 	public eventDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
 		
-		try {
+		/*try {
 			//드라이버 로딩]
 			Class.forName(context.getInitParameter("ORACLE_DRIVER"));
 			//데이타베이스 연결]
@@ -41,12 +41,12 @@ public class eventDAO {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		//커넥션 풀 사용:톰켓이 생성해 놓은 커넥션 객체 풀에서 가져다 쓰기
-		/*try {
+		try {
 			InitialContext ctx = new InitialContext();
-			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jdbc/JSP");
+			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jdbc/FT");
 			try {
 				conn = source.getConnection();
 			} catch (SQLException e) {				
@@ -55,7 +55,7 @@ public class eventDAO {
 		} catch (NamingException e) {			
 			e.printStackTrace();
 		}
-		*/
+		
 	}////////////////////
 	//자원반납용]
 	public void close() {
