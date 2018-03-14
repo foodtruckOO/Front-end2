@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -183,7 +184,12 @@
 								<div class="title_main title clearfix">${dto.tname}</div>
 								<div class="date">
 									<span class="pin a"><i class="fa fa-map-marker"
-										aria-hidden="true"></i>&nbsp;${dto.addr}</span>
+										aria-hidden="true"></i>&nbsp;
+											<c:set var ="addrs" value='${fn:split(dto.addr," ")}'/>
+												<c:forEach var = "addr" items="${addrs}" end="1">
+													${addr}&nbsp;
+												</c:forEach>
+									</span>
 								</div>
 							</div>
 						</div>

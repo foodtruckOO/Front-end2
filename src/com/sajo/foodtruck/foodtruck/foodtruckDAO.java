@@ -119,6 +119,8 @@ public class foodtruckDAO {
 		
 			while(rs.next()) {
 				foodtruckDTO dto = new foodtruckDTO();
+				dto.setId(rs.getString(2));
+				dto.setTname(rs.getString(5));
 				dto.setImg(rs.getString(10));
 				list.add(dto);
 			}
