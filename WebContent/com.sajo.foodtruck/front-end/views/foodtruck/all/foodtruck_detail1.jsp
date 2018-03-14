@@ -258,10 +258,7 @@ img {
 							</div>
 							<span class="review-no"> 41명 평가</span>
 						</div>
-						<p class="product-description">국민간식 닭꼬치에 저희 꿈을 담고, 여러분들을 찾아 전국 어디든지 달려가는 - "중독" 푸드트럭입니다.
-							저렴한 가격에 맛있는 닭꼬치는 간식, 술안주로도 정말 좋습니다. 정성이 담긴 저희 닭꼬치를 보시면 주저하지 마시고, 꼭 찾아주세요.
-						</p>
-						
+						<p class="product-description">${intro}</p>
 						<div class="action">
 							<a href ="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail_1_1.jsp'/>"><button class="add-to-cart btn btn-default" type="button">메뉴보기</button></a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart">좋아요</span></button>
