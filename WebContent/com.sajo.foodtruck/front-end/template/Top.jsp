@@ -3,15 +3,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	function popupOpen(){
+	var windowW=380;
+	var windowH=580;
+	var left=Math.ceil((window.screen.width-windowW)/2);
+	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width=380, height=580, resizable=no, scrollbars=no, status=no, left=800, top=200, location=no;";    //팝업창 옵션(optoin)
+	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	} 
 </script>
 <script type="text/javascript">
 	function popupOpen2(){
+	var windowW=650;
+	var windowH=500;
+	var left=Math.ceil((window.screen.width-windowW)/2);
+	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width=650, height=500, resizable=no, scrollbars=no, status=no, left=600, top=200, location=no;";    //팝업창 옵션(optoin)
+	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	}
 </script>
