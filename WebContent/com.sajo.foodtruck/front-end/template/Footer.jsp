@@ -6,9 +6,9 @@
 <footer id="footer_footer">
 	<div class="container" style="background-color: orange; width: 100%">
 		<div style="float: right; padding-top: 10px">푸드트럭소식을 만날 수 있는 공식 SNS 채널
-				<img alt="facebook" src='sns_f.png' style="width: 30px; height: 30px;">
-				<img alt="instagram" src='sns_i.png' style="width: 30px; height: 30px;">
-				<img alt="twitter" src='sns_t.png' style="width: 30px; height: 30px;">
+				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 30px; height: 30px;">
+				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 30px; height: 30px;">
+				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 30px; height: 30px;">
 		</div>
 		<div style="background-color: #ffc253; float: left; width: 65%; height: 30px; margin-top: 1%; padding: 0.4%">
 			<span style="border: 1px solid orange; font-weight: bold; margin-top: 30%">공지사항</span>&emsp;

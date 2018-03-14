@@ -50,20 +50,20 @@
 	<!-- 내용 시작 -->
 	
 	<!-- mypage start -->
-	<div id=mypage style="height: 2000px">
+	<div id=mypage style="height: 1200px">
 		<!-- 프로필 이미지 등록 -->
 		<div style="float: left; background-color: green; width: 20%">
 			<!-- 프로필 사진 -->
-			<img src="../../../images/user.png" alt="이미지를 찾을 수 없습니다..." class="img-thumbnail">
+			<img src="../../../images/user.png" alt="이미지를 찾을 수 없습니다.." class="img-thumbnail">
 		</div>
-		<div style="float: right; background-color: red; width: 78%; height: 2000px">
+		<div style="float: right; background-color: red; width: 78%; height: 1200px">
 			<!-- background -->
 			<div style="height: 300px; background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
 			
 			</div>
 			<!-- button -->
-			<div style="height: 2%; background-color: yellow">
-				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
+			<div style="height: 4%; background-color: yellow">
+				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기</button>
 				<button type="button" class="btn btn-warning">Warning</button>
 				<button type="button" class="btn btn-warning">Warning</button>
 			</div>
