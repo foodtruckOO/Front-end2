@@ -51,20 +51,35 @@
 	
 	<!-- mypage start -->
 	<div id=mypage style="height: 1200px">
-		<!-- 프로필 이미지 등록 -->
+		<!-- Mypage Left -->
 		<div style="float: left; background-color: green; width: 20%">
 			<!-- 프로필 사진 -->
-			<img src="../../../images/user.png" alt="이미지를 찾을 수 없습니다.." class="img-thumbnail">
+			<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_main.png'/>" alt="이미지를 찾을 수 없습니다.." 
+										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
+			<!-- ID -->
+			<div>
+				
+			</div>
+			<div>
+				<div>정보수정</div>
+				<div></div>
+				<div>이벤트</div>
+				<div>위치</div>
+				<div>위치</div>
+			</div>
 		</div>
-		<div style="float: right; background-color: red; width: 78%; height: 1200px">
+		<!-- Mypage Right -->
+		<div style="float: right; background-color: red; width: 78%; height: 100%">
 			<!-- background -->
 			<div style="height: 300px; background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
-			
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
+				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
 			</div>
 			<!-- button -->
-			<div style="height: 4%; background-color: yellow">
-				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기</button>
-				<button type="button" class="btn btn-warning">Warning</button>
+			<div style="height: 3%; background-color: #ffe9c1">
+				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 </button>
+				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> 위치 </button>
+				<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴 </button>
 				<button type="button" class="btn btn-warning">Warning</button>
 			</div>
 			
