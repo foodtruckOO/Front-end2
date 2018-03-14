@@ -148,6 +148,58 @@ public class foodtruckDAO {
 		return list;
 	}
 	
+	public List<foodtruckDTO> selectArea(String area) {
+		String sql ; 
+		switch(area) {
+			case "all" : area = "all";
+			break;
+			case "seoul" : area = "서울";
+			break;
+			case "incheon" : area = "인천";
+			break;
+			case "gyeonggi" : area = "경기";
+			break;
+			case "daejeon" : area = "대전";
+			break;
+			case "daegu" : area = "대구";
+			break;
+			case "busan" : area = "부산";
+			break;
+			
+			
+		}
+		
+		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		if(area.equals("all")) {
+		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";	
+		}
+		else {
+		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%'";
+		}
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+		
+			while(rs.next()) {
+				foodtruckDTO dto = new foodtruckDTO();
+				dto.setS_no(rs.getString(1));
+				dto.setTname(rs.getString(5));
+				dto.setImg(rs.getString(10));
+				dto.setRegidate(rs.getDate(9));
+				dto.setAddr(rs.getString(6));
+				dto.setId(rs.getString(2));
+				list.add(dto);
+				
+			}
+		
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+		
+	}
+	
 	/////////////////////////////////////////
 
 }

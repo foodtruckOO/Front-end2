@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -45,9 +46,24 @@ public class foodtruckController {
 		model.addAttribute("foodtruck",list);
 		
 		
-	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";	
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";	
 		
 	}
+	
+	@RequestMapping("/area.foodtruck")
+	public String areaList(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
+		
+		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		
+		String area = req.getParameter("area");
+		List list = dao.selectArea(area);
+		model.addAttribute("area",area);
+		
+		model.addAttribute("foodtruck",list);
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";	
+	}
+		
+	
 	
 
 }
