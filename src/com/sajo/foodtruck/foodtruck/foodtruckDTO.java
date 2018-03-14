@@ -18,7 +18,7 @@ public class foodtruckDTO {
 	private String addr;
 	private String tel;
 	private String coprorate_no;
-	private String attachedfile;
+	private String img;
 	private Date regidate;
 	
 	public foodtruckDTO() {}
@@ -34,7 +34,7 @@ public class foodtruckDTO {
 		this.addr = addr;
 		this.tel = tel;
 		this.coprorate_no = coprorate_no;
-		this.attachedfile = attachedfile;
+		this.img = img;
 		this.regidate = regidate;
 		
 	}
@@ -113,13 +113,13 @@ public class foodtruckDTO {
 	}
 
 
-	public String getAttachedfile() {
-		return attachedfile;
+	public String getImg() {
+		return img;
 	}
 
 
-	public void setAttachedfile(String attachedfile) {
-		this.attachedfile = attachedfile;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	

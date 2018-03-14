@@ -79,7 +79,7 @@ public class foodtruckDAO {
 	public List<foodtruckDTO> selectList(){
 		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
 		//페이징 미 적용
-		String sql="SELECT S.*, attachedfile from SELLER S JOIN IMAGES i on s.s_no=i.s_no where attachedfile='menu_list1.jpg'";
+		String sql="SELECT S.*, IMG from SELLER s JOIN IMAGES i on s.s_no=i.s_no where main='1'";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 		
 		//페이징 적용-구간쿼리로 변경
@@ -92,8 +92,9 @@ public class foodtruckDAO {
 			
 			while(rs.next()) {
 			foodtruckDTO dto = new foodtruckDTO();
+			dto.setS_no(rs.getString(1));
 			dto.setTname(rs.getString(5));
-			dto.setAttachedfile(rs.getString(10));
+			dto.setImg(rs.getString(10));
 			dto.setRegidate(rs.getDate(9));
 			dto.setAddr(rs.getString(6));
 			dto.setId(rs.getString(2));
@@ -104,7 +105,29 @@ public class foodtruckDAO {
 		
 		return list;
 	}//////////////////////////////
-	//전체 레코드 수 얻기용]
+	
+	
+	public List<foodtruckDTO> selectImg(String key) {
+		
+		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		String sql="SELECT S.*, IMG from SELLER s JOIN IMAGES i on s.s_no=i.s_no where s.s_no = ? ";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, key);			
+			rs = psmt.executeQuery();
+		
+			while(rs.next()) {
+				foodtruckDTO dto = new foodtruckDTO();
+				dto.setImg(rs.getString(10));
+				list.add(dto);
+			}
+		
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+	}
 	
 	/////////////////////////////////////////
 

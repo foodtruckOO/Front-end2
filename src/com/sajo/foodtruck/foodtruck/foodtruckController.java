@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class foodtruckController {
 	
 	//목록용]
-	@RequestMapping("/com.sajo.foodtruck.foodtruck/list.foodtruck")
+	@RequestMapping("/list.foodtruck")
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
@@ -33,6 +33,18 @@ public class foodtruckController {
 		model.addAttribute("foodtruck",list);
 	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";
 	
+	}
+	
+	@RequestMapping("/detail1.foodtruck")
+	public String detailOne(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		List list = dao.selectImg(req.getParameter("s_no"));
+		model.addAttribute("foodtruck",list);
+		
+		
+	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";	
+		
 	}
 	
 

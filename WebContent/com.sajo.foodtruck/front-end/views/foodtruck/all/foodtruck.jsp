@@ -175,9 +175,8 @@
 						<div class="taste_card col-sm-3 col-xs-6 ">
 							<div class="card_img_wrap" style="position: relative;">
 								<div class="card_img_wrap_thumbnail a">
-									<a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp'/>"><img
-										src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.name}/${dto.attachedfile}'/>"
-										width="100%" /> </a>
+									<a href="<c:url value='/detail1.foodtruck?s_no=${dto.s_no}'/>">
+									<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"width="100%" /> </a>
 								</div>
 							</div>
 							<div class="card_content">
