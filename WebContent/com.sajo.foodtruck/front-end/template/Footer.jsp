@@ -5,7 +5,11 @@
 <!-- Begin page content -->
 <footer id="footer_footer">
 	<div class="container" style="background-color: orange; width: 100%">
-		<!-- 한솥컬러 #f2c000  -->
+		<div style="float: right; padding-top: 10px">
+				<img alt="facebook" src='sns_f.png' style="width: 30px; height: 30px;">
+				<img alt="instagram" src='sns_i.png' style="width: 30px; height: 30px;">
+				<img alt="twitter" src='sns_t.png' style="width: 30px; height: 30px;">
+		</div>
 		<div class="page-header">
 			<h5 style="text-align: center;">
 				<a href="#"> 인재채용</a><a href="#"> 협력업체등록</a><a href="#"> 공지사항</a> 
