@@ -41,6 +41,7 @@ public class foodtruckController {
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
 		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		model.addAttribute("tname", list.get(0).getTname());
+		model.addAttribute("intro", list.get(0).getIntro());
 		model.addAttribute("foodtruck",list);
 		
 		

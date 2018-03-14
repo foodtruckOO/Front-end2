@@ -79,8 +79,7 @@ public class foodtruckDAO {
 	public List<foodtruckDTO> selectList(){
 		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
 		//페이징 미 적용
-		String sql="SELECT S.*, IMG from SELLER s JOIN IMAGES i on s.s_no=i.s_no where main='1'";
-			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
+		String sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";
 		
 		//페이징 적용-구간쿼리로 변경
 		//검색용 쿼리 추가
@@ -110,7 +109,25 @@ public class foodtruckDAO {
 	public List<foodtruckDTO> selectImg(String key) {
 		
 		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
-		String sql="SELECT S.*, IMG from SELLER s JOIN IMAGES i on s.s_no=i.s_no where s.s_no = ? ";
+		String sql = "SELECT S.*, t.MAIN_IMG,t.INTRO from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where s.s_no =? " ;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, key);			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				foodtruckDTO dto = new foodtruckDTO();
+				dto.setId(rs.getString(2));
+				dto.setTname(rs.getString(5));
+				dto.setImg(rs.getString(10));
+				dto.setIntro(rs.getString(11));
+				list.add(dto);
+			}
+			
+		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		sql="SELECT S.*, IMG from SELLER s JOIN IMAGES i on s.s_no=i.s_no where s.s_no = ? ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
