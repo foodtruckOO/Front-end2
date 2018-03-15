@@ -1,45 +1,45 @@
-SELLER »ùÇÃ µ¥ÀÌÅÍ
+SELLER ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Kim','1234','±è','¸¶¾àÆ®·°','¼­¿ïÆ¯º°½Ã ¿ë»ê±¸ È¿Ã¢¿ø·Î104±æ 38-10','011-9925-4798','12345',SYSDATE);
-
-
-
-INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Lee','1234','ÀÌ','´ë¹Ú³µ³×Æ®·°','ÀÎÃµ±¤¿ª½Ã ºÎÆò±¸ ºÎÆò´ë·Î 102','013-7315-4721','32345','SYSDATE);
-
-CUSTOMER »ùÇÃ µ¥ÀÌÅÍ
-
-INSERT INTO CUSTOMER VALUES('1','Lim','1234','ÀÓ',SYSDATE);
-
-IMAGES »ùÇÃ ÀÌ¹ÌÁö µ¥ÀÌÅÍ
-
-
-insert into TRUCKPAGE values('8','±¹¹Î°£½Ä ´ß²¿Ä¡¿¡ ÀúÈñ ²ÞÀ» ´ã°í, ¿©·¯ºÐµéÀ» Ã£¾Æ Àü±¹ ¾îµðµçÁö ´Þ·Á°¡´Â - "Áßµ¶" ÇªµåÆ®·°ÀÔ´Ï´Ù. Àú·ÅÇÑ °¡°Ý¿¡ ¸ÀÀÖ´Â ´ß²¿Ä¡´Â °£½Ä, ¼ú¾ÈÁÖ·Îµµ Á¤¸» ÁÁ½À´Ï´Ù. Á¤¼ºÀÌ ´ã±ä ÀúÈñ ´ß²¿Ä¡¸¦ º¸½Ã¸é ÁÖÀúÇÏÁö ¸¶½Ã°í, ²À Ã£¾ÆÁÖ¼¼¿ä.','menu_list1.jpg');
-
-insert into images values('8','menu_list2.jpg');
-
-insert into images values('8','menu_list3.jpg');
-
-insert into images values('8','menu_list4.jpg');
-
-insert into images values('8','menu_list5.jpg');
-
-
-REVIEW »ùÇÃ µ¥ÀÌÅÍ
-
-INSERT INTO REVIEW VALUES('1','8','1',8,'¿©±â ÁøÂ¥ ¸ÀÀÖ¥’',SYSDATE);
+INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Kim','1234','ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ê±¸ È¿Ã¢ï¿½ï¿½ï¿½ï¿½104ï¿½ï¿½ 38-10','011-9925-4798','12345',SYSDATE);
 
 
 
-½ÃÄö½º - 
+INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Lee','1234','ï¿½ï¿½','ï¿½ï¿½Ú³ï¿½ï¿½ï¿½Æ®ï¿½ï¿½','ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 102','013-7315-4721','32345','SYSDATE);
 
-Áö¿ªÀÌº¥Æ® - 2¸¸ºÎÅÍ ½ÃÀÛ
+CUSTOMER ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-È¨ ÀÌº¥Æ® - 3¸¸ºÎÅÍ ½ÃÀÛ
+INSERT INTO CUSTOMER VALUES('1','Lim','1234','ï¿½ï¿½',SYSDATE);
+
+IMAGES ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+
+insert into TRUCKPAGE values('200003','êµ­ë¯¼ê°„ì‹ ë‹­ê¼¬ì¹˜ì— ì €í¬ ê¿ˆì„ ë‹´ê³ , ì—¬ëŸ¬ë¶„ë“¤ì„ ì°¾ì•„ ì „êµ­ ì–´ë””ë“ ì§€ ë‹¬ë ¤ê°€ëŠ” - "ì¤‘ë…" í‘¸ë“œíŠ¸ëŸ­ìž…ë‹ˆë‹¤. ì €ë ´í•œ ê°€ê²©ì— ë§›ìžˆëŠ” ë‹­ê¼¬ì¹˜ëŠ” ê°„ì‹, ìˆ ì•ˆì£¼ë¡œë„ ì •ë§ ì¢‹ìŠµë‹ˆë‹¤. ì •ì„±ì´ ë‹´ê¸´ ì €í¬ ë‹­ê¼¬ì¹˜ë¥¼ ë³´ì‹œë©´ ì£¼ì €í•˜ì§€ ë§ˆì‹œê³ , ê¼­ ì°¾ì•„ì£¼ì„¸ìš”.','menu_list1.jpg');
+
+insert into images values('200003','menu_list2.jpg');
+
+insert into images values('200003','menu_list3.jpg');
+
+insert into images values('200003','menu_list4.jpg');
+
+insert into images values('200003','menu_list5.jpg');
+
+
+REVIEW ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+INSERT INTO REVIEW VALUES('1','8','1',8,'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½Ö¥ï¿½',SYSDATE);
+
+
+
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - 
+
+ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½Æ® - 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+È¨ ï¿½Ìºï¿½Æ® - 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 CREATE SEQUENCE SEQ_L_EVENT START WITH 20000 NOCACHE NOCYCLE;
 
 CREATE SEQUENCE SEQ_H_EVENT START WITH 30000 NOCACHE NOCYCLE;
 
-ÀÌº¥Æ® »ùÇÃ
+ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 
-insert into event values(SEQ_H_EVENT.NEXTVAL,'¸¶ÀÏ¸®Áö ¹«·áÁõÁ¤','¸¶ÀÏ¸®Áö¸¦ ¹«·á·Î µå·Á¿ä','home_event1.jpg','event_detail1.jpg','2018-03-18','2018-04-10',sysdate);
+insert into event values(SEQ_EVENT.NEXTVAL,'8' ,'ì‹œí—˜ìš© ê¸€ ì œëª©','ì‹œí—˜ìš© ê¸€ ë‚´ìš©','home_event1.jpg','event_detail1.jpg','2018-03-18','2018-04-10',sysdate, '1');

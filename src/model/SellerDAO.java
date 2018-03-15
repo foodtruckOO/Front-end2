@@ -45,7 +45,7 @@ public class SellerDAO {
 		//커넥션 풀 사용:톰켓이 생성해 놓은 커넥션 객체 풀에서 가져다 쓰기
 		try {
 			InitialContext ctx = new InitialContext();
-			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jdbc/ft");
+			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
 			} catch (SQLException e) {				

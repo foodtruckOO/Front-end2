@@ -33,7 +33,7 @@
 		//out.println("연결성공");
 		//3단계 sql문 생성 Statement PreparedStatement CallableStatement
 		//PreparedStatement CallableStatement
-		sql = "insert into CUSTOMER values(SEQ_CUS.NEXTVAL,?,?,?,?,SYSDATE)";
+		sql = "insert into CUSTOMER(g_no, id, pwd, name, tel) values(SEQ_CUS.NEXTVAL,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.setString(2, pass);

@@ -42,10 +42,10 @@
 		pstmt.setString(1, id);
 		pstmt.setString(2, pass);
 		pstmt.setString(3, name);
-		pstmt.setString(4, f_no);
-		pstmt.setString(5, tname);
-		pstmt.setString(6, addr);
-		pstmt.setString(7, tel);
+		pstmt.setString(4, tname);
+		pstmt.setString(5, addr);
+		pstmt.setString(6, tel);
+		pstmt.setString(7, f_no);
 		
 		
 		//4단계 실행

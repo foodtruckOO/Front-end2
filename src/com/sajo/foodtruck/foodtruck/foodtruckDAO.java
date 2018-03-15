@@ -46,7 +46,7 @@ public class foodtruckDAO {
 		//커넥션 풀 사용:톰켓이 생성해 놓은 커넥션 객체 풀에서 가져다 쓰기
 		try {
 			InitialContext ctx = new InitialContext();
-			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jdbc/FT");
+			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
 			} catch (SQLException e) {				
@@ -92,11 +92,11 @@ public class foodtruckDAO {
 			while(rs.next()) {
 			foodtruckDTO dto = new foodtruckDTO();
 			dto.setS_no(rs.getString(1));
-			dto.setTname(rs.getString(5));
-			dto.setImg(rs.getString(10));
-			dto.setRegidate(rs.getDate(9));
-			dto.setAddr(rs.getString(6));
 			dto.setId(rs.getString(2));
+			dto.setTname(rs.getString(5));
+			dto.setAddr(rs.getString(6));
+			dto.setRegidate(rs.getDate(9));
+			dto.setImg(rs.getString(10));
 			list.add(dto);
 			}////////////while
 		}///try
@@ -190,11 +190,11 @@ public class foodtruckDAO {
 			while(rs.next()) {
 				foodtruckDTO dto = new foodtruckDTO();
 				dto.setS_no(rs.getString(1));
-				dto.setTname(rs.getString(5));
-				dto.setImg(rs.getString(10));
-				dto.setRegidate(rs.getDate(9));
-				dto.setAddr(rs.getString(6));
 				dto.setId(rs.getString(2));
+				dto.setTname(rs.getString(5));
+				dto.setAddr(rs.getString(6));
+				dto.setRegidate(rs.getDate(9));
+				dto.setImg(rs.getString(10));
 				list.add(dto);
 				
 			}

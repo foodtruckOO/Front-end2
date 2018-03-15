@@ -30,6 +30,7 @@ public class eventController {
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectHList();
+		System.out.println("프론트 가져옴:"+list);
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp";
 	}
