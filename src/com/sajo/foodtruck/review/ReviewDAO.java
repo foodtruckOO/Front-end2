@@ -79,7 +79,7 @@ public class ReviewDAO {
 	public List<ReviewDTO> selectList(String s_no){
 		List<ReviewDTO> list = new Vector<ReviewDTO>();
 		//페이징 미 적용
-		String sql="select star,onememo,c.name,cpostdate from review r join customer c on r.g_no=c.g_no where r.s_no=?";
+		String sql="select star,onememo,c.name,cpostdate from review r join customer c on r.g_no=c.g_no where r.s_no=? order by r_no desc";
 		
 		//페이징 적용-구간쿼리로 변경
 		//검색용 쿼리 추가
@@ -101,6 +101,34 @@ public class ReviewDAO {
 		
 		return list;
 	}//////////////////////////////
+	public void write(String s_no,String star, String commen, String user) {
+		String sql ;
+		String g_no = null;
+		sql="select * from customer where id='"+user+"'";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			g_no = rs.getString(1);
+			}////////////while
+		}///try
+		catch(Exception e) {e.printStackTrace();}
+		
+		sql="INSERT INTO review values(SEQ_REVIEW.nextval,?,?,?,?,sysdate)";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,s_no);
+			psmt.setString(2, g_no);
+			psmt.setString(3, star);
+			psmt.setString(4, commen);
+			
+			psmt.executeUpdate();
+		} 
+		catch (Exception e) {	e.printStackTrace();}
+		
+	}
 	
 	
 	

@@ -46,7 +46,7 @@ public class foodtruckController {
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
 		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
-		
+		model.addAttribute("s_no",req.getParameter("s_no"));
 		model.addAttribute("addr",list.get(0).getAddr());
 		model.addAttribute("tname", list.get(0).getTname());
 		model.addAttribute("intro", list.get(0).getIntro());
@@ -72,8 +72,35 @@ public class foodtruckController {
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";	
 	}
 		
+	@RequestMapping("/write.foodtruck")
+	public String write(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 	
-	
-
+		req.setCharacterEncoding("UTF-8");
+		
+		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
+		
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		String commen = req.getParameter("commen");
+		String star = req.getParameter("star");
+		String s_no = req.getParameter("s_no");
+		dao2.write(s_no,star,commen,user);
+		
+		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
+		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
+		
+		
+		
+		model.addAttribute("s_no",req.getParameter("s_no"));
+		model.addAttribute("addr",list.get(0).getAddr());
+		model.addAttribute("tname", list.get(0).getTname());
+		model.addAttribute("intro", list.get(0).getIntro());
+		model.addAttribute("id",list.get(0).getId());
+		
+		model.addAttribute("foodtruck",list);
+		model.addAttribute("review",list2);
+		
+		return "com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";
+	}
 }
 	

@@ -42,6 +42,26 @@
 		});
 	</script>
 
+	<script>
+	
+	function click(){
+		
+		
+		if(!"${sessionScope.USER_ID}".length){
+			alert("로그인을 해주세요");
+			
+		}
+		else{ 
+
+		var star = $(":radio:checked").val();
+		var commen = $('#review').val();
+		var s_no = "${s_no}";
+		alert("등록이 성공했어요");
+		location.href="<c:url value='/write.foodtruck'/>?star="+star+"&s_no="+s_no+"&commen="+commen; 
+		}
+	}
+	</script>
+
 	<style>
 	
 	body {
@@ -331,8 +351,8 @@ label.star:before {
 						</div>
 						<p class="product-description">${intro}</p>
 						<div class="action">
-							<a href ="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail_1_1.jsp'/>"><button class="add-to-cart btn btn-default" type="button">메뉴보기</button></a>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart">좋아요</span></button>
+							<a href ="#"><button class="add-to-cart btn btn-default" type="button">메뉴보기</button></a>
+							
 						</div>
 					</div>
 				</div>
@@ -344,23 +364,23 @@ label.star:before {
 					<div class="stars1"> 
 					 
 					  <form action=""> 					 
-					    <input class="star star-5" id="star-5" type="radio" name="star"/> 
+					    <input class="star star-5" id="star-5" type="radio" name="star" value="10"/> 
 
 					    <label class="star star-5" for="star-5"></label> 
 					 
-					    <input class="star star-4" id="star-4" type="radio" name="star"/> 
+					    <input class="star star-4" id="star-4" type="radio" name="star" value="8"/> 
 					
 					    <label class="star star-4" for="star-4"></label> 
 					 
-					    <input class="star star-3" id="star-3" type="radio" name="star"/> 
+					    <input class="star star-3" id="star-3" type="radio" name="star" value="6"/> 
 					 
 					    <label class="star star-3" for="star-3"></label> 
 					 
-					    <input class="star star-2" id="star-2" type="radio" name="star"/> 
+					    <input class="star star-2" id="star-2" type="radio" name="star" value="4"/> 
 					 
 					    <label class="star star-2" for="star-2"></label> 
 					 
-					    <input class="star star-1" id="star-1" type="radio" name="star" checked="checked"/> 
+					    <input class="star star-1" id="star-1" type="radio" name="star" checked="checked" value="2"/> 
 					
 					    <label class="star star-1" for="star-1"></label> 
 					 
@@ -370,7 +390,7 @@ label.star:before {
 				</div>
 				<div class="col-md-9">	 
 					<input id="review" class="form-control" type="text"  style="width: 70%; float:left; margin-right: 10px"/>
-					<input id="submit" class="btn btn-primary" type="button" value="등록"/>
+					<a href="javascript:click()"><button class="btn btn-primary">등록</button></a>
 				</div>
 				
 			</div>
@@ -394,7 +414,7 @@ label.star:before {
 					<c:if test="${not flag }">
 						<c:forEach var="reviews" items="${review}" varStatus="loop">
 							<tr>
-								<td>
+								<td align="left">
 								<c:choose>
 										<c:when test="${reviews.star eq '2'}">
 										<div class="stars">
@@ -409,6 +429,7 @@ label.star:before {
 										</c:when>
 										<c:when test="${reviews.star eq '6'}">
 										<div class="stars">
+										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										</div>
