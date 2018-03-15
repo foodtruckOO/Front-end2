@@ -1,5 +1,6 @@
 package com.sajo.foodtruck.foodtruck;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +47,11 @@ public class foodtruckController {
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
 		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
+		Map map2 = dao2.count(req.getParameter("s_no"));
+		String count = map2.get("count").toString();
+		String starsum = map2.get("starsum").toString();
+		model.addAttribute("count",count);
+		model.addAttribute("starsum",starsum);
 		model.addAttribute("s_no",req.getParameter("s_no"));
 		model.addAttribute("addr",list.get(0).getAddr());
 		model.addAttribute("tname", list.get(0).getTname());
@@ -79,6 +85,11 @@ public class foodtruckController {
 		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
+		Map map2 = dao2.count(req.getParameter("s_no"));
+		String count = map2.get("count").toString();
+		String starsum = map2.get("starsum").toString();
+		model.addAttribute("count",count);
+		model.addAttribute("starsum",starsum);
 		
 		String user = (String)req.getSession().getAttribute("USER_ID");
 		String commen = req.getParameter("commen");

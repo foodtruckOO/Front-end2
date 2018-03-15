@@ -125,9 +125,44 @@ public class ReviewDAO {
 			psmt.setString(4, commen);
 			
 			psmt.executeUpdate();
-		} 
-		catch (Exception e) {	e.printStackTrace();}
+		} catch (Exception e) {	e.printStackTrace();}
+	
 		
+	}
+	
+	public Map count(String s_no) {
+			String count = null ;
+			String starsum = null;
+		
+			String sql = "select sum(star) from review where s_no="+s_no;
+			
+			try {
+			
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				starsum = rs.getString(1);
+				}
+			}
+			catch (Exception e) {	e.printStackTrace();}
+
+			sql = "select count(r_no) from review where s_no="+s_no;
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while(rs.next()) {
+				count = rs.getString(1);
+				}
+			}
+			
+			catch (Exception e) {	e.printStackTrace();}
+				
+			Map map = new HashMap<String,String>();
+			if(starsum==null) starsum = "0";
+			map.put("count", count);
+			map.put("starsum", starsum);
+		
+		return map;
 	}
 	
 	
