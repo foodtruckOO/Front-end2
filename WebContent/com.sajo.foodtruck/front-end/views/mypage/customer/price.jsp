@@ -2,7 +2,7 @@
 <div id="pricing" class="container-fluid">
 
   <div class="row slideanim">
-  
+   
     <div class="col-sm-4 col-xs-12">
       <div class="panel panel-default text-center">
         <div class="panel-heading">
