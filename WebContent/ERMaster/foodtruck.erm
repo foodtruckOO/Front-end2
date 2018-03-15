@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-02-26 16:54:58</creation_date>
-			<updated_date>2018-03-15 16:07:54</updated_date>
+			<updated_date>2018-03-15 16:08:24</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -6305,12 +6305,12 @@
 		</table>
 		<table>
 			<id>26</id>
-			<height>212</height>
+			<height>233</height>
 			<width>279</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>236</x>
-			<y>811</y>
+			<y>788</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
