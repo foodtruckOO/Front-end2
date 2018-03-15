@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.sajo.foodtruck.review.ReviewDAO;
+import com.sajo.foodtruck.review.ReviewDTO;
+
 
 //세션처리용]
 
@@ -40,12 +43,17 @@ public class foodtruckController {
 	public String detailOne(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
 		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
+		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
+		
 		model.addAttribute("addr",list.get(0).getAddr());
 		model.addAttribute("tname", list.get(0).getTname());
 		model.addAttribute("intro", list.get(0).getIntro());
-		model.addAttribute("foodtruck",list);
+		model.addAttribute("id",list.get(0).getId());
 		
+		model.addAttribute("foodtruck",list);
+		model.addAttribute("review",list2);
 		
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";	
 		

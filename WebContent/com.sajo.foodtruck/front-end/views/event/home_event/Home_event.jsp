@@ -72,7 +72,7 @@ table, table th {
 				<div class="jumbotron" style="background-color: white !important;">
 					<img class="img-fluid"
 						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
-					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공용 이벤트</h1>
+					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홈페이지 이벤트</h1>
 				</div>
 			</div>
 		</div>
@@ -98,13 +98,14 @@ table, table th {
 						<div class="card_img_wrap" style="position: relative;">
 							<div class="card_img_wrap_thumbnail a">
 								<a href="<c:url value='/com.sajo.foodtruck.event/event/view.event?eno=${dto.eno}'/>"><img
-									src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.attachedfile}'/>"
+									src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.titlefile}'/>"
 									width="100%" /> </a>
 							</div>
 						</div>
 						<div class="card_content" align="center">
 							<h3 style="text-indent: 45px">${dto.title}</h3>
 							<p style="text-indent: 45px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
+							
 						</div>
 			</div>
 			</c:forEach>

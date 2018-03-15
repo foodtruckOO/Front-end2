@@ -16,22 +16,11 @@ public class eventDTO {
 	private String eno;
 	private String title;
 	private String content;
-	private String attachedfile;
+	private String titlefile;
+	private String contentfile;
 	private Date s_date;
 	private Date e_date;
 	private Date postdate;
-	
-	
-	public eventDTO(String eno, String title, String content, String attachedfile, Date s_date, Date e_date,
-			Date postdate) {
-		this.eno = eno;
-		this.title = title;
-		this.content = content;
-		this.attachedfile = attachedfile;
-		this.s_date = s_date;
-		this.e_date = e_date;
-		this.postdate = postdate;
-	}
 	public String getEno() {
 		return eno;
 	}
@@ -50,11 +39,17 @@ public class eventDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getAttachedfile() {
-		return attachedfile;
+	public String getTitlefile() {
+		return titlefile;
 	}
-	public void setAttachedfile(String attachedfile) {
-		this.attachedfile = attachedfile;
+	public void setTitlefile(String titlefile) {
+		this.titlefile = titlefile;
+	}
+	public String getContentfile() {
+		return contentfile;
+	}
+	public void setContentfile(String contentfile) {
+		this.contentfile = contentfile;
 	}
 	public Date getS_date() {
 		return s_date;
@@ -74,6 +69,20 @@ public class eventDTO {
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
+	public eventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
+			Date e_date, Date postdate) {
+		super();
+		this.eno = eno;
+		this.title = title;
+		this.content = content;
+		this.titlefile = titlefile;
+		this.contentfile = contentfile;
+		this.s_date = s_date;
+		this.e_date = e_date;
+		this.postdate = postdate;
+	}
+	
+
 
 }
 	//프로그램의 효율성을 위한 속성 추가]

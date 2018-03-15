@@ -29,7 +29,7 @@ public class eventController {
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
-		List list = dao.selectList();
+		List list = dao.selectHList();
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp";
 	
