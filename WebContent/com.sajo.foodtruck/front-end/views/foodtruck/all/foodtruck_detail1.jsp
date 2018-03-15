@@ -287,7 +287,25 @@ label.star:before {
 	
 	
 	</style>
+<script>
+/* $(function(){
+	var avg = ${starsum}/${count}*1.0;
+	switch(avg){
+	case 5 : break;
+	case 4.5 : break;
 	
+	
+	}
+	
+	$(".stars").html()
+	
+}); */
+/* 	$(function(){
+	console.log(${starsum});
+	console.log(${count});
+	alert("${starsum}");
+	}); */
+</script>	
 
 	
   </head>
@@ -340,14 +358,100 @@ label.star:before {
 						<h3 class="product-title" style="padding-top: 15px">${tname}</h3>
 						<div class="rating">
 							<div class="stars">
+							<c:choose>
+							<c:when test="${starsum eq 0}" >
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<0.5}">
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<1}">
+							<span class="fa fa-star-half checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<1.5}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<2.0}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star-half checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<2.5}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<3.0}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star-half checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<3.5}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<4.0}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star-half checked"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<4.5}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/count/2<5.0}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star-half checked"></span>
+							</c:when>
+							<c:when test="${(starsum+0.0)/5>=5.0}">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							</c:when>
+							</c:choose>
+								<!-- <span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star "></span>
+								<span class="fa fa-star "></span> -->
 								<!--  star-half -->
 							</div>
-							<span class="review-no"> 41명 평가</span>
+							<span class="review-no"> ${count}명 평가</span>
 						</div>
 						<p class="product-description">${intro}</p>
 						<div class="action">
