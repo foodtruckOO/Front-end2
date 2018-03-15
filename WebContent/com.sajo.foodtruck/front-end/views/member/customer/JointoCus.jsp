@@ -163,7 +163,7 @@ function pwdCheck(){
 		document.getElementById("same").style.color="red"
 	}
 }
-</script>
+</script> 
 	<div class="container">
         <div class="card card-container">
         <h2>Customer</h2><hr style="border: solid 1px #FE9A2E;">
