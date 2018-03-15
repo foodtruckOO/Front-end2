@@ -374,7 +374,76 @@ label.star:before {
 				</div>
 				
 			</div>
-		
+
+		<div class="row" style="padding-top: 10px">
+			<div class="col-md-offset-1 col-md-9">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th style="width: 10%;">평점</th>
+						<th>리뷰</th>
+						<th style="width: 10%">작성자</th>
+						<th style="width: 15%">등록일</th>
+
+
+					</tr>
+					<c:if test="${empty review}" var="flag">
+						<tr>
+							<td colspan="4">등록된 리뷰가 없습니다</td>
+						</tr>
+					</c:if>
+					<c:if test="${not flag }">
+						<c:forEach var="reviews" items="${review}" varStatus="loop">
+							<tr>
+								<td>
+								<c:choose>
+										<c:when test="${reviews.star eq '2'}">
+										<div class="stars">
+										<span class="fa fa-star checked"></span>
+										</div>
+										</c:when>
+										<c:when test="${reviews.star eq '4'}">
+										<div class="stars">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										</div>
+										</c:when>
+										<c:when test="${reviews.star eq '6'}">
+										<div class="stars">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										</div>
+										</c:when>
+										<c:when test="${reviews.star eq '8'}">
+										<div class="stars">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										</div>
+										</c:when>
+										<c:when test="${reviews.star eq '10'}">
+										<div class="stars">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										</div>
+										</c:when>
+										
+									</c:choose>
+									
+									</td>
+								<td>${reviews.commen }</td> 
+								<td>${reviews.c_name}</td>
+								<td>${reviews.cpostdate}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</table>
+			</div>
+		</div>
+
 	</div>
 	
 	
@@ -419,7 +488,7 @@ label.star:before {
 		        });
 		        
 		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:50px;text-align:center;padding:6px 0;">${tname}</div>'
+		            content: '<div style="width:200px;text-align:center;padding:6px;">${tname}<br/>${addr}</div>'
 		        });
 		        infowindow.open(map, marker);
 

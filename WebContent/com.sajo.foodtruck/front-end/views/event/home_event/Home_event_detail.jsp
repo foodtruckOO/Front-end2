@@ -47,13 +47,14 @@
 		<div class = "row">
 			<div class="col-md-2">
 			<h2>${dto.title}</h2>
+			<h2 style="font-size:22px ;">${dto.content}</h2>
 			<h3>기간</h3>
 				<p>${dto.s_date} ~ ${dto.e_date}<p>
 			</div>
 			
 			
 			<div class="col-md-8">
-				<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.content}'/>"/>
+				<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.contentfile}'/>"/>
 			</div>
 		
 		</div>

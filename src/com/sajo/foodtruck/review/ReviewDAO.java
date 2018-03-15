@@ -1,15 +1,20 @@
-package com.sajo.foodtruck.event;
+package com.sajo.foodtruck.review;
 /*
  * DAO(Data Access Object):데이타에 접근해서 CRUD작업을
  *                         수행하는 업무처리 로직
  * 
  */
   
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.naming.InitialContext;
@@ -18,17 +23,17 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 
-public class eventDAO {
+public class ReviewDAO {
 	//멤버변수]
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
 	
 	//생성자]
-	public eventDAO(ServletContext context) {
+	public ReviewDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
 		
-		/*try {
+	/*	try {
 			//드라이버 로딩]
 			Class.forName(context.getInitParameter("ORACLE_DRIVER"));
 			//데이타베이스 연결]
@@ -71,59 +76,35 @@ public class eventDAO {
 	 * 
 	 * 
 	 */
-	public List<eventDTO> selectHList(){
-		List<eventDTO> list = new Vector<eventDTO>();
+	public List<ReviewDTO> selectList(String s_no){
+		List<ReviewDTO> list = new Vector<ReviewDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT WHERE Eno >= 30000 ORDER BY s_date";
-			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
+		String sql="select star,onememo,c.name,cpostdate from review r join customer c on r.g_no=c.g_no where r.s_no=?";
 		
 		//페이징 적용-구간쿼리로 변경
 		//검색용 쿼리 추가
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			
+			psmt.setString(1, s_no);
 			rs = psmt.executeQuery();
-			
-			
 			while(rs.next()) {
-				eventDTO dto = new eventDTO();
-				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-				dto.setTitlefile(rs.getString(4));
-				dto.setContentfile(rs.getString(5));
-				dto.setS_date(rs.getDate(6));
-				dto.setE_date(rs.getDate(7));
-				dto.setPostdate(rs.getDate(8));
-				list.add(dto);
+			ReviewDTO dto = new ReviewDTO();
+			dto.setStar(rs.getString(1));
+			dto.setCommen(rs.getString(2));
+			dto.setC_name(rs.getString(3));
+			dto.setCpostdate(rs.getDate(4));
+			list.add(dto);
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
 		
 		return list;
 	}//////////////////////////////
-	//전체 레코드 수 얻기용]
-	public eventDTO selectOne(String key) {
-		eventDTO dto=null;
-		String sql="SELECT * FROM EVENT WHERE eno=?";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, key);
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-				dto = new eventDTO();
-				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-				dto.setTitlefile(rs.getString(4));
-				dto.setContentfile(rs.getString(5));
-				dto.setS_date(rs.getDate(6));
-				dto.setE_date(rs.getDate(7));
-				dto.setPostdate(rs.getDate(8));
-			}
-		} catch (Exception e) {e.printStackTrace();}
-		return dto;
-	}/////////////////////////////////////////
+	
+	
+	
+	
+	/////////////////////////////////////////
 
 }
