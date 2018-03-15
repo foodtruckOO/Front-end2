@@ -61,7 +61,14 @@
 			<th style="width:15%">등록일</th>
 			<th style="width:20%">첨부파일</th>
 		</tr>
-		<c:if test="${empty requestScope.list }" var="flag">
+		<tr>
+			<th>1</th>
+			<th>페스티벌 일정 공유합니다.</th>
+			<th>박트럭</th>
+			<th>2018-04-15</th>
+			<th>FoodTruckFestival.hwp</th>
+		</tr>
+		<%-- <c:if test="${empty requestScope.list }" var="flag">
 			<tr>
 				<td colspan="6">등록된 자료가 없습니다</td>
 			</tr>
@@ -76,7 +83,7 @@
 					<td><span id="download${loop.count}">${item.downcount}</span></td>
 				</tr>
 			</c:forEach>
-		</c:if>
+		</c:if> --%>
 	</table>
 	</article>
 	

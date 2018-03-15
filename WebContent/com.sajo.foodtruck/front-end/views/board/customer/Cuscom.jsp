@@ -61,22 +61,18 @@
 			<th style="width:15%">등록일</th>
 			<th style="width:20%">첨부파일</th>
 		</tr>
-		<c:if test="${empty requestScope.list }" var="flag">
+		<%-- <c:if test="${empty requestScope.list }" var="flag">
 			<tr>
 				<td colspan="6">등록된 자료가 없습니다</td>
 			</tr>
-		</c:if>
-		<c:if test="${not flag }">
-			<c:forEach var="item" items="${list}" varStatus="loop">
-				<tr>
-					<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
-					<td><a href="<c:url value='/DATAROOM/View.do?key=${item.no}'/>">${item.title}</a></td>
-					<td>${item.name}</td>
-					<td>${item.postdate}</td>
-					<td><span id="download${loop.count}">${item.downcount}</span></td>
-				</tr>
-			</c:forEach>
-		</c:if>
+		</c:if> --%>
+		<tr>
+			<th>1</th>
+			<th>강남 푸드트럭 추전좀요~</th>
+			<th>김고객</th>
+			<th>2018-03-15</th>
+			<th>없음</th>
+		</tr>
 	</table>
 	</article>
 	

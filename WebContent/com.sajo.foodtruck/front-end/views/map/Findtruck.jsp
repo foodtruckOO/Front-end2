@@ -53,6 +53,13 @@
 		});
 	</script>
   </head>
+<style type="text/css">  
+    tr.a:hover { 
+    color:#FE9A2E;
+    font-size: 1.2em;
+    } 
+</style> 
+  
 <body>
 	<div id="TOP">
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Top.jsp"/>
@@ -69,7 +76,7 @@
 	  <!-- 주소검색 -->
 	  <article>
 		<fieldset>
-		<legend>주소그룹</legend>
+		<br>
 		<div style="margin-left: 30px;">
 		<select class="form-control" name="sido" id="sido" style="width: 10%; float: left; margin-right: 5px"></select>
 		<select class="form-control" name="gugun" id="gugun" style="width: 10%; float: left; margin-right: 5px"></select>
@@ -101,18 +108,39 @@
       	
 	<article style="margin-right:30px; margin-left: 30px">
 	<table class="table table-bordered table-hover">
-		<tr style="text-align: center">
+		<tr style="text-align: center; background-color:#FE9A2E ">
 			<th style="width:10%;">번호</th>
 			<th style="width:20%">업소명</th>
 			<th style="width:25%">주소</th>
 			<th style="width:20%">대표메뉴</th>
 			<th style="width:15%">연락처</th>
 		</tr>
-		<c:if test="${empty requestScope.list }" var="flag">
+		<tr class="a">
+			<th>1</th>
+			<th>가산푸드트럭존</th>
+			<th>서울시 금천구 가산동</th>
+			<th>봉구스밥버거(4000원)</th>
+			<th>010-1234-5678</th>
+		</tr>
+		<tr class="a">
+			<th>2</th>
+			<th>강남푸드트럭존</th>
+			<th>서울시 강남구 신사동</th>
+			<th>아트컵솜사탕(3000원)</th>
+			<th>010-1234-5678</th>
+		</tr>
+		<tr class="a">
+			<th>3</th>
+			<th>한강푸드트럭존</th>
+			<th>서울시 광진구 자양동</th>
+			<th>불닭발&불윙봉(7000원)</th>
+			<th>010-1234-5678</th>
+		</tr>
+		<%-- <c:if test="${empty requestScope.list }" var="flag">
 			<tr>
 				<td colspan="6">등록된 자료가 없습니다</td>
 			</tr>
-		</c:if>
+		</c:if> --%>
 	</table>
 	</article>
 	
@@ -167,6 +195,7 @@
             '                <div class="ellipsis">서울특별시 강남구</div>' + 
             '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
             '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' + 
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' +
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -189,6 +218,7 @@
             '                <div class="ellipsis">서울특별시 강남구</div>' + 
             '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
             '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' + 
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' +
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -211,6 +241,7 @@
             '                <div class="ellipsis">서울특별시 중구</div>' + 
             '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
             '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' + 
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' +
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -233,6 +264,7 @@
             '                <div class="ellipsis">서울특별시 영등포구</div>' + 
             '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
             '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' + 
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' +
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -254,7 +286,8 @@
             '            <div class="desc">' + 
             '                <div class="ellipsis">서울특별시 성동구</div>' + 
             '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
-            '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' + 
+            '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' +
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' + 
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
