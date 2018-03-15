@@ -85,7 +85,10 @@ body, html {
 }
 
 .form-signin #inputid,
-.form-signin #inputPassword {
+.form-signin #inputname,
+.form-signin #inputpass,
+.form-signin #inputpass2,
+.form-signin #phonenumber{
     direction: ltr;
     height: 44px;
     font-size: 16px;
@@ -93,7 +96,6 @@ body, html {
 
 .form-signin input[type=text],
 .form-signin input[type=password],
-.form-signin input[type=text],
 .form-signin button {
     width: 100%;
     display: block;
@@ -170,13 +172,15 @@ function pwdCheck(){
                 <span id="reauth-email" class="reauth-email"></span>
                 <label>아이디</label>
                 <input type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" name="id" strequired autofocus>
-                <input type="button" id=idcheck" class="btn btn-lg btn-primary btn-block btn-signin", name="idcheck" value="중복확인" onclick="idcheck()"/><br>
+				<input type="button" class="btn btn-lg btn-primary btn-block btn-signin" value="중복확인"/><br>
                 <label>이름</label>
                 <input type="text" id="inputname" class="form-control" placeholder="이름를 입력해주세요" name="name" required autofocus>
                 <label>비밀번호</label>
                 <input type="password" id="inputpass" class="form-control" placeholder="비밀번호를 입력해주세요" name="pwd" onchange="pwdCheck()" required>
                 <label>비밀번호 확인</label>
-                <input type="password" id="inputpass2" class="form-control" placeholder="비밀번호를 입력해주세요" name="pwdcheck" onchange="pwdCheck()" required><span id="same"></span><br><br>            
+                <input type="password" id="inputpass2" class="form-control" placeholder="비밀번호를 입력해주세요" name="pwdcheck" onchange="pwdCheck()" required><span id="same"></span><br>
+                <label>연락처</label>
+                <input type="text" id="phonenumber" class="form-control" placeholder="연락처를입력해주세요" name="phone" required><br><br>       
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">완료</button>
             </form><!-- /form -->     
         </div><!-- /card-container -->

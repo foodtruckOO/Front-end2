@@ -16,6 +16,7 @@
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pwd");
 	String name = request.getParameter("name");
+	String tel = request.getParameter("phone");
 	pass = PBKDF2.createHash(pass);
  
 	Connection conn = null;
@@ -32,11 +33,12 @@
 		//out.println("연결성공");
 		//3단계 sql문 생성 Statement PreparedStatement CallableStatement
 		//PreparedStatement CallableStatement
-		sql = "insert into CUSTOMER values(SEQ_CUS.NEXTVAL,?,?,?,SYSDATE)";
+		sql = "insert into CUSTOMER values(SEQ_CUS.NEXTVAL,?,?,?,?,SYSDATE)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.setString(2, pass);
 		pstmt.setString(3, name);
+		pstmt.setString(4, tel);
 		//4단계 실행
 		pstmt.executeUpdate(); //insert,update,delete
 		//out.println("회원가입성공");
