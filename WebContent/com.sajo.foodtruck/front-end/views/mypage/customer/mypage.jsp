@@ -23,8 +23,11 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://malsup.github.com/jquery.cycle2.js"></script>
 	<script src="<c:url value='/bootstrap/js/template.js'/>"></script>
-	<!-- naver map -->
-	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=ygb_z5ZpazgrKimoE4A4&submodules=geocoder"></script>
+	
+	<!-- star -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,16 +42,30 @@
 			});
 		});
 	</script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#tabs" ).tabs({
-    });
-  } );
-  </script>
+	<!-- Google Analytics -->
+    <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-110902214-1', 'auto');
+            ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="/Content/plug/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/plug/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/plug/material-kit.css" rel="stylesheet" />
+    <link href="/Content/plug/owl.carousel.css" rel="stylesheet" />
+    <link href="/Content/plug/landing-style.css" rel="stylesheet" />
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico">
+  
 </head>
 
 <body>
@@ -94,37 +111,70 @@
 				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
 				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
 			</div>
-			<!-- body -->
+			<!-- tap -->
 			<div style="width: 100%; height: 100%; background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);">
 				<!-- include -->
-				<div id="tabs">
-				  <ul style="background-color: #ffe9c1">
-				    <li><a href="#tabs-1"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 </a></li>
-				    <li><a href="#tabs-2"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> 위치 </a></li>
-				    <li><a href="#tabs-3"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴 </a></li>
-				    <li><a href="#tabs-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-				  </ul>
-				  <div id="tabs-1">
-				    <p><strong>Click this tab again to close the content pane.</strong></p>
-				    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-				  </div>
-				  <div id="tabs-2">
-				    <p><strong>Click this tab again to close the content pane.</strong></p>
-				    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-				  </div>
-				  <div id="tabs-3">
-				    <p><strong>Click this tab again to close the content pane.</strong></p>
-				    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-				  </div>
-				  <div id="tabs-4">
-				    <p><strong>Click this tab again to close the content pane.</strong></p>
-				    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-				  </div>
+				<ul class="nav nav-tabs" id="my_tab"style="background-color: #ffe9c1;">
+					<li class="active"><a data-toggle="tab" href="#tabs-1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></a></li>
+					<li><a data-toggle="tab" href="#tabs-2"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
+					<li><a data-toggle="tab" href="#tabs-3"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
+					<li><a data-toggle="tab" href="#tabs-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
+					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
+						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
+					</button>
+				</ul>
+
+				<div class="tab-content" style="padding: 1%; padding-left: 2%;">
+					<div id="tabs-1" class="tab-pane fade in active">
+						<!-- 푸드트럭 정보 -->
+						<div style="width: 59%; float: left;">
+							<h2>API MARKET</h2>
+							<p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&emsp;서울특별시 강남구 대치1동 남부순환로 ２９４２</p>
+							<p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&emsp;010-0123-4567</p>
+							
+						</div>
+						<!-- map -->					
+						<div id="map" style="width:39%;height:200px;"></div>
+					        <!-- 지도 api 호출 -->
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07081f33b5c3c2dd65b5d5a0b0e85296"></script>
+						
+					</div>
+					<div id="tabs-2" class="tab-pane fade">
+						<h3>Menu 1</h3>
+						
+					</div>
+					<div id="tabs-3" class="tab-pane fade">
+						<!-- 여기 -->
+						<div class="stars1" style="float: left; width: 25%;"> 
+							<form action=""> 					 
+								<input class="star star-5" id="star-5" type="radio" name="star"/> 
+								<label class="star star-5" for="star-5"></label> 
+								<input class="star star-4" id="star-4" type="radio" name="star"/> 
+								<label class="star star-4" for="star-4"></label> 
+								<input class="star star-3" id="star-3" type="radio" name="star"/> 
+								<label class="star star-3" for="star-3"></label> 
+								<input class="star star-2" id="star-2" type="radio" name="star"/> 
+								<label class="star star-2" for="star-2"></label> 
+								<input class="star star-1" id="star-1" type="radio" name="star" checked="checked"/> 
+								<label class="star star-1" for="star-1"></label> 
+							</form> 
+						</div>
+						<div class="col-md-9" style="float: right; width: 75%">	 
+							<input id="review" class="form-control" type="text"  style="width: 70%; float:left; margin-right: 10px"/>
+							<input id="submit" class="btn btn-primary" type="button" value="등록"/>
+						</div>				 
+						<!-- 저기 -->
+					</div>
+					<div id="tabs-4" class="tab-pane fade">
+						<br/><br/>
+						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/customer/price.jsp" />
+					</div>
 				</div>
 			</div>
-			 
+			
 		</div>
-
+			
+        
 		<!-- 이하 부분 -->
 	</div>
 	<!-- mypage end -->
@@ -134,11 +184,29 @@
 	<div id="FOOTER">
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp" />
 	</div>
+	
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 마커가 표시될 위치입니다 
+		var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
+		// 마커를 생성합니다
+		var marker = new daum.maps.Marker({
+		    position: markerPosition
+		});	
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	</script>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 </body>
 
 </html>
