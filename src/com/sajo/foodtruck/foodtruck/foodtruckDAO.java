@@ -165,13 +165,18 @@ public class foodtruckDAO {
 			break;
 			case "busan" : area = "부산";
 			break;
-			
+			case "gita" : area = "gita";
 			
 		}
 		
 		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
 		if(area.equals("all")) {
 		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";	
+		}
+		
+		else if(area.equals("gita")) {
+		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' " + 
+			   " and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%'"; 
 		}
 		else {
 		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%'";

@@ -19,8 +19,14 @@
     <!-- Custom styles for this template -->    
 	 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	
 	<!-- jQuery -->
+	
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	
 	<script>	
 		$(function(){
 			var currentPosition = parseInt($("#sidebox").css("top"));
@@ -200,6 +206,62 @@ img {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 	
+	
+	
+div.stars1 { 
+
+  width: 200px; 
+
+  display: inline-block; 
+
+} 
+
+input.star { display: none; } 
+
+label.star { 
+
+  float: right; 
+
+  padding: 6px; 
+
+  font-size: 22px; 
+
+  color: #444; 
+
+  transition: all .2s; 
+
+} 
+
+input.star:checked ~ label.star:before { 
+
+  content: '\f005'; 
+
+  color: #FD4; 
+
+  transition: all .25s; 
+} 
+
+input.star-5:checked ~ label.star:before {  
+  color: #FE7; 
+
+  text-shadow: 0 0 10px #952; 
+
+} 
+
+input.star-1:checked ~ label.star:before { color: #F62; } 
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); } 
+ 
+label.star:before { 
+ 
+  content: '\f006'; 
+ 
+  font-family: FontAwesome; 
+
+} 
+	
+	
+	
 	</style>
 	
   </head>
@@ -254,7 +316,8 @@ img {
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
+								<span class="fa fa-star "></span>
+								<!--  star-half -->
 							</div>
 							<span class="review-no"> 41명 평가</span>
 						</div>
@@ -267,6 +330,44 @@ img {
 				</div>
 			</div>
 		
+			<div class = "row">
+				<div class="col-md-offset-1 col-md-2">
+					
+					<div class="stars1"> 
+					 
+					  <form action=""> 
+					 
+					    <input class="star star-5" id="star-5" type="radio" name="star"/> 
+					
+					    <label class="star star-5" for="star-5"></label> 
+					 
+					    <input class="star star-4" id="star-4" type="radio" name="star"/> 
+					
+					    <label class="star star-4" for="star-4"></label> 
+					 
+					    <input class="star star-3" id="star-3" type="radio" name="star"/> 
+					 
+					    <label class="star star-3" for="star-3"></label> 
+					 
+					    <input class="star star-2" id="star-2" type="radio" name="star"/> 
+					 
+					    <label class="star star-2" for="star-2"></label> 
+					 
+					    <input class="star star-1" id="star-1" type="radio" name="star"/> 
+					
+					    <label class="star star-1" for="star-1"></label> 
+					 
+					  </form> 
+					 
+					</div>
+				</div>
+				<div class="col-md-9">	 
+					<input id="review" class="form-control" type="text"  style="width: 70%; float:left; margin-right: 10px"/>
+					<input id="submit" class="btn btn-primary" type="button" value="등록"/>
+				</div>
+				
+			</div>
+		
 	</div>
 	
 	
@@ -276,7 +377,7 @@ img {
 	
 	
 	<!-- 내용 끝 -->
-    <div>
+    <div style="padding-top: 30px">
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp"/>
  	</div>
 
