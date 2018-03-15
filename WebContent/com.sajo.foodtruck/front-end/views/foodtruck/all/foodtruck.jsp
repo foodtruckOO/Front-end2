@@ -183,13 +183,13 @@
 					</div>
 					<div class="dq_select_box"></div>
 					<div class="taste_sort_wrap">
-						<button class="sort_btn active" data-order=""
-							onclick="viewOrdered(this)">
+						<button class="sort_btn active" data-sorder="new" va
+							onclick="viewOrdered()">
 							<span style="background-color: #ff4081"></span><span
 								style="color: #ff4081">신규등록순</span>
 						</button>
 						<button class="sort_btn active" data-order="hot"
-							onclick="viewOrdered(this)">
+							onclick="viewOrdered()">
 							<span style=""></span><span style="color:#ff4081">인기순</span>
 						</button>
 					</div>
