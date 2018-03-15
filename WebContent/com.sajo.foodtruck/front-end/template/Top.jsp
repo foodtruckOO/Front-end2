@@ -36,7 +36,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp' />">FOODTRUCK</a>
+				<a class="navbar-brand" href="<c:url value='/Allevent.event'/>">FOODTRUCK</a>
 			</div>
 			
 			<div id="navbar" class="navbar-collapse collapse">
@@ -79,8 +79,8 @@
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="<c:url value='/com.sajo.foodtruck.event/event.event'/>">공용 이벤트</a></li>
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/event/seller_event/Seller_event.jsp'/>">푸드트럭별 이벤트</a></li>
+							<li><a href="<c:url value='/Homeevent.event'/>">홈페이지 이벤트</a></li>
+							<li><a href="<c:url value='/Localevent.event'/>">지역 이벤트</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

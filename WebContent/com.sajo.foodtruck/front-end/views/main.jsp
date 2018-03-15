@@ -74,20 +74,25 @@
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
-						<div class="item active">
-							<img src="<c:url value='/com.sajo.foodtruck/front-end/images/area_event_1600_500.jpg'/>" />
-							<div class="carousel-caption">
-								
-							</div>
-						</div>
-
-						<div class="item">
-							<img src="<c:url value='/com.sajo.foodtruck/front-end/images/home_event_1600_500.jpg'/>" />
-							<div class="carousel-caption">
-						
-							</div>
-						</div>
-
+						<c:forEach items="${events}" var="event" varStatus="loop">
+							<c:choose>
+									<c:when test="${loop.first}">
+										<div class="item active" style="width: 1200px;height: 500px" align="center">
+											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${event.titlefile}'/>" 
+											width="100%" height="30%"/></a>
+												<div class="carousel-caption"></div>
+										</div>
+									</c:when>
+									
+									<c:otherwise>
+										<div class="item" style="width: 1200px;height: 500px" align="center">
+											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${event.titlefile}'/>" 
+											width="100%" height="30%"/></a>
+												<div class="carousel-caption"></div>
+										</div>
+									</c:otherwise>
+							</c:choose>			
+						</c:forEach>
 					</div>
 
 					<!-- Controls -->
@@ -200,7 +205,7 @@
 				</div>
 				<div class="col-md-4 col-sm-6 portfolio-item">
 					<a class="portfolio-link" 
-						href="<c:url value='/com.sajo.foodtruck.event/event.event'/>">
+						href="<c:url value='/Homeevent.event'/>">
 						<div class="portfolio-hover">
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>

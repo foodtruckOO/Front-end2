@@ -6,7 +6,7 @@
 <meta http-equiv="refresh" content="0;url=pages/index.html">
 <title>index</title>
 <script language="javascript">
-    window.location.href = "<c:url value='/backend/pages/Index.jsp'/>"
+    window.location.href = "<c:url value='/Allevent.event'/>"
 </script>
 </head>
 <body>

@@ -25,23 +25,42 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class eventController {
 	
 	//목록용]
-	@RequestMapping("/com.sajo.foodtruck.event/event.event")
+	@RequestMapping("/Homeevent.event")
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectHList();
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp";
-	
 	}
-	@RequestMapping("/com.sajo.foodtruck.event/event/view.event")
+	@RequestMapping("/Localevent.event")
+	public String LocalList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		eventDAO dao = new eventDAO(req.getServletContext());
+		List list = dao.selectLList();
+		model.addAttribute("event",list);
+	return "/com.sajo.foodtruck/front-end/views/event/local_event/Local_event.jsp";
+	}
+	@RequestMapping("/Eventview.event")
 	public String View(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
 		String key = req.getParameter("eno");
 		eventDAO dao = new eventDAO(req.getServletContext());
 		eventDTO dto = dao.selectOne(key);
 		model.addAttribute("dto",dto);
+		if(Integer.parseInt(key)>=30000) {
 		return  "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event_detail.jsp";
+		}
+		else
+		return  "/com.sajo.foodtruck/front-end/views/event/local_event/Local_event_detail.jsp";
 	}
-
+	@RequestMapping("/Allevent.event")
+	public String Allevent(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		
+		eventDAO dao = new eventDAO(req.getServletContext());
+		List list = dao.selectAll();
+		model.addAttribute("events",list);
+		return "/com.sajo.foodtruck/front-end/views/main.jsp";
+	}
 }
 	

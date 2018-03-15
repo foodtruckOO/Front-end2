@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Home_event</title>
+<title>Local_event</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>"
@@ -72,7 +72,7 @@ table, table th {
 				<div class="jumbotron" style="background-color: white !important;">
 					<img class="img-fluid"
 						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
-					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홈페이지 이벤트</h1>
+					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지역 이벤트</h1>
 				</div>
 			</div>
 		</div>

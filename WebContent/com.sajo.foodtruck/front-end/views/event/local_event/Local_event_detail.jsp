@@ -61,7 +61,7 @@
 		
 		<div class = "row" style = "padding-top:50px;padding-bottom: 50px">
 			<div class = "col-md-offset-4 col-md-3">
-				<a href="<c:url value='/Homeevent.event'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
+				<a href="<c:url value='/Localevent.ev	ent'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
 								돌아가기</button></a>
 			</div>
 		</div>

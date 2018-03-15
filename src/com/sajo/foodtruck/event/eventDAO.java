@@ -125,5 +125,65 @@ public class eventDAO {
 		} catch (Exception e) {e.printStackTrace();}
 		return dto;
 	}/////////////////////////////////////////
+	public List<eventDTO> selectAll() {
+
+		List<eventDTO> list = new Vector<eventDTO>();
+		//페이징 미 적용
+		String sql="SELECT * from EVENT ORDER BY s_date";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				eventDTO dto = new eventDTO();
+				dto.setEno(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setTitlefile(rs.getString(4));
+				dto.setContentfile(rs.getString(5));
+				dto.setS_date(rs.getDate(6));
+				dto.setE_date(rs.getDate(7));
+				dto.setPostdate(rs.getDate(8));
+				list.add(dto);
+			}////////////while
+		}///try
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+	}
+	public List selectLList() {
+		List<eventDTO> list = new Vector<eventDTO>();
+		//페이징 미 적용
+		String sql="SELECT * from EVENT WHERE Eno >= 20000 AND Eno < 30000 ORDER BY s_date";
+			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
+		
+		//페이징 적용-구간쿼리로 변경
+		//검색용 쿼리 추가
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				eventDTO dto = new eventDTO();
+				dto.setEno(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setTitlefile(rs.getString(4));
+				dto.setContentfile(rs.getString(5));
+				dto.setS_date(rs.getDate(6));
+				dto.setE_date(rs.getDate(7));
+				dto.setPostdate(rs.getDate(8));
+				list.add(dto);
+			}////////////while
+		}///try
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+	
+	}
 
 }
