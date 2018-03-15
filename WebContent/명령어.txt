@@ -1,0 +1,45 @@
+SELLER 샘플 데이터
+
+INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Kim','1234','김','마약트럭','서울특별시 용산구 효창원로104길 38-10','011-9925-4798','12345',SYSDATE);
+
+
+
+INSERT INTO SELLER VALUES(SEQ_SEL.NEXTVAL,'Lee','1234','이','대박났네트럭','인천광역시 부평구 부평대로 102','013-7315-4721','32345','SYSDATE);
+
+CUSTOMER 샘플 데이터
+
+INSERT INTO CUSTOMER VALUES('1','Lim','1234','임',SYSDATE);
+
+IMAGES 샘플 이미지 데이터
+
+
+insert into TRUCKPAGE values('8','국민간식 닭꼬치에 저희 꿈을 담고, 여러분들을 찾아 전국 어디든지 달려가는 - "중독" 푸드트럭입니다. 저렴한 가격에 맛있는 닭꼬치는 간식, 술안주로도 정말 좋습니다. 정성이 담긴 저희 닭꼬치를 보시면 주저하지 마시고, 꼭 찾아주세요.','menu_list1.jpg');
+
+insert into images values('8','menu_list2.jpg');
+
+insert into images values('8','menu_list3.jpg');
+
+insert into images values('8','menu_list4.jpg');
+
+insert into images values('8','menu_list5.jpg');
+
+
+REVIEW 샘플 데이터
+
+INSERT INTO REVIEW VALUES('1','8','1',8,'여기 진짜 맛있쪙',SYSDATE);
+
+
+
+시퀀스 - 
+
+지역이벤트 - 2만부터 시작
+
+홈 이벤트 - 3만부터 시작
+
+CREATE SEQUENCE SEQ_L_EVENT START WITH 20000 NOCACHE NOCYCLE;
+
+CREATE SEQUENCE SEQ_H_EVENT START WITH 30000 NOCACHE NOCYCLE;
+
+이벤트 샘플
+
+insert into event values(SEQ_H_EVENT.NEXTVAL,'마일리지 무료증정','마일리지를 무료로 드려요','home_event1.jpg','event_detail1.jpg','2018-03-18','2018-04-10',sysdate);
