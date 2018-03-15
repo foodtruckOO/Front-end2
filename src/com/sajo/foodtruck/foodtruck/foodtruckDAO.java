@@ -121,6 +121,7 @@ public class foodtruckDAO {
 				dto.setTname(rs.getString(5));
 				dto.setImg(rs.getString(10));
 				dto.setIntro(rs.getString(11));
+				dto.setAddr(rs.getString(6));
 				list.add(dto);
 			}
 			

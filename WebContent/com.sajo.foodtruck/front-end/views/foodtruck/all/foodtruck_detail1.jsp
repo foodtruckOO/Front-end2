@@ -21,10 +21,14 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7dbbcf6a7522d6da2a900b6547dee963&libraries=services"></script>
+	
 	<!-- jQuery -->
 	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	
 	
 	<script>	
@@ -264,6 +268,8 @@ label.star:before {
 	
 	</style>
 	
+
+	
   </head>
 
 <body>
@@ -309,7 +315,9 @@ label.star:before {
 						</ul>
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">${tname}</h3>
+						<div id="map" style="width:100%;height:400px;"></div>
+					
+						<h3 class="product-title" style="padding-top: 15px">${tname}</h3>
 						<div class="rating">
 							<div class="stars">
 								<span class="fa fa-star checked"></span>
@@ -335,10 +343,9 @@ label.star:before {
 					
 					<div class="stars1"> 
 					 
-					  <form action=""> 
-					 
+					  <form action=""> 					 
 					    <input class="star star-5" id="star-5" type="radio" name="star"/> 
-					
+
 					    <label class="star star-5" for="star-5"></label> 
 					 
 					    <input class="star star-4" id="star-4" type="radio" name="star"/> 
@@ -353,7 +360,7 @@ label.star:before {
 					 
 					    <label class="star star-2" for="star-2"></label> 
 					 
-					    <input class="star star-1" id="star-1" type="radio" name="star"/> 
+					    <input class="star star-1" id="star-1" type="radio" name="star" checked="checked"/> 
 					
 					    <label class="star star-1" for="star-1"></label> 
 					 
@@ -384,6 +391,47 @@ label.star:before {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
+    
+    	
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    	mapOption = {
+        	center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+       	 level: 3 // 지도의 확대 레벨
+    	};  
+
+		
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+		
+		var geocoder = new daum.maps.services.Geocoder();
+		
+		geocoder.addressSearch("${addr}", function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		    if (status === daum.maps.services.Status.OK) {
+
+		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new daum.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		        
+		        var infowindow = new daum.maps.InfoWindow({
+		            content: '<div style="width:50px;text-align:center;padding:6px 0;">${tname}</div>'
+		        });
+		        infowindow.open(map, marker);
+
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		     }
+
+		});
+
+	</script>
+	
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
     </body>
