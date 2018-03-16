@@ -39,7 +39,7 @@
 				interval : 6000
 			})
 		});
-		
+		 
 		function person(){
 			$("#pizza").modal();
 		}
