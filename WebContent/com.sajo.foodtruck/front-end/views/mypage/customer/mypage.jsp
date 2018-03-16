@@ -105,14 +105,14 @@
 		</div>
 		
 		<!-- Mypage Right -->
-		<div style="float: right; background-color: red; width: 78%;">
+		<div style="float: right;  width: 78%;">
 			<!-- background -->
-			<div style="height: 300px; background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
+			<div style="height: 300px; ">
 				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
 				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
 			</div>
 			<!-- tap -->
-			<div style="width: 100%; height: 100%; background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);">
+			<div style="width: 100%; height: 100%; ">
 				<!-- include -->
 				<ul class="nav nav-tabs" id="my_tab"style="background-color: #ffe9c1;">
 					<li class="active"><a data-toggle="tab" href="#tabs-1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></a></li>
@@ -144,26 +144,8 @@
 						
 					</div>
 					<div id="tabs-3" class="tab-pane fade">
-						<!-- 여기 -->
-						<div class="stars1" style="float: left; width: 25%;"> 
-							<form action=""> 					 
-								<input class="star star-5" id="star-5" type="radio" name="star"/> 
-								<label class="star star-5" for="star-5"></label> 
-								<input class="star star-4" id="star-4" type="radio" name="star"/> 
-								<label class="star star-4" for="star-4"></label> 
-								<input class="star star-3" id="star-3" type="radio" name="star"/> 
-								<label class="star star-3" for="star-3"></label> 
-								<input class="star star-2" id="star-2" type="radio" name="star"/> 
-								<label class="star star-2" for="star-2"></label> 
-								<input class="star star-1" id="star-1" type="radio" name="star" checked="checked"/> 
-								<label class="star star-1" for="star-1"></label> 
-							</form> 
-						</div>
-						<div class="col-md-9" style="float: right; width: 75%">	 
-							<input id="review" class="form-control" type="text"  style="width: 70%; float:left; margin-right: 10px"/>
-							<input id="submit" class="btn btn-primary" type="button" value="등록"/>
-						</div>				 
-						<!-- 저기 -->
+						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/customer/comment.jsp" />
+						
 					</div>
 					<div id="tabs-4" class="tab-pane fade">
 						<br/><br/>
