@@ -149,8 +149,8 @@ public class foodtruckDAO {
 		return list;
 	}
 	
-	public List<foodtruckDTO> selectArea(String area) {
-		String sql ; 
+	public List<foodtruckDTO> selectArea(String area,String sort) {
+		String sql = null ; 
 		switch(area) {
 			case "all" : area = "all";
 			break;
@@ -172,15 +172,31 @@ public class foodtruckDAO {
 		
 		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
 		if(area.equals("all")) {
-		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";	
+			if(sort.equals("new")) {
+			sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no order by s.regidate desc";	
+			}
+			else {
+				sql ="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no order by num desc";	
+			}
 		}
 		
 		else if(area.equals("gita")) {
-		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' " + 
-			   " and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%'"; 
-		}
+			if(sort.equals("new")) {
+			sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' " + 
+			   " and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%' order by s.regidate desc"; 
+			}
+			else {
+				sql = "select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' "+
+						" and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%' order by num desc";
+			}
+		}	
 		else {
-		sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%'";
+			if(sort.equals("new")) {
+				sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%' order by s.regidate desc";
+			}
+			else {
+				sql ="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where s.addr like'"+area+"%' order by num desc";
+			}
 		}
 		
 		try {
@@ -200,6 +216,30 @@ public class foodtruckDAO {
 			}
 		
 		}
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
+		
+	}
+	public List selectRank(String area) {
+		
+		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		String sql="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no order by num desc";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+			foodtruckDTO dto = new foodtruckDTO();
+			dto.setS_no(rs.getString(1));
+			dto.setId(rs.getString(2));
+			dto.setTname(rs.getString(5));
+			dto.setAddr(rs.getString(6));
+			dto.setRegidate(rs.getDate(9));
+			dto.setImg(rs.getString(10));
+			list.add(dto);
+			}////////////while
+		}///try
 		catch(Exception e) {e.printStackTrace();}
 		
 		return list;

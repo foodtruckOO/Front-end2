@@ -51,7 +51,7 @@
 				<div class="list_wrap row" id="area_list">
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=seoul'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=seoul&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>서울</h3>
@@ -62,7 +62,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=incheon'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=incheon&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>인천</h3>
@@ -73,7 +73,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=gyeonggi'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=gyeonggi&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>경기</h3>
@@ -84,7 +84,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=daejeon'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=daejeon&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>대전</h3>
@@ -95,7 +95,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=daegu'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=daegu&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>대구</h3>
@@ -106,7 +106,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=busan'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=busan&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>부산</h3>
@@ -117,7 +117,7 @@
 					</div>
 					<div class="reg_img_box col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/area.foodtruck?area=gita'/>" class="reg_img_card areas">
+							<a href="<c:url value='/area.foodtruck?area=gita&sort=new'/>" class="reg_img_card areas">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>기타지역</h3>
@@ -129,7 +129,7 @@
 
 					<div class="reg_img_box more col-sm-3 col-xs-6">
 						<div class="reg_img_box_thumbnail">
-							<a href="<c:url value='/list.foodtruck?area=all'/>" class="reg_img_card more">
+							<a href="<c:url value='/list.foodtruck?area=all&sort=new'/>" class="reg_img_card more">
 								<div class="reg_img_c02"></div>
 								<div class="reg_img_t02">
 									<h3>
@@ -147,10 +147,10 @@
 				<div class="list_wrap row">
 					<div class="tv_img_box col-sm-6 col-xs-12">
 						<div class="tv_img_box_thumbnail">
-							<a href="restaurant/theme/suyo.html" class="tv_img_card">
+							<a href="<c:url value='/area.foodtruck?area=all&sort=hot'/>" class="tv_img_card">
 								<div class="tv_img_t01">
 									<h3>
-										<b>이달의</b><br>랭킹
+										<b>인기</b><br>순위
 									</h3>
 								</div>
 							</a>
@@ -158,7 +158,7 @@
 					</div>
 					<div class="tv_img_box col-sm-6 col-xs-12">
 						<div class="tv_img_box_thumbnail">
-							<a href="restaurant/theme/back.html" class="tv_img_card">
+							<a href="<c:url value='/area.foodtruck?area=all&sort=new'/>" class="tv_img_card">
 								<div class="tv_img_t01">
 									<h3>
 										<b>신규창업</b><br>푸드트럭

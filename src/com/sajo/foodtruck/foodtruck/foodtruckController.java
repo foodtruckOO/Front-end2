@@ -68,12 +68,16 @@ public class foodtruckController {
 	@RequestMapping("/area.foodtruck")
 	public String areaList(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 		
+		
+		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
 		
-		String area = req.getParameter("area");
-		List list = dao.selectArea(area);
-		model.addAttribute("area",area);
 		
+		String area = req.getParameter("area");
+		String sort = req.getParameter("sort");
+		List list = dao.selectArea(area,sort);
+		model.addAttribute("area",area);
+		model.addAttribute("sort",sort);
 		model.addAttribute("foodtruck",list);
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";	
 	}
@@ -115,5 +119,21 @@ public class foodtruckController {
 		
 		return "com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";
 	}
+	
+	@RequestMapping("/rank.foodtruck")
+	public String rank(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
+		
+		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		String area = req.getParameter("area");
+		List list = dao.selectRank(area);
+		
+		model.addAttribute("sort","rank");
+		model.addAttribute("area",area);
+		model.addAttribute("foodtruck",list);
+		
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";
+	}
+		
+	
 }
 	

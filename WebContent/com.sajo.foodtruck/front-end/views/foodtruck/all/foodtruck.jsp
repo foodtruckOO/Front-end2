@@ -44,7 +44,15 @@
 			else if("${area}" == 'gita')
 				$('option:eq(7)').attr("selected","selected");
 		
-				
+		if("${sort}"=='new'){
+			$('#sort1').css("background-color","#ff4081");
+			$('#sort2').css("background-color","white");
+		}
+		else{
+			
+			$('#sort1').css("background-color","white");
+			$('#sort2').css("background-color","#ff4081");
+		}
 	});
 	
 	
@@ -54,9 +62,31 @@
 	document.getElementById("myDropdown-i").classList.toggle("show")
 	}
 	function viewFilter() {
+		
 		var area1 =$("#area").val();
-		location.href ="<c:url value='/area.foodtruck?area="+area1+"'/>";
+		var sort;
+		var back = $('#sort1').css('backgroundColor');
+		if(back=="rgb(255, 64, 129)"){
+			sort = "new";
+		}
+		else{
+			sort = "hot"
+		} 
+		
+		location.href ="<c:url value='/area.foodtruck?area="+area1+"&sort="+sort+"'/>";
 			
+	}
+	
+	function viewOrdered(str){
+		if(str=="new"){
+			var area1 =$("#area").val();
+			location.href ="<c:url value='/area.foodtruck?area="+area1+"&sort=new'/>";
+			
+		}
+		else{ 
+			var area1 =$("#area").val();
+			location.href ="<c:url value='/area.foodtruck?area="+area1+"&sort=hot'/>";
+		}
 	}
 
 </script>
@@ -184,13 +214,13 @@
 					<div class="dq_select_box"></div>
 					<div class="taste_sort_wrap">
 						<button class="sort_btn active" data-sorder="new" va
-							onclick="viewOrdered()">
-							<span style="background-color: #ff4081"></span><span
+							onclick='viewOrdered("new")'>
+							<span id=sort1 style="background-color: #ff4081"></span><span
 								style="color: #ff4081">신규등록순</span>
 						</button>
 						<button class="sort_btn active" data-order="hot"
-							onclick="viewOrdered()">
-							<span style=""></span><span style="color:#ff4081">인기순</span>
+							onclick='viewOrdered("hot")'>
+							<span id = sort2 style=""></span><span style="color:#ff4081">인기순</span>
 						</button>
 					</div>
 				</div>
