@@ -50,6 +50,9 @@ public class foodtruckController {
 		Map map2 = dao2.count(req.getParameter("s_no"));
 		String count = map2.get("count").toString();
 		String starsum = map2.get("starsum").toString();
+		
+		dao.close();
+		dao2.close();
 		model.addAttribute("count",count);
 		model.addAttribute("starsum",starsum);
 		model.addAttribute("s_no",req.getParameter("s_no"));
@@ -76,6 +79,8 @@ public class foodtruckController {
 		String area = req.getParameter("area");
 		String sort = req.getParameter("sort");
 		List list = dao.selectArea(area,sort);
+		
+		dao.close();
 		model.addAttribute("area",area);
 		model.addAttribute("sort",sort);
 		model.addAttribute("foodtruck",list);
@@ -108,6 +113,8 @@ public class foodtruckController {
 		
 		
 		
+		dao.close();
+		dao2.close();
 		model.addAttribute("s_no",req.getParameter("s_no"));
 		model.addAttribute("addr",list.get(0).getAddr());
 		model.addAttribute("tname", list.get(0).getTname());
@@ -127,6 +134,7 @@ public class foodtruckController {
 		String area = req.getParameter("area");
 		List list = dao.selectRank(area);
 		
+		dao.close();
 		model.addAttribute("sort","rank");
 		model.addAttribute("area",area);
 		model.addAttribute("foodtruck",list);

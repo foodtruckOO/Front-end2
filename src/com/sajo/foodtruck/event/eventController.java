@@ -30,6 +30,7 @@ public class eventController {
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectHList();
+		dao.close();
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp";
 	}
@@ -38,6 +39,7 @@ public class eventController {
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectLList();
+		dao.close();
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/local_event/Local_event.jsp";
 	}
@@ -46,6 +48,7 @@ public class eventController {
 		String key = req.getParameter("eno");
 		eventDAO dao = new eventDAO(req.getServletContext());
 		eventDTO dto = dao.selectOne(key);
+		dao.close();
 		model.addAttribute("dto",dto);
 		if(Integer.parseInt(dto.getBoardtype())==1) {
 		return  "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event_detail.jsp";
@@ -59,6 +62,7 @@ public class eventController {
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectAll();
+		dao.close();
 		model.addAttribute("events",list);
 		return "/com.sajo.foodtruck/front-end/views/main.jsp";
 	}

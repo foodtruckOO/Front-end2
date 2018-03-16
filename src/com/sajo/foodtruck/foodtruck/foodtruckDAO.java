@@ -101,7 +101,6 @@ public class foodtruckDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		
 		return list;
 	}//////////////////////////////
 	
@@ -145,7 +144,6 @@ public class foodtruckDAO {
 		
 		}
 		catch(Exception e) {e.printStackTrace();}
-		
 		return list;
 	}
 	
@@ -217,7 +215,6 @@ public class foodtruckDAO {
 		
 		}
 		catch(Exception e) {e.printStackTrace();}
-		
 		return list;
 		
 	}
@@ -241,7 +238,6 @@ public class foodtruckDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		
 		return list;
 		
 	}

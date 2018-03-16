@@ -124,6 +124,7 @@ public class eventDAO {
 				dto.setBoardtype(rs.getString(10));
 			}
 		} catch (Exception e) {e.printStackTrace();}
+		close();
 		return dto;
 	}/////////////////////////////////////////
 	public List<eventDTO> selectAll() {
@@ -150,7 +151,7 @@ public class eventDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		
+		close();
 		return list;
 	}
 	public List selectLList() {
@@ -182,7 +183,7 @@ public class eventDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		
+		close();
 		return list;
 	
 	}

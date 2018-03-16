@@ -126,7 +126,7 @@ public class ReviewDAO {
 			
 			psmt.executeUpdate();
 		} catch (Exception e) {	e.printStackTrace();}
-	
+		
 		
 	}
 	
@@ -161,7 +161,7 @@ public class ReviewDAO {
 			if(starsum==null) starsum = "0";
 			map.put("count", count);
 			map.put("starsum", starsum);
-		
+			
 		return map;
 	}
 	
