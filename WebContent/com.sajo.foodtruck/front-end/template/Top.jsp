@@ -68,9 +68,9 @@
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">전체</a></li>
-							<li><a href="#">종류별</a></li>
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/about/FoodTruck_Introduce.jsp'/>">지역별</a></li>
+							<li><a href="<c:url value='/list.foodtruck?area=all'/>">전체</a></li>
+							<!-- <li><a href="#">종류별</a></li> -->
+							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_list.jsp'/>">지역별</a></li>
 						</ul></li>
 
 					<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp'/>">FINDTRUCK</a></li>
@@ -102,7 +102,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/apply/FoodTruck_StartUp.jsp'/>">창업 개설절차</a></li>
 							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/board/startupboard.jsp'/>">창업 문의 게시판</a></li>
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/info/Foodtruck_01.jsp'/>">창업 설명회 신청</a></li>
+							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/info/FoodTruck_01.jsp'/>">창업 설명회 신청</a></li>
 						</ul></li>
 				</ul>
 
