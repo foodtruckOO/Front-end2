@@ -85,17 +85,19 @@ public class foodtruckController {
 		
 		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
-		Map map2 = dao2.count(req.getParameter("s_no"));
-		String count = map2.get("count").toString();
-		String starsum = map2.get("starsum").toString();
-		model.addAttribute("count",count);
-		model.addAttribute("starsum",starsum);
+		
 		
 		String user = (String)req.getSession().getAttribute("USER_ID");
 		String commen = req.getParameter("commen");
 		String star = req.getParameter("star");
 		String s_no = req.getParameter("s_no");
 		dao2.write(s_no,star,commen,user);
+		
+		Map map2 = dao2.count(req.getParameter("s_no"));
+		String count = map2.get("count").toString();
+		String starsum = map2.get("starsum").toString();
+		model.addAttribute("count",count);
+		model.addAttribute("starsum",starsum);
 		
 		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));

@@ -22,6 +22,7 @@
 		//1.로그인 처리]-세션영역에 속성(주로 식별자만) 저장
 		session.setAttribute("USER_ID",user);
 		session.setAttribute("USER_PWD",pass);
+		session.setAttribute("USER_TYPE","customer");
 		//2.로그인 처리후 메인 페이지로 이동]
 		out.println("<script>");
 		out.println("window.opener.location.reload();");
@@ -34,6 +35,7 @@
 		//1.로그인 처리]-세션영역에 속성(주로 식별자만) 저장
 		session.setAttribute("USER_ID",user);
 		session.setAttribute("USER_PWD",pass);
+		session.setAttribute("USER_TYPE","seller");
 		//2.로그인 처리후 메인 페이지로 이동]
 		out.println("<script>");
 		out.println("window.opener.location.reload();");

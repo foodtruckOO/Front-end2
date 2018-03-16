@@ -74,7 +74,7 @@ public class eventDAO {
 	public List<eventDTO> selectHList(){
 		List<eventDTO> list = new Vector<eventDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT ORDER BY s_date";
+		String sql="SELECT * from EVENT where boardtype ='1' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 		
 		//페이징 적용-구간쿼리로 변경
@@ -121,6 +121,7 @@ public class eventDAO {
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
+				dto.setBoardtype(rs.getString(10));
 			}
 		} catch (Exception e) {e.printStackTrace();}
 		return dto;
@@ -138,13 +139,13 @@ public class eventDAO {
 			while(rs.next()) {
 				eventDTO dto = new eventDTO();
 				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-				dto.setTitlefile(rs.getString(4));
-				dto.setContentfile(rs.getString(5));
-				dto.setS_date(rs.getDate(6));
-				dto.setE_date(rs.getDate(7));
-				dto.setPostdate(rs.getDate(8));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setTitlefile(rs.getString(5));
+				dto.setContentfile(rs.getString(6));
+				dto.setS_date(rs.getDate(7));
+				dto.setE_date(rs.getDate(8));
+				dto.setPostdate(rs.getDate(9));
 				list.add(dto);
 			}////////////while
 		}///try
@@ -155,7 +156,7 @@ public class eventDAO {
 	public List selectLList() {
 		List<eventDTO> list = new Vector<eventDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT ORDER BY s_date";
+		String sql="SELECT * from EVENT where boardtype ='2' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 		
 		//페이징 적용-구간쿼리로 변경
@@ -170,13 +171,13 @@ public class eventDAO {
 			while(rs.next()) {
 				eventDTO dto = new eventDTO();
 				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(2));
-				dto.setContent(rs.getString(3));
-				dto.setTitlefile(rs.getString(4));
-				dto.setContentfile(rs.getString(5));
-				dto.setS_date(rs.getDate(6));
-				dto.setE_date(rs.getDate(7));
-				dto.setPostdate(rs.getDate(8));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setTitlefile(rs.getString(5));
+				dto.setContentfile(rs.getString(6));
+				dto.setS_date(rs.getDate(7));
+				dto.setE_date(rs.getDate(8));
+				dto.setPostdate(rs.getDate(9));
 				list.add(dto);
 			}////////////while
 		}///try

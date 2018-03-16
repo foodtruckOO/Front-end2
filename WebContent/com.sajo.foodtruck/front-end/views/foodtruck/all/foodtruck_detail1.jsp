@@ -51,8 +51,10 @@
 			alert("로그인을 해주세요");
 			
 		}
-		else{ 
-
+		else if("${sessionScope.USER_TYPE}"=="seller"){ 
+			alert("푸드트럭 사업주는 리뷰를 달수 없어요 ㅜㅜ");
+		}
+		else{
 		var star = $(":radio:checked").val();
 		var commen = $('#review').val();
 		var s_no = "${s_no}";
@@ -523,12 +525,19 @@ label.star:before {
 										<c:when test="${reviews.star eq '2'}">
 										<div class="stars">
 										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
 										</div>
 										</c:when>
 										<c:when test="${reviews.star eq '4'}">
 										<div class="stars">
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
 										</div>
 										</c:when>
 										<c:when test="${reviews.star eq '6'}">
@@ -536,6 +545,8 @@ label.star:before {
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
 										</div>
 										</c:when>
 										<c:when test="${reviews.star eq '8'}">
@@ -544,6 +555,7 @@ label.star:before {
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
 										</div>
 										</c:when>
 										<c:when test="${reviews.star eq '10'}">

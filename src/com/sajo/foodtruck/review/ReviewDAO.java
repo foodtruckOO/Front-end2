@@ -79,7 +79,7 @@ public class ReviewDAO {
 	public List<ReviewDTO> selectList(String s_no){
 		List<ReviewDTO> list = new Vector<ReviewDTO>();
 		//페이징 미 적용
-		String sql="select star,onememo,c.name,cpostdate from review r join customer c on r.g_no=c.g_no where r.s_no=? order by r_no desc";
+		String sql="select star,onememo,c.name,postdate from review r join customer c on r.g_no=c.g_no where r.s_no=? order by r_no desc";
 		
 		//페이징 적용-구간쿼리로 변경
 		//검색용 쿼리 추가

@@ -30,7 +30,6 @@ public class eventController {
 		
 		eventDAO dao = new eventDAO(req.getServletContext());
 		List list = dao.selectHList();
-		System.out.println("프론트 가져옴:"+list);
 		model.addAttribute("event",list);
 	return "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp";
 	}
@@ -48,7 +47,7 @@ public class eventController {
 		eventDAO dao = new eventDAO(req.getServletContext());
 		eventDTO dto = dao.selectOne(key);
 		model.addAttribute("dto",dto);
-		if(Integer.parseInt(key)>=30000) {
+		if(Integer.parseInt(dto.getBoardtype())==1) {
 		return  "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event_detail.jsp";
 		}
 		else

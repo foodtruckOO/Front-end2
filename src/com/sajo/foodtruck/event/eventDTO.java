@@ -20,12 +20,34 @@ public class eventDTO {
 	private String contentfile;
 	private Date s_date;
 	private Date e_date;
+	public eventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
+			Date e_date, Date postdate, String boardtype) {
+		super();
+		this.eno = eno;
+		this.title = title;
+		this.content = content;
+		this.titlefile = titlefile;
+		this.contentfile = contentfile;
+		this.s_date = s_date;
+		this.e_date = e_date;
+		this.postdate = postdate;
+		this.boardtype = boardtype;
+	}
+	
 	private Date postdate;
+	private String boardtype;
 	public String getEno() {
 		return eno;
 	}
+	
 	public void setEno(String eno) {
 		this.eno = eno;
+	}
+	public String getBoardtype() {
+		return boardtype;
+	}
+	public void setBoardtype(String boardtype) {
+		this.boardtype = boardtype;
 	}
 	public String getTitle() {
 		return title;
@@ -69,18 +91,7 @@ public class eventDTO {
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
-	public eventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
-			Date e_date, Date postdate) {
-		super();
-		this.eno = eno;
-		this.title = title;
-		this.content = content;
-		this.titlefile = titlefile;
-		this.contentfile = contentfile;
-		this.s_date = s_date;
-		this.e_date = e_date;
-		this.postdate = postdate;
-	}
+	
 	
 
 
