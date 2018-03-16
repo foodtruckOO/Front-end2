@@ -95,6 +95,13 @@
 				<button type="button" class="btn btn-default">주문현황</button>
 				<button type="button" class="btn btn-default">이벤트</button>
 			</div>
+			<!-- sns -->
+			<div style="text-align: center;">
+				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 50px; height: auto;">
+				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 50px; height: auto;">
+				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 50px; height: auto;">
+			
+			</div>
 			<!-- 광고 -->			
 			<div class="cycle-slideshow"  data-cycle-fx=scrollHorz  data-cycle-timeout=2000 style="margin-top: 20%;">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_1.jpg'/>" style="width: 100%; height: 100px">
@@ -102,6 +109,11 @@
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_3.jpg'/>" style="width: 100%; height: 100px">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_4.jpg'/>" style="width: 100%; height: 100px">
 			</div>
+			
+			<hr>
+			
+			
+			
 		</div>
 		
 		<!-- Mypage Right -->
@@ -139,9 +151,9 @@
 							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07081f33b5c3c2dd65b5d5a0b0e85296"></script>
 						
 					</div>
+					<!-- wordcloud -->
 					<div id="tabs-2" class="tab-pane fade">
-						<h3>Menu 1</h3>
-						
+						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/customer/wordcloud.jsp" />
 					</div>
 					<div id="tabs-3" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/customer/comment.jsp" />
