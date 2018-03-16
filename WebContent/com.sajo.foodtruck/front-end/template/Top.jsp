@@ -19,8 +19,7 @@
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scr
-	ollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
+	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	}
 </script>
