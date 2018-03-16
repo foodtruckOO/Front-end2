@@ -74,7 +74,7 @@
 		<td>&emsp;<span style="color: orange; font-size: 1.5em">★★★★☆</span><br/>
 	</tr>
 	<tr>
-		<td><span>2018년 03월 01일</span></td>
+		<td><span>2018년 03월 01일</span></td> 
 	</tr>
 	
 	</table>
