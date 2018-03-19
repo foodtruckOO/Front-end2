@@ -235,9 +235,6 @@ img {
 	
 	
 div.stars1 { 
-
-  width: 200px; 
-
   display: inline-block; 
 
 } 
@@ -246,11 +243,11 @@ input.star { display: none; }
 
 label.star { 
 
-  float: right; 
+  float: center; 
 
-  padding: 6px; 
+  padding: 3px; 
 
-  font-size: 22px; 
+  font-size: 18px; 
 
   color: #444; 
 
@@ -494,8 +491,10 @@ label.star:before {
 					 
 					</div>
 				</div>
-				<div class="col-md-9">	 
-					<input id="review" class="form-control" type="text"  style="width: 70%; float:left; margin-right: 10px"/>
+				<div class="col-md-6">	 
+					<input id="review" class="form-control" type="text"  style="float:left; margin-right: 10px"/>
+				</div>
+				<div class="col-md-2">	
 					<a href="javascript:click()"><button class="btn btn-primary">등록</button></a>
 				</div>
 				
