@@ -152,12 +152,10 @@
 					</div>
 					<!-- wordcloud -->
 					<div id="tabs-2" class="tab-pane fade">
-						
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/wordcloud.jsp" />
 					</div>
 					<div id="tabs-3" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-3.jsp" />
-						
 					</div>
 					<div id="tabs-4" class="tab-pane fade">
 						<br/><br/>
@@ -196,22 +194,6 @@
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp" />
 	</div>
 	
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = { 
-		        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };
-		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		// 마커가 표시될 위치입니다 
-		var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-		// 마커를 생성합니다
-		var marker = new daum.maps.Marker({
-		    position: markerPosition
-		});	
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
-	</script>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
