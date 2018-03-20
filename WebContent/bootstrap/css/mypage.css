@@ -54,3 +54,31 @@ label.star:before {
   font-family: FontAwesome; 
 
 } 
+
+
+
+
+
+/********************************** M E D I A * S T A R T ***************************************/
+@media screen and (min-width:1501px) {
+	
+}
+
+@media screen and (min-width: 1221px) and (max-width: 1500px) {
+	
+}
+
+@media screen and (min-width: 770px) and (max-width: 1220px) {
+	
+}
+
+@media screen and (min-width: 400px) and (max-width: 769px) {
+	
+}
+
+@media screen and (max-width: 400px) {
+	
+}
+
+/********************************** M E D I A * E N D ***************************************/
+
