@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Foodtruck:: ver1.0</title>
-	<!-- 한글깨짐 -->
-	
+		
 	<!-- Bootstrap core CSS -->
 	<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 	<!-- Bootstrap theme -->
@@ -18,7 +17,6 @@
 	<link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" />
 	<link rel="stylesheet" href="<c:url value='/bootstrap/css/mypage.css'/>" />
 
-	
 	<!-- YangGeum template JacaScript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://malsup.github.com/jquery.cycle2.js"></script>
@@ -31,6 +29,7 @@
 	
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 	<script>
 		$(function() {
 			var currentPosition = parseInt($("#sidebox").css("top"));
@@ -45,6 +44,8 @@
 			$('.list-group a').click(function(){
 				$('#my_tab li').attr('class','');
 			});
+			
+			
 		});
 				
 		
@@ -87,6 +88,7 @@
 	
 	<!-- mypage start -->
 	<div id=mypage style="height: 1200px">
+	
 		<!-- Mypage Left -->
 		<div style="float: left; width: 20%">
 			<!-- 프로필 사진 -->
