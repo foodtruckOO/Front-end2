@@ -100,7 +100,7 @@
 			</div>
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
-	            <a data-toggle="tab" href="#tabs-5" class="list-group-item" id="a1">정보수정</a>
+	            <a data-toggle="tab" href="#tabs-5" class="list-group-item" id="a1">개인정보수정</a>
 	            <a data-toggle="tab" href="#tabs-6" class="list-group-item" id="a2">메뉴 등록</a>
 	            <a data-toggle="tab" href="#tabs-7" class="list-group-item" id="a3">이벤트 등록</a>
 	            <a data-toggle="tab" href="#tabs-8" class="list-group-item" id="a4">설명회 신청 현황</a>
@@ -164,19 +164,19 @@
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-4.jsp" />
 					</div>
 					<!-- 정보 수정 -->
-					<div id="tabs-5" class="tab-pane fade" style="background-color: red; width: 50px; height: 50px;">
+					<div id="tabs-5" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-5.jsp" />
 					</div>
 					<!-- 메뉴 등록 -->
-					<div id="tabs-6" class="tab-pane fade" style="background-color: green; width: 50px; height: 50px;">
+					<div id="tabs-6" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-6.jsp" />
 					</div>
 					<!-- 이벤트 등록 -->
-					<div id="tabs-7" class="tab-pane fade" >
+					<div id="tabs-7" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-7.jsp" />
 					</div>
 					<!-- 설명회 신청 현황 -->
-					<div id="tabs-8" class="tab-pane fade" style="background-color: blue; width: 50px; height: 50px;">
+					<div id="tabs-8" class="tab-pane fade">
 						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-8.jsp" />
 					</div>
 					
