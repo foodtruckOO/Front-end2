@@ -23,7 +23,7 @@
 	<category_index>0</category_index>
 	<zoom>0.75</zoom>
 	<x>0</x>
-	<y>0</y>
+	<y>90</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -146,7 +146,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2018-02-26 16:54:58</creation_date>
-			<updated_date>2018-03-21 18:20:36</updated_date>
+			<updated_date>2018-03-21 18:22:02</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1988,7 +1988,7 @@
 			<connections>
 				<relation>
 					<id>3</id>
-					<source>0</source>
+					<source>6</source>
 					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2010,7 +2010,7 @@
 				</relation>
 				<relation>
 					<id>4</id>
-					<source>6</source>
+					<source>0</source>
 					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2074,7 +2074,7 @@
 				<normal_column>
 					<id>12</id>
 					<referenced_column>27</referenced_column>
-					<relation>4</relation>
+					<relation>3</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>일반 회원 번호(답글)</logical_name>
@@ -2108,7 +2108,7 @@
 				<normal_column>
 					<id>13</id>
 					<referenced_column>0</referenced_column>
-					<relation>3</relation>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2230,7 +2230,7 @@
 			<connections>
 				<relation>
 					<id>5</id>
-					<source>5</source>
+					<source>10</source>
 					<target>4</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2252,7 +2252,7 @@
 				</relation>
 				<relation>
 					<id>6</id>
-					<source>10</source>
+					<source>5</source>
 					<target>4</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2316,7 +2316,7 @@
 				<normal_column>
 					<id>17</id>
 					<referenced_column>58</referenced_column>
-					<relation>6</relation>
+					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>사업자 회원 번호(답글)</logical_name>
@@ -2350,7 +2350,7 @@
 				<normal_column>
 					<id>18</id>
 					<referenced_column>21</referenced_column>
-					<relation>5</relation>
+					<relation>6</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>

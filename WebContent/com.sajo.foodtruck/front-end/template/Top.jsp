@@ -92,16 +92,6 @@
 						<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/board/seller/Ceocom.jsp'/>">사장님용 게시판</a></li>
 						</ul>
 					</li>
-
-
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">STARTUP
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/apply/FoodTruck_StartUp.jsp'/>">창업 개설절차</a></li>
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/startup/info/FoodTruck_01.jsp'/>">창업 설명회 신청</a></li>
-						</ul></li>
 				</ul>
 
 			</div>
