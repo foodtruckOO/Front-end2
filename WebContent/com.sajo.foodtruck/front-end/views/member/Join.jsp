@@ -40,7 +40,7 @@ body, html {
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+    margin-top: 20px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -149,16 +149,38 @@ body, html {
 }
 </style>
 </head>
+<script type="text/javascript">
+	function popupOpen(){
+	var windowW=600;
+	var windowH=810;
+	var left=Math.ceil((window.screen.width-windowW)/2);
+	var top=Math.ceil((window.screen.height-windowH)/2);
+	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/customer/JointoCus.jsp'/>";	//팝업창에 출력될 페이지 URL
+	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+		parent.close();
+	}
+	function popupOpen2(){
+		var windowW=600;
+		var windowH=810;
+		var left=Math.ceil((window.screen.width-windowW)/2);
+		var top=Math.ceil((window.screen.height-windowH)/2);
+		var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/seller/JointoCeo.jsp'/>";	//팝업창에 출력될 페이지 URL
+		var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
+			window.open(popUrl,"",popOption);
+			parent.close();
+		}
+</script>
 <body>
 	<div class="container">
         <div class="card card-container">
         <h2>Please Choice your Join Status</h2><hr style="border: solid 1px #FE9A2E; width: 80%">
            <!-- 일반고객버튼 -->
-           <a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/customer/JointoCus.jsp'/>">
+           <a href="javascript:popupOpen()">
            <input class="btn btn-success" type="button" value="Customer" style="width: 250px; height: 250px; font-size: 40px;">
            </a>&emsp;
            <!-- 사업자버튼 -->
-           <a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/seller/JointoCeo.jsp'/>">
+           <a href="javascript:popupOpen2()">
            <input class="btn btn-danger" type="button" value="Seller" style="width: 250px; height: 250px; font-size: 40px;"></a>
         </div><!-- /card-container -->
     </div><!-- /container -->

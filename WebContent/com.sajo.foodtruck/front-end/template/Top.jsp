@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	function popupOpen(){
-	var windowW=380;
+	var windowW=600;
 	var windowH=580;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);

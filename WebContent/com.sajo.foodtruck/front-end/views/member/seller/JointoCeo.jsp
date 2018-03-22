@@ -53,7 +53,7 @@ body, html {
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+    margin-top: 20px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -159,7 +159,7 @@ body, html {
 
 </style>
 </head>
-<body onLoad="parent.resizeTo(450,950)">
+<body>
 <script>
 function pwdCheck(){
 	var pwd = document.getElementById("inputpass").value;
@@ -174,15 +174,36 @@ function pwdCheck(){
 	}
 }
 </script>
+<script>
+$(function(){
+	$('#check').click(function(){
+		$.ajax({
+			type:"POST",
+			url:"../idcheck.jsp",
+			data:{"id":$('#inputid').val()},
+			success:function(data){
+				if($.trim(data)=="NO"){
+				alert('사용불가');
+				$('#checkok').html('<p style="font-size:18px; color:red">사용불가</p>');
+				}
+				else{
+					alert('사용가능');
+					$('#checkok').html('<p style="font-size:18px; color:green">사용가능</p>');
+				}	
+			}
+		});
+	});
+});
+</script> 
 	<div class="container">
         <div class="card card-container">
         <h2>Seller</h2><hr style="border: solid 1px #FE9A2E;">
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="post" name="form" id="form" action="../SellerJoinProcess.jsp">
                 <span id="reauth-email" class="reauth-email"></span>
-                <label>아이디</label>
-                <input type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" name="id" required autofocus>
-                <input type="button" id=idcheck" class="btn btn-lg btn-primary btn-block btn-signin", name="idcheck" value="중복확인" onclick="idcheck()"/><br>
+                 <label>아이디</label>
+                <input type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" name="id" strequired autofocus>
+				<input type="button" id="check" class="btn btn-lg btn-primary btn-block btn-signin" value="중복확인"/><br><span id="checkok"></span><br>
                 <label>비밀번호</label>
                 <input type="password" id="inputpass" class="form-control" placeholder="비밀번호를 입력해주세요" name="pwd" onchange="pwdCheck()" required>
                 <label>비밀번호 확인</label>

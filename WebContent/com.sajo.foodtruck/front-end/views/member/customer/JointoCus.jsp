@@ -38,7 +38,7 @@ body, html {
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-    margin-top: 50px;
+    margin-top: 20px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -149,7 +149,7 @@ body, html {
 }
 </style>
 </head>
-<body onLoad="parent.resizeTo(450,700)">
+<body>
 <script>
 function pwdCheck(){
 	var pwd = document.getElementById("inputpass").value;
@@ -163,6 +163,46 @@ function pwdCheck(){
 		document.getElementById("same").style.color="red"
 	}
 }
+</script>
+<script>
+/* $(function(){
+	$('#check').click(function(){
+		$.ajax({
+			type:"POST",
+			url:"../idcheck.jsp",
+			data:{"id":$('#inputid').val()},
+			success:function(data){
+				if($.trim(data)=="NO"){
+				alert('사용불가');
+				$('#checkok').html('<p style="font-size:18px; color:red">사용불가</p>');
+				}
+				else{
+					alert('사용가능');
+					$('#checkok').html('<p style="font-size:18px; color:green">사용가능</p>');
+				}	
+			}
+		});
+	});
+}); */
+$(function(){
+	$('#inputid').keyup(function(){
+		$.ajax({
+			type:"POST",
+			url:"../idcheck.jsp",
+			data:{"id":$('#inputid').val()},
+			success:function(data){
+				if($.trim(data)=="NO"){
+				//alert('사용불가');
+				$('#checkok').html('<p style="font-size:18px; color:red">사용중인 아이디입니다.</p>');
+				}
+				else{
+				//alert('사용가능');
+				$('#checkok').html('<p style="font-size:18px; color:green">사용가능한 아이디 입니다.</p>');
+				}	
+			}
+		});
+	});
+});
 </script> 
 	<div class="container">
         <div class="card card-container">
@@ -172,7 +212,7 @@ function pwdCheck(){
                 <span id="reauth-email" class="reauth-email"></span>
                 <label>아이디</label>
                 <input type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" name="id" strequired autofocus>
-				<input type="button" class="btn btn-lg btn-primary btn-block btn-signin" value="중복확인"/><br>
+				<span id="checkok"></span><br>
                 <label>이름</label>
                 <input type="text" id="inputname" class="form-control" placeholder="이름를 입력해주세요" name="name" required autofocus>
                 <label>비밀번호</label>

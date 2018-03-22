@@ -89,9 +89,10 @@ public class CusDAO {
 			
 		}////////////////////////////	
 		
-/*	//아이디 중복확인용
-	public boolean confirmId(String id) {		
-		String sql="SELECT id FROM member WHERE id=?";
+	//아이디 중복확인용
+	public boolean confirmId(String id) {	
+		System.out.println("query");
+		String sql="SELECT id FROM (select id from customer union select id from seller) WHERE id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -99,7 +100,6 @@ public class CusDAO {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				if(rs.getString("id").equals(id)) {
-					System.out.println("아이디일치");
 					return true;
 				}
 			}
@@ -107,9 +107,8 @@ public class CusDAO {
 		catch(Exception e) {
 			e.printStackTrace(); 
 		}
-		System.out.println("아이디불일치");
 		return false;
-	}*/
+	}
 	
 	
 	
