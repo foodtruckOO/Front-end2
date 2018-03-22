@@ -21,7 +21,7 @@ $(function(){
 
 
 </script>
-
+ 
 <br/>
 <div style="font-size: 2em; color: gray">이벤트 등록</div>
 <hr>
