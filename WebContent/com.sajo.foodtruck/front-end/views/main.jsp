@@ -165,8 +165,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/logo.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/logo.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>소개</h4>
@@ -180,8 +180,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/find.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/find.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>찾기</h4>
@@ -195,8 +195,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/menu.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/menu.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>음식</h4>
@@ -210,8 +210,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/event.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/event.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>이벤트</h4>
@@ -225,8 +225,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/list.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/list.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>게시판</h4>
@@ -240,8 +240,8 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/question.jpg'/>"
-						alt="">
+						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/question.jpg'/>"
+						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
 						<h4>창업문의</h4>
