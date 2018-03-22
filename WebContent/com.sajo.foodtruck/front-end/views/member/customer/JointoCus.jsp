@@ -187,7 +187,7 @@ function pwdCheck(){
 }); */
 $(function(){
 	$('#inputid').keyup(function(){
-		if($.trim($('#inputid').val())!="" && $.trim($('#inputid').val())==$('#inputid').val()){
+		if($.trim($('#inputid').val())!="" && $.trim($('#inputid').val())==$('#inputid').val() && centerSpace($('#inputid').val())){
 			$.ajax({
 				type:"POST",
 				url:"../idcheck.jsp",
@@ -207,6 +207,14 @@ $(function(){
 		else $('#checkok').html('<p style="font-size:15px; color:red">아이디에 공백 사용 불가</p>');
 	});
 });
+function centerSpace(string){
+	for(var i=0;i<string.length;i++){
+		if(string.charAt(i)==' '){
+			return false;//
+		}
+	}
+	return true;
+}
 </script> 
 	<div class="container">
         <div class="card card-container">

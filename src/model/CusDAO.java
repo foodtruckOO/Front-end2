@@ -91,7 +91,6 @@ public class CusDAO {
 		
 	//아이디 중복확인용
 	public boolean confirmId(String id) {	
-		System.out.println("query");
 		String sql="SELECT id FROM (select id from customer union select id from seller) WHERE id=?";
 
 		try {
