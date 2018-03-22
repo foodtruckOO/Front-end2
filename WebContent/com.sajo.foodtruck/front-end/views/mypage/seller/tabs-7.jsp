@@ -4,7 +4,7 @@
 <!-- datepicker용 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
@@ -18,6 +18,8 @@ $(function(){
 		
 	});
 });
+
+
 </script>
 
 <br/>
@@ -50,6 +52,6 @@ $(function(){
 		<label for="exampleInputFile">첨부 이미지</label>
 		<input type="file" id="exampleInputFile" >
 	</div>
-	<button type="submit" class="btn btn-default">등록</button>
+	<button type="submit" class="btn btn-default" id="eventOk">등록</button>
 </form>
 
