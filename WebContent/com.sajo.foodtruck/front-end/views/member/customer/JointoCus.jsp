@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -163,6 +163,7 @@ function pwdCheck(){
 		document.getElementById("same").style.color="red"
 	}
 }
+
 </script>
 <script>
 /* $(function(){
@@ -186,21 +187,24 @@ function pwdCheck(){
 }); */
 $(function(){
 	$('#inputid').keyup(function(){
-		$.ajax({
-			type:"POST",
-			url:"../idcheck.jsp",
-			data:{"id":$('#inputid').val()},
-			success:function(data){
-				if($.trim(data)=="NO"){
-				//alert('사용불가');
-				$('#checkok').html('<p style="font-size:18px; color:red">사용중인 아이디입니다.</p>');
+		if($.trim($('#inputid').val())!="" && $.trim($('#inputid').val())==$('#inputid').val()){
+			$.ajax({
+				type:"POST",
+				url:"../idcheck.jsp",
+				data:{"id":$('#inputid').val()},
+				success:function(data){
+					if($.trim(data)=="NO"){
+					//alert('사용불가');
+					$('#checkok').html('<p style="font-size:14px; color:red">사용중인 아이디 입니다</p>');
+					}
+					else{
+					//alert('사용가능');
+					$('#checkok').html('<p style="font-size:14px; color:green">사용가능한 아이디 입니다</p>');
+					}	
 				}
-				else{
-				//alert('사용가능');
-				$('#checkok').html('<p style="font-size:18px; color:green">사용가능한 아이디 입니다.</p>');
-				}	
-			}
-		});
+			});
+		}
+		else $('#checkok').html('<p style="font-size:15px; color:red">아이디에 공백 사용 불가</p>');
 	});
 });
 </script> 

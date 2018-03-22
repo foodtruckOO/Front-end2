@@ -176,34 +176,37 @@ function pwdCheck(){
 </script>
 <script>
 $(function(){
-	$('#check').click(function(){
-		$.ajax({
-			type:"POST",
-			url:"../idcheck.jsp",
-			data:{"id":$('#inputid').val()},
-			success:function(data){
-				if($.trim(data)=="NO"){
-				alert('사용불가');
-				$('#checkok').html('<p style="font-size:18px; color:red">사용불가</p>');
+	$('#inputid').keyup(function(){
+		if($.trim($('#inputid').val())!="" && $.trim($('#inputid').val())==$('#inputid').val()){
+			$.ajax({
+				type:"POST",
+				url:"../idcheck.jsp",
+				data:{"id":$('#inputid').val()},
+				success:function(data){
+					if($.trim(data)=="NO"){
+					//alert('사용불가');
+					$('#checkok').html('<p style="font-size:14px; color:red">사용중인 아이디 입니다</p>');
+					}
+					else{
+					//alert('사용가능');
+					$('#checkok').html('<p style="font-size:14px; color:green">사용가능한 아이디 입니다</p>');
+					}	
 				}
-				else{
-					alert('사용가능');
-					$('#checkok').html('<p style="font-size:18px; color:green">사용가능</p>');
-				}	
-			}
-		});
+			});
+		}
+		else $('#checkok').html('<p style="font-size:15px; color:red">아이디에 공백 사용 불가</p>');
 	});
 });
-</script> 
+</script>  
 	<div class="container">
         <div class="card card-container">
         <h2>Seller</h2><hr style="border: solid 1px #FE9A2E;">
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="post" name="form" id="form" action="../SellerJoinProcess.jsp">
                 <span id="reauth-email" class="reauth-email"></span>
-                 <label>아이디</label>
+                <label>아이디</label>
                 <input type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" name="id" strequired autofocus>
-				<input type="button" id="check" class="btn btn-lg btn-primary btn-block btn-signin" value="중복확인"/><br><span id="checkok"></span><br>
+				<span id="checkok"></span><br>
                 <label>비밀번호</label>
                 <input type="password" id="inputpass" class="form-control" placeholder="비밀번호를 입력해주세요" name="pwd" onchange="pwdCheck()" required>
                 <label>비밀번호 확인</label>
