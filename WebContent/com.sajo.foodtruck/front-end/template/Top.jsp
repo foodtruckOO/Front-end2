@@ -88,8 +88,8 @@
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-						<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp'/>">손님용 게시판</a></li>
-						<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/board/seller/Ceocom.jsp'/>">사장님용 게시판</a></li>
+						<li><a href="<c:url value='/Com.board'/>">손님용 게시판</a></li>
+						<li><a href="<c:url value='/Pizza.board'/>">사장님용 게시판</a></li>
 						</ul>
 					</li>
 				</ul>

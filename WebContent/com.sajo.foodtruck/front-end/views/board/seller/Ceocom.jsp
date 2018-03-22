@@ -49,7 +49,7 @@
 	</article>
 	
 	<article style="float: right; margin-right: 30px">		
-	<a href="<c:url value='#'/>"><button type="button" class="btn btn-success">글등록</button></a>
+	<a href="<c:url value='/com.sajo.foodtruck/front-end/views/board/seller/Write.jsp'/>"><button type="button" class="btn btn-success">글등록</button></a>
 	</article><br><br>
 	
 	<article style="margin-right:30px; margin-left: 30px">
@@ -61,13 +61,15 @@
 			<th style="width:15%">등록일</th>
 			<th style="width:20%">첨부파일</th>
 		</tr>
+		<c:forEach items="${board }" var="dto">
 		<tr>
-			<th>1</th>
-			<th>페스티벌 일정 공유합니다.</th>
-			<th>박트럭</th>
-			<th>2018-04-15</th>
-			<th>FoodTruckFestival.hwp</th>
+			<th>${dto.sb_no }</th>
+			<th>${dto.title }</th>
+			<th>${dto.name }</th>
+			<th>${dto.postdate }</th>
+			<th>${dto.attachedfile }</th>
 		</tr>
+		</c:forEach>
 		<%-- <c:if test="${empty requestScope.list }" var="flag">
 			<tr>
 				<td colspan="6">등록된 자료가 없습니다</td>
