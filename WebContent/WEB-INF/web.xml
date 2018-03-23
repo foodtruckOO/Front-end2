@@ -82,7 +82,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberController</servlet-name>
-		<url-pattern>*.seller</url-pattern>
+		<url-pattern>*.member</url-pattern>
 	</servlet-mapping>
 	
 	
