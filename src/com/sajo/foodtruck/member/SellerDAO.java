@@ -32,7 +32,6 @@ public class SellerDAO {
 		} catch (NamingException e) {			
 			e.printStackTrace();
 		}
-		
 	}
 	
 	//자원반납용]
@@ -69,21 +68,21 @@ public class SellerDAO {
 		return list;
 	}
 	
-	public SellerDTO selectOne(SellerDTO dto) throws SQLException{
+	public SellerDTO selectOne(String id) throws SQLException{
 		String sql = "SELECT * FROM seller WHERE id=?";
 		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, dto.getId());
+		psmt.setString(1, id);
 		rs = psmt.executeQuery();
-		SellerDTO sel;
+		SellerDTO dto = new SellerDTO();;
 		if(rs.next()) {
-			sel = new SellerDTO();
-			sel.setId(rs.getString(2));
-			sel.setPwd(rs.getString(3));
-			sel.setName(rs.getString(4));
-			sel.setTname(rs.getString(5));
-			sel.setAddr(rs.getString(6));
-			sel.setTel(rs.getString(7));
-			sel.setCorporate_no(rs.getString(8));
+			dto.setId(rs.getString(2));
+			System.out.println((String)dto.getId());
+			dto.setPwd(rs.getString(3));
+			dto.setName(rs.getString(4));
+			dto.setTname(rs.getString(5));
+			dto.setAddr(rs.getString(6));
+			dto.setTel(rs.getString(7));
+			dto.setCorporate_no(rs.getString(8));
 		}		
 		return dto;
 	}

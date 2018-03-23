@@ -7,7 +7,7 @@
 	<div style="width: 49.5%; float: left; padding: 5%; padding-top: 0%;">
 		<div class="form-group">
 			<label for="">아이디</label>
-			<input class="form-control" id="" placeholder="KIM"  disabled>
+			<input class="form-control" id="" placeholder="${seller.id}"  disabled>
 		</div>
 		<div class="form-group">
 			<label for="">비밀번호</label>

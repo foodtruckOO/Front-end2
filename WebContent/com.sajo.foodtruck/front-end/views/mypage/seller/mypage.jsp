@@ -103,7 +103,6 @@
 	            <a data-toggle="tab" href="#tabs-5" class="list-group-item" id="a1">개인정보수정</a>
 	            <a data-toggle="tab" href="#tabs-6" class="list-group-item" id="a2">메뉴 등록</a>
 	            <a data-toggle="tab" href="#tabs-7" class="list-group-item" id="a3">이벤트 등록</a>
-	            <a data-toggle="tab" href="#tabs-8" class="list-group-item" id="a4">설명회 신청 현황</a>
          	</div>
          	
 			<!-- sns -->
