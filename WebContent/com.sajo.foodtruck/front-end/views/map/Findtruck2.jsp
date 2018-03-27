@@ -1,7 +1,26 @@
+<%@page import="com.sajo.foodtruck.map.mapDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.sajo.foodtruck.map.mapDAO"%>
 <%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//한글깨짐방지
+	request.setCharacterEncoding("UTF-8");
+	//dao 소환!	
+	mapDAO dao= new mapDAO(application);
+	//map생성
+	Map<String,Object> map = new HashMap<String,Object>();
+	//map을 담는 리스트 생성 ! dao.selectList(map)
+	List<mapDTO> list= dao.selectList(map);
+	
+	//dao닫기
+	dao.close();
+%>
+
 <%-- <%@ include file="/com.sajo.foodtruck/front-end/Common/IsMember.jsp" %> --%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -61,6 +80,7 @@
 </style> 
   
 <body>
+
 	<div id="TOP">
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Top.jsp"/>
     </div>
@@ -117,31 +137,23 @@
 				<th style="width:15%">연락처</th>
 			</tr>
 			<tr class="a">
-				<th>1</th>
+			<%	
+				//확장포문이용 리스트에서 각각의 컬럼뽑아내기
+				int loop2=0;
+				int num2=1;
+				for(mapDTO record:list){
+			%> 
+				<th><%=num2%></th>
 				<th>가산푸드트럭존</th>
-				<th>서울시 금천구 가산동</th>
+				<th><%=record.getAddr()%></th>
 				<th>봉구스밥버거(4000원)</th>
 				<th>010-1234-5678</th>
 			</tr>
-			<tr class="a">
-				<th>2</th>
-				<th>강남푸드트럭존</th>
-				<th>서울시 강남구 신사동</th>
-				<th>아트컵솜사탕(3000원)</th>
-				<th>010-1234-5678</th>
-			</tr>
-			<tr class="a">
-				<th>3</th>
-				<th>한강푸드트럭존</th>
-				<th>서울시 광진구 자양동</th>
-				<th>불닭발&불윙봉(7000원)</th>
-				<th>010-1234-5678</th>
-			</tr>
-			<%-- <c:if test="${empty requestScope.list }" var="flag">
-				<tr>
-					<td colspan="6">등록된 자료가 없습니다</td>
-				</tr>
-			</c:if> --%>
+			<%		
+				num2++;
+				loop2++;
+				}//for
+			%>
 		</table>
 		</article>
 		
@@ -354,7 +366,8 @@
         	overlays[index].setMap(null);     	
 	}
 	
-
+  	//********************키워드로 마커찍기*************************//
+	
 	// 장소 검색 객체를 생성합니다
 	var ps = new daum.maps.services.Places();
 	// 키워드를 생성한다
@@ -371,7 +384,7 @@
 			//removeMarker();
 			// 키워드로 장소를 검색합니다
 			ps.keywordSearch(keyword, placesSearchCB); 
-			console.log(keyword);
+			//console.log(keyword);
 		});
 	});
 	
@@ -388,6 +401,44 @@
 	        map.setBounds(bounds);
 	    } 
 	}
+
+
+	//********************주소로 마커찍기*************************//
+	var geocoder = new daum.maps.services.Geocoder();
+	
+	<%	
+	//확장포문이용 리스트에서 각각의 컬럼뽑아내기
+	int loop=0;
+	for(mapDTO record:list){
+	%>
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch('<%=record.getAddr()%>', function(result, status) {
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === daum.maps.services.Status.OK) {
+
+	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new daum.maps.Marker({
+	            map: map,
+	            position: coords,
+	            image : markerImage // 마커 이미지 
+	        });
+
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new daum.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+<%=record.getTname()%>+'</div>'
+	        });
+	        infowindow.open(map, marker);
+
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        //map.setCenter(coords);
+	    } 
+	});
+	<%		
+	loop++;
+	}//for
+	%> 
 	</script>
 
     <!-- Bootstrap core JavaScript
