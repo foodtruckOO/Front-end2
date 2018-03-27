@@ -144,10 +144,10 @@
 				for(mapDTO record:list){
 			%> 
 				<th><%=num2%></th>
-				<th>가산푸드트럭존</th>
+				<th><%=record.getTname() %></th>
 				<th><%=record.getAddr()%></th>
-				<th>봉구스밥버거(4000원)</th>
-				<th>010-1234-5678</th>
+				<th>대표메뉴추가(0원)</th>
+				<th><%=record.getTel() %></th>
 			</tr>
 			<%		
 				num2++;
@@ -173,7 +173,7 @@
 	<!-- 지도생성 / 설정-->
 	<script>
 	var markers = [];
-	var infowindow;
+	//var infowindow;
 	
 	var container = document.getElementById('map');
 	var options = {
@@ -405,18 +405,40 @@
 
 	//********************주소로 마커찍기*************************//
 	var geocoder = new daum.maps.services.Geocoder();
-	
 	<%	
 	//확장포문이용 리스트에서 각각의 컬럼뽑아내기
 	int loop=0;
+	int num=0;
 	for(mapDTO record:list){
 	%>
+	var overlays2=[];
 	// 주소로 좌표를 검색합니다
 	geocoder.addressSearch('<%=record.getAddr()%>', function(result, status) {
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === daum.maps.services.Status.OK) {
-
 	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+			var content = 
+			'<div class="wrap">' + 
+            '    <div class="info">' + 
+            '        <div class="title">' + 
+            '            <%=record.getTname()%>' +
+            '            <div class="close" onclick="closeOverlay2(<%=num%>)" title="닫기"></div>' +  
+            '        </div>' + 
+            '        <div class="body">' + 
+            '            <div class="img">' +
+            '                <img src="<c:url value='/com.sajo.foodtruck/front-end/images/KakaoTalk_20180308_190036939.png'/>" width="73" height="70">' +
+            '           </div>' + 
+            '            <div class="desc">' + 
+            '                <div class="ellipsis">' +
+            '					<%=record.getAddr()%>'+'</div>' + 
+            '					<%=record.getTel()%>'+'</div>' +
+            '                <div class="jibun ellipsis">1.스테이크트럭</div>' + 
+            '                <div class="jibun ellipsis" style="color:red;">2.솜사탕트럭</div>' +
+            '                <div><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' + 
+            '            </div>' + 
+            '        </div>' + 
+            '    </div>' +    
+            '</div>'
 
 	        // 결과값으로 받은 위치를 마커로 표시합니다
 	        var marker = new daum.maps.Marker({
@@ -425,20 +447,28 @@
 	            image : markerImage // 마커 이미지 
 	        });
 
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+<%=record.getTname()%>+'</div>'
-	        });
-	        infowindow.open(map, marker);
-
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        //map.setCenter(coords);
+	    	var overlay = new daum.maps.CustomOverlay({
+		        content: content,
+		        position: coords
+		    });
+		   	overlays2.push(overlay);
+		    daum.maps.event.addListener(marker, 'click', openOverlay(map, marker, overlay)); 
 	    } 
-	});
-	<%		
+	}); 
+	<%
+	num++;
 	loop++;
 	}//for
-	%> 
+	%>
+	function openOverlay(map,marker,overlay){
+		 return function() {
+			overlay.setMap(map);
+		 };
+	}
+	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+	function closeOverlay2(index) {
+     	overlays2[index].setMap(null);     	
+	}
 	</script>
 
     <!-- Bootstrap core JavaScript
