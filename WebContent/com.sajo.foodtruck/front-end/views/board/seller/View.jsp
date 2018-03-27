@@ -31,6 +31,14 @@
 			});
 			
 		});
+		
+		
+		function isDelete(){
+		    var con= confirm("삭제하시겠습니까??");	
+		    if(con==true)
+		       location.href= "<c:url value='delet.board?sb_no=${nice.sb_no }'/>";
+		       
+		}
 	</script>
   </head>
 
@@ -90,8 +98,8 @@
 			                  			
 			                  			 <a href="<c:url value='/seller.board?sb_no=${nice.sb_no }'/>">수정</a>  <a href="#" onclick="isDelete()">삭제</a> | 
 			                  			 <%  %>
-			                  			 <a href="#">목록</a>
-			                  			</td>
+			                  			 <a href="<c:url value='/Pizza.board'/>">목록</a>
+			                  			</td> 
 			                  		</tr>                  	
 			                  	</table> 
 		                  		<!-- 이전글/다음글 -->

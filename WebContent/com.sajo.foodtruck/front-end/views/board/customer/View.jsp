@@ -31,6 +31,15 @@
 			});
 			
 		});
+		
+		
+		function isDelete(){
+		    var con= confirm("삭제하시겠습니까??");	
+		    if(con==true)
+		       location.href= "<c:url value='delete.board?cb_no=${rice.cb_no }'/>";
+		       
+		}
+		
 	</script>
   </head>
 
@@ -90,7 +99,7 @@
 			                  			
 			                  			 <a href="<c:url value='/sujung.board?cb_no=${rice.cb_no }'/>">수정</a>  <a href="#" onclick="isDelete()">삭제</a>  
 			                   			 <%  %>
-			                  			 <a href="#">목록</a>
+			                  			 <a href="<c:url value='/Com.board'/>">목록</a>
 			                  			</td>
 			                  		</tr>                  	
 			                  	</table> 

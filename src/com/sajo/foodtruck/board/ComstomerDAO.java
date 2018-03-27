@@ -176,6 +176,21 @@ public class ComstomerDAO {
 		catch (Exception e) {	e.printStackTrace();}
 		
 	}///////////////////////////////////////
+	
+	//삭제용
+	public void delete(String cb_no) {
+		
+	   String sql="Delete from c_board where cb_no=?";
+	   try {
+		   psmt= conn.prepareStatement(sql);
+		   psmt.setString(1, cb_no);
+		   psmt.executeUpdate();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+	}///////////////
 	/*
 	//전체 레코드 수 얻기용]
 	public boardDTO selectOne(String key) {
@@ -262,4 +277,5 @@ public class ComstomerDAO {
 	
 	}
    */
+	
 }
