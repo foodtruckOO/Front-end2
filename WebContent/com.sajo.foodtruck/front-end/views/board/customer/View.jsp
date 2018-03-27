@@ -88,7 +88,7 @@
 			                  		<tr bgcolor="white"align="center">
 			                  			<td colspan="2">
 			                  			
-			                  			 <a href="#">수정</a>  <a href="#" onclick="isDelete()">삭제</a>  
+			                  			 <a href="<c:url value='/sujung.board?cb_no=${rice.cb_no }'/>">수정</a>  <a href="#" onclick="isDelete()">삭제</a>  
 			                   			 <%  %>
 			                  			 <a href="#">목록</a>
 			                  			</td>

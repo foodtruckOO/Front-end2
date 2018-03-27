@@ -136,7 +136,45 @@ public class SellerDAO {
 			
 			
 		}
-	
+		
+		//상세보기용]
+		public SellerDTO selectOne(String key) {
+			SellerDTO dto=null;
+			String sql="select sb.*,s.name from s_board sb join seller s on sb.s_no=s.s_no where sb.sb_no=?";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, key);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					dto = new SellerDTO();
+					dto.setSb_no(rs.getString(1));
+					dto.setS_no(rs.getString(2));
+					dto.setTitle(rs.getString(3));
+					dto.setContent(rs.getString(4));
+					dto.setAttachedfile(rs.getString(5));
+					dto.setPostdate(rs.getDate(6));
+					dto.setName(rs.getString(7));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			return dto;
+		}//////////////////////////////
+	    //수정용
+		public void update(String sb_no,String title,String content,String file,String user) {
+			
+			String sql="UPDATE s_board SET title=?,content=?,attachedfile=? WHERE sb_no=?";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1,title);
+				psmt.setString(2, content);
+				psmt.setString(3, file);
+				psmt.setString(4, sb_no);
+				psmt.executeUpdate();
+			} 
+			catch (Exception e) {	e.printStackTrace();}
+			
+		}///////////////////////////////////////
 	/*
 	//전체 레코드 수 얻기용]
 	public boardDTO selectOne(String key) {

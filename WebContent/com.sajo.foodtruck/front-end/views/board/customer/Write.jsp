@@ -61,19 +61,22 @@
 								<table width="75%" bgcolor="gray" cellspacing="1">
 									<tr bgcolor="white">
 										<td width="30%" align="center">제목</td>
-										<td><input type="text" name="title" style="width: 98%" />
+										<td><input type="text" name="title" style="width: 98%"  />
+										
 										</td>
 									</tr>
 									<tr bgcolor="white">
 										<td align="center">내용</td>
-										<td><textarea rows="10" style="width: 98%" name="content"></textarea>
+										<td><textarea rows="10" style="width: 98%" name="content" ></textarea>
+										
 										</td>
 
 									</tr>
 									<tr align="center">
 										<td>
 										<label for="exampleInputFile">첨부 이미지</label></td>
-										<td><input type="file" id="exampleInputFile"name="file">
+										<td><input type="file" id="exampleInputFile"name="file" >
+										
 										</td>
 									</tr>
 									<tr bgcolor="white" align="center">

@@ -57,37 +57,38 @@
 			                  		<tr bgcolor="white" >
 			                  			<td width="30%" align="center">작성자</td>
 			                  			<td >
-			                  			
+			                  			${nice.name }
 			                  			</td>
 			                  		</tr>    
 			                  		<tr bgcolor="white" >
 			                  			<td width="30%" align="center">작성일</td>
 			                  			<td >
-			                  			
+			                  			${nice.postdate }
 			                  			</td>
 			                  		</tr>
-			                  		<tr bgcolor="white" >
-			                  			<td width="30%" align="center">조회수</td>
-			                  			<td >
-			                  			
-			                  			</td>
-			                  		</tr>             	
+			                  		             	
 			                  		<tr bgcolor="white" >
 			                  			<td width="30%" align="center">제목</td>
 			                  			<td >
-			                  			
+			                  			${nice.title }
 			                  			</td>
 			                  		</tr>
 			                  		<tr bgcolor="white" >
 			                  			<td align="center">내용</td>
 			                  			<td>
-			                  			
+			                  			${nice.content }
+			                  			</td>			                  			
+			                  		</tr>
+			                  			<tr bgcolor="white" >
+			                  			<td align="center">첨부파일</td>
+			                  			<td>
+			                  			${nice.attachedfile }
 			                  			</td>			                  			
 			                  		</tr>
 			                  		<tr bgcolor="white" align="center">
 			                  			<td colspan="2">
 			                  			
-			                  			 <a href="#">수정</a>  <a href="#" onclick="isDelete()">삭제</a> | 
+			                  			 <a href="<c:url value='/seller.board?sb_no=${nice.sb_no }'/>">수정</a>  <a href="#" onclick="isDelete()">삭제</a> | 
 			                  			 <%  %>
 			                  			 <a href="#">목록</a>
 			                  			</td>

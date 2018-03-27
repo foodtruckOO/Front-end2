@@ -21,6 +21,7 @@ import model.CusDTO;
 import model.PBKDF2;
 
 
+
 public class ComstomerDAO {
 	//멤버변수]
 	private Connection conn;
@@ -160,7 +161,21 @@ public class ComstomerDAO {
 		}		
 		return dto;
 	}//////////////////////////////
-	
+	//수정용
+	public void update(String cb_no,String title,String content,String file,String user) {
+		
+		String sql="UPDATE c_board SET title=?,content=?,attachedfile=? WHERE cb_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,title);
+			psmt.setString(2, content);
+			psmt.setString(3, file);
+			psmt.setString(4, cb_no);
+			psmt.executeUpdate();
+		} 
+		catch (Exception e) {	e.printStackTrace();}
+		
+	}///////////////////////////////////////
 	/*
 	//전체 레코드 수 얻기용]
 	public boardDTO selectOne(String key) {

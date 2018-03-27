@@ -64,7 +64,7 @@
 		<c:forEach items="${board }" var="dto">
 		<tr>
 			<th>${dto.sb_no }</th>
-			<th>${dto.title }</th>
+			<th><a href='<c:url value='/nice.board?sb_no=${dto.sb_no }'/>'>${dto.title }</a></th>
 			<th>${dto.name }</th>
 			<th>${dto.postdate }</th>
 			<th>${dto.attachedfile }</th>
