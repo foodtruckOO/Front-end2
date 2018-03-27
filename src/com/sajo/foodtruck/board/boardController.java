@@ -1,6 +1,7 @@
 package com.sajo.foodtruck.board;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,15 @@ public class boardController {
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+		
+		String usertype = null;
+		if(req.getSession().getAttribute("USER_TYPE")!=null) {
+			usertype = req.getSession().getAttribute("USER_TYPE").toString();
+		}
+		if(usertype.equals("seller")) {
+			return "/com.sajo.foodtruck/front-end/views/board/customer/IdCheck.jsp";
+		}
+		System.out.println(usertype);
 		List list = dao.selectHList();
 		dao.close();
 		model.addAttribute("board",list);
@@ -48,6 +59,14 @@ public class boardController {
 	public String Pizza(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 
 		SellerDAO dao = new SellerDAO(req.getServletContext());
+		
+		String usertype = null;
+		if(req.getSession().getAttribute("USER_TYPE")!=null) {
+			usertype = req.getSession().getAttribute("USER_TYPE").toString();
+		}
+		if(usertype.equals("customer")) {
+			return "/com.sajo.foodtruck/front-end/views/board/seller/IdCheck.jsp";
+		}
 		List list = dao.selectHList();
 		dao.close();
 		model.addAttribute("board",list);
