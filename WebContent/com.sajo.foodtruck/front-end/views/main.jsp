@@ -42,7 +42,39 @@
 	});
 </script>
 
+<style>
+ @media screen and (min-width: 1501px) {
+	body  {
+	margin: 0 auto !important;
+	}
+ }
+ 
+ @media screen and (min-width: 1221px) and (max-width: 1500px){
+	body{
+	margin:0 auto;
+	} 
+	
+	#body{
+	margin: 0 auto !important; 
+	}
+	
+	}
+}
+@media screen and (max-width: 1220px) and (min-width: 770px){
+	body{
+	margin:0 auto !important;
+	}
+	
+	#body  {
+	margin: 0 auto ;
+	} 
+}
 
+ 
+
+
+
+</style>
 
 </head>
 
@@ -57,7 +89,7 @@
 	</div>
 
 	<!-- Header -->
-
+	<div id="body">
 	<header>
 		<div class="container">
 			<div class="row">
@@ -165,7 +197,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/logo.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/logo.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -180,7 +212,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/find.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/find.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -195,7 +227,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/menu.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/menu.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -210,7 +242,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/event.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/event.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -225,7 +257,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/list.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/list.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -240,7 +272,7 @@
 							<div class="portfolio-hover-content">
 								<i class="fa fa-plus fa-3x"></i>
 							</div>
-						</div> <div align="center"><img class="img-fluid" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/question.jpg'/>"
+						</div> <div align="center"><img class="img-fluid img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/main/question.jpg'/>"
 						alt=""/></div>
 					</a>
 					<div class="portfolio-caption">
@@ -251,7 +283,7 @@
 			</div>
 		</div>
 	</section>
-
+</div>
 	<!-- Footer -->
 
 	<div>
