@@ -44,10 +44,9 @@ public class boardController {
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
 			usertype = req.getSession().getAttribute("USER_TYPE").toString();
 		}
-		if(usertype.equals("seller")) {
+		if("seller".equals(usertype)) {
 			return "/com.sajo.foodtruck/front-end/views/board/customer/IdCheck.jsp";
 		}
-		System.out.println(usertype);
 		List list = dao.selectHList();
 		dao.close();
 		model.addAttribute("board",list);
@@ -64,7 +63,7 @@ public class boardController {
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
 			usertype = req.getSession().getAttribute("USER_TYPE").toString();
 		}
-		if(usertype.equals("customer")) {
+		if("customer".equals(usertype)) {
 			return "/com.sajo.foodtruck/front-end/views/board/seller/IdCheck.jsp";
 		}
 		List list = dao.selectHList();
