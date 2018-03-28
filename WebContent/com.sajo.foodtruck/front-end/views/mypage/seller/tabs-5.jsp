@@ -3,11 +3,24 @@
 <br/>
 <div style="font-size: 2em; color: gray">개인정보수정</div>
 <hr>
-<form>
+<script language="javascript">
+function goPopup(){
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
+	var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+function jusoCallBack(roadAddrPart1,addrDetail){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.form.roadAddrPart1.value = roadAddrPart1;
+		document.form.addrDetail.value = addrDetail;
+		console.log(roadAddrPart1);
+} 
+</script>
+<form method="post" name="form" id="form">
 	<div style="width: 49.5%; float: left; padding: 5%; padding-top: 0%;">
 		<div class="form-group">
 			<label for="">아이디</label>
-			<input class="form-control" id="" placeholder="<%=session.getAttribute("USER_ID")%>"  disabled>
+			<input class="form-control" id="" value="<%=session.getAttribute("USER_ID")%>" disabled>
 		</div>
 		<div class="form-group">
 			<label for="">비밀번호</label>
@@ -21,15 +34,23 @@
 			<label for="">전화번호</label>
 			<input class="form-control" id="" placeholder="010-0123-4567" value="${seller.tel }">
 		</div>
-		<div class="form-group" style="width:227%;">
+		
+		<div class="form-group" style="width: 227%" >
 			<label for="" style="position: relative;">주소</label>
 			<div>
-				<input class="form-control" id="" placeholder="주소를 입력하세요" style="float:left; width: 85%" value="${seller.addr }">
-				<button type="submit" class="btn btn-default" style="float: right">주소찾</button>
-				<br/><br/>
-				<input class="form-control" id="" placeholder="주소를 입력하세요" style="width: 50%;">
-			</div>
+			 	<input type="button" onClick="goPopup();" class="btn btn-default" value="주소찾기"/>
+				<input id="roadAddrPart1" name="roadAddrPart1" value="${seller.addr }" style="width: 85%; margin-right:1.5%; float: left;" class="form-control"  readonly/>
+				<input class="form-control" id="addrDetail" name="addrDetail" style="margin-top: 2%; width: 60%" readonly/>
+            </div>
 		</div>
+		<!-- 
+		<div class="form-group" >
+			<label for="">주소</label>
+			<input value="${seller.addr }" id="roadAddrPart1"  class="form-control" placeholder="주소를 입력하세요" style="position: relative; width: 200%"  name="roadAddrPart1">
+			<br/>
+			<input class="form-control" id="addrDetail" name="addrDetail"  placeholder="주소를 입력하세요">
+            <input type="button" onClick="goPopup();" class="btn btn-default" value="주소찾기"/>
+		</div>-->
 	</div>
 
 	<div style="width: 1%; float: left;">

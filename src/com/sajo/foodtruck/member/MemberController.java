@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 
 	// Seller
-	@RequestMapping("/Sellerpage.member")
-	public String Sellerpage(Model model, HttpServletRequest req, HttpSession ss) throws Exception{
+	@RequestMapping("/Mypage.member")
+	public String Sellerpage(Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)ss.getAttribute("USER_ID"));
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
 		model.addAttribute("seller", dto);
-		System.out.println((String)ss.getAttribute("USER_ID"));
+		System.out.println((String)req.getSession().getAttribute("USER_ID"));
 		return "/com.sajo.foodtruck/front-end/views/mypage/seller/mypage.jsp";
 	}
 	
