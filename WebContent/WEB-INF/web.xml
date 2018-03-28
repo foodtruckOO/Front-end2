@@ -71,7 +71,7 @@
 		<url-pattern>*.info</url-pattern>
 	</servlet-mapping>
 
-	<!-- Seller 컨트롤러(사업자 회원) -->
+	<!-- 회원 컨트롤러 -->
 	<servlet>
 		<servlet-name>MemberController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -82,7 +82,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberController</servlet-name>
-		<url-pattern>*.member</url-pattern>
+		<url-pattern>*.page</url-pattern>
 	</servlet-mapping>
 	
 	

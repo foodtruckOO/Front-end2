@@ -1,7 +1,8 @@
 <br/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-<script type="text/javascript" src="./src/tagcloud.jquery.js"></script>
+<script src="<c:url value='/bootstrap/js/tagcloud.jquery.js'/>"></script>
 <style>
 	#tagcloud ul li a {
 		resize: none;

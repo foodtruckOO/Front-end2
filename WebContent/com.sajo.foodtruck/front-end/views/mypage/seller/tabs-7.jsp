@@ -25,7 +25,7 @@ $(function(){
 <br/>
 <div style="font-size: 2em; color: gray">이벤트 등록</div>
 <hr>
-<form>
+<form action="<c:url value='/Event.page'/>" method="post">
 	<div class="form-group">
 		<label for="">제목</label>
 		<input class="form-control" id="" placeholder="제목을 입력하세요">

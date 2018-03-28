@@ -1,4 +1,4 @@
-package com.sajo.foodtruck.member;
+package com.sajo.foodtruck.mypage;
 
 import java.sql.Date;
 

@@ -46,7 +46,7 @@
 				       <li><a href="javascript:popupOpen();">LOGIN</a></li>&emsp;
 				        <li><a href="javascript:popupOpen2();">JOIN</a></li>
 			        <%}else{ %>
-				        <li><a href="#">MYPAGE</a></li>&emsp;
+				        <li><a href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
 				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>
 				</ul>
