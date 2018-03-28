@@ -21,12 +21,14 @@
 			<label for="">전화번호</label>
 			<input class="form-control" id="" placeholder="010-0123-4567" value="${seller.tel }">
 		</div>
-		<div class="form-group" >
-			<label for="">주소</label>
-			<input class="form-control" id="" placeholder="주소를 입력하세요" style="position: relative; width: 200%" value="${seller.addr }">
-			<button type="submit" class="btn btn-default" style="margin-left: 203%;">주소</button>
-			<br/>
-			<input class="form-control" id="" placeholder="주소를 입력하세요">
+		<div class="form-group" style="width:227%;">
+			<label for="" style="position: relative;">주소</label>
+			<div>
+				<input class="form-control" id="" placeholder="주소를 입력하세요" style="float:left; width: 85%" value="${seller.addr }">
+				<button type="submit" class="btn btn-default" style="float: right">주소찾</button>
+				<br/><br/>
+				<input class="form-control" id="" placeholder="주소를 입력하세요" style="width: 50%;">
+			</div>
 		</div>
 	</div>
 
