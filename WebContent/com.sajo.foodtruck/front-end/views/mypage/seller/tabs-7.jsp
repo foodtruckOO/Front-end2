@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
-<!-- 마이페이지 이벤트 등록 -->
+<!-- 이벤트 등록 -->
 
 <!-- datepicker용 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -10,7 +10,7 @@
 <script>
 //datepicker용
 $(function(){
-	$("#sdatepicker, #edatepicker").datepicker({
+	$("#e_sdatepicker, #e_edatepicker").datepicker({
 		dateFormat:"yy-mm-dd"/*,
 		showOn: "both" ,
 		buttonImage:"<c:url value='/Images/calendar-icon.jpg'/>",
@@ -25,32 +25,32 @@ $(function(){
 <br/>
 <div style="font-size: 2em; color: gray">이벤트 등록</div>
 <hr>
-<form action="<c:url value='/Event.page'/>" method="post">
+<form action="<c:url value='/Event/Upload.page'/>" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="">제목</label>
-		<input class="form-control" id="" placeholder="제목을 입력하세요">
+		<input class="form-control" id="e_name" placeholder="제목을 입력하세요">
 	</div>
 	<div class="form-group">
 		<label>행사일자</label></br>
 		<div style="display: inline-block; position: relative;"align="left">
-			시작일자 : <input type="text" id="sdatepicker" name="startdate" size="15" value=''>
+			시작일자 : <input type="text" id="e_sdatepicker" name="startdate" size="15" value=''>
 		</div>
 		<div style="display: inline-block; position: relative;"align="left">
-			종료일자 : <input type="text" id="edatepicker" name="enddate" size="15" value=''>
+			종료일자 : <input type="text" id="e_edatepicker" name="enddate" size="15" value=''>
 			<span id="span" style="color: red"></span>
 		</div>
     </div>
 	<div class="form-group">
 		<label for="">내용</label>
-		<textarea class="form-control" rows="5"></textarea>
+		<textarea class="form-control" rows="5" id="e_content"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="exampleInputFile">타이틀 이미지</label>
-		<input type="file" id="exampleInputFile">
+		<input type="file" id="e_tfile">
 	</div>
 	<div class="form-group">
 		<label for="exampleInputFile">첨부 이미지</label>
-		<input type="file" id="exampleInputFile" >
+		<input type="file" id="e_cfile" >
 	</div>
 	<button type="submit" class="btn btn-default" id="eventOk">등록</button>
 </form>

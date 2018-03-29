@@ -2,14 +2,16 @@ package com.sajo.foodtruck.mypage;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class T_EventDTO {
 	
 	private String eno;
 	private String s_no;
 	private String title;
 	private String content;
-	private String titlefile;
-	private String contentfile;
+	private MultipartFile titlefile;
+	private MultipartFile contentfile;
 	private Date s_date;
 	private Date e_date;
 	private Date postdate;
@@ -46,19 +48,19 @@ public class T_EventDTO {
 		this.content = content;
 	}
 	
-	public String getTitlefile() {
+	public MultipartFile getTitlefile() {
 		return titlefile;
 	}
 	
-	public void setTitlefile(String titlefile) {
+	public void setTitlefile(MultipartFile titlefile) {
 		this.titlefile = titlefile;
 	}
 	
-	public String getContentfile() {
+	public MultipartFile getContentfile() {
 		return contentfile;
 	}
 	
-	public void setContentfile(String contentfile) {
+	public void setContentfile(MultipartFile contentfile) {
 		this.contentfile = contentfile;
 	}
 	
