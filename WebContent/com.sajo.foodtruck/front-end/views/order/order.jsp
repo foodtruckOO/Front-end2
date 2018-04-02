@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
-
-
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -57,6 +55,39 @@
     position: relative;
     left: 50%;
 }
+
+@media screen and (min-width: 1501px) {
+	body  {
+		margin-right:15%;
+	}
+}
+
+@media screen and (min-width: 1221px) and (max-width: 1500px){
+	body  {
+		margin-right:10%;
+	}
+}
+@media screen and (min-width: 770px) and (max-width: 1220px){
+	body  {
+		padding-top:100px;
+		margin-right:10%;
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 400px) and (max-width: 769px){
+	body  {
+		padding-top:80px;
+		margin-right:5%;
+	}
+}
+@media screen and (max-width: 400px) {
+	body  {
+		margin-right:3%;
+	}
+}
+
+
 </style>
 
 </head>
@@ -80,10 +111,10 @@
 			<section id="contents">
 				<div class="page_top">
 					<input id="menuType" type="hidden" value="homeservice">
-							<h3 id="page_tit" class="tit">¡÷πÆ«œ±‚</h3>
+							<h3 id="page_tit" class="tit">Ï£ºÎ¨∏ÌïòÍ∏∞</h3>
 				</div>
 					<div id="recommend" class="menu_sec">
-						<h4 class="line_tit"><span>¡÷∏ﬁ¥∫</span></h4>
+						<h4 class="line_tit"><span>Ï£ºÎ©îÎâ¥</span></h4>
 						<div class="menu_wrap">
 							<div class="swiper-container">
 								<ul class="menu_list swiper-wrapper" id="test">
@@ -96,29 +127,29 @@
 														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" width="" height=""/>
 												</a> 
 												
-												<!-- ¥„±‚ Ω√¿€«œ∏È .btn_plusø° on≈¨∑°Ω∫ ∫Œø©, ¥„±‰ º˝¿⁄¥¬ strong≈¬±◊æ»¿∏∑Œ -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">¥„±‚</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">¥„±‚</span></a></p> -->
+												<!-- Îã¥Í∏∞ ÏãúÏûëÌïòÎ©¥ .btn_plusÏóê onÌÅ¥ÎûòÏä§ Î∂ÄÏó¨, Îã¥Í∏¥ Ïà´ÏûêÎäî strongÌÉúÍ∑∏ÏïàÏúºÎ°ú -->
+												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
+												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
 												
 													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
 														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700ø¯</strong></p>
+												<p class="menu_price"><strong>3,700Ïõê</strong></p>
 												
 										<div class="opt">
 													 
 											<div class="sel_list">
 														<a href="javascript:void(0)">
-															<strong>3,700ø¯</strong>
+															<strong>3,700Ïõê</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>ªÛ«∞ ¥„±‚</span>
-															<!-- <span>ªÛ«∞¥„±‚</span> -->
+															<span>ÏÉÅÌíà Îã¥Í∏∞</span>
+															<!-- <span>ÏÉÅÌíàÎã¥Í∏∞</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
-															<span>πŸ∑Œ ¡÷πÆ</span>
-															<!-- <span>πŸ∑Œ¡÷πÆ</span> -->
+															<span>Î∞îÎ°ú Ï£ºÎ¨∏</span>
+															<!-- <span>Î∞îÎ°úÏ£ºÎ¨∏</span> -->
 														</a>
 													</p>
 												</div>
@@ -136,41 +167,41 @@
 												
 													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
 														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700ø¯</strong></p>
+												<p class="menu_price"><strong>3,700Ïõê</strong></p>
 												
 										<div class="opt">
 													 
 											<div class="sel_list">
 														<ul data-value='composition_'>
-													<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->
+													<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->
 																<li class="on">
 															
 																	<a href="javascript:void(0)">
 																		<span>Single</span>
-																		<strong>3,700ø¯</strong>
+																		<strong>3,700Ïõê</strong>
 																	</a>
 																
 																</li>
 																<li>
 																	<a href="javascript:void(0)">
 																		<span>Set</span>
-																		<strong>6,000ø¯</strong>
+																		<strong>6,000Ïõê</strong>
 																	</a>
 																</li>
 														</ul>
 														<a href="javascript:void(0)">
 															<span>Single</span>
-															<strong>3,700ø¯</strong>
+															<strong>3,700Ïõê</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
 															<span>Add to Cart</span>
-															<!-- <span>ªÛ«∞¥„±‚</span> -->
+															<!-- <span>ÏÉÅÌíàÎã¥Í∏∞</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
 															<span>Direct order</span>
-															<!-- <span>πŸ∑Œ¡÷πÆ</span> -->
+															<!-- <span>Î∞îÎ°úÏ£ºÎ¨∏</span> -->
 														</a>
 													</p>
 												</div>
@@ -184,47 +215,47 @@
 														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" />
 												</a> 
 												
-												<!-- ¥„±‚ Ω√¿€«œ∏È .btn_plusø° on≈¨∑°Ω∫ ∫Œø©, ¥„±‰ º˝¿⁄¥¬ strong≈¬±◊æ»¿∏∑Œ -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">¥„±‚</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">¥„±‚</span></a></p> -->
+												<!-- Îã¥Í∏∞ ÏãúÏûëÌïòÎ©¥ .btn_plusÏóê onÌÅ¥ÎûòÏä§ Î∂ÄÏó¨, Îã¥Í∏¥ Ïà´ÏûêÎäî strongÌÉúÍ∑∏ÏïàÏúºÎ°ú -->
+												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
+												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
 												
 													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
 														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700ø¯</strong></p>
+												<p class="menu_price"><strong>3,700Ïõê</strong></p>
 												
 										<div class="opt">
 													 
 											<div class="sel_list">
 														<ul data-value='composition_'>
-													<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->
+													<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->
 																<li class="on">
 															
 																	<a href="javascript:void(0)">
 																		<span>Single</span>
-																		<strong>3,700ø¯</strong>
+																		<strong>3,700Ïõê</strong>
 																	</a>
 																
 																</li>
 																<li>
 																	<a href="javascript:void(0)">
 																		<span>Set</span>
-																		<strong>6,000ø¯</strong>
+																		<strong>6,000Ïõê</strong>
 																	</a>
 																</li>
 														</ul>
 														<a href="javascript:void(0)">
 															<span>Single</span>
-															<strong>3,700ø¯</strong>
+															<strong>3,700Ïõê</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>ªÛ«∞ ¥„±‚</span>
-															<!-- <span>ªÛ«∞¥„±‚</span> -->
+															<span>ÏÉÅÌíà Îã¥Í∏∞</span>
+															<!-- <span>ÏÉÅÌíàÎã¥Í∏∞</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
 															<span>Direct order</span>
-															<!-- <span>πŸ∑Œ¡÷πÆ</span> -->
+															<!-- <span>Î∞îÎ°úÏ£ºÎ¨∏</span> -->
 														</a>
 													</p>
 												</div>
@@ -237,47 +268,47 @@
 														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" />
 												</a> 
 												
-												<!-- ¥„±‚ Ω√¿€«œ∏È .btn_plusø° on≈¨∑°Ω∫ ∫Œø©, ¥„±‰ º˝¿⁄¥¬ strong≈¬±◊æ»¿∏∑Œ -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">¥„±‚</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">¥„±‚</span></a></p> -->
+												<!-- Îã¥Í∏∞ ÏãúÏûëÌïòÎ©¥ .btn_plusÏóê onÌÅ¥ÎûòÏä§ Î∂ÄÏó¨, Îã¥Í∏¥ Ïà´ÏûêÎäî strongÌÉúÍ∑∏ÏïàÏúºÎ°ú -->
+												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
+												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
 												
 													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
 														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700ø¯</strong></p>
+												<p class="menu_price"><strong>3,700Ïõê</strong></p>
 												
 										<div class="opt">
 													 
 											<div class="sel_list">
 														<ul data-value='composition_'>
-													<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->
+													<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->
 																<li class="on">
 															
 																	<a href="javascript:void(0)">
 																		<span>Single</span>
-																		<strong>3,700ø¯</strong>
+																		<strong>3,700Ïõê</strong>
 																	</a>
 																
 																</li>
 																<li>
 																	<a href="javascript:void(0)">
 																		<span>Set</span>
-																		<strong>6,000ø¯</strong>
+																		<strong>6,000Ïõê</strong>
 																	</a>
 																</li>
 														</ul>
 														<a href="javascript:void(0)">
 															<span>Single</span>
-															<strong>3,700ø¯</strong>
+															<strong>3,700Ïõê</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
 															<span>Add to Cart</span>
-															<!-- <span>ªÛ«∞¥„±‚</span> -->
+															<!-- <span>ÏÉÅÌíàÎã¥Í∏∞</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
 															<span>Direct order</span>
-															<!-- <span>πŸ∑Œ¡÷πÆ</span> -->
+															<!-- <span>Î∞îÎ°úÏ£ºÎ¨∏</span> -->
 														</a>
 													</p>
 												</div>
@@ -289,7 +320,7 @@
 					</div>
 				
 					<div id="beverage" class="menu_sec">
-						<h4 class="line_tit"><span>ªÁ¿ÃµÂ ∏ﬁ¥∫</span></h4>
+						<h4 class="line_tit"><span>ÏÇ¨Ïù¥Îìú Î©îÎâ¥</span></h4>
 						<div class="menu_wrap">
 							<div class="swiper-container">
 								<ul class="menu_list swiper-wrapper" id="test">
@@ -306,9 +337,9 @@
 													
 												</a> 
 												
-												<!-- ¥„±‚ Ω√¿€«œ∏È .btn_plusø° on≈¨∑°Ω∫ ∫Œø©, ¥„±‰ º˝¿⁄¥¬ strong≈¬±◊æ»¿∏∑Œ -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">¥„±‚</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">¥„±‚</span></a></p> -->
+												<!-- Îã¥Í∏∞ ÏãúÏûëÌïòÎ©¥ .btn_plusÏóê onÌÅ¥ÎûòÏä§ Î∂ÄÏó¨, Îã¥Í∏¥ Ïà´ÏûêÎäî strongÌÉúÍ∑∏ÏïàÏúºÎ°ú -->
+												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
+												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">Îã¥Í∏∞</span></a></p> -->
 												
 												
 												
@@ -321,35 +352,35 @@
 														
 														
 														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->
-												<p class="menu_price"><strong>2,500ø¯</strong></p>
+												<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->
+												<p class="menu_price"><strong>2,500Ïõê</strong></p>
 										<div class="opt">
 											<div class="sel_list">
 														<ul data-value='composition_'>
-													<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->
+													<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->
 																<li class="on">
 															
 																	<a href="javascript:void(0)">
 																		<span>Single</span>
-																		<strong>2,500ø¯</strong>
+																		<strong>2,500Ïõê</strong>
 																	</a>
 																
 																</li>
 														</ul>
-													<!-- ≈∏¿”ºº¿œ øπø‹ √≥∏Æ √ﬂ∞° 20171025 ¿Ã¡¯øÏ -->	
+													<!-- ÌÉÄÏûÑÏÑ∏Ïùº ÏòàÏô∏ Ï≤òÎ¶¨ Ï∂îÍ∞Ä 20171025 Ïù¥ÏßÑÏö∞ -->	
 														<a href="javascript:void(0)">
 															<span>Single</span>
-															<strong>2,500ø¯</strong>
+															<strong>2,500Ïõê</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
 															<span>Add to Cart</span>
-															<!-- <span>ªÛ«∞¥„±‚</span> -->
+															<!-- <span>ÏÉÅÌíàÎã¥Í∏∞</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
 															<span>Direct order</span>
-															<!-- <span>πŸ∑Œ¡÷πÆ</span> -->
+															<!-- <span>Î∞îÎ°úÏ£ºÎ¨∏</span> -->
 														</a>
 													</p>
 												</div>

@@ -43,7 +43,7 @@
 </script>
 
 <style>
- @media screen and (min-width: 1501px) {
+ /* @media screen and (min-width: 1501px) {
 	body  {
 	margin: 0 auto !important;
 	}
@@ -69,7 +69,37 @@
 	margin: 0 auto ;
 	} 
 }
+ */
+@media screen and (min-width: 1501px) {
+	body  {
+		margin-right:15%;
+	}
+}
 
+@media screen and (min-width: 1221px) and (max-width: 1500px){
+	body  {
+		margin-right:10%;
+	}
+}
+@media screen and (min-width: 770px) and (max-width: 1220px){
+	body  {
+		padding-top:100px;
+		margin-right:10%;
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 400px) and (max-width: 769px){
+	body  {
+		padding-top:80px;
+		margin-right:5%;
+	}
+}
+@media screen and (max-width: 400px) {
+	body  {
+		margin-right:3%;
+	}
+}
  
 
 
