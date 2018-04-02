@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 정보 수정 -->
-<br/>
 <div style="font-size: 2em; color: gray">개인정보수정</div>
 <hr>
 <script language="javascript">

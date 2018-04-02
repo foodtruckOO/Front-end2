@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="java.net.URLEncoder"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <br/>
 <!-- 여기 -->
@@ -25,7 +26,7 @@
 <br/><br/>
 <div style="width: 90%; margin: 5%; height: 200px; background-color: #ecdaba; padding: 2%">
 	<!-- 사진 -->
-	<img src="men.png" alt="이미지 없다" 
+	<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/man/man.png'/>" alt="이미지 없다" 
 			style="width:50px; height: 50px; margin:1%; float:left;" class="img-circle">	
 	<table style="float: left: ;">
 	<tr>
@@ -46,7 +47,7 @@
 
 <div style="width: 90%; margin: 5%; height: 200px; background-color: #ecdaba; padding: 2%">
 	<!-- 사진 -->
-	<img src="women.png" alt="이미지 없다" 
+	<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/woman/woman.png'/>" alt="이미지 없다" 
 			style="width:50px; height: 50px; margin:1%; float:left;" class="img-circle">	
 	<table style="float: left: ;">
 	<tr>
@@ -61,25 +62,5 @@
 	</table>
 	<div style="padding: 3%;">
 	Jestem zawiedziona państwa usługami .Poraz kolejny zakupiłam spleśniały tostowy promienny chleb po czym wylądowałam w szpitalu bo dostałam uczulenia zastanawia mnie fakt,z kąd ten chleb państwo zamawiają skoro data na opakowaniu jest jeszcze przydatna.Z przykrością stwierdzam że po raz kolejny raz zawiodłam sie na państwa sklep
-	</div>
-</div>
-
-<div style="width: 90%; margin: 5%; height: 200px; background-color: #ecdaba; padding: 2%">
-	<!-- 사진 -->
-	<img src="trump.png" alt="이미지 없다" 
-			style="width:50px; height: 50px; margin:1%; float:left;" class="img-circle">	
-	<table style="float: left: ;">
-	<tr>
-		<td style=" text-align: left;"><span style="font-weight: bold;">Trumg</span>	</td>
-		<td>-</td>
-		<td>&emsp;<span style="color: orange; font-size: 1.5em">★★★★☆</span><br/>
-	</tr>
-	<tr>
-		<td><span>2018년 03월 01일</span></td> 
-	</tr>
-	
-	</table>
-	<div style="padding: 3%;">
-	Nigdy więcej zakupów w Wołominie na Fieldorfa. Byłam stała klientką ale koniec z tym. Kobiety pracujące tam to jakaś żenada. Wysłałam 12 letniego brata po Olej. wraca po 20 min i mówi:
 	</div>
 </div>

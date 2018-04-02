@@ -59,14 +59,22 @@ public class MemberController {
 		System.out.println("tabs2 접속");
 		return "wordcloud.tiles";
 	}
+
 	@RequestMapping("/Tabs3.page")
 	public String Tabs3(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs3 접속");
-		return null;
+		return "tabs-3.tiles";
 	}
 	
-	@RequestMapping("/Info.page")
-	public String InfoEdit(Model model, HttpServletRequest req) throws Exception{
+	@RequestMapping("/Tabs4.page")
+	public String Tabs4(Model model, HttpServletRequest req) throws Exception{
+		System.out.println("tabs4 접속");
+		return "tabs-4.tiles";
+	}
+	
+	//개인정보 수정
+	@RequestMapping("/Tabs5.page")
+	public String InfoUpdate(Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
@@ -76,6 +84,41 @@ public class MemberController {
 		return "tabs-5.tiles";
 	}
 	
+	//메뉴 수정
+	@RequestMapping("/Tabs6.page")
+	public String MenuUpdate(Model model, HttpServletRequest req) throws Exception{
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		dao.close();
+		model.addAttribute("seller", dto);
+		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+		System.out.println("hanwook");
+		return "tabs-6.tiles";
+	}
+		
+	//이벤트 수정
+	@RequestMapping("/Tabs7.page")
+	public String EventUpdate(Model model, HttpServletRequest req) throws Exception{
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		dao.close();
+		model.addAttribute("seller", dto);
+		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+		System.out.println("hanwook");
+		return "tabs-7.tiles";
+	}
+	
+	//이벤트 수정
+	@RequestMapping("/Tabs8.page")
+	public String SnsUpdate(Model model, HttpServletRequest req) throws Exception{
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		dao.close();
+		model.addAttribute("seller", dto);
+		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+		System.out.println("hanwook");
+		return "tabs-8.tiles";
+	}
 	
 	@RequestMapping("/Event/Upload.page")
 	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{

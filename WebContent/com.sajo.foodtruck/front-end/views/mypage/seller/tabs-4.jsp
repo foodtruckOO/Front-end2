@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Container (Pricing Section) -->
 <div id="pricing" class="container-fluid">
 
@@ -16,7 +19,7 @@
           <p><strong>Endless</strong> Amet</p>
         </div>
         <div class="panel-footer">
-          <h3 style="font-weight: bold; font-size: 2em"><img src="won.png" alt="￦">9900</h3>
+          <h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
           <h4>per month</h4>
           <button class="btn btn-lg">Sign Up</button>
         </div>
@@ -36,7 +39,7 @@
           <p><strong>Endless</strong> Amet</p>
         </div>
         <div class="panel-footer">
-          <h3 style="font-weight: bold; font-size: 2em"><img src="won.png" alt="￦">2900</h3>
+          <h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">2900</h3>
           <h4>per month</h4>
           <button class="btn btn-lg">Sign Up</button>
         </div>
@@ -56,12 +59,11 @@
           <p><strong>Endless</strong> Amet</p>
         </div>
         <div class="panel-footer">
-          <h3 style="font-weight: bold; font-size: 2em"><img src="won.png" alt="￦">4900</h3>
+          <h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">4900</h3>
           <h4>per month</h4>
           <button class="btn btn-lg">Sign Up</button>
         </div>
       </div>      
     </div>    
-  </div>
-  
+  </div>  
 </div>

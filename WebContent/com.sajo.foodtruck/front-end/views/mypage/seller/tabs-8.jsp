@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
-<!-- 설명회 신청 현황 -->
-
-<br/>
-<div style="font-size: 2em; color: gray">설명회 신청 현황</div>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- SNS 등록 -->
+<div style="font-size: 2em; color: gray">SNS 등록</div>
 <hr>

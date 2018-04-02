@@ -94,7 +94,7 @@
 		<!-- Mypage Left -->
 		<div style="float: left; width: 20%">
 			<!-- 프로필 사진 -->
-			<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_main.png'/>" alt="이미지를 찾을 수 없습니다.." 
+			<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/main/my_main.png'/>" alt="이미지를 찾을 수 없습니다.." 
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
 			<!-- ID -->
 			<div>
@@ -102,10 +102,10 @@
 			</div>
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
-	            <a href="<c:url value='/Info.page'/>" class="list-group-item" id="a1">개인정보수정</a>
-	            <a href="#tabs-6" class="list-group-item" id="a2">메뉴 등록</a>
-	            <a href="#tabs-7" class="list-group-item" id="a3">이벤트 등록</a>
-	            <a href="#tabs-7" class="list-group-item" id="a3">SNS 등록</a>
+	            <a href="<c:url value='/Tabs5.page'/>" class="list-group-item" id="a1">개인정보수정</a>
+	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id="a2">메뉴 등록</a>
+	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id="a3">이벤트 등록</a>
+	            <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a3">SNS 등록</a>
          	</div>
          	
 			<!-- sns -->
@@ -131,7 +131,7 @@
 		<div style="float: right;  width: 78%;">
 			<!-- background -->
 			<div style="height: 300px; ">
-				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/back/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
 				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
 			</div>
 			
@@ -144,13 +144,13 @@
 					<li class="active" id="acti"><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
 					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
 					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-					<li><a href="#tabs-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
+					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
 					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
 					</button>
 				</ul>
 
-				<div  class="tab-content" style="padding: 1%;">
+				<div  class="tab-content" style="padding: 1%; padding-top: 3%;">
 					<tiles:insertAttribute name="body"/>
 				</div>
 			</div>
