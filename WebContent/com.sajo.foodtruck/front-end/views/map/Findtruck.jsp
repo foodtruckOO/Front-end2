@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/com.sajo.foodtruck/front-end/Common/IsMember.jsp" %>
 <%
 	//한글깨짐방지
 	request.setCharacterEncoding("UTF-8");
@@ -228,7 +229,6 @@
 	var overlays = {};
 	<%	
 	//확장포문이용 리스트에서 각각의 컬럼뽑아내기
-	int loop=0;
 	int num=0;
 	 
 	for(mapDTO record:list){
@@ -286,7 +286,6 @@
 	}); 
 	<%
 	num++;
-	loop++;
 	}//for
 	%>
 	function openOverlay(map,marker,overlay){

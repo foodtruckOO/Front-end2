@@ -19,6 +19,7 @@
 	String name = request.getParameter("name");
 	String tname = request.getParameter("tname");
 	String addr = request.getParameter("roadAddrPart1");
+	String addr2 = request.getParameter("addrDetail");
 	String tel = request.getParameter("phone");
 	pass = PBKDF2.createHash(pass);
  
@@ -37,15 +38,16 @@
 		//out.println("연결성공");
 		//3단계 sql문 생성 Statement PreparedStatement CallableStatement
 		//PreparedStatement CallableStatement
-		sql = "insert into SELLER values(SEQ_SEL.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
+		sql = "insert into SELLER values(SEQ_SEL.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.setString(2, pass);
 		pstmt.setString(3, name);
 		pstmt.setString(4, tname);
 		pstmt.setString(5, addr);
-		pstmt.setString(6, tel);
-		pstmt.setString(7, f_no);
+		pstmt.setString(6, addr2);
+		pstmt.setString(7, tel);
+		pstmt.setString(8, f_no);
 		
 		
 		//4단계 실행
