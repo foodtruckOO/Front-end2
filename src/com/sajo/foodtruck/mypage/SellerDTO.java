@@ -10,6 +10,7 @@ public class SellerDTO {
 	private String name;//사업자 회원 이름
 	private String tname;//간판(푸드트럭 이름)
 	private String addr;//주소
+	private String addr2;
 	private String tel;	//전화번호
 	private String corporate_no;//사업자번호
 	private Date regidate;//등록일
@@ -49,6 +50,12 @@ public class SellerDTO {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String add2r) {
+		this.addr2 = add2r;
 	}
 	public String getTel() {
 		return tel;

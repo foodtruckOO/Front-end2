@@ -58,9 +58,10 @@ public class SellerDAO {
 				dto.setName(rs.getString(4));
 				dto.setTname(rs.getString(5));
 				dto.setAddr(rs.getString(6));
-				dto.setTel(rs.getString(7));
-				dto.setCorporate_no(rs.getString(rs.getString(8)));
-				dto.setRegidate(rs.getDate(9));
+				dto.setAddr2(rs.getString(7));
+				dto.setTel(rs.getString(8));
+				dto.setCorporate_no(rs.getString(rs.getString(9)));
+				dto.setRegidate(rs.getDate(10));
 				list.add(dto);
 			}
 		}
@@ -81,8 +82,9 @@ public class SellerDAO {
 			dto.setName(rs.getString(4));
 			dto.setTname(rs.getString(5));
 			dto.setAddr(rs.getString(6));
-			dto.setTel(rs.getString(7));
-			dto.setCorporate_no(rs.getString(8));
+			dto.setAddr2(rs.getString(7));
+			dto.setTel(rs.getString(8));
+			dto.setCorporate_no(rs.getString(9));
 		}		
 		return dto;
 	}
@@ -95,9 +97,10 @@ public class SellerDAO {
 			psmt.setString(1, dto.getPwd());
 			psmt.setString(2, dto.getTname());
 			psmt.setString(3, dto.getAddr());
-			psmt.setString(4, dto.getTel());
-			psmt.setString(5, dto.getCorporate_no());
-			psmt.setString(6, dto.getId());
+			psmt.setString(4, dto.getAddr2());
+			psmt.setString(5, dto.getTel());
+			psmt.setString(6, dto.getCorporate_no());
+			psmt.setString(7, dto.getId());
 			affected = psmt.executeUpdate();			
 		} 
 		catch (Exception e) {System.out.println("SellerDAO UPDATE문 ERROR");}

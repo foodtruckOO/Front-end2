@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -100,9 +102,10 @@
 			</div>
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
-	            <a data-toggle="tab" href="#tabs-5" class="list-group-item" id="a1">개인정보수정</a>
-	            <a data-toggle="tab" href="#tabs-6" class="list-group-item" id="a2">메뉴 등록</a>
-	            <a data-toggle="tab" href="#tabs-7" class="list-group-item" id="a3">이벤트 등록</a>
+	            <a href="<c:url value='/Info.page'/>" class="list-group-item" id="a1">개인정보수정</a>
+	            <a href="#tabs-6" class="list-group-item" id="a2">메뉴 등록</a>
+	            <a href="#tabs-7" class="list-group-item" id="a3">이벤트 등록</a>
+	            <a href="#tabs-7" class="list-group-item" id="a3">SNS 등록</a>
          	</div>
          	
 			<!-- sns -->
@@ -110,7 +113,6 @@
 				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 50px; height: auto;">
 				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 50px; height: auto;">
 				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 50px; height: auto;">
-			
 			</div>
 			
 			<!-- 광고 -->			
@@ -123,8 +125,6 @@
 			
 			<hr>
 			
-			
-			
 		</div>
 		
 		<!-- Mypage Right -->
@@ -134,51 +134,24 @@
 				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
 				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
 			</div>
+			
 			<!-- tap -->
+			<!-- 여기요 -->
 			<div style="width: 100%; height: 100%; ">
 				<!-- include -->
 				<ul class="nav nav-tabs" id="my_tab"style="background-color: #ffe9c1;">
-					<li class="active" id="acti"><a data-toggle="tab" href="#tabs-1"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></a></li>
-					<li><a data-toggle="tab" href="#tabs-2"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
-					<li><a data-toggle="tab" href="#tabs-3"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-					<li><a data-toggle="tab" href="#tabs-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
+					<!--  data-toggle="tab" -->
+					<li class="active" id="acti"><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
+					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
+					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
+					<li><a href="#tabs-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
 					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
 					</button>
 				</ul>
 
-				<div class="tab-content" style="padding: 1%; padding-left: 2%;">
-					<div id="tabs-1" class="tab-pane fade in active">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-1.jsp" />
-					</div>
-					<!-- wordcloud -->
-					<div id="tabs-2" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/wordcloud.jsp" />
-					</div>
-					<div id="tabs-3" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-3.jsp" />
-					</div>
-					<div id="tabs-4" class="tab-pane fade">
-						<br/><br/>
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-4.jsp" />
-					</div>
-					<!-- 정보 수정 -->
-					<div id="tabs-5" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-5.jsp" />
-					</div>
-					<!-- 메뉴 등록 -->
-					<div id="tabs-6" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-6.jsp" />
-					</div>
-					<!-- 이벤트 등록 -->
-					<div id="tabs-7" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-7.jsp" />
-					</div>
-					<!-- 설명회 신청 현황 -->
-					<div id="tabs-8" class="tab-pane fade">
-						<jsp:include page="/com.sajo.foodtruck/front-end/views/mypage/seller/tabs-8.jsp" />
-					</div>
-					
+				<div  class="tab-content" style="padding: 1%;">
+					<tiles:insertAttribute name="body"/>
 				</div>
 			</div>
 			
