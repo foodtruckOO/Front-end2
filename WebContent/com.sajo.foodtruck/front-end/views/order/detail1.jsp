@@ -12,8 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>주문하기</title>
 	<!-- style -->
-	<link rel="stylesheet" href="../../../resources/css/common5245.css?version=Tue%20Mar%2027%2013:19:35%20KST%202018" media="all" />
-	<link rel="stylesheet" href="../../../resources/css/contents5245.css?version=Tue%20Mar%2027%2013:19:35%20KST%202018" media="all" />
+	<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/order/css/common.css'/>" media="all" />
+	<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/order/css/contents.css'/>" media="all" />
 
 	<!-- Bootstrap core CSS -->    
     <link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
@@ -94,7 +94,7 @@
 				<div class="cont_inner">
 						
 					<div class="menu_view">
-						<div class="img"><img src="../../../lotteria/img/product/bg_bugerkdak_m.png" alt="" /></div>
+						<div class="img"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="" /></div>
 												
 						<div class="info menuinfo" idx="0">
 							<div>

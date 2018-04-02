@@ -4,7 +4,7 @@
   font-face
    ========================================================================== */
 
-@import url('font.css');
+/* @import url('font.css'); */
 
 /* ==========================================================================
    Base styles & Helper
@@ -106,8 +106,8 @@ span.input_file .btn_file{position:relative;}
 .inp_spinner{position:relative;display:inline-block;;padding:0 45px;}
 .inp_spinner input{display:inline-block;width:60px;text-align:center;line-height:40px;height:40px;font-size:1.5em;color:#c70202;border:0;padding:0;font-weight:bold;vertical-align:top;}
 .inp_spinner .btn{position:absolute;top:0;width:36px;height:36px;border:2px solid #c8c8c8;}
-.inp_spinner .btn.minus{left:0;background:url(../images/common/spinner_minus.gif) no-repeat center center;}
-.inp_spinner .btn.plus{right:0;background:url(../images/common/spinner_plus.gif) no-repeat center center;}
+.inp_spinner .btn.minus{left:0;background:url(../../../images/spinner_minus.gif) no-repeat center center;}
+.inp_spinner .btn.plus{right:0;background:url(../../../images/spinner_plus.gif) no-repeat center center;}
 
 /* datepicker */
 .datepicker{width:140px;}
