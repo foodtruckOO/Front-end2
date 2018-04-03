@@ -71,10 +71,7 @@ public class FoodtruckController {
 	@RequestMapping("/area.foodtruck")
 	public String areaList(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 		
-		
-		
 		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
-		
 		
 		String area = req.getParameter("area");
 		String sort = req.getParameter("sort");
