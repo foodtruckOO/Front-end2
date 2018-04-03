@@ -66,7 +66,7 @@ public class mapDAO {
 	public List<mapDTO> selectList(Map<String,Object> map){
 		
 		List<mapDTO> list = new Vector<mapDTO>();
-		String sql="SELECT TNAME,ADDR,TEL FROM SELLER";
+		String sql="SELECT S_NO,TNAME,ADDR,TEL FROM SELLER";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -74,10 +74,11 @@ public class mapDAO {
 	
 			while(rs.next()) {
 				mapDTO dto = new mapDTO();
-				dto.setTname(rs.getString(1));
-				dto.setAddr(rs.getString(2));
-				dto.setTel(rs.getString(3));
-			
+				dto.setS_no(rs.getString(1));
+				dto.setTname(rs.getString(2));
+				dto.setAddr(rs.getString(3));
+				dto.setTel(rs.getString(4));
+				
 				list.add(dto);
 			}////////////while
 		}///try

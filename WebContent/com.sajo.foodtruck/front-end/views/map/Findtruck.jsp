@@ -138,7 +138,7 @@
 				for(mapDTO record:list){
 			%> 
 				<th><%=num2%></th>
-				<th><%=record.getTname() %></th>
+				<th><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>"><%=record.getTname()%></a></th>
 				<th><%=record.getAddr()%></th>
 				<th>대표메뉴추가(0원)</th>
 				<th><%=record.getTel() %></th>

@@ -19,6 +19,7 @@ public class FoodController {
 	String s_no = req.getParameter("s_no");
 	FoodDAO dao = new FoodDAO(req.getServletContext());
 	List list = dao.selectList(s_no);
+	dao.close();
 	model.addAttribute("food",list);
 	return "/com.sajo.foodtruck/front-end/views/order/order.jsp";
 	}

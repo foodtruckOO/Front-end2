@@ -14,14 +14,24 @@ public class mapDTO {
 	private String addr;
 	private String tname;
 	private String tel;
+	private String s_no;
 	
+	public String getS_no() {
+		return s_no;
+	}
+
+	public void setS_no(String s_no) {
+		this.s_no = s_no;
+	}
+
 	public mapDTO() {}
 
-	public mapDTO(String addr, String tname, String tel) {
+	public mapDTO(String addr, String tname, String tel, String s_no) {
 		super();
 		this.addr = addr;
 		this.tname = tname;
 		this.tel = tel;
+		this.s_no = s_no;
 	}
 
 	public String getAddr() {
