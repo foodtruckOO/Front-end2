@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -118,28 +119,24 @@
 						<div class="menu_wrap">
 							<div class="swiper-container">
 								<ul class="menu_list swiper-wrapper" id="test">
-									
-									<!-- <script type="text/javascript">alert(3400.0000);</script>  -->
+											
+											<c:forEach items="${food}" var="dto">
+											<c:if test="${dto.t_no !=7}">
 											<li class="menuinfo swiper-slide">
-										
+											
 											<div>
 												<a href="<c:url value='/com.sajo.foodtruck/front-end/views/order/detail1.jsp'/>" class="img"> 
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" width="" height=""/>
+														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.id}/food/${dto.picture}'/>" data-animation="zoomIn" width="" height=""/>
 												</a> 
-												
-												<!-- 담기 시작하면 .btn_plus에 on클래스 부여, 담긴 숫자는 strong태그안으로 -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">담기</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">담기</span></a></p> -->
-												
-													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
-														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700원</strong></p>
+													<p class="menu_name" title="${dto.fName}">${dto.fName}</p>
+												<p class="menu_price"><strong><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</strong></p>
 												
 										<div class="opt">
 													 
 											<div class="sel_list">
 														<a href="javascript:void(0)">
-															<strong>3,700원</strong>
+															<span>가격</span>
+															<strong><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
@@ -155,165 +152,8 @@
 												</div>
 											</div>
 										</li>
-										
-										<li class="menuinfo swiper-slide">
-										
-											<div>
-												<a href="homeservice/detail/detail1.html" class="img"> 
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" />
-												</a> 
-												
-												
-												
-													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
-														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700원</strong></p>
-												
-										<div class="opt">
-													 
-											<div class="sel_list">
-														<ul data-value='composition_'>
-													<!-- 타임세일 예외 처리 추가 20171025 이진우 -->
-																<li class="on">
-															
-																	<a href="javascript:void(0)">
-																		<span>Single</span>
-																		<strong>3,700원</strong>
-																	</a>
-																
-																</li>
-																<li>
-																	<a href="javascript:void(0)">
-																		<span>Set</span>
-																		<strong>6,000원</strong>
-																	</a>
-																</li>
-														</ul>
-														<a href="javascript:void(0)">
-															<span>Single</span>
-															<strong>3,700원</strong>
-														</a>
-											</div>													
-													<p class="btn_area">
-														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>Add to Cart</span>
-															<!-- <span>상품담기</span> -->
-														</a>
-														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
-															<span>Direct order</span>
-															<!-- <span>바로주문</span> -->
-														</a>
-													</p>
-												</div>
-											</div>
-										</li>
-										
-										<li class="menuinfo swiper-slide">
-										
-											<div>
-												<a href="homeservice/detail/detail1.html" class="img"> 
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" />
-												</a> 
-												
-												<!-- 담기 시작하면 .btn_plus에 on클래스 부여, 담긴 숫자는 strong태그안으로 -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">담기</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">담기</span></a></p> -->
-												
-													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
-														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700원</strong></p>
-												
-										<div class="opt">
-													 
-											<div class="sel_list">
-														<ul data-value='composition_'>
-													<!-- 타임세일 예외 처리 추가 20171025 이진우 -->
-																<li class="on">
-															
-																	<a href="javascript:void(0)">
-																		<span>Single</span>
-																		<strong>3,700원</strong>
-																	</a>
-																
-																</li>
-																<li>
-																	<a href="javascript:void(0)">
-																		<span>Set</span>
-																		<strong>6,000원</strong>
-																	</a>
-																</li>
-														</ul>
-														<a href="javascript:void(0)">
-															<span>Single</span>
-															<strong>3,700원</strong>
-														</a>
-											</div>													
-													<p class="btn_area">
-														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>상품 담기</span>
-															<!-- <span>상품담기</span> -->
-														</a>
-														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
-															<span>Direct order</span>
-															<!-- <span>바로주문</span> -->
-														</a>
-													</p>
-												</div>
-											</div>
-										</li>
-										<li class="menuinfo swiper-slide">
-										
-											<div>
-												<a href="homeservice/detail/detail1.html" class="img"> 
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="BIG CHICKEN BUR" data-animation="zoomIn" />
-												</a> 
-												
-												<!-- 담기 시작하면 .btn_plus에 on클래스 부여, 담긴 숫자는 strong태그안으로 -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">담기</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">담기</span></a></p> -->
-												
-													<p class="menu_name" title="BIG CHICKEN BUR">BIG CHICKEN BUR</p>
-														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<p class="menu_price"><strong>3,700원</strong></p>
-												
-										<div class="opt">
-													 
-											<div class="sel_list">
-														<ul data-value='composition_'>
-													<!-- 타임세일 예외 처리 추가 20171025 이진우 -->
-																<li class="on">
-															
-																	<a href="javascript:void(0)">
-																		<span>Single</span>
-																		<strong>3,700원</strong>
-																	</a>
-																
-																</li>
-																<li>
-																	<a href="javascript:void(0)">
-																		<span>Set</span>
-																		<strong>6,000원</strong>
-																	</a>
-																</li>
-														</ul>
-														<a href="javascript:void(0)">
-															<span>Single</span>
-															<strong>3,700원</strong>
-														</a>
-											</div>													
-													<p class="btn_area">
-														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>Add to Cart</span>
-															<!-- <span>상품담기</span> -->
-														</a>
-														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
-															<span>Direct order</span>
-															<!-- <span>바로주문</span> -->
-														</a>
-													</p>
-												</div>
-											</div>
-										</li>
+									</c:if>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -326,66 +166,41 @@
 								<ul class="menu_list swiper-wrapper" id="test">
 									
 									<!-- <script type="text/javascript">alert(0.0000);</script>  -->
-										<li class="menuinfo swiper-slide">
 										
+								<c:forEach items="${food}" var="dto2">
+									<c:if test="${dto2.t_no eq 7}">
+										<li class="menuinfo swiper-slide">
+											
 											<div>
-												<a href="homeservice/detail/242902.html" class="img"> 
-													
-													
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="ORANGE-H/S" data-animation="zoomIn" />
-													
-													
+												<a href="<c:url value='/com.sajo.foodtruck/front-end/views/order/detail1.jsp'/>" class="img"> 
+														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto2.id}/food/${dto2.picture}'/>" data-animation="zoomIn" width="" height=""/>
 												</a> 
+													<p class="menu_name" title="${dto2.fName}">${dto2.fName}</p>
+												<p class="menu_price"><strong><fmt:formatNumber value="${dto2.price}" pattern="#,###"/>원</strong></p>
 												
-												<!-- 담기 시작하면 .btn_plus에 on클래스 부여, 담긴 숫자는 strong태그안으로 -->
-												<!-- <p class="btn_plus on"><a href="#"><strong>1</strong><span class="blind">담기</span></a></p> -->
-												<!-- <p class="btn_plus"><a href="#"><strong></strong><span class="blind">담기</span></a></p> -->
-												
-												
-												
-													<p class="menu_name" title="ORANGE-H/S">ORANGE-H/S</p>
-												
-
-												
-													
-														
-														
-														
-														<!-- <script type="text/javascript">alert(0.0000);</script> -->
-												<!-- 타임세일 예외 처리 추가 20171025 이진우 -->
-												<p class="menu_price"><strong>2,500원</strong></p>
 										<div class="opt">
+													 
 											<div class="sel_list">
-														<ul data-value='composition_'>
-													<!-- 타임세일 예외 처리 추가 20171025 이진우 -->
-																<li class="on">
-															
-																	<a href="javascript:void(0)">
-																		<span>Single</span>
-																		<strong>2,500원</strong>
-																	</a>
-																
-																</li>
-														</ul>
-													<!-- 타임세일 예외 처리 추가 20171025 이진우 -->	
 														<a href="javascript:void(0)">
-															<span>Single</span>
-															<strong>2,500원</strong>
+															<span>가격</span>
+															<strong><fmt:formatNumber value="${dto2.price}" pattern="#,###"/>원</strong>
 														</a>
 											</div>													
 													<p class="btn_area">
 														<a href="javascript:void(0)" class="btn btn_cart add_cart">
-															<span>Add to Cart</span>
+															<span>상품 담기</span>
 															<!-- <span>상품담기</span> -->
 														</a>
 														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
-															<span>Direct order</span>
+															<span>바로 주문</span>
 															<!-- <span>바로주문</span> -->
 														</a>
 													</p>
 												</div>
 											</div>
 										</li>
+										</c:if>
+										</c:forEach>
 								</ul>
 							</div>
 						</div>

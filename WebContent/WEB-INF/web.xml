@@ -85,6 +85,19 @@
 		<url-pattern>*.order</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>FoodController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/config/food.xml</param-value>
+  	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FoodController</servlet-name>
+		<url-pattern>*.food</url-pattern>
+	</servlet-mapping>
+	
 
 	<!-- 회원 컨트롤러 -->
 	<servlet>
