@@ -16,7 +16,8 @@
 	<!-- style -->
 	<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/order/css/common.css'/>" media="all" />
 	<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/order/css/contents.css'/>" media="all" />
-	
+	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<link href="<c:url value='/com.sajo.foodtruck/front-end/views/order/css/mdtimepicker.css'/>" rel="stylesheet" type="text/css">
 	 <!-- Bootstrap core CSS -->    
     <link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
     <!-- Bootstrap theme -->
@@ -34,19 +35,30 @@
 	<script src="/resources/js/ui_script.js?version=20170720"></script>
 	<script src="/resources/js/ui.js?version=20170720"></script> -->
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<script>	
-		$(function(){
-			var currentPosition = parseInt($("#sidebox").css("top"));
-			$(window).scroll(function() {
-				var position = $(window).scrollTop(); 
-				$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="<c:url value='/com.sajo.foodtruck/front-end/views/order/mdtimepicker.js'/>"></script>
+	
+	
+	<script>
+	var $j = jQuery.noConflict();
+		$j(function(){
+			var currentPosition = parseInt($j("#sidebox").css("top"));
+			$j(window).scroll(function() {
+				var position = $j(window).scrollTop(); 
+				$j("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
 			});
 			
 		});
 	</script>
+	<script>
+	$j(document).ready(function(){
+	    $j('#timepicker').mdtimepicker(); //Initializes the time picker
+	  });
+	</script>
 	
+	
+
 <style>
 @media screen and (min-width: 1501px) {
 	body  {
@@ -104,78 +116,14 @@
 						<div class="left">
 							<h3 class="tit">주문정보 입력</h3>
 							<table class="table">
-								<caption>결제정보 입력</caption>
 								<tbody>
 									<tr class="order_store">
-											<th scope="row">배달시간</th>
+											<th scope="row">주문시간</th>
 											<td>
-												<div class="inp_wid wid2">
-													<label class="radio">
-														<input type="radio" name="order" id="instantly" checked="checked">
-														<span class="lbl">바로주문</span>
-													</label>
-													<label class="radio">
-														
-															
-																<input type="radio" name="order" id="toDay" />
-															
-															
-														
-														<span class="lbl">당일예약</span>
-														
-													</label>
+												<div class="inp_wid wid2" style="width: 200px">
+														<input type="text" id="timepicker"/>
 												</div>
-											
-											
-											
-											<div class="inp_time hide">
-												<select name="slt_reserv_hour" id="slt_reserv_hour" title="예약픽업 시간 중 시 선택">
-												
-													<option value="">선택</option>
-													
-														
-															
-																<option value="13">13시</option>
-															
-																<option value="14">14시</option>
-															
-																<option value="15">15시</option>
-															
-																<option value="16">16시</option>
-															
-																<option value="17">17시</option>
-															
-																<option value="18">18시</option>
-															
-																<option value="19">19시</option>
-															
-																<option value="20">20시</option>
-															
-																<option value="21">21시</option>
-															
-																<option value="22">22시</option>
-															
-																<option value="23">23시</option>
-															
-														
-													
-												
-												
-												</select>
-												<select name="slt_reserv_minute" id="slt_reserv_minute" title="예약픽업 시간 중 분 선택">
-														
-															
-																
-																	<option value="00">00분</option>
-																	<option value="30">30분</option>
-																
-																
-															
-														
-												</select>
-											</div>
-											<!-- <p class="takeout_time">주문 완료 후 20분 이후부터 픽업 가능합니다.</p> -->
-										</td>
+											</td>
 									</tr>
 									
 									<tr>
