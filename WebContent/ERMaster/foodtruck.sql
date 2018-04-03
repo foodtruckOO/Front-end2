@@ -170,7 +170,8 @@ CREATE TABLE ORDERFORM
 	O_NO number NOT NULL,
 	G_NO number NOT NULL,
 	F_NO number NOT NULL,
-	NUM number DEFAULT 1 NOT NULL
+	NUM number DEFAULT 1 NOT NULL,
+	timeOfReceipt varchar2(10) NOT NULL
 );
 
 
