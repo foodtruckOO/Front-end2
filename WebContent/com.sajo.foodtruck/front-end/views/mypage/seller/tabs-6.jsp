@@ -11,7 +11,6 @@
 		type="text/css" media="all" />
 	<div>
 		<input id="thefiles" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple style="display: none;">
-		<input id="demo" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple>
 	</div>
 	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.ui.widget.js'/>"></script>
