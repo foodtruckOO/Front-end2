@@ -191,91 +191,16 @@ public class ComstomerDAO {
 	}
 		
 	}///////////////
-	/*
-	//전체 레코드 수 얻기용]
-	public boardDTO selectOne(String key) {
-		boardDTO dto=null;
-		String sql="SELECT * FROM EVENT WHERE eno=?";
+	//다운로드 수 업데이트용]
+	public void updateDownCount(String key) {
+		
+		String sql="UPDATE dataroom SET downcount=downcount+1 WHERE cb_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-				dto = new boardDTO();
-				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
-				dto.setS_date(rs.getDate(7));
-				dto.setE_date(rs.getDate(8));
-				dto.setPostdate(rs.getDate(9));
-				dto.setBoardtype(rs.getString(10));
-			}
-		} catch (Exception e) {e.printStackTrace();}
-		close();
-		return dto;
-	}/////////////////////////////////////////
-	public List<boardDTO> selectAll() {
-
-		List<boardDTO> list = new Vector<boardDTO>();
-		//페이징 미 적용
-		String sql="SELECT * from EVENT ORDER BY s_date";
-		try {
-			psmt = conn.prepareStatement(sql);
-			
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				boardDTO dto = new boardDTO();
-				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
-				dto.setS_date(rs.getDate(7));
-				dto.setE_date(rs.getDate(8));
-				dto.setPostdate(rs.getDate(9));
-				list.add(dto);
-			}////////////while
-		}///try
-		catch(Exception e) {e.printStackTrace();}
-		close();
-		return list;
-	}
-	public List selectLList() {
-		List<boardDTO> list = new Vector<boardDTO>();
-		//페이징 미 적용
-		String sql="SELECT * from EVENT where boardtype ='2' ORDER BY s_date";
-			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
-		
-		//페이징 적용-구간쿼리로 변경
-		//검색용 쿼리 추가
-		
-		try {
-			psmt = conn.prepareStatement(sql);
-			
-			rs = psmt.executeQuery();
-			
-			
-			while(rs.next()) {
-				boardDTO dto = new boardDTO();
-				dto.setEno(rs.getString(1));
-				dto.setTitle(rs.getString(3));
-				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
-				dto.setS_date(rs.getDate(7));
-				dto.setE_date(rs.getDate(8));
-				dto.setPostdate(rs.getDate(9));
-				list.add(dto);
-			}////////////while
-		}///try
-		catch(Exception e) {e.printStackTrace();}
-		close();
-		return list;
+			psmt.executeUpdate();
+		} catch (Exception e) {e.printStackTrace();}	
+	}//////////////////////
 	
-	}
-   */
 	
-}
+}///////////////////////

@@ -67,10 +67,8 @@
 									</tr>
 									<tr bgcolor="white">
 										<td align="center">내용</td>
-										<td><textarea rows="10" style="width: 98%" name="content" ></textarea>
-										
-										</td>
-
+										<!-- <td><textarea rows="10" style="width: 98%" name="content" ></textarea></td> -->
+                                        <td><jsp:include page="/com.sajo.foodtruck/front-end/views/board/smarteditor2-master/workspace/SmartEditor2.jsp"></jsp:include></td>
 									</tr>
 									<tr align="center">
 										<td>

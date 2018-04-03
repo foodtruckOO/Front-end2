@@ -29,6 +29,7 @@ import model.PBKDF2;
 
 
 
+
 //세션처리용]
 
 @Controller
@@ -218,29 +219,20 @@ public class boardController {
 		  return "/Pizza.board";
 	  }
 
-	/*
-	@RequestMapping("/Eventview.event")
-	public String View(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
-		String key = req.getParameter("eno");
-		boardDAO dao = new boardDAO(req.getServletContext());
-		boardDTO dto = dao.selectOne(key);
-		dao.close();
-		model.addAttribute("dto",dto);
-		if(Integer.parseInt(dto.getBoardtype())==1) {
-		return  "/com.sajo.foodtruck/front-end/views/event/home_event/Home_event_detail.jsp";
-		}
-		else
-		return  "/com.sajo.foodtruck/front-end/views/event/local_event/Local_event_detail.jsp";
-	}
-	@RequestMapping("/Allevent.event")
-	public String Allevent(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
-
-
-		boardDAO dao = new boardDAO(req.getServletContext());
-		List list = dao.selectAll();
-		dao.close();
-		model.addAttribute("events",list);
-		return "/com.sajo.foodtruck/front-end/views/main.jsp";
-	}
-	 */
-}
+	  //커스텀 파일 업로드
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			//파라미터 받기]
+			String filename = req.getParameter("filename");
+			System.out.println("filename="+filename);
+			String key      = req.getParameter("key");
+			//다운로드 관련 모델 호출]
+			//1.파일 다운로드 로직 호출]
+			FileUtils.download(req, resp, "/Upload", filename);
+			//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
+			ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+			dao.updateDownCount(key);
+			dao.close();
+			
+		}//////////////////////////
+	
+}///////////////////////
