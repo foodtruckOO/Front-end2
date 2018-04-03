@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 //세션처리용]
 
 @Controller
-public class eventController {
+public class EventController {
 	
 	//목록용]
 	@RequestMapping("/Homeevent.event")
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
-		eventDAO dao = new eventDAO(req.getServletContext());
+		EventDAO dao = new EventDAO(req.getServletContext());
 		List list = dao.selectHList();
 		dao.close();
 		model.addAttribute("event",list);
@@ -37,7 +37,7 @@ public class eventController {
 	@RequestMapping("/Localevent.event")
 	public String LocalList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
-		eventDAO dao = new eventDAO(req.getServletContext());
+		EventDAO dao = new EventDAO(req.getServletContext());
 		List list = dao.selectLList();
 		dao.close();
 		model.addAttribute("event",list);
@@ -46,8 +46,8 @@ public class eventController {
 	@RequestMapping("/Eventview.event")
 	public String View(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
 		String key = req.getParameter("eno");
-		eventDAO dao = new eventDAO(req.getServletContext());
-		eventDTO dto = dao.selectOne(key);
+		EventDAO dao = new EventDAO(req.getServletContext());
+		EventDTO dto = dao.selectOne(key);
 		dao.close();
 		model.addAttribute("dto",dto);
 		if(Integer.parseInt(dto.getBoardtype())==1) {
@@ -60,7 +60,7 @@ public class eventController {
 	public String Allevent(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		
-		eventDAO dao = new eventDAO(req.getServletContext());
+		EventDAO dao = new EventDAO(req.getServletContext());
 		List list = dao.selectAll();
 		dao.close();
 		model.addAttribute("events",list);

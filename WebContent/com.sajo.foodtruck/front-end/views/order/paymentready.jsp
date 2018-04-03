@@ -35,8 +35,8 @@
 	<script src="/resources/js/ui_script.js?version=20170720"></script>
 	<script src="/resources/js/ui.js?version=20170720"></script> -->
 	
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 	<script src="<c:url value='/com.sajo.foodtruck/front-end/views/order/mdtimepicker.js'/>"></script>
 	
 	

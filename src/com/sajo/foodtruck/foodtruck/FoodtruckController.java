@@ -27,13 +27,13 @@ import com.sajo.foodtruck.review.ReviewDTO;
 //세션처리용]
 
 @Controller
-public class foodtruckController {
+public class FoodtruckController {
 	
 	//목록용]
 	@RequestMapping("/list.foodtruck")
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
-		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		List list = dao.selectList();
 		model.addAttribute("foodtruck",list);
 	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";
@@ -43,9 +43,9 @@ public class foodtruckController {
 	@RequestMapping("/detail1.foodtruck")
 	public String detailOne(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
-		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
-		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
+		List<FoodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
 		Map map2 = dao2.count(req.getParameter("s_no"));
 		String count = map2.get("count").toString();
@@ -73,7 +73,7 @@ public class foodtruckController {
 		
 		
 		
-		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		
 		
 		String area = req.getParameter("area");
@@ -92,7 +92,7 @@ public class foodtruckController {
 	
 		req.setCharacterEncoding("UTF-8");
 		
-		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		ReviewDAO dao2  = new ReviewDAO(req.getServletContext());
 		
 		
@@ -108,7 +108,7 @@ public class foodtruckController {
 		model.addAttribute("count",count);
 		model.addAttribute("starsum",starsum);
 		
-		List<foodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
+		List<FoodtruckDTO> list = dao.selectImg(req.getParameter("s_no"));
 		List<ReviewDTO> list2 = dao2.selectList(req.getParameter("s_no"));
 		
 		
@@ -130,7 +130,7 @@ public class foodtruckController {
 	@RequestMapping("/rank.foodtruck")
 	public String rank(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 		
-		foodtruckDAO dao = new foodtruckDAO(req.getServletContext());
+		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		String area = req.getParameter("area");
 		List list = dao.selectRank(area);
 		

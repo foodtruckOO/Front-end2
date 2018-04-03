@@ -8,9 +8,9 @@ import java.sql.Date;
  * 
  * 
  */
-public class eventDTO {
+public class EventDTO {
 	
-	public eventDTO() {
+	public EventDTO() {
 	}
 	//속성 혹은 멤버변수]
 	private String eno;
@@ -20,7 +20,7 @@ public class eventDTO {
 	private String contentfile;
 	private Date s_date;
 	private Date e_date;
-	public eventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
+	public EventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
 			Date e_date, Date postdate, String boardtype) {
 		super();
 		this.eno = eno;

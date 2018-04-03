@@ -8,7 +8,7 @@ import java.sql.Date;
  * 
  * 
  */
-public class foodtruckDTO {
+public class FoodtruckDTO {
 	
 	private String s_no;
 	private String id;
@@ -22,10 +22,10 @@ public class foodtruckDTO {
 	private Date regidate;
 	private String intro;
 	
-	public foodtruckDTO() {}
+	public FoodtruckDTO() {}
 	
 	
-	public foodtruckDTO(String s_no, String id, String pwd, String name, String tname, String addr, String tel,
+	public FoodtruckDTO(String s_no, String id, String pwd, String name, String tname, String addr, String tel,
 			String coprorate_no, String img, String intro, Date regidate) {
 		this.s_no = s_no;
 		this.id = id;

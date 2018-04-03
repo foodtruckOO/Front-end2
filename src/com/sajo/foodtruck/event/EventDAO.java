@@ -18,14 +18,14 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 
-public class eventDAO {
+public class EventDAO {
 	//멤버변수]
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
 	
 	//생성자]
-	public eventDAO(ServletContext context) {
+	public EventDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
 		
 		/*try {
@@ -71,8 +71,8 @@ public class eventDAO {
 	 * 
 	 * 
 	 */
-	public List<eventDTO> selectHList(){
-		List<eventDTO> list = new Vector<eventDTO>();
+	public List<EventDTO> selectHList(){
+		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
 		String sql="SELECT * from EVENT where boardtype ='1' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
@@ -87,7 +87,7 @@ public class eventDAO {
 			
 			
 			while(rs.next()) {
-				eventDTO dto = new eventDTO();
+				EventDTO dto = new EventDTO();
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
@@ -104,15 +104,15 @@ public class eventDAO {
 		return list;
 	}//////////////////////////////
 	//전체 레코드 수 얻기용]
-	public eventDTO selectOne(String key) {
-		eventDTO dto=null;
+	public EventDTO selectOne(String key) {
+		EventDTO dto=null;
 		String sql="SELECT * FROM EVENT WHERE eno=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				dto = new eventDTO();
+				dto = new EventDTO();
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
@@ -127,9 +127,9 @@ public class eventDAO {
 		close();
 		return dto;
 	}/////////////////////////////////////////
-	public List<eventDTO> selectAll() {
+	public List<EventDTO> selectAll() {
 
-		List<eventDTO> list = new Vector<eventDTO>();
+		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
 		String sql="SELECT * from EVENT ORDER BY s_date";
 		try {
@@ -138,7 +138,7 @@ public class eventDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				eventDTO dto = new eventDTO();
+				EventDTO dto = new EventDTO();
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
@@ -155,7 +155,7 @@ public class eventDAO {
 		return list;
 	}
 	public List selectLList() {
-		List<eventDTO> list = new Vector<eventDTO>();
+		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
 		String sql="SELECT * from EVENT where boardtype ='2' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
@@ -170,7 +170,7 @@ public class eventDAO {
 			
 			
 			while(rs.next()) {
-				eventDTO dto = new eventDTO();
+				EventDTO dto = new EventDTO();
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));

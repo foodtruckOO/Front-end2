@@ -23,14 +23,14 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 
-public class foodtruckDAO {
+public class FoodtruckDAO {
 	//멤버변수]
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
 	
 	//생성자]
-	public foodtruckDAO(ServletContext context) {
+	public FoodtruckDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
 		
 	/*	try {
@@ -76,8 +76,8 @@ public class foodtruckDAO {
 	 * 
 	 * 
 	 */
-	public List<foodtruckDTO> selectList(){
-		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+	public List<FoodtruckDTO> selectList(){
+		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		//페이징 미 적용
 		String sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";
 		
@@ -90,13 +90,13 @@ public class foodtruckDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-			foodtruckDTO dto = new foodtruckDTO();
+			FoodtruckDTO dto = new FoodtruckDTO();
 			dto.setS_no(rs.getString(1));
 			dto.setId(rs.getString(2));
 			dto.setTname(rs.getString(5));
-			dto.setAddr(rs.getString(6));
-			dto.setRegidate(rs.getDate(9));
-			dto.setImg(rs.getString(10));
+			dto.setAddr(rs.getString(6)+" "+rs.getString(7));
+			dto.setRegidate(rs.getDate(10));
+			dto.setImg(rs.getString(11));
 			list.add(dto);
 			}////////////while
 		}///try
@@ -105,9 +105,9 @@ public class foodtruckDAO {
 	}//////////////////////////////
 	
 	
-	public List<foodtruckDTO> selectImg(String key) {
+	public List<FoodtruckDTO> selectImg(String key) {
 		
-		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		String sql = "SELECT S.*, t.MAIN_IMG,t.INTRO from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where s.s_no =? " ;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -115,12 +115,12 @@ public class foodtruckDAO {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				foodtruckDTO dto = new foodtruckDTO();
+				FoodtruckDTO dto = new FoodtruckDTO();
 				dto.setId(rs.getString(2));
 				dto.setTname(rs.getString(5));
-				dto.setImg(rs.getString(10));
-				dto.setIntro(rs.getString(11));
-				dto.setAddr(rs.getString(6));
+				dto.setAddr(rs.getString(6)+" "+rs.getString(7));
+				dto.setImg(rs.getString(11));
+				dto.setIntro(rs.getString(12));
 				list.add(dto);
 			}
 			
@@ -135,10 +135,10 @@ public class foodtruckDAO {
 			rs = psmt.executeQuery();
 		
 			while(rs.next()) {
-				foodtruckDTO dto = new foodtruckDTO();
+				FoodtruckDTO dto = new FoodtruckDTO();
 				dto.setId(rs.getString(2));
 				dto.setTname(rs.getString(5));
-				dto.setImg(rs.getString(10));
+				dto.setImg(rs.getString(11));
 				list.add(dto);
 			}
 		
@@ -147,7 +147,7 @@ public class foodtruckDAO {
 		return list;
 	}
 	
-	public List<foodtruckDTO> selectArea(String area,String sort) {
+	public List<FoodtruckDTO> selectArea(String area,String sort) {
 		String sql = null ; 
 		switch(area) {
 			case "all" : area = "all";
@@ -168,7 +168,7 @@ public class foodtruckDAO {
 			
 		}
 		
-		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		if(area.equals("all")) {
 			if(sort.equals("new")) {
 			sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no order by s.regidate desc";	
@@ -202,13 +202,13 @@ public class foodtruckDAO {
 			rs = psmt.executeQuery();
 		
 			while(rs.next()) {
-				foodtruckDTO dto = new foodtruckDTO();
+				FoodtruckDTO dto = new FoodtruckDTO();
 				dto.setS_no(rs.getString(1));
 				dto.setId(rs.getString(2));
 				dto.setTname(rs.getString(5));
-				dto.setAddr(rs.getString(6));
-				dto.setRegidate(rs.getDate(9));
-				dto.setImg(rs.getString(10));
+				dto.setAddr(rs.getString(6)+" "+rs.getString(7));
+				dto.setRegidate(rs.getDate(10));
+				dto.setImg(rs.getString(11));
 				list.add(dto);
 				
 			}
@@ -220,20 +220,20 @@ public class foodtruckDAO {
 	}
 	public List selectRank(String area) {
 		
-		List<foodtruckDTO> list = new Vector<foodtruckDTO>();
+		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		String sql="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no order by num desc";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-			foodtruckDTO dto = new foodtruckDTO();
+			FoodtruckDTO dto = new FoodtruckDTO();
 			dto.setS_no(rs.getString(1));
 			dto.setId(rs.getString(2));
 			dto.setTname(rs.getString(5));
-			dto.setAddr(rs.getString(6));
-			dto.setRegidate(rs.getDate(9));
-			dto.setImg(rs.getString(10));
+			dto.setAddr(rs.getString(6)+" "+rs.getString(7));
+			dto.setRegidate(rs.getDate(10));
+			dto.setImg(rs.getString(11));
 			list.add(dto);
 			}////////////while
 		}///try

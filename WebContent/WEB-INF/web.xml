@@ -70,6 +70,21 @@
 		<servlet-name>InfoController</servlet-name>
 		<url-pattern>*.info</url-pattern>
 	</servlet-mapping>
+	
+	<!-- order 컨트롤러 -->
+	<servlet>
+		<servlet-name>OrderController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/config/order.xml</param-value>
+  	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderController</servlet-name>
+		<url-pattern>*.order</url-pattern>
+	</servlet-mapping>
+	
 
 	<!-- 회원 컨트롤러 -->
 	<servlet>
