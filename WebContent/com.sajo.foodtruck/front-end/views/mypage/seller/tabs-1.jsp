@@ -5,7 +5,6 @@
 	<h2>${seller.tname}</h2>
 	<p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&emsp;${seller.addr} ${seller.addr2 }</p>
 	<p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&emsp;${seller.tel}</p>
-	
 </div>
 <!-- map -->					
 <div id="map" style="width:39%;height:200px;"></div>
@@ -29,3 +28,5 @@
 	// 마커가 지도 위에 표시되도록 설정합니다
 	marker.setMap(map);
 </script>
+
+${result}

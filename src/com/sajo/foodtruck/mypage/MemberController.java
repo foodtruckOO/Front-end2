@@ -44,11 +44,20 @@ public class MemberController {
 	
 	//회원정보 수정
 	@RequestMapping("/Tabs1_OK.page")
-	public String Tabs1_OK(Model model, HttpServletRequest req) throws Exception{
+	public String Tabs1_OK(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		String result = "<script>\r\n" + 
+				"  $( function() {\r\n" + 
+				"    $( \"#dialog\" ).dialog();\r\n" + 
+				"  } );\r\n" + 
+				"  </script>"+ 
+				"<div id=\"dialog\" title=\"Basic dialog\">\r\n" + 
+				"<img src=\"<c:url value='/com.sajo.foodtruck/front-end/images/checkmark.gif'/>\" alt=\"이미지 없다\" \r\n" + 
+				"			style=\"width:50px; height: 50px; margin:1%;"+
+				"  <p>"+dao.update(dto)+"</p>\r\n" + 
+				"</div>";
 		dao.close();
-		model.addAttribute("seller", dto);
+		model.addAttribute("result", result);
 		return "tabs-1.tiles";
 	}
 	

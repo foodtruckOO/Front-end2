@@ -89,10 +89,10 @@ public class SellerDAO {
 		return dto;
 	}
 	
-	public int update(SellerDTO dto) throws SQLException{
-		int affected=0;
+	public String update(SellerDTO dto) throws SQLException{
+		String result="";
 		try {
-			String sql="UPDATE seller SET pwd=?, tname=?, addr=?, tel=?, corporate_no=? WHERE id=?";
+			String sql="UPDATE seller SET pwd=?, tname=?, addr=?, addr2=?, tel=?, corporate_no=? WHERE id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPwd());
 			psmt.setString(2, dto.getTname());
@@ -100,12 +100,15 @@ public class SellerDAO {
 			psmt.setString(4, dto.getAddr2());
 			psmt.setString(5, dto.getTel());
 			psmt.setString(6, dto.getCorporate_no());
+			
 			psmt.setString(7, dto.getId());
-			affected = psmt.executeUpdate();			
+						
+			result = psmt.executeUpdate()==0?"★★ 회원정보 수정 실패 ★★":"★★ 회원정보 수정 성공 ★★";
+			System.out.println(result);
 		} 
 		catch (Exception e) {System.out.println("SellerDAO UPDATE문 ERROR");}
 		finally {close();}
-		return affected;
+		return result;
 	}
 	
 }

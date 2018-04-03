@@ -124,6 +124,7 @@ CREATE TABLE FOOD
 	S_NO number NOT NULL,
 	T_NO number NOT NULL,
 	FNAME nvarchar2(20) NOT NULL,
+	PICTURE varchar2(200),
 	PRICE number(7) NOT NULL,
 	PRIMARY KEY (F_NO)
 );
@@ -145,7 +146,6 @@ CREATE TABLE FOODTYPE
 (
 	T_NO number NOT NULL,
 	TYPE nvarchar2(20) NOT NULL,
-	PICTURE varchar2(200),
 	PRIMARY KEY (T_NO)
 );
 

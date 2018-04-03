@@ -1,8 +1,32 @@
-<br/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
 <script src="<c:url value='/bootstrap/js/tagcloud.jquery.js'/>"></script>
+
+	<!-- Google Analytics -->
+    <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-110902214-1', 'auto');
+            ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="/Content/plug/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/plug/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/plug/material-kit.css" rel="stylesheet" />
+    <link href="/Content/plug/owl.carousel.css" rel="stylesheet" />
+    <link href="/Content/plug/landing-style.css" rel="stylesheet" />
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico">
+
 <style>
 	#tagcloud ul li a {
 		resize: none;
