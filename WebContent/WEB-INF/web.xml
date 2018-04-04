@@ -113,6 +113,10 @@
 		<url-pattern>*.page</url-pattern>
 	</servlet-mapping>
 	
+	<!-- jsessionId 삭제 
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>-->
 	
 	<!-- 한글 깨지는 거 방지 -->
 	<filter>
