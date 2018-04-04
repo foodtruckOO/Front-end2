@@ -1,32 +1,26 @@
-package com.sajo.foodtruck.food;
+package com.sajo.foodtruck.cart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Vector;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import com.sajo.foodtruck.foodtruck.FoodtruckDTO;
+public class CartDAO {
 
-public class FoodDAO {
-
-	
-	
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
 	
 	//생성자]
-	public FoodDAO(ServletContext context) {
+	public CartDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
 		
-	/*	try {
+		/*try {
 			//드라이버 로딩]
 			Class.forName(context.getInitParameter("ORACLE_DRIVER"));
 			//데이타베이스 연결]
@@ -59,54 +53,48 @@ public class FoodDAO {
 		} catch (Exception e) {}
 	}
 	
-	public List<FoodDTO> selectList(String s_no){
-		List<FoodDTO> list = new Vector<FoodDTO>();
-		//페이징 미 적용
-		String sql="SELECT s.id,F.* FROM SELLER S JOIN FOOD F ON S.S_NO = F.S_NO WHERE S.S_NO=?"; 
-		
-		
+	public void insert(String f_no, String user) {
+		String sql = "select g_no from customer where id=?";
+		String g_no = null ; 
 		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, s_no);
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, user);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-			FoodDTO dto = new FoodDTO();
-			dto.setId(rs.getString(1));
-			dto.setF_no(rs.getString(2));
-			dto.setS_no(rs.getString(3));
-			dto.setT_no(rs.getString(4));
-			dto.setfName(rs.getString(5));
-			dto.setPicture(rs.getString(7));
-			dto.setPrice(rs.getString(8));
-			list.add(dto);
-			}////////////while
-		}///try
-		catch(Exception e) {e.printStackTrace();}
-		return list;
-	}
-	
-	public FoodDTO selectOne(String f_no) {
-		FoodDTO dto = new FoodDTO();
-		String sql="select s.id,f.* from food f join seller s on f.s_no =s.s_no where f_no=?";
+				g_no = rs.getString(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		
+		
+		
+		sql = "select num from cart where f_no=?";
+		String num = null ;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, f_no);
 			rs = psmt.executeQuery();
+			
 			while(rs.next()) {
-				dto= new FoodDTO();
-				dto.setId(rs.getString(1));
-				dto.setF_no(rs.getString(2));
-				dto.setS_no(rs.getString(3));
-				dto.setT_no(rs.getString(4));
-				dto.setfName(rs.getString(5));
-				dto.setContent(rs.getString(6));
-				dto.setPicture(rs.getString(7));
-				dto.setPrice(rs.getString(8));
+			num=rs.getString(1);
 			}
-		}catch(Exception e) {e.printStackTrace();}
-		
-		return dto;
+			if(num==null) {
+				sql = "insert into cart values(?,?,?)";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, g_no);
+				psmt.setString(2, f_no);
+				psmt.setInt(3, 1);
+				psmt.executeUpdate();
+			}
+			else {
+				sql = "update cart set num=? where f_no = ?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, (Integer.parseInt(num)+1));
+				psmt.setString(2, f_no);
+				psmt.executeUpdate();
+			}
+		}
+		catch(Exception e) {e.printStackTrace();}
 	}
-	
 }

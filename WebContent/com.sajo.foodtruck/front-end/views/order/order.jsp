@@ -49,8 +49,20 @@
 	function take(fName,f_no){
 		var take = confirm(fName+"을(를) 장바구니에 담으시겠습니까?");
 		if(take)
-			sessionStorage.setItem("f_no",f_no);
-			alert(fName+"이(가) 장바구니에 담겼습니다.");
+			$j.ajax({
+				type:"POST",
+				url:"<c:url value='/food.cart'/>",
+				data: {f_no : f_no},
+				success:function(data){
+					alert(fName+"이(가) 장바구니에 담겼습니다.");		
+				}
+			});
+			
+			
+		
+			
+			
+			
 		
 		
 	}

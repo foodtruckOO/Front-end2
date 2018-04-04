@@ -44,6 +44,19 @@
 			
 		});
 	</script>
+	<script>
+		function plusminus(plusminus){
+			if(plusminus=="plus"){
+				//alert("플러스군요");
+				var num = $("#number").val();
+				$("#number").val(num-0+1);
+				
+			}
+			else
+				alert("마이너스군요");
+			
+		}
+	</script>
 	
 	<style>
 	body{
@@ -94,7 +107,7 @@
 				<div class="cont_inner">
 						
 					<div class="menu_view">
-						<div class="img"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/menu_list1.jpg'/>" alt="" /></div>
+						<div class="img"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${food.id}/food/${food.picture}'/>" alt="" /></div>
 												
 						<div class="info menuinfo" idx="0">
 							<div>
@@ -103,9 +116,9 @@
 									</div>
 								<div class="price_wrap amount">
 											<span class="inp_spinner">
-												<a style="cursor: hand" class="btn minus sp"><span class="blind">빼기</span></a>
-												<input type="text" class="detailpdcnt prod_qty" value="1" maxlength="2" readonly="readonly">
-												<a style="cursor: hand" class="btn plus sp"><span class="blind">더하기</span></a>
+												<a href="javascript:plusminus('minus')" style="cursor: hand" class="btn minus sp"><span class="blind">빼기</span></a>
+												<input id="number" type="text" class="detailpdcnt prod_qty" value="1" maxlength="2" readonly="readonly">
+												<a href="javascript:plusminus('plus')" style="cursor: hand" class="btn plus sp"><span class="blind">더하기</span></a>
 											</span>					
 																											
 																	
