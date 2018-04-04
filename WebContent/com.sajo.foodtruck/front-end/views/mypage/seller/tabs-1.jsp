@@ -11,7 +11,7 @@
        <!-- 지도 api 호출 -->
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2629a34c94733c8f257fcd6088a3e37a"></script>	
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faebfb3e90eb274180e0b284b0f3e3a3"></script>	
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 

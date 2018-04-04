@@ -25,29 +25,29 @@ $(function(){
 <form action="<c:url value='/Event/Upload.page'/>" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="">제목</label>
-		<input class="form-control" id="e_name" placeholder="제목을 입력하세요">
+		<input type="text"  class="form-control" placeholder="제목을 입력하세요" name="title"/>
 	</div>
 	<div class="form-group">
 		<label>행사일자</label></br>
 		<div style="display: inline-block; position: relative;"align="left">
-			시작일자 : <input type="text" id="e_sdatepicker" name="startdate" size="15" value=''>
+			시작일자 : <input type="text" id="e_sdatepicker" name="s_date" size="15" value=''>
 		</div>
 		<div style="display: inline-block; position: relative;"align="left">
-			종료일자 : <input type="text" id="e_edatepicker" name="enddate" size="15" value=''>
+			종료일자 : <input type="text" id="e_edatepicker" name="e_date" size="15" value=''>
 			<span id="span" style="color: red"></span>
 		</div>
     </div>
 	<div class="form-group">
 		<label for="">내용</label>
-		<textarea class="form-control" rows="5" id="e_content"></textarea>
+		<textarea class="form-control" rows="5" name="content"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="exampleInputFile">타이틀 이미지</label>
-		<input type="file" id="e_tfile">
+		<input type="file" name="titlefile">
 	</div>
 	<div class="form-group">
 		<label for="exampleInputFile">첨부 이미지</label>
-		<input type="file" id="e_cfile" >
+		<input type="file" name="contentfile" >
 	</div>
 	<button type="submit" class="btn btn-default" id="eventOk">등록</button>
 </form>

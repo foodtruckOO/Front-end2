@@ -27,10 +27,10 @@
 			});
 		});
 		
-		$('#demo').FancyFileUpload({
+		$('#thefiles').FancyFileUpload({
 
 			  // send data to this url
-			  'url' : '',
+			  'url' : '<c:url value="/Ajax/AjaxText.do"/>',
 
 			  // key-value pairs to send to the server
 			  'params' : {},

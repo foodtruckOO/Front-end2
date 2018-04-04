@@ -4,17 +4,22 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 
+
+@SessionAttributes("USER_ID")
 @Controller
 public class MemberController {
 	
@@ -66,7 +71,7 @@ public class MemberController {
 	@RequestMapping("/Tabs2.page")
 	public String Tabs2(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs2 접속");
-		return "wordcloud.tiles";
+		return "tabs-2.tiles";
 	}
 
 	@RequestMapping("/Tabs3.page")
@@ -107,13 +112,8 @@ public class MemberController {
 		
 	//이벤트 수정
 	@RequestMapping("/Tabs7.page")
-	public String EventUpdate(Model model, HttpServletRequest req) throws Exception{
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
-		dao.close();
-		model.addAttribute("seller", dto);
-		System.out.println((String)req.getSession().getAttribute("USER_ID"));
-		System.out.println("hanwook");
+	public String EventUpdate() throws Exception{
+		
 		return "tabs-7.tiles";
 	}
 	
@@ -129,6 +129,16 @@ public class MemberController {
 		return "tabs-8.tiles";
 	}
 	
+	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
+	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{
+		//1]서버의 물리적 경로 얻기
+		String phisicalPath = session.getServletContext().getRealPath("/Upload");
+		
+		System.out.println("dtoo : " + dto.getTitle());
+		
+		return "tabs-7.tiles";
+	}
+	/*
 	@RequestMapping("/Event/Upload.page")
 	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{
 		
@@ -155,6 +165,5 @@ public class MemberController {
 		//upload.transferTo(file);
 		//뷰정보 반환]
 		return "/com.sajo.foodtruck/front-end/views/mypage/seller/mypage.jsp";
-	}
-	
+	}*/
 }
