@@ -10,7 +10,14 @@ public class FoodDTO {
 	private String picture;
 	private String price;
 	private String id;
-	public FoodDTO(String f_no, String s_no, String t_no, String fName, String picture, String price, String id) {
+	private String content;
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public FoodDTO(String f_no, String s_no, String t_no, String fName, String picture, String price, String id, String content) {
 		super();
 		this.f_no = f_no;
 		this.s_no = s_no;
@@ -19,6 +26,8 @@ public class FoodDTO {
 		this.picture = picture;
 		this.price = price;
 		this.id = id;
+		this.content = content;
+		
 	}
 	public String getId() {
 		return id;

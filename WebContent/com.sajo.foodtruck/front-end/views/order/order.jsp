@@ -125,7 +125,7 @@
 											<li class="menuinfo swiper-slide">
 											
 											<div>
-												<a href="<c:url value='/com.sajo.foodtruck/front-end/views/order/detail1.jsp'/>" class="img"> 
+												<a href="<c:url value='/detail.food?f_no=${dto.f_no}'/>" class="img"> 
 														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.id}/food/${dto.picture}'/>" data-animation="zoomIn" width="" height=""/>
 												</a> 
 													<p class="menu_name" title="${dto.fName}">${dto.fName}</p>
@@ -172,7 +172,7 @@
 										<li class="menuinfo swiper-slide">
 											
 											<div>
-												<a href="<c:url value='/com.sajo.foodtruck/front-end/views/order/detail1.jsp'/>" class="img"> 
+												<a href="<c:url value='/detail.food?f_no=${dto2.f_no}'/>" class="img"> 
 														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto2.id}/food/${dto2.picture}'/>" data-animation="zoomIn" width="" height=""/>
 												</a> 
 													<p class="menu_name" title="${dto2.fName}">${dto2.fName}</p>

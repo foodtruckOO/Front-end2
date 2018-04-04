@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 
@@ -85,12 +86,11 @@
 				<div class="page_top">
 					
 					
-						<h3 class="tit">음식이름</h3>
+						<h3 class="tit">${food.fName}</h3>
 					
 				</div>
 				
 				
-				<!-- 추가 : 오버액션토끼세트 하드코딩 (단품으로 보여주고 실제로 세트 만 판매 코드:246183)20171011 이진우-->  
 				<div class="cont_inner">
 						
 					<div class="menu_view">
@@ -98,8 +98,8 @@
 												
 						<div class="info menuinfo" idx="0">
 							<div>
-									<h3 class="tit">음식이름</h3>
-									<div class="txt">음식설명<br><br>
+									<h3 class="tit">${food.fName}</h3>
+									<div class="txt">${food.content}<br><br>
 									</div>
 								<div class="price_wrap amount">
 											<span class="inp_spinner">
@@ -111,9 +111,9 @@
 																	
 								
 									
-									<span class="price"><strong>3,700</strong>원</span>
+									<span class="price"><strong><fmt:formatNumber value="${food.price}" pattern="#,###"/></strong>원</span>
 									
-								<input type="hidden" class="prod_unit_price"    	value="3700" />
+								<input type="hidden" class="prod_unit_price"    	value="${food.price}" />
 						
 								</div>
 								<div class="only_app_btn btn_wrap btn2">

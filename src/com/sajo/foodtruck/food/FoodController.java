@@ -23,4 +23,15 @@ public class FoodController {
 	model.addAttribute("food",list);
 	return "/com.sajo.foodtruck/front-end/views/order/order.jsp";
 	}
+	
+	@RequestMapping("/detail.food")
+	public String Detail(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+	String f_no = req.getParameter("f_no");
+	FoodDAO dao = new FoodDAO(req.getServletContext());
+	FoodDTO dto = dao.selectOne(f_no);
+	dao.close();
+	model.addAttribute("food",dto);
+	return "/com.sajo.foodtruck/front-end/views/order/detail.jsp";
+	}
 }
