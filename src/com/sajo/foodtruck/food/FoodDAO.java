@@ -88,21 +88,21 @@ public class FoodDAO {
 	
 	public FoodDTO selectOne(String f_no) {
 		FoodDTO dto = new FoodDTO();
-		String sql="select * from food where f_no=?";
+		String sql="select s.id,f.* from food f join seller s on f.s_no =s.s_no where f_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, f_no);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				dto= new FoodDTO();
-				dto.setF_no(rs.getString(1));
-				dto.setS_no(rs.getString(2));
-				dto.setT_no(rs.getString(3));
-				dto.setfName(rs.getString(4));
-				dto.setContent(rs.getString(5));
-				dto.setPicture(rs.getString(6));
-				dto.setPrice(rs.getString(7));
-				
+				dto.setId(rs.getString(1));
+				dto.setF_no(rs.getString(2));
+				dto.setS_no(rs.getString(3));
+				dto.setT_no(rs.getString(4));
+				dto.setfName(rs.getString(5));
+				dto.setContent(rs.getString(6));
+				dto.setPicture(rs.getString(7));
+				dto.setPrice(rs.getString(8));
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		
