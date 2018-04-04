@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
     <!-- Custom styles for this template -->    
 	<link href="<c:url value='/bootstrap/css/agency.css'/>" rel="stylesheet">
+	<link href="<c:url value='/bootstrap/css/flexslider.css'/>" rel="stylesheet">
 	<!-- Custom fonts for this template -->
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,17 +29,27 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<script src ="<c:url value='/bootstrap/js/jquery.flexslider.js'/>"></script>
 <script>
-	$(function() {
-		var currentPosition = parseInt($("#sidebox").css("top"));
-		$(window).scroll(function() {
-			var position = $(window).scrollTop();
-			$("#sidebox").stop().animate({
+	var $j = jQuery.noConflict();
+	$j(function() {
+		var currentPosition = parseInt($j("#sidebox").css("top"));
+		$j(window).scroll(function() {
+			var position = $j(window).scrollTop();
+			$j("#sidebox").stop().animate({
 				"top" : position + currentPosition + "px"
 			}, 1000);
 		});
 
+	});
+</script>
+
+<script>
+	$j(function() {
+	  $j('.flexslider').flexslider({
+	    animation: "slide",
+	    controlNav: "thumbnails"
+	  });
 	});
 </script>
 
@@ -100,9 +111,6 @@
 		margin-right:3%;
 	}
 }
- 
-
-
 
 </style>
 
@@ -124,11 +132,17 @@
 		<div class="container">
 			<div class="row">
 				<!-- The carousel -->
-				<div id="transition-timer-carousel"
-					class="carousel slide transition-timer-carousel"
-					data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
+				<div class="flexslider">
+					<ul class="slides">
+						<c:forEach items="${events}" var="event">
+						
+						<li data-thumb="/Back-end${event.titlefile}">
+							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}"/></a>
+						</li>
+					</c:forEach>
+					</ul>
+				</div>	
+				<%-- 	<ol class="carousel-indicators">
 						<li data-target="#transition-timer-carousel" data-slide-to="0"
 							class="active"></li>
 						<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
@@ -141,7 +155,7 @@
 									<c:when test="${loop.first}">
 										<div class="item active" style="width: 1200px;height: 500px" align="center">
 											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
-											width="100%" height="30%"/></a>
+											width="100%" height="100%"/></a>
 												<div class="carousel-caption"></div>
 										</div>
 									</c:when>
@@ -149,26 +163,26 @@
 									<c:otherwise>
 										<div class="item" style="width: 1200px;height: 500px" align="center">
 											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
-											width="100%" height="30%"/></a>
+											width="100%" height="100%"/></a>
 												<div class="carousel-caption"></div>
 										</div>
 									</c:otherwise>
 							</c:choose>			
 						</c:forEach>
-					</div>
+					</div> --%>
 
-					<!-- Controls -->
-					<a class="left carousel-control" href="#transition-timer-carousel"
+					<!-- <!-- Controls -->
+					<!-- <a class="left carousel-control" href="#transition-timer-carousel"
 						data-slide="prev"> <span
 						class="glyphicon glyphicon-chevron-left"></span>
 					</a> <a class="right carousel-control"
 						href="#transition-timer-carousel" data-slide="next"> <span
 						class="glyphicon glyphicon-chevron-right"></span>
-					</a>
+					</a> --> 
 
 				</div>
 			</div>
-		</div>
+		
 
 	</header>
 
