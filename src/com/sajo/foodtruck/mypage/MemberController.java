@@ -130,8 +130,11 @@ public class MemberController {
 	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{
 		//1]서버의 물리적 경로 얻기
 		String phisicalPath = session.getServletContext().getRealPath("/Upload");
-		
-		System.out.println("dtoo : " + dto.getTitle());
+
+		System.out.println("titles : " + dto.getTitle());
+		System.out.println("file : " + dto.getContentfile());
+		System.out.println("sdate : " + dto.getSdate());
+		System.out.println("edate : " + dto.getE_date());
 		
 		return "tabs-7.tiles";
 	}

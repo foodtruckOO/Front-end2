@@ -13,13 +13,24 @@
 <script>
 //datepicker용
 $(function(){
-	$("#e_sdatepicker, #e_edatepicker").datepicker({
-		dateFormat:"yy-mm-dd"/*,
+	$("#sdatepicker").datepicker({
+		dateFormat:"yy/mm/dd",
+		minDate : 0,
+		altField: "#sdatepicker"
+		/*,
 		showOn: "both" ,
 		buttonImage:"<c:url value='/Images/calendar-icon.jpg'/>",
 		buttonImageOnly:false */
 		
 	});
+	$("#edatepicker").datepicker({
+		dateFormat:"yy/mm/dd",
+		minDate : 0,
+		altField: "#edatepicker"
+		
+	});
+	
+	console.log($('#sdatepicker').val);
 });
 </script>
 <form action="<c:url value='/Event/Upload.page'/>" method="post" enctype="multipart/form-data">
@@ -30,10 +41,10 @@ $(function(){
 	<div class="form-group">
 		<label>행사일자</label></br>
 		<div style="display: inline-block; position: relative;"align="left">
-			시작일자 : <input type="date" id="e_sdatepicker" name="sdate" size="15" value=''>
+			시작일자 : <input id="sdatepicker" name="sdate" size="15" value=''>
 		</div>
 		<div style="display: inline-block; position: relative;"align="left">
-			종료일자 : <input type="date" id="e_edatepicker" name="edate" size="15" value=''>
+			종료일자 : <input id="edatepicker" name="edate" size="15" value=''>
 			<span id="span" style="color: red"></span>
 		</div>
     </div>
