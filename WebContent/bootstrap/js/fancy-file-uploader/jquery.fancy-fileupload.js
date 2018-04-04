@@ -164,8 +164,8 @@
 		var AddFile = function(uploads, e, data) {
 			var inforow = $('<tr>'+
 								'<td class="ff_fileupload_preview">'+
-								'<button class="ff_fileupload_preview_image" type="button">'+
-								'<span class="ff_fileupload_preview_text"></span>'+
+									'<button class="ff_fileupload_preview_image" type="button">'+
+										'<span class="ff_fileupload_preview_text"></span>'+
 									'</button>'+
 									'<div class="ff_fileupload_actions_mobile"></div>'+
 								'</td>'+
@@ -177,8 +177,7 @@
 									'<div class="ff_fileupload_progress_background ff_fileupload_hidden">'+
 										'<div class="ff_fileupload_progress_bar"></div>'+
 									'</div>'+
-								'</td>'+
-								'<td class="ff_fileupload_actions"></td>'+
+								'</td><td class="ff_fileupload_actions"></td>'+
 							'</tr>');
 			var pos = data.files[0].name.lastIndexOf('.');
 			var filename = (pos > -1 ? data.files[0].name.substring(0, pos) : data.files[0].name);
@@ -204,7 +203,7 @@
 				// Set filename.
 				if (settings.edit && !data.ff_info.errors.length)
 				{
-					var fileinput = inforow.find('. input');
+					var fileinput = inforow.find('.ff_fileupload_filename input');
 					if (fileinput.length)
 					{
 						var newfilename = fileinput.val();
