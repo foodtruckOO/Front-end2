@@ -21,7 +21,7 @@
   		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   		<init-param>
 			<param-name>contextConfigLocation</param-name>
-  			<param-value>/WEB-INF/config/event.xml</param-value>
+  			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
   		</init-param>
   	</servlet>
 	<servlet-mapping>
@@ -49,7 +49,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/board.xml</param-value>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -63,7 +63,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/info.xml</param-value>
+  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
   	</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -77,7 +77,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/order.xml</param-value>
+  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
   	</init-param>
 	</servlet>
 	<servlet-mapping>
@@ -90,7 +90,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/food.xml</param-value>
+  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
   	</init-param>
 	</servlet>
 	<servlet-mapping>
