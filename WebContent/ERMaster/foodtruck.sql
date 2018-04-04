@@ -174,7 +174,9 @@ CREATE TABLE ORDERFORM
 	G_NO number NOT NULL,
 	F_NO number NOT NULL,
 	NUM number DEFAULT 1 NOT NULL,
-	timeOfReceipt varchar2(10) NOT NULL
+	timeOfReceipt varchar2(10) NOT NULL,
+	CONTENT nvarchar2(500),
+	POSTDATE date DEFAULT SYSDATE NOT NULL
 );
 
 
@@ -213,7 +215,7 @@ CREATE TABLE SELLER
 	TNAME nvarchar2(15) NOT NULL,
 	ADDR nvarchar2(50) NOT NULL,
 	-- 상세주소
-	ADDR2 nvarchar2(50) NOT NULL,
+	ADDR2 nvarchar2(50),
 	TEL nvarchar2(15) NOT NULL,
 	CORPORATE_NO nvarchar2(12) NOT NULL,
 	REGIDATE date NOT NULL,

@@ -30,10 +30,10 @@ $(function(){
 	<div class="form-group">
 		<label>행사일자</label></br>
 		<div style="display: inline-block; position: relative;"align="left">
-			시작일자 : <input type="text" id="e_sdatepicker" name="s_date" size="15" value=''>
+			시작일자 : <input type="date" id="e_sdatepicker" name="sdate" size="15" value=''>
 		</div>
 		<div style="display: inline-block; position: relative;"align="left">
-			종료일자 : <input type="text" id="e_edatepicker" name="e_date" size="15" value=''>
+			종료일자 : <input type="date" id="e_edatepicker" name="edate" size="15" value=''>
 			<span id="span" style="color: red"></span>
 		</div>
     </div>

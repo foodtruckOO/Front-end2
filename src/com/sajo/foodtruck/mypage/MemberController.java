@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
-@SessionAttributes("USER_ID")
 @Controller
 public class MemberController {
 	
@@ -125,7 +123,6 @@ public class MemberController {
 		dao.close();
 		model.addAttribute("seller", dto);
 		System.out.println((String)req.getSession().getAttribute("USER_ID"));
-		System.out.println("hanwook");
 		return "tabs-8.tiles";
 	}
 	
