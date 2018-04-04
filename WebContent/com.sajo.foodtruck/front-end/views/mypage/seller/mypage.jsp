@@ -65,7 +65,7 @@
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
 			<!-- ID -->
 			<div>
-				<h4 style="font-weight: bold; text-align: center;">API MARKET</h4>
+				<h4 style="font-weight: bold; text-align: center;">${seller.tname}</h4>
 			</div>
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
@@ -73,6 +73,7 @@
 	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id="a2">메뉴 등록</a>
 	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id="a3">이벤트 등록</a>
 	            <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a3">SNS 등록</a>
+	            <a href="<c:url value='/Tabs9.page'/>" class="list-group-item" id="a3">주문 현황</a>
          	</div>
          	
 			<!-- sns -->
@@ -111,7 +112,7 @@
 					<li class="active" id="acti"><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
 					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
 					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
+					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
 					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
 					</button>
