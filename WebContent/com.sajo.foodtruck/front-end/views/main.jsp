@@ -140,7 +140,7 @@
 							<c:choose>
 									<c:when test="${loop.first}">
 										<div class="item active" style="width: 1200px;height: 500px" align="center">
-											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${event.titlefile}'/>" 
+											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
 											width="100%" height="30%"/></a>
 												<div class="carousel-caption"></div>
 										</div>
@@ -148,7 +148,7 @@
 									
 									<c:otherwise>
 										<div class="item" style="width: 1200px;height: 500px" align="center">
-											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${event.titlefile}'/>" 
+											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
 											width="100%" height="30%"/></a>
 												<div class="carousel-caption"></div>
 										</div>

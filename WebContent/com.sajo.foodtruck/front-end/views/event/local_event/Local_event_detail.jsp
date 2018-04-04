@@ -54,14 +54,14 @@
 			
 			
 			<div class="col-md-8">
-				<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.contentfile}'/>"/>
+				<img class ="img-responsive" src="/Back-end${dto.contentfile}"/>
 			</div>
 		
 		</div>
 		
 		<div class = "row" style = "padding-top:50px;padding-bottom: 50px">
 			<div class = "col-md-offset-4 col-md-3">
-				<a href="<c:url value='/Localevent.ev	ent'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
+				<a href="<c:url value='/Localevent.event'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
 								돌아가기</button></a>
 			</div>
 		</div>

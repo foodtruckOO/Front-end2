@@ -19,7 +19,7 @@
     <link href="<c:url value='/bootstrap/css/bootstrap-theme.min.css'/>" rel="stylesheet">
     <!-- YangGeum template CSS -->    
     <link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 
 	<!-- javascript -->
 	<!-- <script src="../resources/js/common/jquery-1.12.4.min.js"></script>
@@ -33,17 +33,39 @@
 	
 	<!-- //javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>	
-		$(function(){
-			var currentPosition = parseInt($("#sidebox").css("top"));
-			$(window).scroll(function() {
-				var position = $(window).scrollTop(); 
-				$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
+	var $j = jQuery.noConflict();
+		$j(function(){
+			var currentPosition = parseInt($j("#sidebox").css("top"));
+			$j(window).scroll(function() {
+				var position = $j(window).scrollTop(); 
+				$j("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
 			});
 			
 		});
 	</script>
-
+	<script>
+	function take(fName,f_no){
+		var take = confirm(fName+"을(를) 장바구니에 담으시겠습니까?");
+		if(take)
+			sessionStorage.setItem("f_no",f_no);
+			alert(fName+"이(가) 장바구니에 담겼습니다.");
+		
+		
+	}
+	
+	</script>
+	<script>
+	$j(function(){
+		$j('#spinner').spinner();
+	});
+		
+		
+	
+	</script>
+	
+	
 <style>
 
 #test {
@@ -89,7 +111,10 @@
 }
 
 
+
+
 </style>
+
 
 </head>
 <header id = "header">
@@ -136,11 +161,11 @@
 											<div class="sel_list">
 														<a href="javascript:void(0)">
 															<span>가격</span>
-															<strong><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</strong>
+															<strong><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</strong> 
 														</a>
 											</div>													
 													<p class="btn_area">
-														<a href="javascript:void(0)" class="btn btn_cart add_cart">
+														<a href='javascript:take("${dto.fName}","${dto.f_no}")' class="btn btn_cart add_cart">
 															<span>상품 담기</span>
 															<!-- <span>상품담기</span> -->
 														</a>
@@ -187,7 +212,7 @@
 														</a>
 											</div>													
 													<p class="btn_area">
-														<a href="javascript:void(0)" class="btn btn_cart add_cart">
+														<a href='javascript:take("${dto2.fName}","${dto2.f_no}")' class="btn btn_cart add_cart">
 															<span>상품 담기</span>
 															<!-- <span>상품담기</span> -->
 														</a>

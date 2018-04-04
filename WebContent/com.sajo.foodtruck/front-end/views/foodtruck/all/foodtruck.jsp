@@ -213,7 +213,7 @@
 					</div>
 					<div class="dq_select_box"></div>
 					<div class="taste_sort_wrap">
-						<button class="sort_btn active" data-sorder="new" va
+						<button class="sort_btn active" data-sorder="new" 
 							onclick='viewOrdered("new")'>
 							<span id=sort1 style="background-color: #ff4081"></span><span
 								style="color: #ff4081">신규등록순</span>

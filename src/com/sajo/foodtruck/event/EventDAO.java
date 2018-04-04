@@ -18,6 +18,7 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 
+
 public class EventDAO {
 	//멤버변수]
 	private Connection conn;
@@ -74,7 +75,7 @@ public class EventDAO {
 	public List<EventDTO> selectHList(){
 		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT where boardtype ='1' ORDER BY s_date";
+		String sql="SELECT E.*,a.id from EVENT e join administrator a on e.a_no=a.a_no where boardtype ='1' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 		
 		//페이징 적용-구간쿼리로 변경
@@ -82,7 +83,6 @@ public class EventDAO {
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			
 			rs = psmt.executeQuery();
 			
 			
@@ -91,8 +91,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
+				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
+				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -106,7 +106,7 @@ public class EventDAO {
 	//전체 레코드 수 얻기용]
 	public EventDTO selectOne(String key) {
 		EventDTO dto=null;
-		String sql="SELECT * FROM EVENT WHERE eno=?";
+		String sql="SELECT e.*,a.id FROM EVENT e join administrator a on e.a_no=a.a_no WHERE eno=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);
@@ -116,8 +116,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
+				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
+				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -131,7 +131,7 @@ public class EventDAO {
 
 		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT ORDER BY s_date";
+		String sql="SELECT e.*,a.id from EVENT e join administrator a on e.a_no=a.a_no ORDER BY s_date";
 		try {
 			psmt = conn.prepareStatement(sql);
 			
@@ -142,8 +142,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
+				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
+				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -157,7 +157,7 @@ public class EventDAO {
 	public List selectLList() {
 		List<EventDTO> list = new Vector<EventDTO>();
 		//페이징 미 적용
-		String sql="SELECT * from EVENT where boardtype ='2' ORDER BY s_date";
+		String sql="SELECT e.*,a.id from EVENT e join administrator a on e.a_no = a.a_no where boardtype ='2' ORDER BY s_date";
 			//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 		
 		//페이징 적용-구간쿼리로 변경
@@ -174,8 +174,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile(rs.getString(5));
-				dto.setContentfile(rs.getString(6));
+				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
+				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));

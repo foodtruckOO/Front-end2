@@ -98,7 +98,7 @@ table, table th {
 						<div class="card_img_wrap" style="position: relative;">
 							<div class="card_img_wrap_thumbnail a">
 								<a href="<c:url value='/Eventview.event?eno=${dto.eno}'/>"><img
-									src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.titlefile}'/>"
+									src="/Back-end${dto.titlefile}"
 									width="100%" /> </a>
 							</div>
 						</div>

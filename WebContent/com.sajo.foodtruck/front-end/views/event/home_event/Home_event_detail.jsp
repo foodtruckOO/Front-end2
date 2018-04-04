@@ -54,7 +54,7 @@
 			
 			
 			<div class="col-md-8">
-				<img class ="img-responsive" src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.contentfile}'/>"/>
+				<img class ="img-responsive" src="/Back-end${dto.contentfile}"/>
 			</div>
 		
 		</div>
