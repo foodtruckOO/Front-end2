@@ -43,19 +43,36 @@
 			});
 			
 		});
-	</script>
-	<script>
+		
+		
+
+
+		
 		function plusminus(plusminus){
 			if(plusminus=="plus"){
 				//alert("플러스군요");
 				var num = $("#number").val();
-				$("#number").val(num-0+1);
+				num = num-0+1;
+				price = ("${food.price}"-0)*num;
+				price =  price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$("#price").text(price);
+				$("#number").val(num);
 				
 			}
-			else
-				alert("마이너스군요");
-			
+			else{
+				var num = $("#number").val();
+				if(num!=1){
+					num = num-0-1;
+					price = ("${food.price}"-0)*num;
+					price =  price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					$("#price").text(price);
+					$("#number").val(num);
+				}
+			}
 		}
+	</script>
+	<script>
+		
 	</script>
 	
 	<style>
@@ -124,7 +141,7 @@
 																	
 								
 									
-									<span class="price"><strong><fmt:formatNumber value="${food.price}" pattern="#,###"/></strong>원</span>
+									<span class="price"><strong id="price"><fmt:formatNumber value="${food.price}" pattern="#,###"/></strong>원</span>
 									
 								<input type="hidden" class="prod_unit_price"    	value="${food.price}" />
 						
