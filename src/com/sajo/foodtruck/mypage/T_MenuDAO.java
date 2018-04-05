@@ -4,20 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-public class T_EventDAO {
+public class T_MenuDAO {
 	//멤버변수]
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
 	
 	//생성자]
-	public T_EventDAO(ServletContext context) {
+	public T_MenuDAO(ServletContext context) {
 		try {
 			InitialContext ctx = new InitialContext();
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
@@ -39,10 +41,31 @@ public class T_EventDAO {
 			if(conn !=null) conn.close();
 		} catch (Exception e) {}
 	}
-	
+
+	//푸드타입 가져오기
+	public List<T_Menu_TypeDTO> foodtype (){
+		System.out.println("T_MenuDAO foodtype");
+		
+		List<T_Menu_TypeDTO> list = new Vector<T_Menu_TypeDTO>();
+		try {
+			String sql="SELECT * FROM foodtype";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				T_Menu_TypeDTO dto = new T_Menu_TypeDTO();
+				dto.setTno(rs.getString(1));
+				dto.setType(rs.getString(2));
+				list.add(dto);
+			}
+		}
+		catch (Exception e) {System.out.println("T_MenuDAO foodtype");e.printStackTrace();}
+		finally {close();}			
+		return list;
+	}
+
 	//s_NO 가져오기
 	public String getSellerNo(String user) {
-		System.out.println("T_EventDAO getSellerNo");
+		System.out.println("T_MenuDAO getSellerNo");
 		
 		String sql="SELECT s_no from seller where id=?";
 		String result = "";
@@ -54,29 +77,28 @@ public class T_EventDAO {
 				result = rs.getString(1);
 			}
 		}
-		catch (Exception e) {System.out.println("T_EventDAO getSellerNo");e.printStackTrace();}
+		catch (Exception e) {System.out.println("T_MenuDAO getSellerNo");e.printStackTrace();}
 		return result;
 	}
 	
-	//이벤트 메뉴 입력용
-	public int insertEvent(T_EventDTO dto) {
-		System.out.println("T_EventDAO insertEvent");
+	//메뉴등록
+	public int insertMenu(T_Menu_FoodDTO dto) {
+		System.out.println("T_MenuDAO insertMenu");
 		
-		int affected=0;
-		String sql="INSERT INTO truck_event VALUES (SEQ_TEVENT.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
+		int affected = 0;
+		String sql="INSERT INTO food VALUES (SEQ_FOOD.NEXTVAL,?,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getS_no());
-			psmt.setString(2, dto.getTitle());
-			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getTitlefile().getOriginalFilename());
-			psmt.setString(5, dto.getContentfile().getOriginalFilename());
-			psmt.setString(6, dto.getSdate());
-			psmt.setString(7, dto.getEdate());
+			psmt.setString(1, dto.getSno());
+			psmt.setString(2, dto.getTno());
+			psmt.setString(3, dto.getFname());
+			psmt.setString(4, dto.getContent());
+			psmt.setString(5, dto.getNewPicture());
+			psmt.setString(6, dto.getPrice());
 			affected = psmt.executeUpdate();
 		}
-		catch (Exception e) {System.out.println("T_EventDAO insertEvent");e.printStackTrace();}
-		finally {close();}
+		catch (Exception e) {System.out.println("T_MenuDAO insertMenu");e.printStackTrace();}
+		finally {close();}				
 		return affected;
 	}
 	

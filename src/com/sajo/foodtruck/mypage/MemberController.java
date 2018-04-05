@@ -1,6 +1,7 @@
 package com.sajo.foodtruck.mypage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
 
 @Controller
 public class MemberController {
@@ -96,26 +96,63 @@ public class MemberController {
 		return "tabs-5.tiles";
 	}
 	
-	//메뉴 수정
+	//메뉴 수정-----------------------------------------------------------------
 	@RequestMapping("/Tabs6.page")
 	public String MenuUpdate(Model model, HttpServletRequest req) throws Exception{
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		List<T_Menu_TypeDTO> list = dao.foodtype();
 		dao.close();
-		model.addAttribute("seller", dto);
-		System.out.println((String)req.getSession().getAttribute("USER_ID"));
-		System.out.println("hanwook");
+		model.addAttribute("list",list);
 		return "tabs-6.tiles";
 	}
+	
+	@RequestMapping("/Menu/Upload.page")
+	public String MenuUpload(T_Menu_FoodDTO dto, HttpServletRequest req) throws Exception{
 		
-	//이벤트 수정
+		System.out.println(dto.getTno());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		/*-----이미지 경로에 등록-----*/
+		dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
+		
+		/*-----이미지 DB등록-----*/		
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dto.setSno(dao.getSellerNo(user));
+		dao.insertMenu(dto);	//변경되면 1 아니면 0
+		dao.close();
+		return "forward:/Member.page";
+	}
+
+	//이벤트 수정------------------------------------------------------------------------
 	@RequestMapping("/Tabs7.page")
 	public String EventUpdate() throws Exception{
 		
 		return "tabs-7.tiles";
 	}
 	
-	//이벤트 수정
+	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
+	public String EventUpload(T_EventDTO dto, Model model, HttpServletRequest req) throws IllegalStateException, IOException {
+		
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		
+		/*-----이미지 경로에 등록-----*/
+		FileUpload(dto.getTitlefile(), "/EVENT/TITLE", req,true);
+		FileUpload(dto.getContentfile(), "/EVENT/CONTENT", req,true);		
+
+		/*-----이미지 DB등록-----*/		
+		System.out.println(dto.getTitle());
+		
+		System.out.println(dto.getSdate());
+		System.out.println(dto.getEdate());
+
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		dto.setS_no(dao.getSellerNo(user));
+		dao.insertEvent(dto);// 변경되면 1 아니면 0
+		return "forward:/Member.page";
+	}
+	
+
+	
+	//이벤트 수정------------------------------------------------------------------------
 	@RequestMapping("/Tabs8.page")
 	public String SnsUpdate(Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
@@ -126,71 +163,35 @@ public class MemberController {
 		return "tabs-8.tiles";
 	}
 	
-	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
-	public String upload(T_EventDTO dto, Model model, HttpServletRequest req) throws Exception{
+	/*모든 이미지 파일 경로에 등록*/
+	public String FileUpload(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
 		
-		String user = req.getSession().getAttribute("USER_ID").toString();
-		/*-----------------------------이미지 폴더 저장-----------------------------*/
-		MultipartFile titleFile		= dto.getTitlefile();
-		MultipartFile contentFile	= dto.getContentfile();
-		
+		MultipartFile file = mf;
 		//1] 이미지 경로
-		String titlePath=req.getSession().getServletContext().getRealPath(
+		String path=req.getSession().getServletContext().getRealPath(
 									"/"+req.getSession().getAttribute("USER_TYPE").toString()+
-									"/"+req.getSession().getAttribute("USER_ID").toString()+
-									"/EVENT/TITLE");
-		String contentPath=req.getSession().getServletContext().getRealPath(
-									"/"+req.getSession().getAttribute("USER_TYPE").toString()+
-									"/"+req.getSession().getAttribute("USER_ID").toString()+
-									"/EVENT/CONTENT");
-		
+									"/"+req.getSession().getAttribute("USER_ID").toString()+folder);
+
+		String newFileName=FileUpDownUtils.getNewFileName(path, file.getOriginalFilename());
 		//2]File객체 생성
-		File title		= new File(titlePath);	
-		File content	= new File(contentPath);		
-		System.out.println(titlePath + titleFile.getOriginalFilename());
-		
+		File f = new File(path);	
 		//해당 디렉토리의 존재여부를 확인
-		if(!title.exists()){
+		if(!f.exists()){
 			//없다면 생성
-			title.mkdirs(); 
+			f.mkdirs(); 
 		}else{
 			//있다면 현재 디렉토리 파일을 삭제 
-			System.out.println("폴더1 있어 기존거 삭제할게");
-			File[] destroy = title.listFiles(); 
-			for(File des : destroy) des.delete();
+			if(flag) {
+				System.out.println("폴더1 있어 기존거 삭제할게");
+				File[] destroy = f.listFiles(); 
+				for(File des : destroy) des.delete();
+			}
 		}
-		
-		//해당 디렉토리의 존재여부를 확인
-		if(!content.exists()){
-			System.out.println("폴더2 없어 하나 만들게");
-			//없다면 생성
-			content.mkdirs(); 
-			System.out.println("폴더2 만들었어!");
-		}else{
-			//있다면 현재 디렉토리 파일을 삭제 
-			System.out.println("폴더2 있어 기존거 삭제할게");
-			File[] destroy = content.listFiles(); 
-			for(File des : destroy) des.delete();
-		}
-
-		//2]File객체 생성
-		title	= new File(titlePath + File.separator + titleFile.getOriginalFilename());	
-		content	= new File(contentPath + File.separator + contentFile.getOriginalFilename());	
-		
-		//3]업로드 처리
-		titleFile.transferTo(title);
-		contentFile.transferTo(content);
-		
-
-		/*-----------------------------이미지 DB등록-----------------------------*/		
-		System.out.println(dto.getTitle());
-		
-		System.out.println(dto.getSdate());
-		System.out.println(dto.getEdate());
-
-		T_EventDAO dao = new T_EventDAO(req.getServletContext());
-		dto.setS_no(dao.getSellerNo(user));
-		dao.insertEvent(dto);
-		return "forward:/Member.page";
+		//3]File객체 생성
+		f	= new File(path + File.separator + newFileName);	
+		//4]업로드 처리
+		file.transferTo(f);
+		//5]변경된 이름 return
+		return newFileName;
 	}
 }

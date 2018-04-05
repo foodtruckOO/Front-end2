@@ -1,89 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!-- 메뉴 등록 -->
 <div style="font-size: 2em; color: gray">메뉴 등록</div>
 <hr>
-<form>	
-	<!-- ---------------------------------------------------------------------- -->
-	<link rel="stylesheet"
-		href="<c:url value='/bootstrap/js/fancy-file-uploader/fancy_fileupload.css'/>"
-		type="text/css" media="all" />
-	<div>
-		<input id="thefiles" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple style="display: none;">
+<form action="<c:url value='/Menu/Upload.page'/>" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+		<label for="">메뉴명</label>
+		<input type="text"  class="form-control" placeholder="제목을 입력하세요" name="fname"/>
 	</div>
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.ui.widget.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.fileupload.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.iframe-transport.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.fancy-fileupload.js'/>"></script>
-	<script type="text/javascript">
-		$(function() {
-			$('#thefiles').FancyFileUpload({
-				params : {
-					action : 'fileuploader'
-				},
-				maxfilesize : 1000000
-			});
-		});
-		
-		$('#thefiles').FancyFileUpload({
-
-			  // send data to this url
-			  'url' : '<c:url value="/Ajax/AjaxText.do"/>',
-
-			  // key-value pairs to send to the server
-			  'params' : {},
-
-			  // editable file name?
-			  'edit' : true,
-
-			  // max file size
-			  'maxfilesize' : -1,
-
-			  // a list of allowed file extensions
-			  'accept' : null,
-
-			  // 'iec_windows', 'iec_formal', or 'si' to specify what units to use when displaying file sizes
-			  'displayunits' : 'iec_windows',
-
-			  // adjust the final precision when displaying file sizes
-			  'adjustprecision' : true,
-
-			  // the number of retries to perform before giving up
-			  'retries' : 5,
-
-			  // the base delay, in milliseconds, to apply between retries
-			  'retrydelay' : 500,
-
-			  // called for each item after it has been added to the DOM
-			  'added' : null,
-
-			  // called whenever starting the upload
-			  'startupload' : null,
-
-			  // called whenever progress is up<a href="https://www.jqueryscript.net/time-clock/">date</a>d
-			  'continueupload' : null,
-
-			  // called whenever an upload has been cancelled
-			  'uploadcancelled' : null,
-
-			  // called whenever an upload has successfully completed
-			  'uploadcompleted' : null,
-
-			  // jQuery File Upload options
-			  'fileupload' : {},
-
-			  // translation strings here
-			  'lang<a href="https://www.jqueryscript.net/tags.php?/map/">map</a>' : {},
-
-			  // A valid callback function that is called during initialization to allow for last second changes to the settings. 
-			  // Useful for altering fileupload options on the fly. 
-			  'preinit' : null,
-
-			});
-	</script>
-	<!-- ---------------------------------------------------------------------- -->
-	
+	<div class="form-group">
+		<label for="">음식타입</label>
+		<select class="form-control" name="tno" >
+			<c:if test="${empty requestScope.list}" var="flag">
+				<option>Error</option>
+			</c:if>
+			<c:if test="${not flag}">
+				<c:forEach var="list" items="${list}" varStatus="loop">
+					<option value="${list.tno }">${list.type}</option>
+				</c:forEach>
+			</c:if>
+		</select>
+    </div>
+    <div class="form-group">
+		<label for="">가격</label>
+		<input type="text"  class="form-control" placeholder="숫자만 입력됩니다" name="price"
+				onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' style='ime-mode:disabled;'
+		/>
+	</div>
+	<div class="form-group">
+		<label for="">설명</label>
+		<textarea class="form-control" rows="5" name="content"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputFile">첨부 이미지</label>
+		<input type="file" name="picture" >
+	</div>
 	<button type="submit" class="btn btn-default">등록</button>
 </form>
+
+
+<script>
+function onlyNumber(event){
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		return;
+	else
+		return false;
+}
+function removeChar(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+		return;
+	else
+		event.target.value = event.target.value.replace(/[^0-9]/g, "");
+}
+</script>
