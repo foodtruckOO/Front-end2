@@ -107,5 +107,66 @@ public class CusDAO {
 			e.printStackTrace(); 
 		}
 		return false;
-	}/////////////////////////////	
+	}/////////////////////////////
+	
+	public CusDTO findIdPwone(String name,String phone) {
+		String sql="SELECT id,pwd FROM (select id,pwd,name,tel from customer union select id,pwd,name,tel from seller) WHERE name=? and tel=?";
+		CusDTO dto = new CusDTO();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, name);
+			psmt.setString(2, phone);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				dto.setId(rs.getString(1));
+				dto.setPwd(rs.getString(2));
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace(); 
+		}
+		return dto;	
+	}//////////////////////////////
+	
+	public void updatePass(String pass,String id, String pwd) {
+		boolean flag = isCustomer(id, pwd);
+		String sql = "update seller set pwd=? where id=?";
+		String sql2 = "update customer set pwd=? where id=?";
+		try 
+		{
+			if(flag) psmt = conn.prepareStatement(sql2);
+			else psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, pass);
+			psmt.setString(2, id);
+			psmt.executeUpdate();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();	
+		}	
+	}
+	
+	//회원여부 판단용]
+	public boolean isCustomer(String id,String pwd) {		
+		String sql="SELECT pwd FROM CUSTOMER WHERE id=?";
+		try {
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);			
+			rs = psmt.executeQuery();
+			while(rs.next()) {			
+				if(pwd.equals(rs.getString(1))) {
+					return true;
+				}
+				else return false;
+			}
+			return false;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false; 
+		}
+	}
+	
 }////////////////////////

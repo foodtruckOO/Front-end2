@@ -53,5 +53,5 @@
 		request.setAttribute("ERROR","※아이디와 비밀번호가 틀렸습니다.");
 		//로그인 페이지로 포워드]
 		request.getRequestDispatcher("Login.jsp").forward(request, response);	
-	}
+	} 
 %>

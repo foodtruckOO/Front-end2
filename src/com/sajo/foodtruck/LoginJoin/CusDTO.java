@@ -13,6 +13,13 @@ public class CusDTO {
 	//속성 혹은 멤버변수]
 	private String no;
 	private String id;
+	private String pwd;
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 	private String title;
 	private String content;
 	private String visitcount;
@@ -28,9 +35,10 @@ public class CusDTO {
 	}
 	//생성자]
 	public CusDTO() {}
-	public CusDTO(String no, String id, String title, String content, String visitcount, Date postdate) {
+	public CusDTO(String no, String id, String pwd,String title, String content, String visitcount, Date postdate) {
 		this.no = no;
 		this.id = id;
+		this.pwd = pwd;
 		this.title = title;
 		this.content = content;
 		this.visitcount = visitcount;

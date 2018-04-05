@@ -18,7 +18,7 @@ body, html {
  
 .card-container.card {
     max-width: 350px;
-    padding: 40px 40px;
+    padding: 20px 20px;
 }
 
 .btn {
@@ -147,41 +147,34 @@ body, html {
 }
 </style>
 </head>
-<script type="text/javascript">
-	function popupOpen3(){
-	var windowW=600;
-	var windowH=380;
-	var left=Math.ceil((window.screen.width-windowW)/2);
-	var top=Math.ceil((window.screen.height-windowH)/2);
-	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/find/findIdPw.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
-		window.open(popUrl,"",popOption);
-		parent.close();
+<script>
+function pwdCheck(){
+	var pwd = document.getElementById("pass").value;
+	var pwdcheck = document.getElementById("pass2").value;
+	if(pwd == pwdcheck){
+		document.getElementById("same").innerHTML="비밀번호가 일치 합니다"
+		document.getElementById("same").style.color="green"
 	}
+	else{
+		document.getElementById("same").innerHTML="비밀번호가 일치하지 않습니다."
+		document.getElementById("same").style.color="red"
+	}
+}
 </script>
 <body>
 	<div class="container">
         <div class="card card-container">
-        <h2>로그인</h2><hr style="border: solid 1px #FE9A2E;">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="<c:url value='/com.sajo.foodtruck/front-end/images/user.png'/>" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="forSm-signin" method="post" action="LoginProcess.jsp">
-                <span id="reauth-email" class="reauth-email"></span>
-                <label>아이디</label>
-                <input name="user" type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" value="<%=request.getParameter("user") == null ? "" : request.getParameter("user")%>" required autofocus><br>
-                <label>비밀번호</label>
-                <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="비밀번호를 입력해주세요" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required>
-                <!-- <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> 아이디저장
-                    </label>
-                </div> -->
-                <br>
-                <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="로그인"/>
+        <h3>비밀번호변경</h3>
+        <hr style="border: solid 1px #FE9A2E;">
+            <form class="forSm-signin" method="post" action="checkpassProcess.jsp">
+                <label>새로운비밀번호</label>
+                <input name="pass" type="password" id="pass" class="form-control" placeholder="비밀번호를 입력해주세요" onchange="pwdCheck()" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required autofocus><br>
+                <label>비밀번호확인</label>
+                <input name="pass2" type="password" id="pass2" class="form-control" placeholder="비밀번호를 다시한번 입력해주세요" onchange="pwdCheck()" value="<%=request.getParameter("pass2") == null ? "" : request.getParameter("pass2")%>" required><br>
+                <span id="same"></span><br>   
+                <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="변경"/>
                 <p style="color: red; font-weight: bold"><%=request.getAttribute("ERROR") == null ? "":request.getAttribute("ERROR")%></p>
             </form><!-- /form -->
-            <a href="javascript:popupOpen3();" class="forgot-password">아이디 또는 비밀번호를 잊어버리셨나요?</a>
         </div><!-- /card-container -->
     </div><!-- /container -->
    
