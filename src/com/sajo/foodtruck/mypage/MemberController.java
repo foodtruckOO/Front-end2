@@ -127,43 +127,70 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
-	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{
-		//1]서버의 물리적 경로 얻기
-		String phisicalPath = session.getServletContext().getRealPath("/Upload");
-
-		System.out.println("titles : " + dto.getTitle());
-		System.out.println("file : " + dto.getContentfile());
-		System.out.println("sdate : " + dto.getSdate());
-		System.out.println("edate : " + dto.getE_date());
+	public String upload(T_EventDTO dto, Model model, HttpServletRequest req) throws Exception{
 		
-		return "tabs-7.tiles";
-	}
-	/*
-	@RequestMapping("/Event/Upload.page")
-	public String upload(T_EventDTO dto, Model model, HttpSession session) throws Exception{
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		/*-----------------------------이미지 폴더 저장-----------------------------*/
+		MultipartFile titleFile		= dto.getTitlefile();
+		MultipartFile contentFile	= dto.getContentfile();
 		
-		MultipartFile upload = dto.getTitlefile();
-		MultipartFile upload2 = dto.getContentfile();
+		//1] 이미지 경로
+		String titlePath=req.getSession().getServletContext().getRealPath(
+									"/"+req.getSession().getAttribute("USER_TYPE").toString()+
+									"/"+req.getSession().getAttribute("USER_ID").toString()+
+									"/EVENT/TITLE");
+		String contentPath=req.getSession().getServletContext().getRealPath(
+									"/"+req.getSession().getAttribute("USER_TYPE").toString()+
+									"/"+req.getSession().getAttribute("USER_ID").toString()+
+									"/EVENT/CONTENT");
 		
-		//1]서버의 물리적 경로 얻기
 		//2]File객체 생성
-		String folderName = "회원아이디";	//폴더 생성할 이름
-		String fileName = "가수이미지.jpg";	//파일 이름
-		String path = "저장될 주소" +"/" + folderName;
-		String filepath = path + "/" + fileName;
+		File title		= new File(titlePath);	
+		File content	= new File(contentPath);		
+		System.out.println(titlePath + titleFile.getOriginalFilename());
 		
-		File dir = new File(path);
-		
-		if(!dir.exists()) {	//폴더 없으면 폴더 생성
-			dir.mkdirs();
+		//해당 디렉토리의 존재여부를 확인
+		if(!title.exists()){
+			//없다면 생성
+			title.mkdirs(); 
+		}else{
+			//있다면 현재 디렉토리 파일을 삭제 
+			System.out.println("폴더1 있어 기존거 삭제할게");
+			File[] destroy = title.listFiles(); 
+			for(File des : destroy) des.delete();
 		}
 		
-		//2-1] 파일 중복시 이름 변경
-		//String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, upload.getOriginalFilename());
-		//File file = new File(phisicalPath+File.separator+newFileName);		
+		//해당 디렉토리의 존재여부를 확인
+		if(!content.exists()){
+			System.out.println("폴더2 없어 하나 만들게");
+			//없다면 생성
+			content.mkdirs(); 
+			System.out.println("폴더2 만들었어!");
+		}else{
+			//있다면 현재 디렉토리 파일을 삭제 
+			System.out.println("폴더2 있어 기존거 삭제할게");
+			File[] destroy = content.listFiles(); 
+			for(File des : destroy) des.delete();
+		}
+
+		//2]File객체 생성
+		title	= new File(titlePath + File.separator + titleFile.getOriginalFilename());	
+		content	= new File(contentPath + File.separator + contentFile.getOriginalFilename());	
+		
 		//3]업로드 처리
-		//upload.transferTo(file);
-		//뷰정보 반환]
-		return "/com.sajo.foodtruck/front-end/views/mypage/seller/mypage.jsp";
-	}*/
+		titleFile.transferTo(title);
+		contentFile.transferTo(content);
+		
+
+		/*-----------------------------이미지 DB등록-----------------------------*/		
+		System.out.println(dto.getTitle());
+		
+		System.out.println(dto.getSdate());
+		System.out.println(dto.getEdate());
+
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		dto.setS_no(dao.getSellerNo(user));
+		dao.insertEvent(dto);
+		return "forward:/Member.page";
+	}
 }

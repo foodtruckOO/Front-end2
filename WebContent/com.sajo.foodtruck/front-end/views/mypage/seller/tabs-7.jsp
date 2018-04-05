@@ -6,31 +6,31 @@
 
 <!-- datepicker용 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
 //datepicker용
 $(function(){
-	$("#sdatepicker").datepicker({
+	$("#sdate").datepicker({
 		dateFormat:"yy/mm/dd",
 		minDate : 0,
-		altField: "#sdatepicker"
+		altField: "#sdate"
 		/*,
 		showOn: "both" ,
 		buttonImage:"<c:url value='/Images/calendar-icon.jpg'/>",
 		buttonImageOnly:false */
 		
 	});
-	$("#edatepicker").datepicker({
+	$("#edate").datepicker({
 		dateFormat:"yy/mm/dd",
 		minDate : 0,
-		altField: "#edatepicker"
-		
+		altField: "#edate"
 	});
 	
-	console.log($('#sdatepicker').val);
+	console.log('여기['+$("#sdate").datepicker("getDate")+']');
+	
 });
 </script>
 <form action="<c:url value='/Event/Upload.page'/>" method="post" enctype="multipart/form-data">
@@ -41,10 +41,10 @@ $(function(){
 	<div class="form-group">
 		<label>행사일자</label></br>
 		<div style="display: inline-block; position: relative;"align="left">
-			시작일자 : <input id="sdatepicker" name="sdate" size="15" value=''>
+			시작일자 : <input type="text" id="sdate" name="sdate" size="15" value="">
 		</div>
 		<div style="display: inline-block; position: relative;"align="left">
-			종료일자 : <input id="edatepicker" name="edate" size="15" value=''>
+			종료일자 : <input type="text" id="edate" name="edate" size="15" value="">
 			<span id="span" style="color: red"></span>
 		</div>
     </div>

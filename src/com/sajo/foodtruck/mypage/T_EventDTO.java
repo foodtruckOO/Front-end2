@@ -6,32 +6,42 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class T_EventDTO {
 	
-	//private String eno;
-	//private String s_no;
+	private String s_no;
 	private String title;
 	private String content;
 	private MultipartFile titlefile;
 	private MultipartFile contentfile;
+	private String sdate;
+	private String edate;
+	/*
 	private Date sdate;
 	private Date edate;
-	//private Date postdate;
-	/*
-	public String getEno() {
-		return eno;
-	}
-	
-	public void setEno(String eno) {
-		this.eno = eno;
-	}
-	
+	*/
+
 	public String getS_no() {
 		return s_no;
 	}
-	
+
+	public String getSdate() {
+		return sdate;
+	}
+
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+
+	public String getEdate() {
+		return edate;
+	}
+
+	public void setEdate(String edate) {
+		this.edate = edate;
+	}
+
 	public void setS_no(String s_no) {
 		this.s_no = s_no;
 	}
-	*/
+
 	public String getTitle() {
 		return title;
 	}
@@ -63,28 +73,21 @@ public class T_EventDTO {
 	public void setContentfile(MultipartFile contentfile) {
 		this.contentfile = contentfile;
 	}
-	
+	/*
 	public Date getSdate() {
 		return sdate;
 	}
 	
-	public void setS_date(Date sdate) {
+	public void setSdate(Date sdate) {
 		this.sdate = sdate;
 	}
 	
-	public Date getE_date() {
+	public Date getEdate() {
 		return edate;
 	}
 	
-	public void setE_date(Date edate) {
+	public void setEdate(Date edate) {
 		this.edate = edate;
 	}
-	/*
-	public Date getPostdate() {
-		return postdate;
-	}
-	
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
-	}*/
+	*/
 }
