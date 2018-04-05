@@ -1,5 +1,5 @@
-package model;
-  
+package com.sajo.foodtruck.LoginJoin;
+ 
 import java.sql.Date;
 /* 
  * DTO(Data Tranfer Object):데이타를 전송하는 객체로
@@ -7,8 +7,8 @@ import java.sql.Date;
  *                          있는 자료구조
  * 
  * 
- */
-public class SellerDTO {
+ */ 
+public class CusDTO {
 	
 	//속성 혹은 멤버변수]
 	private String no;
@@ -27,8 +27,8 @@ public class SellerDTO {
 		this.name = name;
 	}
 	//생성자]
-	public SellerDTO() {}
-	public SellerDTO(String no, String id, String title, String content, String visitcount, Date postdate) {
+	public CusDTO() {}
+	public CusDTO(String no, String id, String title, String content, String visitcount, Date postdate) {
 		this.no = no;
 		this.id = id;
 		this.title = title;

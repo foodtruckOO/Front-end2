@@ -17,7 +17,7 @@ import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import model.PBKDF2;
+import com.sajo.foodtruck.LoginJoin.PBKDF2;
 
 
 public class SellerDAO {

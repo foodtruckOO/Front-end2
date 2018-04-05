@@ -117,7 +117,7 @@
 			<select class="form-control">
 				<option value="거리">거리순</option>
 				<option value="추천">추천순</option>
-				<option value="인기" selected="selected">인기순</option>
+				<option value="신규" selected="selected">신규순</option>
 			</select>
 		</article><br><br>
       	

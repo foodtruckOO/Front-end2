@@ -1,4 +1,4 @@
-package model;
+package com.sajo.foodtruck.LoginJoin;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
