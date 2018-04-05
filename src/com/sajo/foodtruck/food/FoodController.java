@@ -34,4 +34,5 @@ public class FoodController {
 	model.addAttribute("food",dto);
 	return "/com.sajo.foodtruck/front-end/views/order/detail.jsp";
 	}
+	
 }

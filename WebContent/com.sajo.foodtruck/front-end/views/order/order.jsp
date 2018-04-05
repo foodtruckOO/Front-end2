@@ -47,35 +47,51 @@
 	</script>
 	<script>
 	function take(fName,f_no){
-		var take = confirm(fName+"을(를) 장바구니에 담으시겠습니까?");
-		if(take)
-			$j.ajax({
-				type:"POST",
-				url:"<c:url value='/food.cart'/>",
-				data: {f_no : f_no},
-				success:function(data){
-					alert(fName+"이(가) 장바구니에 담겼습니다.");		
-				}
-			});
-			
-			
-		
-			
-			
-			
-		
-		
+		var user = "${sessionScope.USER_ID}";
+		if(user==""){
+			alert("로그인 후 이용해주세요.");
+		}	
+		else if("${sessionScope.USER_TYPE}"=="seller"){
+			alert("사업자는 이용할 수 없습니다.");
+		}
+		else{
+			var take = confirm(fName+"을(를) 장바구니에 담으시겠습니까?");
+			if(take)
+				$j.ajax({
+					type:"POST",
+					url:"<c:url value='/food.cart'/>",
+					data: {f_no : f_no},
+					success:function(data){
+						alert(fName+"이(가) 장바구니에 담겼습니다.");		
+					}
+				});
+		}	
 	}
-	
+	function order(fName,f_no){
+		var user = "${sessionScope.USER_ID}";
+		if(user==""){
+			alert("로그인 후 이용해주세요.");
+		}	
+		else if("${sessionScope.USER_TYPE}"=="seller"){
+			alert("사업자는 이용할 수 없습니다.");
+		}
+		else{
+			var order = confirm(fName+"을(를) 주문하시겠습니까?");
+			if(order){
+				$j.ajax({
+					type:"POST",
+					url:"<c:url value='/food.cart'/>",
+					data: {f_no : f_no},
+					success:function(data){
+						location.href="<c:url value='/order.cart'/>";
+					}
+				});
+			
+			}
+		}
+	}
 	</script>
-	<script>
-	$j(function(){
-		$j('#spinner').spinner();
-	});
-		
-		
 	
-	</script>
 	
 	
 <style>
@@ -181,7 +197,7 @@
 															<span>상품 담기</span>
 															<!-- <span>상품담기</span> -->
 														</a>
-														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
+														<a href='javascript:order("${dto.fName}","${dto.f_no}")' class="btn btn_buy btn_Order">
 															<span>바로 주문</span>
 															<!-- <span>바로주문</span> -->
 														</a>
@@ -228,7 +244,7 @@
 															<span>상품 담기</span>
 															<!-- <span>상품담기</span> -->
 														</a>
-														<a href="javascript:void(0)" class="btn btn_buy btn_Order">
+														<a href='javascript:order("${dto2.fName}","${dto2.f_no}")' class="btn btn_buy btn_Order">
 															<span>바로 주문</span>
 															<!-- <span>바로주문</span> -->
 														</a>

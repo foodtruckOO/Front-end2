@@ -17,5 +17,13 @@ public class OrderController {
 
 	
 	
+	@RequestMapping("/datail.order")
+	public String detailorder(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+	
+		
+		return "";
+		
+	}
+	
 	
 }
