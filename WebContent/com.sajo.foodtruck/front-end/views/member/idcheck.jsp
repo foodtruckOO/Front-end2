@@ -1,11 +1,10 @@
-<%@page import="model.PBKDF2"%>
+<%@page import="com.sajo.foodtruck.LoginJoin.*"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="model.CusDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%

@@ -147,6 +147,18 @@ body, html {
 }
 </style>
 </head>
+<script type="text/javascript">
+	function popupOpen3(){
+	var windowW=600;
+	var windowH=380;
+	var left=Math.ceil((window.screen.width-windowW)/2);
+	var top=Math.ceil((window.screen.height-windowH)/2);
+	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/find/findIdPw.jsp'/>";	//팝업창에 출력될 페이지 URL
+	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+		parent.close();
+	}
+</script>
 <body>
 	<div class="container">
         <div class="card card-container">
@@ -157,7 +169,7 @@ body, html {
             <form class="forSm-signin" method="post" action="LoginProcess.jsp">
                 <span id="reauth-email" class="reauth-email"></span>
                 <label>아이디</label>
-                <input name="user" type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" value="<%=request.getParameter("user") == null ? "" : request.getParameter("user")%>" required autofocus>
+                <input name="user" type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" value="<%=request.getParameter("user") == null ? "" : request.getParameter("user")%>" required autofocus><br>
                 <label>비밀번호</label>
                 <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="비밀번호를 입력해주세요" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required>
                 <div id="remember" class="checkbox">
@@ -168,9 +180,7 @@ body, html {
                 <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="로그인"/>
                 <p style="color: red; font-weight: bold"><%=request.getAttribute("ERROR") == null ? "":request.getAttribute("ERROR")%></p>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                비밀번호를 잊어버리셨나요?
-            </a>
+            <a href="javascript:popupOpen3();" class="forgot-password">아이디 또는 비밀번호를 잊어버리셨나요?</a>
         </div><!-- /card-container -->
     </div><!-- /container -->
    
