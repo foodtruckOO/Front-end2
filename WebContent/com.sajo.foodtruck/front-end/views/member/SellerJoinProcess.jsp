@@ -36,7 +36,7 @@
 	request.setCharacterEncoding("utf-8");
 	
 	String f_no = request.getParameter("fno");
-	String id = request.getParameter("id");
+	id = request.getParameter("id");
 	String pass = request.getParameter("pwd");
 	String name = request.getParameter("name");
 	String tname = request.getParameter("tname");
