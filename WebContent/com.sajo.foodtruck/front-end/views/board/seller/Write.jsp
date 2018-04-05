@@ -56,7 +56,9 @@
 				<div class="body">
 					<div class="content">
 						<fieldset style="padding: 20px 0 50px 20px">
-							<legend>게시글 작성</legend>
+							<div class="page-header">
+							<h2 style="color: orange;">게시글 작성</h2>
+							</div>
 							<form action="<c:url value='/lte.board'/>" method="post">
 								<table width="75%" bgcolor="gray" cellspacing="1">
 									<tr bgcolor="white">
@@ -66,8 +68,8 @@
 									</tr>
 									<tr bgcolor="white">
 										<td align="center">내용</td>
-										<td><textarea rows="10" style="width: 98%" name="content"></textarea>
-										</td>
+										<td><jsp:include page="/com.sajo.foodtruck/front-end/views/board/smarteditor2-master/workspace/SmartEditor2.jsp"></jsp:include></td>
+									
 
 									</tr>
 									<tr align="center">
