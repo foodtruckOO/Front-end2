@@ -16,7 +16,7 @@
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pwd");
 	String name = request.getParameter("name");
-	String tname = request.getParameter("tname");
+	String tname = request.getParameter("tname"); 
 	String addr = request.getParameter("roadAddrPart1");
 	String addr2 = request.getParameter("addrDetail");
 	String tel = request.getParameter("phone");
