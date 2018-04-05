@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.oreilly.servlet.MultipartRequest;
 
-import model.PBKDF2;
+import com.sajo.foodtruck.LoginJoin.PBKDF2;
 
 
 
