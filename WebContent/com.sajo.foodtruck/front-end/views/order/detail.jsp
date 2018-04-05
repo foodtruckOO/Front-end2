@@ -83,9 +83,15 @@
 						$.ajax({
 							type:"POST",
 							url:"<c:url value='/detail.cart'/>",
+							dataType:'text',
 							data: {f_no : f_no, num : num},
 							success:function(data){
+								if(data=="Y"){
 								alert(fname+"이(가) 장바구니에 담겼습니다.");		
+								}
+								else{
+									alert("다른 푸드트럭의 상품을 동시에 담을 수 없습니다.");
+								}
 							}
 						});
 					}	
@@ -110,8 +116,14 @@
 							type:"POST",
 							url:"<c:url value='/detail.cart'/>",
 							data: {f_no : f_no, num : num},
+							dataType:'text',
 							success:function(data){
+								if(data=="Y"){
 								location.href="<c:url value='/order.cart'/>";		
+								}
+								else{
+								alert("다른 푸드트럭의 상품을 동시에 주문 할 수 없습니다.");									
+								}
 							}
 						});
 					}	

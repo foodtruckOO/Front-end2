@@ -16,26 +16,27 @@ public class CartController {
 
 	@ResponseBody
 	@RequestMapping(value="/food.cart", produces="text/html; charset=UTF-8")
-	public void List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 			
 	CartDAO dao = new CartDAO(req.getServletContext());
 		String user = req.getSession().getAttribute("USER_ID").toString();
 			
 			String f_no = map.get("f_no").toString();
-			
-			dao.insert(f_no,user);
-		dao.close();
+			String yn = dao.insert(f_no,user);
+			dao.close();
+			return yn;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/detail.cart", produces="text/html; charset=UTF-8")
-	public void DetailList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+	public String DetailList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		CartDAO dao = new CartDAO(req.getServletContext());
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		String f_no = map.get("f_no").toString();
 		String num =  map.get("num").toString();
-		dao.detailinsert(f_no,user,num);
+		String yn = dao.detailinsert(f_no,user,num);
 		dao.close();
+		return "yn";
 	}
 	
 	@RequestMapping("/order.cart")

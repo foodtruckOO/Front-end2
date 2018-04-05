@@ -61,8 +61,14 @@
 					type:"POST",
 					url:"<c:url value='/food.cart'/>",
 					data: {f_no : f_no},
+					dataType:'text',
 					success:function(data){
-						alert(fName+"이(가) 장바구니에 담겼습니다.");		
+						if(data=="Y"){
+						alert(fName+"이(가) 장바구니에 담겼습니다.");
+						}
+						else{
+						alert("다른 푸드트럭의 상품을 동시에 담을수 없습니다.");							
+						}
 					}
 				});
 		}	
@@ -82,8 +88,15 @@
 					type:"POST",
 					url:"<c:url value='/food.cart'/>",
 					data: {f_no : f_no},
+					dataType:'text',
 					success:function(data){
-						location.href="<c:url value='/order.cart'/>";
+						if(data=="Y"){
+							location.href="<c:url value='/order.cart'/>";
+						}
+						else{
+							alert("다른 푸드트럭의 상품을 동시에 주문할 수 없습니다.");							
+						}
+						
 					}
 				});
 			

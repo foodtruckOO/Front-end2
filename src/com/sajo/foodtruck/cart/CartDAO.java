@@ -55,8 +55,33 @@ public class CartDAO {
 		} catch (Exception e) {}
 	}
 	
-	public void insert(String f_no, String user) {
-		String sql = "select g_no from customer where id=?";
+	public String insert(String f_no, String user) {
+		String s_no = null;
+		int count = 0;
+		String sql ="select s_no from food where f_no=?";
+			try {
+				psmt= conn.prepareStatement(sql);
+				psmt.setString(1, f_no);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					s_no =rs.getString(1);	
+				}
+			}catch(Exception e) {e.printStackTrace();}
+		sql = "select COUNT(*) from food where s_no!=?";
+			try {
+				psmt=conn.prepareStatement(sql);
+				psmt.setString(1, s_no);
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {e.printStackTrace();}
+			if(count!=0) {
+				return "N";
+			}
+			
+		
+		sql = "select g_no from customer where id=?";
 		String g_no = null ; 
 		try {
 			psmt= conn.prepareStatement(sql);
@@ -98,11 +123,44 @@ public class CartDAO {
 			}
 		}
 		catch(Exception e) {e.printStackTrace();}
+		
+		return "Y";
 	}
-	public void detailinsert(String f_no, String user, String num) {
-		String sql = "select g_no from customer where id=?";
+	
+	
+	public String detailinsert(String f_no, String user, String num) {
 		String g_no = null ; 
 		String count = null;
+		String s_no = null;
+		int cnt= 0;
+		
+		String sql ="select s_no from food where f_no=?";
+		try {
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, f_no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				s_no =rs.getString(1);	
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		
+			sql = "select COUNT(*) from food where s_no!=?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, s_no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		if(cnt!=0) {
+			return "N";
+		}
+		
+		
+		sql = "select g_no from customer where id=?";
+		
 		try {
 			psmt= conn.prepareStatement(sql);
 			psmt.setString(1, user);
@@ -139,6 +197,9 @@ public class CartDAO {
 				psmt.executeUpdate();
 			}
 		}   catch (Exception e) {e.printStackTrace();}
+		
+		
+		return "Y";
 	}
 	public List order(String user) {
 		String g_no = null; 

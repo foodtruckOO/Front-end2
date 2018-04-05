@@ -84,6 +84,19 @@
 		<servlet-name>OrderController</servlet-name>
 		<url-pattern>*.order</url-pattern>
 	</servlet-mapping>
+	<!-- cart 컨트롤러 -->
+	<servlet>
+		<servlet-name>CartController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+  	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CartController</servlet-name>
+		<url-pattern>*.cart</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>FoodController</servlet-name>
