@@ -11,6 +11,28 @@ public class CartDTO {
 	private String tel;
 	private String fname;
 	private String price;
+	private String addr;
+	private String priceall;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPriceall() {
+		return priceall;
+	}
+	public void setPriceall(String priceall) {
+		this.priceall = priceall;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	public String getS_no() {
 		return s_no;
 	}
@@ -60,7 +82,7 @@ public class CartDTO {
 		this.price = price;
 	}
 	public CartDTO(String s_no, String f_no, String num, String tname, String id, String tel, String fname,
-			String price) {
+			String price,String addr,String priceall,String name){
 		super();
 		this.s_no = s_no;
 		this.f_no = f_no;
@@ -70,6 +92,9 @@ public class CartDTO {
 		this.tel = tel;
 		this.fname = fname;
 		this.price = price;
+		this.addr = addr;
+		this.priceall =priceall;
+		this.name = name;
 	}
 	public CartDTO() {
 		super();

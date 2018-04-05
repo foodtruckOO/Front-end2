@@ -26,4 +26,26 @@ public class CartController {
 			dao.insert(f_no,user);
 		dao.close();
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/detail.cart", produces="text/html; charset=UTF-8")
+	public void DetailList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		CartDAO dao = new CartDAO(req.getServletContext());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		String f_no = map.get("f_no").toString();
+		String num =  map.get("num").toString();
+		dao.detailinsert(f_no,user,num);
+		dao.close();
+	}
+	
+	@RequestMapping("/order.cart")
+	public String detailorder(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		CartDAO dao = new CartDAO(req.getServletContext());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		java.util.List list = dao.order(user);
+		model.addAttribute("order",list);
+		dao.close();
+		return "/com.sajo.foodtruck/front-end/views/order/paymentready.jsp";
+	}
+	
 }

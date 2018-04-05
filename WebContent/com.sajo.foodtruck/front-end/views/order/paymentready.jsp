@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE HTML>
 <html lang="ko">
@@ -132,9 +133,11 @@
 										
 										
 										<td>
-											<span>푸드트럭명</span>
-											
+										<c:forEach begin="0" end="0" var="dto" items="${order}">
+											<span>${dto.tname}</span>
+										
 										</td>
+										
 									</tr>
 									
 									<tr>
@@ -142,10 +145,8 @@
 										<td>
 											
 												
-													<span class="txt">주소 들어가는곳  </span>
+													<span class="txt">${dto.addr}  </span>
 												
-												
-											
 										</td>
 									</tr>
 									
@@ -154,10 +155,8 @@
 										<td>
 											
 												
-													아이디
+													${dto.name}
 												
-												
-											
 										</td>
 									</tr>
 										
@@ -165,10 +164,12 @@
 											<tr class="Phone_input">
 											<th scope="row">주문고객<br>연락처</th>
 											<td class="inp_phone">
-												010-0000-0000
+												${dto.tel}
 											</td>
 											</tr>
+									</c:forEach>	
 									<tr>
+									
 										<th scope="row">요청사항</th>
 										<td>
 											<textarea name="input_order_memo" id="input_order_memo" class="oidirection" maxlength="100" title="요청사항 입력"></textarea>
@@ -183,30 +184,37 @@
 						<div class="right">
 							<h3 class="tit">결제내역</h3>
 							<ul class="od_menu_list">
-											<li idx="62055280">
-												<p class="menuinfo">
-													<strong>상품명</strong>
-												</p>
-												<div class="menu_opt">
-													<strong class="num">수량 : 0</strong>
-															<strong class="price">00,000원</strong>
-												</div>
-											</li>
-										
+											<c:forEach begin="1" var="dto2" items="${order}" varStatus="loop">
+												<c:if test="${!loop.last}">
+												<li idx="62055280">
+													<p class="menuinfo">
+														<strong>${dto2.fname}</strong>
+													</p>
+													<div class="menu_opt">
+														<strong class="num">수량 : ${dto2.num}</strong>
+																<strong class="price"><fmt:formatNumber value="${(dto2.price-0)*dto2.num}" pattern="#,###"/>원</strong>
+													</div>
+												</li>
+												</c:if>
+											</c:forEach>
 									
 									
 								
 							</ul>
 							<ul class="od_pay_price">
-								<li id="ordPriceDisplay">
-									<span>총 주문금액</span>
-									<strong id="ordStrong">00,000원</strong>
-								</li>								
-								 
-								<li class="last">
-									<span>결제 예정 금액</span>
-									<strong id="lastStrong">00,000원</strong>
-								</li>
+								<c:forEach begin="1" var="dto3" items="${order}" varStatus="loop">
+									<c:if test="${loop.last}">
+									<li id="ordPriceDisplay">
+										<span>총 주문금액</span>
+										<strong id="ordStrong"><fmt:formatNumber value="${dto3.priceall}" pattern="#,###"/>원</strong>
+									</li>								
+									 
+									<li class="last">
+										<span>결제 예정 금액</span>
+										<strong id="lastStrong"><fmt:formatNumber value="${dto3.priceall}" pattern="#,###"/>원</strong>
+									</li>
+									</c:if>
+								</c:forEach>
 							</ul>
 									
 							<div class="od_pay_sel">

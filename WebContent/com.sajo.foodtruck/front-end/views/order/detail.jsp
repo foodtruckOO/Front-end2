@@ -44,10 +44,6 @@
 			
 		});
 		
-		
-
-
-		
 		function plusminus(plusminus){
 			if(plusminus=="plus"){
 				//alert("플러스군요");
@@ -70,10 +66,61 @@
 				}
 			}
 		}
-	</script>
-	<script>
+		function cart(){
+			var user = "${sessionScope.USER_ID}";
+			if(user==""){
+				alert("로그인 후 이용해주세요.");
+			}	
+			else if("${sessionScope.USER_TYPE}"=="seller"){
+				alert("사업자는 이용할 수 없습니다.");
+			}
+			else{
+				var num = $("#number").val();
+				var f_no = "${food.f_no}";
+				var fname = "${food.fName}";
+				var take = confirm(fname+"을(를) 장바구니에 담으시겠습니까?");
+					if(take){			
+						$.ajax({
+							type:"POST",
+							url:"<c:url value='/detail.cart'/>",
+							data: {f_no : f_no, num : num},
+							success:function(data){
+								alert(fname+"이(가) 장바구니에 담겼습니다.");		
+							}
+						});
+					}	
+			}
+		}
 		
+		function order(){
+			var user = "${sessionScope.USER_ID}";
+			if(user==""){
+				alert("로그인 후 이용해주세요.");
+			}	
+			else if("${sessionScope.USER_TYPE}"=="seller"){
+				alert("사업자는 이용할 수 없습니다.");
+			}
+			else{
+				var num = $("#number").val();
+				var f_no = "${food.f_no}";
+				var fname = "${food.fName}";
+				var take = confirm(fname+"을(를) 주문하시겠습니까?");
+					if(take){			
+						$.ajax({
+							type:"POST",
+							url:"<c:url value='/detail.cart'/>",
+							data: {f_no : f_no, num : num},
+							success:function(data){
+								location.href="<c:url value='/order.cart'/>";		
+							}
+						});
+					}	
+			}
+			
+			
+		}
 	</script>
+	
 	
 	<style>
 	body{
@@ -146,13 +193,9 @@
 								<input type="hidden" class="prod_unit_price"    	value="${food.price}" />
 						
 								</div>
-								<div class="only_app_btn btn_wrap btn2">
-									<a href="javascript:void(0)" class="button h50 btn_gray add_cart"><span>Add to Cart<!-- 상품담기 --></span>	</a>
-									<a href="javascript:void(0)" class="button h50 btn_red btn_Order">Direct order<!-- 바로주문 --></a>
-								</div>
 								<div class="m_fixed_btn btn_wrap btn2">
-									<a href="javascript:void(0)" class="button h50 btn_gray add_cart"><span>Add to Cart<!-- 상품담기 --></span>	</a>
-									<a href="javascript:void(0)" class="button h50 btn_red btn_Order">Direct order<!-- 바로주문 --></a>
+									<a href="javascript:cart()" class="button h50 btn_gray add_cart"><span>상품 담기<!-- 상품담기 --></span>	</a>
+									<a href="javascript:order()" class="button h50 btn_red btn_Order">바로주문<!-- 바로주문 --></a>
 								</div>
 							</div>
 						</div>
