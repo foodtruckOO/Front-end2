@@ -67,7 +67,7 @@ public class CartDAO {
 					s_no =rs.getString(1);	
 				}
 			}catch(Exception e) {e.printStackTrace();}
-		sql = "select COUNT(*) from food where s_no!=?";
+		sql = "select count(*) from cart c join food f on c.f_no = f.f_no where s_no!=?";
 			try {
 				psmt=conn.prepareStatement(sql);
 				psmt.setString(1, s_no);
@@ -143,9 +143,9 @@ public class CartDAO {
 				s_no =rs.getString(1);	
 			}
 		}catch(Exception e) {e.printStackTrace();}
+
 		
-		
-			sql = "select COUNT(*) from food where s_no!=?";
+			sql = "select count(*) from cart c join food f on c.f_no = f.f_no where s_no!=?";
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, s_no);
@@ -256,7 +256,7 @@ public class CartDAO {
 		
 		
 		
-		sql =  "select f.fname,c.num,f.price from food f join cart c on f.f_no = c.f_no where c.g_no=?";
+		sql =  "select f.fname,c.num,f.price,f.f_no from food f join cart c on f.f_no = c.f_no where c.g_no=?";
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, g_no);
@@ -266,6 +266,7 @@ public class CartDAO {
 					dto.setFname(rs.getString(1));
 					dto.setNum(rs.getString(2));
 					dto.setPrice(rs.getString(3));
+					dto.setF_no(rs.getString(4));
 					priceall = priceall + rs.getInt(2)*rs.getInt(3);
 					list.add(dto);
 				}
@@ -275,5 +276,32 @@ public class CartDAO {
 			list.add(dto);
 			
 			return list;
+	}
+	public void delete(String f_no) {
+		String sql = "delete cart where f_no = ?";
+		try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, f_no);
+		psmt.executeUpdate();
+		}catch(Exception e) {e.printStackTrace();}
+		
+	}
+	public String search(String user) {
+		String sql = "select count(*) from cart c join customer g on c.g_no = g.g_no where g.id=?";  
+		int count = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, user);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
+			if(count==0)
+				return "N";
+			else
+				return "Y";
+				
 	}
 }

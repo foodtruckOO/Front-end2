@@ -19,8 +19,7 @@
 /* base */
 body, h1, h2, h3, h4, h5, h6, fieldset,ul, ol, dl, dt, dd, p, button ,figure{margin:0;padding:0;}
 body{font:normal 16px/1.5 Apple SD Neo Gothic, "Apple SD Gothic Neo", AppleSDGothicNeo, Roboto, Droid sans, Microsoft NeoGothic, malgun gothic, sans-serif, Verdana;color:#666;}
-body.font{font-family:Nanum Square,'Nanum Square';}
-body.ENG{letter-spacing:-1px}
+
 legend, caption{width:0;height:0;visibility:hidden;font-size:0;line-height:0;}
 a{text-decoration:none;color:#666;}
 img{vertical-align:middle;}
@@ -276,8 +275,7 @@ a.grayscale:hover img, a.grayscale:focus img, a.grayscale:active img{
 	.head_cart li.on > a{opacity:1;}
 	.head_cart li > a span{display:block;margin-bottom:5px;}
 	.head_cart li > a i{display:inline-block;width:58px;height:38px;box-sizing:border-box;text-align:center;font-size:1.429em;color:#dd0000;line-height:1;background-repeat:no-repeat;background-position:center center;font-style:normal;}
-	.head_cart .h_cart i{padding:0px 5px 16px 13px;background-image:url(../images/common/head_cart.png);}
-	.head_cart .h_coupon i{padding:11px 16px 5px 2px;background-image:url(../images/common/head_coupon.png);}
+	.head_cart .h_cart i{padding:0px 5px 16px 13px;background-image:url(head_cart.png);}
 	.head_cart .h_lang{display:none;}
 	.head_cart i.on{
 		-webkit-animation-duration:3s;animation-duration:3s;
@@ -323,7 +321,6 @@ a.grayscale:hover img, a.grayscale:focus img, a.grayscale:active img{
 	.sub_menu_wrap.fixed{height:57px;}
 	.sub_menu{font-size:1.438em;border-bottom:1px solid #dddddd;text-align:center;}
 	.sub_menu_wrap.fixed .sub_menu{position:fixed;width:1200px;top:90px;left:50%;margin-left:-600px;background:#fff;z-index:102;}
-	.sub_menu .swiper-wrapper{display:inline;margin:0 auto;}
 	.sub_menu.swiper-free-mode .swiper-wrapper{display:block;}
 	.sub_menu li{float:none;display:inline-block;padding:0 10px;}
 	.sub_menu.swiper-free-mode li{float:left;}
@@ -614,18 +611,18 @@ strong.cont_tit{display:inline-block;}
 /* ==========================================================================
    Media Queries for Responsive Design.
    ========================================================================== */
-@media only screen and (max-width:1400px){
+/* @media only screen and (max-width:1400px){
 	.head_cart{right:-100px;-webkit-transition:right 0.3s ease;transition:right 0.3s ease;}
 	.head_cart.on{right:0;}
-	.head_cart h3{position:absolute;top:0;left:-25px;width:25px;padding:10px 0;text-align:center;line-height:1;/* writing-mode:vertical-lr; */border-radius:10px 0 0 10px;cursor:pointer} 
-	.head_cart h3:before{content:'';display:inline-block;width:18px;height:18px;margin-bottom:5px;background:#333 url(../images/common/bg_headcart.png) no-repeat center center;border:1px solid #999;border-radius:50%;-webkit-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:transform 0.3s ease;transition:transform 0.3s ease;}
+	.head_cart h3{position:absolute;top:0;left:-25px;width:25px;padding:10px 0;text-align:center;line-height:1;writing-mode:vertical-lr;border-radius:10px 0 0 10px;cursor:pointer} 
+	.head_cart h3:before{content:'';display:inline-block;width:18px;height:18px;margin-bottom:5px;background:#333 url(bg_headcart.png) no-repeat center center;border:1px solid #999;border-radius:50%;-webkit-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:transform 0.3s ease;transition:transform 0.3s ease;}
 	.head_cart.on h3:before{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
 	.head_cart h3:after{content:'';display:block;width: 7px;height: 7px;position:absolute;right: -3px;bottom: -7px;border: 1px solid #666;border-width: 3px 3px 0 0;border-radius: 0 10px 0 0;}
 	.head_cart h3 strong{display:inline-block;margin:5px 0 0 0;}
 	.head_cart ul{border-left:3px solid #666;}
-	/* .head_cart h3:after{content:' 열기'}
-	.head_cart.on h3:after{content:' 닫기'} */
-}
+	.head_cart h3:after{content:' 열기'}
+	.head_cart.on h3:after{content:' 닫기'}
+} */
 @media only screen and (min-width:1200px){
 	.sub_menu .swiper-wrapper{-webkit-transform:translate3d(0px, 0px, 0px) !important;transform:translate3d(0px, 0px, 0px) !important;}
 }
@@ -707,7 +704,7 @@ strong.cont_tit{display:inline-block;}
 	.head_cart{position:absolute;right:0;bottom:auto;top:115px;width:100%;}
 	.head_cart h3{display:none;}
 	.head_cart ul{border:0 none;}
-	.head_cart li{display:block;float:left;width:33.3%;box-sizing:border-box;background:none;border-radius:0;}
+	.head_cart li{display:block;float:left;width:100%;box-sizing:border-box;background:none;border-radius:0;}
 	.head_cart li + li{border-top:0 none;border-left:1px solid #ddd;}
 	.head_cart li > a{padding:0;}
 	.head_cart li > a span{font-size:24px;}

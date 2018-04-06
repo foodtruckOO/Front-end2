@@ -64,7 +64,7 @@ span.alert{display:inline-block;}
 .order_view img{max-width:100%;}
 .order_view .table td.menu img{width:100%;}
 .order_view .table + .tbl_left{margin-top:80px;}
-.order_view .btn_delete{display:inline-block;width:26px;height:30px;background:url(../images/contents/btn_delete.png) no-repeat;vertical-align:middle;text-indent:-999em;font-size:0;overflow:hidden;}
+.order_view .btn_delete{display:inline-block;width:26px;height:30px;background:url(btn_delete.png) no-repeat;vertical-align:middle;text-indent:-999em;font-size:0;overflow:hidden;}
 .order_view .chk{width:60px;padding-left:0;padding-right:0;}
 .order_view .btn_td{width:66px;}
 .order_view .btn_td2{width:100px;}

@@ -103,9 +103,20 @@
 			}
 		}
 	}
+	function cart(){
+		var user = "${sessionScope.USER_ID}";
+		if(user==""){
+			alert("로그인 후 이용해주세요.");
+		}	
+		else if("${sessionScope.USER_TYPE}"=="seller"){
+			alert("사업자는 이용할 수 없습니다.");
+		}
+		else
+			var order = confirm("장바구니로 이동하시겠습니까?");
+			if(order)
+			location.href="<c:url value='/cart.cart'/>";
+	}
 	</script>
-	
-	
 	
 <style>
 
@@ -170,6 +181,11 @@
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Right.jsp" />
 	</div>
 	
+ 	<div class="head_cart">
+		<ul>					
+			<li id="pCart" class="h_cart "><a href="javascript:cart()"><span>장바구니</span><i></i></a></li>
+		</ul>
+	</div> 
 	
 	<!-- wrap -->
 	<div id="wrap">

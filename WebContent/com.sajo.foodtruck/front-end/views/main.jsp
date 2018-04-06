@@ -137,7 +137,7 @@
 						<c:forEach items="${events}" var="event">
 						
 						<li data-thumb="/Back-end${event.titlefile}">
-							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}"/></a>
+							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="http://localhost:8080/Back-end/backend/img/admin/adm/22_menu_list4.jpg"/></a>
 						</li>
 					</c:forEach>
 					</ul>

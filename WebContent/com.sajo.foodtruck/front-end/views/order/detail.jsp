@@ -5,7 +5,6 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	
 	<meta charset="utf-8">	
@@ -140,10 +139,9 @@
 	</style>
 	</head>
 
-<!-- <body class="ENG font" oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> -->
 	<body class="ENG font">
 	
-		<div id="TOP">
+	<div id="TOP">
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Top.jsp" />
 	</div>
 	<div id="RIGHT">
@@ -156,15 +154,9 @@
 
 		
 
-<!-- 이전 URL -->
-<input type="hidden" value="" id="prevURL" />
-<!-- 현재 URL -->
-<input type="hidden" value="" id="currentURL" />
-
-<!-- 로그인 했을시 존재 (user / nonMember) -->
 
 
-<!-- 사용자가 담으려고 했던 상품정보가 존재하면 존재 -->
+
 
 
 	
@@ -233,5 +225,8 @@
 	<!-- //wrap -->
     
 </body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 </html>
 
