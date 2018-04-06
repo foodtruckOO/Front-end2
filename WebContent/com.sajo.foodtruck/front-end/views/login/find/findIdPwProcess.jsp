@@ -8,7 +8,8 @@
 <%
 	//사용자 입력값 받기]
 	String name= request.getParameter("name");	
-	String phone= request.getParameter("phone");	
+	String phone= request.getParameter("phone");
+	String email= request.getParameter("email");
 	
 
 	//실제 테이블과 연동]
@@ -22,11 +23,12 @@
 	if(id != null){
 		session.setAttribute("checkid",id);
 		session.setAttribute("checkpwd", pwd);
+		session.setAttribute("email", email);
 		out.println("<script>");	
 		//out.println("window.close()");
-		out.println("alert('회원인증이 완료되었습니다. 당신의 아이디는 <"+id+">입니다.');");
-		out.println("alert(' 비밀번호 변경페이지로 이동합니다.');");
-		out.println("location.href = 'newPass.jsp';");
+		//out.println("alert('회원확인이 완료되었습니다.');");
+		out.println("alert('<"+email+">로 본인확인 인증번호가 전송되었습니다.');");
+		out.println("location.href = 'CertificationNumberProcess.jsp';");
 		out.println("</script>");
 	}
 	else{

@@ -19,5 +19,5 @@
 		out.println("history.back();");
 		out.println("</script>");
 	}
-	
+	 
 %>

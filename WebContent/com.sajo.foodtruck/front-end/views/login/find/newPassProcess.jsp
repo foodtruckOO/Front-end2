@@ -17,7 +17,7 @@
 	//실제 테이블과 연동]
 	CusDAO dao = new CusDAO(application);
 	dao.updatePass(pass, id, pwd);
-	dao.close();
+	dao.close(); 
 	
 	if(id != null){
 		out.println("<script>");	

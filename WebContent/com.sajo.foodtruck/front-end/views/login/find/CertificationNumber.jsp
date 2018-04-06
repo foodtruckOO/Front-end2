@@ -37,7 +37,7 @@ body, html {
     background-color: #F7F7F7;
     /* just in case there no content*/
     padding: 20px 25px 30px;
-    margin: 0 auto 0px;
+    margin: 0 auto 25px;
     margin-top: 20px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
@@ -148,33 +148,37 @@ body, html {
 </style>
 </head>
 <script>
-function pwdCheck(){
-	var pwd = document.getElementById("pass").value;
-	var pwdcheck = document.getElementById("pass2").value;
-	if(pwd == pwdcheck){
-		document.getElementById("same").innerHTML="비밀번호가 일치 합니다"
-		document.getElementById("same").style.color="green"
-	}
-	else{
-		document.getElementById("same").innerHTML="비밀번호가 일치하지 않습니다."
-		document.getElementById("same").style.color="red"
-	}
+$(function(){
+	$("#check").click(function(){
+		var form = document.authenform;
+		
+		var authNum = "${sessionScope.authNum}";
+
+		if(!form.authnum.value){
+			alert("인증번호를 입력하세요");
+		}
+		else if(form.authnum.value!=authNum){
+			alert("틀린 인증번호입니다. 인증번호를 다시 입력해주세요.");
+			form.authnum.value="";
+		}
+		else if(form.authnum.value==authNum){
+			alert("인증완료");
+			$("#authenform").submit();
+		}
+	});
+});
+function check(){
 }
 </script>
 <body>
 	<div class="container">
         <div class="card card-container">
-        <h3>Step3. 비밀번호변경</h3>
+        <h3>Step2. 인증번호 입력</h3>
         <hr style="border: solid 1px #FE9A2E;">
-            <form class="forSm-signin" method="post" action="checkpassProcess.jsp">
-            	<label>고객님의 아이디</label>
-                 <input type="text" class="form-control" value="<%=session.getAttribute("checkid") %>" readonly/><br>
-                <label>새로운비밀번호</label>
-                <input name="pass" type="password" id="pass" class="form-control" placeholder="비밀번호를 입력해주세요" onchange="pwdCheck()" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required autofocus><br>
-                <label>비밀번호확인</label>
-                <input name="pass2" type="password" id="pass2" class="form-control" placeholder="비밀번호를 다시한번 입력해주세요" onchange="pwdCheck()" value="<%=request.getParameter("pass2") == null ? "" : request.getParameter("pass2")%>" required><br>
-                <span id="same"></span><br>   
-                <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="변경"/>
+            <form class="forSm-signin" method="post" name="authenform" id="authenform" action="newPass.jsp">
+                <label>인증번호 7자리를 입력하세요</label>
+                <input name="authnum" type="text" id="authnum" class="form-control" placeholder="인증번호를 입력해주세요" required autofocus><br>
+                <input class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="check" value="확인"/>
                 <p style="color: red; font-weight: bold"><%=request.getAttribute("ERROR") == null ? "":request.getAttribute("ERROR")%></p>
             </form><!-- /form -->
         </div><!-- /card-container -->

@@ -147,16 +147,22 @@ body, html {
 }
 </style>
 </head>
+<script>
+//window.resizeTo(400,530); // 지정한 크기로 변한다.(가로,세로)
+window.resizeBy(0,80); // 지정한 크기만큼 더하거나 빼져서 변한다.
+</script>
 <body>
 	<div class="container">
         <div class="card card-container">
-        <h3>아이디/비밀번호찾기</h3>
+        <h3>Step1. 회원 인증정보 입력</h3>
         <hr style="border: solid 1px #FE9A2E;">
             <form class="forSm-signin" method="post" action="findIdPwProcess.jsp">
                 <label>이름</label>
                 <input name="name" type="text" id="name" class="form-control" placeholder="이름을 입력해주세요" value="<%=request.getParameter("name") == null ? "" : request.getParameter("name")%>" required autofocus><br>
                 <label>휴대폰번호</label>
                 <input name="phone" type="text" id="phone" class="form-control" placeholder="휴대폰번호를 입력해주세요" value="<%=request.getParameter("phone") == null ? "" : request.getParameter("phone")%>" required><br>   
+                 <label>이메일 주소 입력</label>
+                <input name="email" type="text" id="email" class="form-control" placeholder="이메일 주소를 입력해주세요." value="<%=request.getParameter("email") == null ? "" : request.getParameter("email")%>" required><br>
                 <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="찾기"/>
                 <p style="color: red; font-weight: bold"><%=request.getAttribute("ERROR") == null ? "":request.getAttribute("ERROR")%></p>
             </form><!-- /form -->
