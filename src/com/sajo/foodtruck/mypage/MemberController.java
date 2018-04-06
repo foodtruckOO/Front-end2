@@ -35,7 +35,7 @@ public class MemberController {
 	}	
 
 	/**********Seller page**********/
-	//회원정보 수정
+	//회원정보 수정-----------------------------------------------------------------
 	@RequestMapping("/Tabs1.page")
 	public String Tabs1(Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
@@ -45,23 +45,15 @@ public class MemberController {
 		return "tabs-1.tiles";
 	}
 	
-	//회원정보 수정
-	@RequestMapping("/Tabs1_OK.page")
-	public String Tabs1_OK(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
+	@RequestMapping("/Info/Update.page")
+	public String Info(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
+		System.out.println("tabs5 접속");
+		System.out.println(dto.getId());
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		String result = "<script>\r\n" + 
-				"  $( function() {\r\n" + 
-				"    $( \"#dialog\" ).dialog();\r\n" + 
-				"  } );\r\n" + 
-				"  </script>"+ 
-				"<div id=\"dialog\" title=\"Basic dialog\">\r\n" + 
-				"<img src=\"<c:url value='/com.sajo.foodtruck/front-end/images/checkmark.gif'/>\" alt=\"이미지 없다\" \r\n" + 
-				"			style=\"width:50px; height: 50px; margin:1%;"+
-				"  <p>"+dao.update(dto)+"</p>\r\n" + 
-				"</div>";
+		dao.update(dto);
 		dao.close();
-		model.addAttribute("result", result);
-		return "tabs-1.tiles";
+		model.addAttribute("seller", dto);
+		return "tabs-5.tiles";
 	}
 	
 
@@ -95,17 +87,6 @@ public class MemberController {
 	}
 	
 
-	//개인정보 수정페이지로 이동
-	@RequestMapping("/Info/Update.page")
-	public String Info(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
-		System.out.println("tabs5 접속");
-		System.out.println(dto.getId());
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		dao.update(dto);
-		dao.close();
-		model.addAttribute("seller", dto);
-		return "tabs-5.tiles";
-	}
 	
 	//메뉴 수정-----------------------------------------------------------------
 	@RequestMapping("/Tabs6.page")
@@ -140,6 +121,28 @@ public class MemberController {
 		return "tabs-7.tiles";
 	}
 	
+	//SNS 등록------------------------------------------------------------------------
+	@RequestMapping("/Tabs8.page")
+	public String SnsInsert() throws Exception{
+		
+		return "tabs-8.tiles";
+	}	
+	
+	//주문 현황------------------------------------------------------------------------
+	@RequestMapping("/Tabs9.page")
+	public String OrderList() throws Exception{
+		
+		return "tabs-9.tiles";
+	}	
+	//사진 등록------------------------------------------------------------------------
+	@RequestMapping("/Tabs10.page")
+	public String TruckImg() throws Exception{
+		
+		return "tabs-10.tiles";
+	}
+		
+		
+		
 	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
 	public String EventUpload(T_EventDTO dto, Model model, HttpServletRequest req) throws IllegalStateException, IOException {
 		

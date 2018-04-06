@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 메뉴 등록 -->
-<div style="font-size: 2em; color: gray">메뉴 등록</div>
+<div style="font-size: 2em; color: gray">푸드트럭 이미지 등록</div>
 <hr>
 <form>	
 	<!-- ---------------------------------------------------------------------- -->
@@ -30,9 +30,7 @@
 		$('#thefiles').FancyFileUpload({
 
 			  // send data to this url
-			  'url' : '<%=request.getSession().getServletContext().getRealPath(
-					"/"+request.getSession().getAttribute("USER_TYPE").toString()+
-					"/"+request.getSession().getAttribute("USER_ID")+"/FOODTRUCK")%>',
+			  'url' : '<c:url value="/Menu/Upload.page"/>',
 
 			  // key-value pairs to send to the server
 			  'params' : {},
@@ -84,9 +82,6 @@
 			  'preinit' : null,
 
 			});
-		console.log("여기 들어왔니?");
 	</script>
 	<!-- ---------------------------------------------------------------------- -->
-	
-	<button type="submit" class="btn btn-default">등록</button>
 </form>
