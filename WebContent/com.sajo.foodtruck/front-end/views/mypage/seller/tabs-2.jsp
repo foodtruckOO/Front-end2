@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
 
+<style>
+.modal {
+        text-align: center;
+}
+ 
+@media screen and (min-width: 768px) { 
+        .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+        }
+}
+ 
+.modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+}
+</style>
 <script>
 	$(function() {
 		$('html, body').css({'height': '100%'});
@@ -9,10 +29,14 @@
 <div class="col-md-4" >
 	<div data-toggle="modal" data-target="#menuModal" style="cursor: pointer;">
 		<!-- 메뉴 이미지 -->
-		<div style="background-color: green; width: 100%; display: block; padding-top: 100%">
+		<div style="background-color: green; width: 100%; display: block; padding-top: 100%; position: relative;">
+			<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/api/MENU/Chrysanthemum.jpg" alt="이미지를 찾을 수 없습니다.."
+					 style="width: 100%; height:100%; top: 0px; position: absolute;">
 		</div>
 	  	<!-- 가격 -->	
-	  	<div style="height: 80PX; background-color: #efefe7;">
+	  	<div style="height: 80PX; background-color: #efefe7; text-align: center;padding-top: 8px">
+	  		<span style="font-weight: bold; font-size: 1.5em;">국화3핫치킨</span><br/>
+	  		<span style="font-weight: bold; color: darkgray; font-size: 1.2em;">20,300</span>
 	  	</div>
   	</div>
 </div>
@@ -26,14 +50,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Modal titles</h4>
       </div>
       <div class="modal-body">
-        ...
+        <!-- 모달안의 내용 -->
+        <div style="background-color: green; width: 100%; display: block; padding-top: 60%; position: relative;">
+        	<div style="background-color: red; width: 60%; height:100%; top: 0px; position: absolute;">
+        		<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/api/MENU/Chrysanthemum.jpg" alt="이미지를 찾을 수 없습니다.."
+					 style="width: 100%;top: 0px; position: relative;"/>
+			</div>
+			<div style="background-color: yellow; width: 40%; height:100%; top: 0px; padding:2%;
+						 margin-left:60%; position: absolute; word-spacing: pre-wrap;" >
+				<span style="font-weight: bold; font-size: 1.5em; text-align: center;">국화3핫치킨</span>
+		  		<span style="font-weight: bold; color: darkgray; font-size: 1.2em;">20,300</span><br/>
+				안녕하d저는ssd세요fzzzzzzzzffffffffeeeeeeeeeffffffffㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁffeeeeeeeeeeeeeeffffffffffffffffff
+			</div>	
+		</div>
+		
+		<!-- 
+        <div style="background-color: green; width: 100%; display: block; padding-top: 100%; position: relative;">
+			<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/api/MENU/Chrysanthemum.jpg" alt="이미지를 찾을 수 없습니다.."
+					 style="width: 100%; height:100%; top: 0px; position: absolute;">
+		</div> -->
+        <!-- 모달안의 내용끝 -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">주문하기</button>
       </div>
     </div>
   </div>
