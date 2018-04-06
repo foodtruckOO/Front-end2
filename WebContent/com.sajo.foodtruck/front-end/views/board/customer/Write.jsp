@@ -26,23 +26,68 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- include summernote -->
-  <link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.css'/>">
-  <script type="text/javascript" src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.js'/>"></script>
+<link rel="stylesheet"
+	href="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.css'/>">
+<script type="text/javascript"
+	src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.js'/>"></script>
+<!-- include summernote-ko-KR -->
+<script
+	src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/lang/summernote-ko-KR.js'/>"></script>
 <script>	
-		$(function(){
-			var currentPosition = parseInt($("#sidebox").css("top"));
-			$(window).scroll(function() {
-				var position = $(window).scrollTop(); 
-				$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
-			});
-			
-			$('.summernote').summernote({
-		        height: 300,
-		        tabsize: 2
-		      });
-			
+$(function(){
+		var currentPosition = parseInt($("#sidebox").css("top"));
+		$(window).scroll(function() {
+			var position = $(window).scrollTop(); 
+			$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
 		});
-	</script>
+		
+		$('#summernote').summernote({
+	        height: 300,
+	        tabsize: 2,
+	        lang: 'ko-KR',
+	        
+			onImageUpload: function(files, editor, welEditable){
+				  sendFile(files[0], editor, welEditable);
+			  
+			}
+	    });	
+		
+
+		function sendFile(file, editor, welEditable) {
+			var data = new FormData();
+			data.append("uploadFile", file);
+			$.ajax({
+				data: data,
+				type: "POST",
+				url: "/ktx.board",
+				enctype: 'multipart/form-data',
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(url){
+					//data = jQuery.parseJSON(dd);
+					editor.insertImage(welEditable, url);
+					if(data.status == "OK"){
+						editor.summernote('insertImage', data.url);
+					} else {
+						alert(data.message);
+					}
+				},
+				error: function(data){
+					console.log(data);
+				}
+			});
+		}		
+});
+
+
+
+function save(){
+	var markupStr = $('#summernote').summernote('code');
+	$("#content").val(markupStr);
+	$("#inform").submit();
+}
+</script>
 
 
 </head>
@@ -65,34 +110,31 @@
 
 				<div class="body">
 					<div class="content">
-						<fieldset style="padding: 20px 0 50px 20px">
-							<div class="page-header">
+						<div class="page-header">
 							<h2 style="color: orange;">게시글 작성</h2>
-							</div>
+						</div>
+						<fieldset style="padding: 20px 0 50px 20px; padding-right: 250px">
+
 							<form action="<c:url value='/ktx.board'/>" method="post">
 								<table width="100%" bgcolor="gray" cellspacing="1">
-									<tr bgcolor="white" >
-										<td width="30%" align="center">제목</td>
-										<td><input class="form-control" type="text" name="title" style="width: 98%"  />
-										
-										</td>
+									<tr bgcolor="white">
+										<td width="30%" align="center"><strong>제목</strong></td>
+										<td><input class="form-control" type="text" name="title"
+											style="width: 100%" /></td>
 									</tr>
 									<tr bgcolor="white">
-										<td align="center">내용</td>
-										<!-- <td><textarea rows="10" style="width: 98%" name="content" ></textarea></td> -->
-                                        <td class="summernote"></td>
+										<td align="center"><strong>내용</strong></td>
+										<td><textarea id="summernote" rows="10"
+												style="width: 98%" name="content"></textarea></td>
+
 									</tr>
-									<tr align="center">
-										<td>
-										<label for="exampleInputFile">첨부 이미지</label></td>
-										<td><input type="file" id="exampleInputFile"name="file" >
-										
-										</td>
-									</tr>
+
 									<tr bgcolor="white" align="center">
-										<td colspan="2"><input type="submit" value="등록" /></td>
+										<td colspan="2" style="padding-left: 250px"><input
+											type="submit" value="등록" /></td>
+
 									</tr>
-									
+
 								</table>
 							</form>
 						</fieldset>
@@ -109,11 +151,6 @@
 
 
 
-
-
-
-
-
 	<!-- 내용 끝 -->
 	<div>
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp" />
@@ -122,7 +159,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-		<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 
 </body>
 </html>

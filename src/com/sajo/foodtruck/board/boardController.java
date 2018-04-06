@@ -1,5 +1,6 @@
 package com.sajo.foodtruck.board;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
 
 import com.sajo.foodtruck.LoginJoin.PBKDF2;
+import com.sajo.foodtruck.mypage.FileUpDownUtils;
 
 
 
@@ -83,6 +86,8 @@ public class boardController {
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
+		System.out.println(content);
+		System.out.println(file);
 		dao.write(title, content, file, user);
 		dao.close();
 		return "/Com.board";
@@ -217,8 +222,26 @@ public class boardController {
 		  dao.delete(sb_no);
 		  dao.close();  
 		  return "/Pizza.board";
-	  }
-
+	  }///////////////////////////////  
+	
+	  //커스텀 파일 업로드!!
+	  @RequestMapping("/summerNote.board")
+	  public String summerNote(HttpServletResponse resp, HttpServletRequest req) throws Exception{
+		//파라미터 받기]
+			String filename = req.getParameter("filename");
+			System.out.println("filename="+filename);
+			String key      = req.getParameter("key");
+			//다운로드 관련 모델 호출]
+			//1.파일 다운로드 로직 호출]
+			FileUtils.download(req, resp, "/Upload", filename);
+			//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
+			ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+			dao.updateDownCount(key);
+			dao.close();
+        
+		  return "/ktx.board";
+	  } /////////////////////////////////// 
+	  
 	  //커스텀 파일 업로드
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			//파라미터 받기]
@@ -235,4 +258,37 @@ public class boardController {
 			
 		}//////////////////////////
 	
+		/*모든 이미지 파일 경로에 등록*/
+		public String uploadFile(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
+			
+			MultipartFile file = mf;
+			//1] 이미지 경로
+			String path=req.getSession().getServletContext().getRealPath(
+										"/"+req.getSession().getAttribute("USER_TYPE").toString()+
+										"/"+req.getSession().getAttribute("USER_ID").toString()+folder);
+
+			String newFileName=FileUpDownUtils.getNewFileName(path, file.getOriginalFilename());
+			//2]File객체 생성
+			File f = new File(path);	
+			//해당 디렉토리의 존재여부를 확인
+			if(!f.exists()){
+				//없다면 생성
+				f.mkdirs(); 
+			}else{
+				//있다면 현재 디렉토리 파일을 삭제 
+				if(flag) {
+					System.out.println("폴더1 있어 기존거 삭제할게");
+					File[] destroy = f.listFiles(); 
+					for(File des : destroy) des.delete();
+				}
+			}
+			//3]File객체 생성
+			f	= new File(path + File.separator + newFileName);	
+			//4]업로드 처리
+			file.transferTo(f);
+			//5]변경된 이름 return
+			return newFileName;
+		}
+		
+		
 }///////////////////////

@@ -194,7 +194,7 @@ public class ComstomerDAO {
 	//다운로드 수 업데이트용]
 	public void updateDownCount(String key) {
 		
-		String sql="UPDATE dataroom SET downcount=downcount+1 WHERE cb_no=?";
+		String sql="UPDATE c_board SET downcount=downcount+1 WHERE cb_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);

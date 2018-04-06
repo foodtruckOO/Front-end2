@@ -492,7 +492,7 @@ ul.inbox-pagination li {
 				<form action="#" class="pull-right position">
 					<div class="input-append">
 						<a
-							href="<c:url value='/com.sajo.foodtruck/front-end/views/board/customer/Write.jsp'/>"><button
+							href="<c:url value='/com.sajo.foodtruck/front-end/views/board/seller/Write.jsp'/>"><button
 								type="button" class="btn btn-success">글등록</button></a>
 					</div>
 				</form>

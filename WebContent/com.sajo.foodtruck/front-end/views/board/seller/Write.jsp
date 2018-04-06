@@ -25,13 +25,24 @@
 <!-- jQuery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- include summernote -->
+<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.css'/>">
+  <script type="text/javascript" src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.js'/>"></script>
 <script>	
+
 		$(function(){
 			var currentPosition = parseInt($("#sidebox").css("top"));
 			$(window).scroll(function() {
 				var position = $(window).scrollTop(); 
 				$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
 			});
+			
+			$('.summernote').summernote({
+		        height: 300,
+		        tabsize: 2
+		       
+		      });
+			
 			
 		});
 	</script>
@@ -63,12 +74,12 @@
 								<table width="75%" bgcolor="gray" cellspacing="1">
 									<tr bgcolor="white">
 										<td width="30%" align="center">제목</td>
-										<td><input type="text" name="title" style="width: 98%" />
+										<td><input class="form-control" name="title" style="width: 98%" />
 										</td>
 									</tr>
 									<tr bgcolor="white">
 										<td align="center">내용</td>
-										<td><jsp:include page="/com.sajo.foodtruck/front-end/views/board/smarteditor2-master/workspace/SmartEditor2.jsp"></jsp:include></td>
+										<td><textarea class="summernote" rows="10" style="width: 98%" name="content" ></textarea></td>
 									
 
 									</tr>
@@ -111,8 +122,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
 	<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 </body>
 </html>
