@@ -37,7 +37,7 @@
 		<label for="exampleInputFile">첨부 이미지</label>
 		<input type="file" name="picture" >
 	</div>
-	<button type="submit" class="btn btn-default">등록</button>
+	<button type="submit" class="btn btn-default" >등록</button>
 </form>
 
 

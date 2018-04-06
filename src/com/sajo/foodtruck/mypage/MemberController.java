@@ -91,8 +91,19 @@ public class MemberController {
 		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
 		model.addAttribute("seller", dto);
-		System.out.println((String)req.getSession().getAttribute("USER_ID"));
-		System.out.println("hanwook");
+		return "tabs-5.tiles";
+	}
+	
+
+	//개인정보 수정페이지로 이동
+	@RequestMapping("/Info/Update.page")
+	public String Info(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
+		System.out.println("tabs5 접속");
+		System.out.println(dto.getId());
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		dao.update(dto);
+		dao.close();
+		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
 	}
 	
@@ -152,7 +163,7 @@ public class MemberController {
 	
 
 	
-	//이벤트 수정------------------------------------------------------------------------
+	//SNS등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs8.page")
 	public String SnsUpdate(Model model, HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
@@ -161,6 +172,20 @@ public class MemberController {
 		model.addAttribute("seller", dto);
 		System.out.println((String)req.getSession().getAttribute("USER_ID"));
 		return "tabs-8.tiles";
+	}
+	
+
+
+	
+	//주문 현황------------------------------------------------------------------------
+	@RequestMapping("/Tabs9.page")
+	public String Order(Model model, HttpServletRequest req) throws Exception{
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		dao.close();
+		model.addAttribute("seller", dto);
+		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+		return "tabs-9.tiles";
 	}
 	
 	/*모든 이미지 파일 경로에 등록*/

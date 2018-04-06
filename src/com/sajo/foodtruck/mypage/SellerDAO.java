@@ -90,21 +90,23 @@ public class SellerDAO {
 	}
 	
 	public String update(SellerDTO dto) throws SQLException{
+		
+		System.out.println("SellerDAO UPDATE");
+				
 		String result="";
 		try {
-			String sql="UPDATE seller SET pwd=?, tname=?, addr=?, addr2=?, tel=?, corporate_no=? WHERE id=?";
+			String sql="UPDATE seller SET pwd=?, name=?, tname=?, addr=?, addr2=?, tel=?, corporate_no=? WHERE id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPwd());
-			psmt.setString(2, dto.getTname());
-			psmt.setString(3, dto.getAddr());
-			psmt.setString(4, dto.getAddr2());
-			psmt.setString(5, dto.getTel());
-			psmt.setString(6, dto.getCorporate_no());
-			
-			psmt.setString(7, dto.getId());
-						
-			result = psmt.executeUpdate()==0?"★★ 회원정보 수정 실패 ★★":"★★ 회원정보 수정 성공 ★★";
-			System.out.println(result);
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getTname());
+			psmt.setString(4, dto.getAddr());
+			psmt.setString(5, dto.getAddr2());
+			psmt.setString(6, dto.getTel());
+			psmt.setString(7, dto.getCorporate_no());
+			psmt.setString(8, dto.getId());
+						System.out.println(dto.getPwd()+dto.getName()+dto.getTname()+dto.getAddr2()+dto.getTel()+ dto.getCorporate_no()+dto.getId());
+			System.out.println(result = psmt.executeUpdate()==0?"★★ 회원정보 수정 실패 ★★":"★★ 회원정보 수정 성공 ★★");
 		} 
 		catch (Exception e) {System.out.println("SellerDAO UPDATE문 ERROR");}
 		finally {close();}
