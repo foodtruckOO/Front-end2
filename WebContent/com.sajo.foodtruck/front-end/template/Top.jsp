@@ -23,6 +23,24 @@
 		window.open(popUrl,"",popOption);
 	}
 </script>
+<script>
+	function cart(){
+	var user = "${sessionScope.USER_ID}";
+	if(user==""){
+		alert("로그인 후 이용해주세요.");
+	}	
+	else if("${sessionScope.USER_TYPE}"=="seller"){
+		alert("사업자는 이용할 수 없습니다.");
+	}
+	else
+		var order = confirm("장바구니로 이동하시겠습니까?");
+		if(order)
+		location.href="<c:url value='/cart.cart'/>";
+	}
+
+</script>
+
+
 <!-- Fixed navbar -->
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top" id="top_top"><!--  navbar-fixed-top -->
@@ -46,7 +64,7 @@
 				       <li><a href="javascript:popupOpen();">LOGIN</a></li>&emsp;
 				        <li><a href="javascript:popupOpen2();">JOIN</a></li>
 			        <%}else{ %>
-				        <li><a href="#">CART</a></li>&emsp;
+				        <li><a href="javascript:cart()">CART</a></li>&emsp;
 				        <li><a href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
 				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>

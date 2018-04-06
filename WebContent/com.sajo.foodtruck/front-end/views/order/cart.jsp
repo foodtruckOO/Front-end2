@@ -208,7 +208,7 @@
 					<br/>
 					<div class="btn_txt_wrap">
 						<span class="left">
-							<a href="javascript:back()" class="btn_txt">계속<span>쇼핑</span></a>
+							<a href="javascript:back()" class="btn_txt">돌아<span>가기</span></a>
 						</span>
 						<span class="right">
 							<a href="javascript:order()" id="btn_startOrder" class="btn_txt h60 btn_red" >주문<span>하기</span></a>
