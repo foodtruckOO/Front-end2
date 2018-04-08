@@ -162,23 +162,7 @@
 		var videoelem = document.createElement('video');
 
 		var AddFile = function(uploads, e, data) {
-			var inforow = $('<tr>'+
-								'<td class="ff_fileupload_preview">'+
-									'<button class="ff_fileupload_preview_image" type="button">'+
-										'<span class="ff_fileupload_preview_text"></span>'+
-									'</button>'+
-									'<div class="ff_fileupload_actions_mobile"></div>'+
-								'</td>'+
-								'<td class="ff_fileupload_summary">'+
-									'<div class="ff_fileupload_filename"></div>'+
-									'<div class="ff_fileupload_fileinfo"></div>'+
-									'<div class="ff_fileupload_buttoninfo ff_fileupload_hidden"></div>'+
-									'<div class="ff_fileupload_errors ff_fileupload_hidden"></div>'+
-									'<div class="ff_fileupload_progress_background ff_fileupload_hidden">'+
-										'<div class="ff_fileupload_progress_bar"></div>'+
-									'</div>'+
-								'</td><td class="ff_fileupload_actions"></td>'+
-							'</tr>');
+			var inforow = $('<tr><td class="ff_fileupload_preview"><button class="ff_fileupload_preview_image" type="button"><span class="ff_fileupload_preview_text"></span></button><div class="ff_fileupload_actions_mobile"></div></td><td class="ff_fileupload_summary"><div class="ff_fileupload_filename"></div><div class="ff_fileupload_fileinfo"></div><div class="ff_fileupload_buttoninfo ff_fileupload_hidden"></div><div class="ff_fileupload_errors ff_fileupload_hidden"></div><div class="ff_fileupload_progress_background ff_fileupload_hidden"><div class="ff_fileupload_progress_bar"></div></div></td><td class="ff_fileupload_actions"></td></tr>');
 			var pos = data.files[0].name.lastIndexOf('.');
 			var filename = (pos > -1 ? data.files[0].name.substring(0, pos) : data.files[0].name);
 			var fileext = (pos > -1 ? data.files[0].name.substring(pos + 1).toLowerCase() : '');

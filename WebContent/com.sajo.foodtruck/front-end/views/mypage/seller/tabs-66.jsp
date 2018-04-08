@@ -7,16 +7,16 @@
 <form>	
 	<!-- ---------------------------------------------------------------------- -->
 	<link rel="stylesheet"
-		href="<c:url value='/bootstrap/js/fancy-file-uploader/fancy_fileupload.css'/>"
+		href="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/fancy_fileupload.css'/>"
 		type="text/css" media="all" />
 	<div>
 		<input id="thefiles" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple style="display: none;">
 	</div>
 	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.ui.widget.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.fileupload.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.iframe-transport.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancy-file-uploader/jquery.fancy-fileupload.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.ui.widget.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.fileupload.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.iframe-transport.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.fancy-fileupload.js'/>"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('#thefiles').FancyFileUpload({

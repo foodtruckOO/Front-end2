@@ -102,5 +102,28 @@ public class T_MenuDAO {
 		return affected;
 	}
 	
+	//메뉴 뿌리기
+	public List<T_Menu_FoodDTO> selectMenu(String no){
+		System.out.println("T_MenuDAO selectMenu");
+		List<T_Menu_FoodDTO> list = new Vector<T_Menu_FoodDTO>();
+		String sql = "SELECT fname, content, picture, price FROM food where s_no=? ORDER BY f_no DESC";//내림차순(큰~작)
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				T_Menu_FoodDTO dto = new T_Menu_FoodDTO();
+				dto.setFname(rs.getString(1));
+				dto.setContent(rs.getString(2));
+				dto.setNewPicture(rs.getString(3));
+				dto.setPrice(rs.getString(4));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			System.out.println("T_MenuDAO selectMenu error");
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

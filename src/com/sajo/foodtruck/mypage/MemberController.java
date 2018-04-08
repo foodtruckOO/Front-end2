@@ -57,13 +57,19 @@ public class MemberController {
 	}
 	
 
-	// tab-1
+	// 메뉴보기
 	@RequestMapping("/Tabs2.page")
-	public String Tabs2(Model model, HttpServletRequest req) throws Exception{
+	public String selectMenu(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs2 접속");
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		List<T_Menu_FoodDTO> list = dao.selectMenu(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		dao.close();
+		for(T_Menu_FoodDTO dto : list) dto.setContent(dto.getContent().replaceAll("\r\n", "</br>"));
+		model.addAttribute("list",list);
 		return "tabs-2.tiles";
 	}
 
+	//
 	@RequestMapping("/Tabs3.page")
 	public String Tabs3(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs3 접속");
@@ -121,28 +127,6 @@ public class MemberController {
 		return "tabs-7.tiles";
 	}
 	
-	//SNS 등록------------------------------------------------------------------------
-	@RequestMapping("/Tabs8.page")
-	public String SnsInsert() throws Exception{
-		
-		return "tabs-8.tiles";
-	}	
-	
-	//주문 현황------------------------------------------------------------------------
-	@RequestMapping("/Tabs9.page")
-	public String OrderList() throws Exception{
-		
-		return "tabs-9.tiles";
-	}	
-	//사진 등록------------------------------------------------------------------------
-	@RequestMapping("/Tabs10.page")
-	public String TruckImg() throws Exception{
-		
-		return "tabs-10.tiles";
-	}
-		
-		
-		
 	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
 	public String EventUpload(T_EventDTO dto, Model model, HttpServletRequest req) throws IllegalStateException, IOException {
 		
@@ -164,34 +148,27 @@ public class MemberController {
 		return "forward:/Member.page";
 	}
 	
-
-	
-	//SNS등록------------------------------------------------------------------------
+	//SNS 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs8.page")
-	public String SnsUpdate(Model model, HttpServletRequest req) throws Exception{
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
-		dao.close();
-		model.addAttribute("seller", dto);
-		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+	public String SnsInsert() throws Exception{
+		
 		return "tabs-8.tiles";
-	}
-	
-
-
+	}	
 	
 	//주문 현황------------------------------------------------------------------------
 	@RequestMapping("/Tabs9.page")
-	public String Order(Model model, HttpServletRequest req) throws Exception{
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
-		dao.close();
-		model.addAttribute("seller", dto);
-		System.out.println((String)req.getSession().getAttribute("USER_ID"));
+	public String OrderList() throws Exception{
+		
 		return "tabs-9.tiles";
+	}	
+	//사진 등록------------------------------------------------------------------------
+	@RequestMapping("/Tabs10.page")
+	public String TruckImg() throws Exception{
+		
+		return "tabs-10.tiles";
 	}
-	
-	/*모든 이미지 파일 경로에 등록*/
+
+	//이미지 파일 업로드 메소드------------------------------------------------------------------------*
 	public String FileUpload(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
 		
 		MultipartFile file = mf;
