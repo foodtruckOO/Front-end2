@@ -9,20 +9,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sajo.foodtruck.foodtruck.FoodtruckDAO;
 
 @Controller
 public class OrderController {
 
 	
-	
-	@RequestMapping("/datail.order")
-	public String detailorder(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+	@RequestMapping("/order.order")
+	public String order(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 	
 		
-		return "";
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		String time = map.get("time").toString();
+		String ordertype = map.get("slt_payMethod").toString();
+		String text = null ;
 		
+		text = map.get("input_order_memo").toString();
+		
+		
+		//System.out.println("user:"+user+"time:"+time+"text:"+text+"ordertype:"+ordertype);
+		
+		OrderDAO dao = new OrderDAO(req.getServletContext());
+		
+		List list = dao.order(user,time,ordertype,text);
+		model.addAttribute("order",list);
+		dao.close();
+		
+		return "com.sajo.foodtruck/front-end/views/order/paymentComplete.jsp";
 	}
 	
 	

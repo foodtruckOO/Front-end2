@@ -33,6 +33,7 @@ DROP SEQUENCE SEQ_EVENT;
 DROP SEQUENCE SEQ_FOOD;
 DROP SEQUENCE SEQ_FOODTRUCKS;
 DROP SEQUENCE SEQ_F_NO;
+DROP SEQUENCE SEQ_O_NO;
 DROP SEQUENCE SEQ_REVIEW;
 DROP SEQUENCE SEQ_SEL;
 DROP SEQUENCE SEQ_S_BOARD;
@@ -50,6 +51,7 @@ CREATE SEQUENCE SEQ_EVENT;
 CREATE SEQUENCE SEQ_FOOD;
 CREATE SEQUENCE SEQ_FOODTRUCKS;
 CREATE SEQUENCE SEQ_F_NO;
+CREATE SEQUENCE SEQ_O_NO;
 CREATE SEQUENCE SEQ_REVIEW;
 CREATE SEQUENCE SEQ_SEL START WITH 200000;
 CREATE SEQUENCE SEQ_S_BOARD;
@@ -204,6 +206,7 @@ CREATE TABLE PAYMENT
 	-- 
 	-- 페이지에서 뿌려줄 때는 ORDER TABLE과 PAY TABLE을 함께 이용해서 나의 내역을 확인한다.
 	O_NO varchar2(10) NOT NULL,
+	ORDERTYPE number NOT NULL,
 	PRIMARY KEY (PAY_NO)
 );
 
@@ -273,8 +276,8 @@ CREATE TABLE TRUCKPAGE
 (
 	S_NO number NOT NULL,
 	INTRO nvarchar2(500) NOT NULL,
-	MAIN_IMG varchar2(100) NOT NULL,
-	BACK_IMG varchar2(100) NOT NULL
+	MAIN varchar2(100) NOT NULL,
+	BACK varchar2(100) NOT NULL
 );
 
 
@@ -448,4 +451,10 @@ COMMENT ON COLUMN SELLER.ADDR2 IS '상세주소';
 COMMENT ON COLUMN TRUCK_EVENT.ENO IS '이벤트 게시물 no';
 
 
-
+insert into foodtype values(1,'한식');
+insert into foodtype values(2,'일식');
+insert into foodtype values(3,'중식');
+insert into foodtype values(4,'양식');
+insert into foodtype values(5,'퓨전');
+insert into foodtype values(6,'기타');
+insert into foodtype values(7,'음료');

@@ -181,11 +181,6 @@
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Right.jsp" />
 	</div>
 	
- 	<div class="head_cart">
-		<ul>					
-			<li id="pCart" class="h_cart "><a href="javascript:cart()"><span>장바구니</span><i></i></a></li>
-		</ul>
-	</div> 
 	
 	<!-- wrap -->
 	<div id="wrap">
