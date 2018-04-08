@@ -1,87 +1,73 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 메뉴 등록 -->
 <div style="font-size: 2em; color: gray">푸드트럭 이미지 등록</div>
 <hr>
-<form>	
-	<!-- ---------------------------------------------------------------------- -->
-	<link rel="stylesheet"
-		href="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/fancy_fileupload.css'/>"
-		type="text/css" media="all" />
-	<div>
-		<input id="thefiles" type="file" name="files" accept=".jpg, .png, image/jpeg, image/png" multiple style="display: none;">
+
+<style>                                         
+	#file { width:0; height:0; }                    
+</style>
+<script>
+$(function(){          
+	$('#btn-upload').click(function(e){
+		e.preventDefault();             
+		$("input:file").click();               
+		var ext = $("input:file").val().split(".").pop().toLowerCase();
+		if(ext.length > 0){
+			if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+				alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
+				return false;  
+			}                  
+		}
+		$("input:file").val().toLowerCase();
+	});                         
+});
+</script>
+
+<form id="fileupload" action="#"method="POST" enctype="multipart/form-data">
+	<div class="row fileupload-buttonbar">
+		<div class="col-lg-7">
+			<!-- The fileinput-button span is used to style the file input field as button -->
+			<input type='file' id='file' name='file' />
+			<button id='btn-upload' class="btn btn-success fileinput-button" onfocus="this.blur();">
+				<i class="glyphicon glyphicon-plus"></i> <span>Add files...</span> 
+			</button>
+			<button type="submit" class="btn btn-primary start">
+				<i class="glyphicon glyphicon-upload"></i> <span>Start upload</span>
+			</button>
+			<button type="reset" class="btn btn-warning cancel">
+				<i class="glyphicon glyphicon-ban-circle"></i> <span>Cancel upload</span>
+			</button>
+			<button type="button" class="btn btn-danger delete">
+				<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+			</button>
+		</div>
 	</div>
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.ui.widget.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.fileupload.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.iframe-transport.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/bootstrap/js/fancyfileuploader/fancy-file-uploader/jquery.fancy-fileupload.js'/>"></script>
-	<script type="text/javascript">
-		$(function() {
-			$('#thefiles').FancyFileUpload({
-				params : {
-					action : 'fileuploader'
-				},
-				maxfilesize : 1000000
-			});
-		});
-		
-		$('#thefiles').FancyFileUpload({
-
-			  // send data to this url
-			  'url' : '<c:url value="/Menu/Upload.page"/>',
-
-			  // key-value pairs to send to the server
-			  'params' : {},
-
-			  // editable file name?
-			  'edit' : true,
-
-			  // max file size
-			  'maxfilesize' : -1,
-
-			  // a list of allowed file extensions
-			  'accept' : null,
-
-			  // 'iec_windows', 'iec_formal', or 'si' to specify what units to use when displaying file sizes
-			  'displayunits' : 'iec_windows',
-
-			  // adjust the final precision when displaying file sizes
-			  'adjustprecision' : true,
-
-			  // the number of retries to perform before giving up
-			  'retries' : 5,
-
-			  // the base delay, in milliseconds, to apply between retries
-			  'retrydelay' : 500,
-
-			  // called for each item after it has been added to the DOM
-			  'added' : null,
-
-			  // called whenever starting the upload
-			  'startupload' : null,
-
-			  // called whenever progress is up<a href="https://www.jqueryscript.net/time-clock/">date</a>d
-			  'continueupload' : null,
-
-			  // called whenever an upload has been cancelled
-			  'uploadcancelled' : null,
-
-			  // called whenever an upload has successfully completed
-			  'uploadcompleted' : null,
-
-			  // jQuery File Upload options
-			  'fileupload' : {},
-
-			  // translation strings here
-			  'lang<a href="https://www.jqueryscript.net/tags.php?/map/">map</a>' : {},
-
-			  // A valid callback function that is called during initialization to allow for last second changes to the settings. 
-			  // Useful for altering fileupload options on the fly. 
-			  'preinit' : null,
-
-			});
-	</script>
-	<!-- ---------------------------------------------------------------------- -->
 </form>
+<!-- 
+<script type="text/javascript"> 
+	$(function() { 
+		$("#addTR").click(function () { 
+			var row = "<tr>"; 
+			row += "<td><input type='text' name='idx[]' value='' /></td>"; 
+			row += "<td><span>날 누르면 삭제가 됨</span></td>"; 
+			row += "</tr>"; 
+			$("#table").append(row); 
+		}); 
+		$("#table").on("click", "span", function() { 
+			$(this).closest("tr").remove(); 
+		}); 
+	}); 
+</script> 
+<button id="addTR"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button> 
+<a class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+<table id="table"> 
+	<tr> 
+		<td><input type="text" /></td> 
+	</tr> 
+</table>
+
+ -->
+

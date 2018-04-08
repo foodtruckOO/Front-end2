@@ -167,6 +167,14 @@ public class MemberController {
 		
 		return "tabs-10.tiles";
 	}
+	
+	@RequestMapping("/FTImgUpload.page")
+	public String FTImgUpload(T_ImagesDTO dto) throws Exception{
+		System.out.println("FTImgUpload");
+		System.out.println(dto.getImg());
+		return "tabs-10.tiles";
+	}
+	
 
 	//이미지 파일 업로드 메소드------------------------------------------------------------------------*
 	public String FileUpload(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
