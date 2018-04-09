@@ -152,7 +152,7 @@ body, html {
 <script type="text/javascript">
 	function popupOpen(){
 	var windowW=600;
-	var windowH=810;
+	var windowH=770;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/customer/JointoCus.jsp'/>";	//팝업창에 출력될 페이지 URL
@@ -174,7 +174,7 @@ body, html {
 <body>
 	<div class="container">
         <div class="card card-container">
-        <h2>Please Choice your Join Status</h2><hr style="border: solid 1px #FE9A2E; width: 80%">
+        <h2>회원가입 유형을 선택해주세요.</h2><hr style="border: solid 1px #FE9A2E; width: 80%">
            <!-- 일반고객버튼 -->
            <a href="javascript:popupOpen()">
            <input class="btn btn-success" type="button" value="Customer" style="width: 250px; height: 250px; font-size: 40px;">

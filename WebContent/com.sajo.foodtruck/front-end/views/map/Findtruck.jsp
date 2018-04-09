@@ -83,8 +83,8 @@
     </div>
 	
 	<!-- 내용 시작 -->
-	<section style="padding-top: 80px;">
-		<article> 
+	<section style="padding-top: 30px; margin-left: 360px; margin-right: 360px">
+		<article style="margin-right:30px; margin-left: 30px"> 
 	  		<h2>푸드트럭찾기</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
 		</article>
 	  
@@ -109,7 +109,7 @@
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07081f33b5c3c2dd65b5d5a0b0e85296&libraries=services,clusterer"></script>
     	</article><br><br>
            
-	    <article>
+	    <article style="margin-right:30px; margin-left: 30px">
 	      <h2>전체푸트드럭</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
 	    </article>
 	      
@@ -149,9 +149,10 @@
 				}//for
 			%>
 		</table>
-		</article>
-		
-		<!-- footer -->
+		</article>	
+    </section><br><br>
+    <section>
+    <!-- footer -->
 		<article>
 			<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp"/>
 	 	</article>

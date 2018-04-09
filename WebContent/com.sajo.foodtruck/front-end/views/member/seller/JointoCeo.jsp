@@ -32,7 +32,7 @@ body, html {
 }
 
 .card-container.card {
-    max-width: 350px;
+    max-width: 500px;
     padding: 40px 40px;
 }
   
@@ -208,7 +208,7 @@ function centerSpace(string){
 </script>  
 	<div class="container">
         <div class="card card-container">
-        <h2>Seller</h2><hr style="border: solid 1px #FE9A2E;">
+        <h3>사업자 회원가입</h3><hr style="border: solid 1px #FE9A2E;">
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="post" name="form" id="form" action="../SellerJoinProcess.jsp">
                 <span id="reauth-email" class="reauth-email"></span>

@@ -17,7 +17,7 @@ body, html {
 }
 
 .card-container.card {
-    max-width: 350px;
+    max-width: 530px;
     padding: 40px 40px;
 }
   
@@ -36,8 +36,8 @@ body, html {
 .card {
     background-color: #F7F7F7;
     /* just in case there no content*/
-    padding: 20px 25px 30px;
-    margin: 0 auto 25px;
+	padding: 20px 25px 30px;
+    margin: auto 25px;
     margin-top: 20px;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
@@ -218,7 +218,7 @@ function centerSpace(string){
 </script> 
 	<div class="container">
         <div class="card card-container">
-        <h2>Customer</h2><hr style="border: solid 1px #FE9A2E;">
+        <h3>고객 회원가입</h3><hr style="border: solid 1px #FE9A2E;">
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="post" action="../CusJoinProcess.jsp">
                 <span id="reauth-email" class="reauth-email"></span>
