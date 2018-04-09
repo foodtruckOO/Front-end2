@@ -8,12 +8,13 @@
 <title>네이버 :: Smart Editor 2 &#8482;</title>
 <script type="text/javascript" src="<c:url value='/com.sajo.foodtruck/front-end/views/board/smarteditor2-master/workspace/js/service/HuskyEZCreator.js'/>"
 	charset="utf-8"></script>
+
 </head>
 <body>
 	<form action="sample/viewer/index.php" method="post">
-		<textarea name="ir1" id="ir1" rows="10" cols="100"
-			style="width: 766px; height: 412px; display: none;"></textarea>
-		<!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
+		<!-- <textarea name="ir1" id="ir1" rows="10" cols="100"
+			style="width: 766px; height: 412px; display: none;"></textarea> -->
+		<textarea name="ir1" id="ir1" rows="10" style="width:100%; display: none; text-align: center;"></textarea>
 
 		<!-- <p>
 		<input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />

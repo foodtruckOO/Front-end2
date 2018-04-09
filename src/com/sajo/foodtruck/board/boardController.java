@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpMethodConstraint;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,20 +32,54 @@ import com.oreilly.servlet.MultipartRequest;
 import com.sajo.foodtruck.LoginJoin.PBKDF2;
 import com.sajo.foodtruck.mypage.FileUpDownUtils;
 
-
-
-
-//세션처리용]
-
 @Controller
-public class boardController {
+public class boardController  {
 
+	public static final int PAGESIZE = 2;
+	public static final int BLOCKPAGE = 3;
 	//커스텀목록용]
 	@RequestMapping("/Com.board")
-	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+	public void List(Model model, HttpServletRequest req,@RequestParam Map map,HttpServletResponse resp) throws Exception{
 
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
-		
+		//페이징을 위한 로직 시작]		
+		//전체 레코드 수
+		int totalRecordCount = dao.getTotalRecordCount();
+		//페이지 사이즈
+		int pageSize=Integer.valueOf(PAGESIZE);
+		//블락페이지
+		int blockPage=Integer.valueOf(BLOCKPAGE);
+		//전체 페이지수] 
+		int totalPage =(int)Math.ceil((double)totalRecordCount/pageSize);
+		//현재 페이지를 파라미터로 받기]
+		int nowPage = req.getParameter("nowPage")==null ? 1 : Integer.parseInt(req.getParameter("nowPage"));
+		//시작 및 끝 ROWNUM구하기]
+		int start= (nowPage-1)*pageSize +1;
+		int end  = nowPage*pageSize;		
+		//페이징을 위한 로직 끝]	
+
+		System.out.println("페이징을 위한 로직 끝");
+		List<ComstomerDTO> page=dao.selectList(start,end);
+		dao.close();
+		//라]결과값이 있으면 리퀘스트 영역에 저장
+		//페이지용 문자열 생성]
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/customer/Write.do?");
+
+		req.setAttribute("list", page);//글목록들
+		req.setAttribute("active","dataroom");//메뉴 활성화용
+		req.setAttribute("pagingString", pagingString);//페이징 문자열
+		//아래는 글번호 순서용
+		req.setAttribute("totalRecordCount", totalRecordCount);
+		req.setAttribute("nowPage", nowPage);
+		req.setAttribute("pageSize", pageSize);
+
+		//마]결과값을 뿌려주거나 이동할 뷰(JSP페이지) 선택후 포워딩
+		//뷰선택]
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp");
+		//포워딩]
+		dispatcher.forward(req, resp);
+
+			/*
 		String usertype = null;
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
 			usertype = req.getSession().getAttribute("USER_TYPE").toString();
@@ -55,14 +91,31 @@ public class boardController {
 		dao.close();
 		model.addAttribute("board",list);
 		return "/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp";
+		*/
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// 셀러목록용]
 	@RequestMapping("/Pizza.board")
 	public String Pizza(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		
+
 		String usertype = null;
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
 			usertype = req.getSession().getAttribute("USER_TYPE").toString();
@@ -201,94 +254,94 @@ public class boardController {
 	}/////
 
 	//커스텀 삭제
-	  @RequestMapping("/delete.board")
-	  public String delete(Model model,HttpServletRequest req) throws Exception{
-		  
-		  ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
-		  String cb_no= req.getParameter("cb_no");
-		  System.out.println(cb_no);
-		  dao.delete(cb_no);
-		  dao.close();  
-		  return "/Com.board";
-	  }
-	  
-	//셀러 삭제
-	  @RequestMapping("/delet.board")
-	  public String delet(Model model,HttpServletRequest req) throws Exception{
-		  
-		  SellerDAO dao = new SellerDAO(req.getServletContext());
-		  String sb_no= req.getParameter("sb_no");
-		  System.out.println(sb_no);
-		  dao.delete(sb_no);
-		  dao.close();  
-		  return "/Pizza.board";
-	  }///////////////////////////////  
-	
-	  //커스텀 파일 업로드!!
-	  @RequestMapping("/summerNote.board")
-	  public String summerNote(HttpServletResponse resp, HttpServletRequest req) throws Exception{
-		//파라미터 받기]
-			String filename = req.getParameter("filename");
-			System.out.println("filename="+filename);
-			String key      = req.getParameter("key");
-			//다운로드 관련 모델 호출]
-			//1.파일 다운로드 로직 호출]
-			FileUtils.download(req, resp, "/Upload", filename);
-			//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
-			ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
-			dao.updateDownCount(key);
-			dao.close();
-        
-		  return "/ktx.board";
-	  } /////////////////////////////////// 
-	  
-	  //커스텀 파일 업로드
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			//파라미터 받기]
-			String filename = req.getParameter("filename");
-			System.out.println("filename="+filename);
-			String key      = req.getParameter("key");
-			//다운로드 관련 모델 호출]
-			//1.파일 다운로드 로직 호출]
-			FileUtils.download(req, resp, "/Upload", filename);
-			//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
-			ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
-			dao.updateDownCount(key);
-			dao.close();
-			
-		}//////////////////////////
-	
-		/*모든 이미지 파일 경로에 등록*/
-		public String uploadFile(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
-			
-			MultipartFile file = mf;
-			//1] 이미지 경로
-			String path=req.getSession().getServletContext().getRealPath(
-										"/"+req.getSession().getAttribute("USER_TYPE").toString()+
-										"/"+req.getSession().getAttribute("USER_ID").toString()+folder);
+	@RequestMapping("/delete.board")
+	public String delete(Model model,HttpServletRequest req) throws Exception{
 
-			String newFileName=FileUpDownUtils.getNewFileName(path, file.getOriginalFilename());
-			//2]File객체 생성
-			File f = new File(path);	
-			//해당 디렉토리의 존재여부를 확인
-			if(!f.exists()){
-				//없다면 생성
-				f.mkdirs(); 
-			}else{
-				//있다면 현재 디렉토리 파일을 삭제 
-				if(flag) {
-					System.out.println("폴더1 있어 기존거 삭제할게");
-					File[] destroy = f.listFiles(); 
-					for(File des : destroy) des.delete();
-				}
+		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+		String cb_no= req.getParameter("cb_no");
+		System.out.println(cb_no);
+		dao.delete(cb_no);
+		dao.close();  
+		return "/Com.board";
+	}
+
+	//셀러 삭제
+	@RequestMapping("/delet.board")
+	public String delet(Model model,HttpServletRequest req) throws Exception{
+
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		String sb_no= req.getParameter("sb_no");
+		System.out.println(sb_no);
+		dao.delete(sb_no);
+		dao.close();  
+		return "/Pizza.board";
+	}///////////////////////////////  
+
+	//커스텀 파일 업로드!!
+	@RequestMapping("/summerNote.board")
+	public String summerNote(HttpServletResponse resp, HttpServletRequest req) throws Exception{
+		//파라미터 받기]
+		String filename = req.getParameter("filename");
+		System.out.println("filename="+filename);
+		String key      = req.getParameter("key");
+		//다운로드 관련 모델 호출]
+		//1.파일 다운로드 로직 호출]
+		FileUtils.download(req, resp, "/Upload", filename);
+		//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
+		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+		dao.updateDownCount(key);
+		dao.close();
+
+		return "/ktx.board";
+	} /////////////////////////////////// 
+
+	//커스텀 파일 업로드
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//파라미터 받기]
+		String filename = req.getParameter("filename");
+		System.out.println("filename="+filename);
+		String key      = req.getParameter("key");
+		//다운로드 관련 모델 호출]
+		//1.파일 다운로드 로직 호출]
+		FileUtils.download(req, resp, "/Upload", filename);
+		//2.테이블의 다운로드수 컬럼 증가용 데이타베이스 관련 로직 호출]
+		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
+		dao.updateDownCount(key);
+		dao.close();
+
+	}//////////////////////////
+
+	/*모든 이미지 파일 경로에 등록*/
+	public String uploadFile(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {
+
+		MultipartFile file = mf;
+		//1] 이미지 경로
+		String path=req.getSession().getServletContext().getRealPath(
+				"/"+req.getSession().getAttribute("USER_TYPE").toString()+
+				"/"+req.getSession().getAttribute("USER_ID").toString()+folder);
+
+		String newFileName=FileUpDownUtils.getNewFileName(path, file.getOriginalFilename());
+		//2]File객체 생성
+		File f = new File(path);	
+		//해당 디렉토리의 존재여부를 확인
+		if(!f.exists()){
+			//없다면 생성
+			f.mkdirs(); 
+		}else{
+			//있다면 현재 디렉토리 파일을 삭제 
+			if(flag) {
+				System.out.println("폴더1 있어 기존거 삭제할게");
+				File[] destroy = f.listFiles(); 
+				for(File des : destroy) des.delete();
 			}
-			//3]File객체 생성
-			f	= new File(path + File.separator + newFileName);	
-			//4]업로드 처리
-			file.transferTo(f);
-			//5]변경된 이름 return
-			return newFileName;
 		}
-		
-		
+		//3]File객체 생성
+		f	= new File(path + File.separator + newFileName);	
+		//4]업로드 처리
+		file.transferTo(f);
+		//5]변경된 이름 return
+		return newFileName;
+	}
+
+
 }///////////////////////

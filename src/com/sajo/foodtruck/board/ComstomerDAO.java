@@ -22,6 +22,8 @@ import com.sajo.foodtruck.LoginJoin.PBKDF2;
 
 
 
+
+
 public class ComstomerDAO {
 	//멤버변수]
 	private Connection conn;
@@ -75,6 +77,48 @@ public class ComstomerDAO {
 	 * 
 	 * 
 	 */
+	
+	public List<ComstomerDTO> selectList(int start,int end) {
+		List list = new Vector();
+
+		System.out.println("start ComstomerDAO selectList ");
+		String sql="SELECT * FROM (SELECT C.*,ROWNUM R FROM (SELECT * FROM C_BOARD ORDER BY POSTDATE DESC) C) WHERE R BETWEEN ? AND ?";
+		//													1.C_BOARD에있는 모든 값을 POSTDATE로 내림차순 정렬한다 이 테이블 T라고 부름
+		//							?와 ?에 해당하는 rownum값을 찾아 T테이블에 해당하는 모든 컬럼 + Rownum은 컬럼을 포함한 테이블을 검색
+		try {
+			psmt = conn.prepareStatement(sql);			
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				ComstomerDTO dto = new ComstomerDTO();
+				dto.setCb_no(rs.getString(1));
+				dto.setG_no(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setAttachedfile(rs.getString(5));
+				dto.setPostdate(rs.getDate(6));
+				dto.setName(rs.getString(7));
+				list.add(dto);				
+			}			
+		} catch (Exception e) {e.printStackTrace();}
+		System.out.println("end ComstomerDAO selectList ");
+		return list;
+	}////////////////////////////
+	
+	//전체 레코드수 얻기용]
+		public int getTotalRecordCount() {
+			int total=0;
+			String sql="SELECT COUNT(*) FROM C_BOARD";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs= psmt.executeQuery();
+				rs.next();
+				total = rs.getInt(1);
+			} catch (Exception e) {e.printStackTrace();}
+			return total;
+		}//////////////////
 	
 	public List<ComstomerDTO> selectHList(){
 		List<ComstomerDTO> list = new Vector<ComstomerDTO>();

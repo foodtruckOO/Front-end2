@@ -12,12 +12,11 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js'></script>
 
-<!-- include summernote css/js-->
-<link href="/sn/summernote.css" rel="stylesheet">
-<script src="/sn/summernote.min.js"></script>
-
+<!-- include summernote -->
+<link rel="stylesheet" href="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.css'/>">
+<script type="text/javascript" src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/summernote.js'/>"></script>
 <!-- include summernote-ko-KR -->
-<script src="/sn/lang/summernote-ko-KR.js"></script>
+<script src="<c:url value='/com.sajo.foodtruck/front-end/views/board/sn/dist/lang/summernote-ko-KR.js'/>"></script>
  
 </head>
 <body>
@@ -40,26 +39,26 @@ $(document).ready(function() {
 		focus:true,
 		lang: 'ko-KR',
 		callbacks: {
-			onImageUpload: function(files){
-				sendFile(files[0], $(this));
+			onImageUpload: function(files, editor, welEditable){
+				sendFile(files[0], editor, welEditable);
 			}
 		}
 	});
 
-	function sendFile(file, editor) {
+	function sendFile(file, editor, welEditable) {
 		var data = new FormData();
 		data.append("uploadFile", file);
 		$.ajax({
 			data: data,
 			type: "POST",
-			url: "/sn/image_upload.php",
+			url: "",
 			enctype: 'multipart/form-data',
 			cache: false,
 			contentType: false,
 			processData: false,
-			success: function(dd){
-				data = jQuery.parseJSON(dd);
-
+			success: function(url){
+				//data = jQuery.parseJSON(dd);
+				editor.insertImage(welEditable, url);
 				if(data.status == "OK"){
 					editor.summernote('insertImage', data.url);
 				} else {
