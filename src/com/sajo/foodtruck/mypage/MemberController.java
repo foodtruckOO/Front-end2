@@ -172,7 +172,7 @@ public class MemberController {
 		dto.setNewImg(FileUpload(dto.getImg(), "/FOODTRUCKS", req, false));
 		System.out.println("끝");
 		dao.insertFoodtruck(dto);
-		System.out.println("whdfy");
+		System.out.println("whdfy"); 
 		dao.close();
 		return "forward:/Member.page";
 	}
