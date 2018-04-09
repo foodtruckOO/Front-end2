@@ -30,11 +30,22 @@
 </script>
 
 <c:if test="${empty requestScope.list}" var="flag">
+	<h2>등록된 이미지가 없습니다.</h2>
 </c:if>
 <c:if test="${not flag}">
 	<c:forEach var="list" items="${list}" varStatus="loop">
 		<!-- 메뉴 -->
 		<div class="col-md-4" style="margin-bottom: 20px;">
+			<form action="<c:url value='/deleteMenu.page'/>">
+				<input type="hidden" name="fno" value="${list.fno}"/>
+				<button style="position: relative; float: right; z-index: 1; color: black;">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true" /></button>
+			</form>
+			<form action="<c:url value='/editMenu.page'/>">
+				<input type="hidden" name="fno" value="${list.fno}"/>
+				<button style="position: relative; float: right; z-index: 1; color: black;">
+				<span class="glyphicon glyphicon-edit" aria-hidden="true" /></button>
+			</form>
 			<div data-toggle="modal" data-target="#menuModal${loop.count }" style="cursor: pointer;">
 				<!-- 메뉴 이미지 -->
 				<div style="display: block; padding-top: 100%; position: relative;">
@@ -75,8 +86,11 @@
 		        <!-- 모달안의 내용끝 -->
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-		        <button type="button" class="btn btn-primary">삭제하기</button>
+		      	<form action="<c:url value='/deleteMenu.page'/>">
+					<input type="hidden" name="fno" value="${list.fno}"/>
+					<button class="btn btn-primary" style="position: relative;">삭제하기</button>
+		        	<button type="button" class="btn btn-default" data-dismiss="modal" style="position: relative;">닫기</button>
+				</form>
 		      </div>
 		    </div>
 		  </div>

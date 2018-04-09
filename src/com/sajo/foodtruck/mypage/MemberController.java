@@ -56,8 +56,7 @@ public class MemberController {
 		return "tabs-5.tiles";
 	}
 	
-
-	// 메뉴보기
+	//메뉴 보기화면------------------------------------------------------------------------*
 	@RequestMapping("/Tabs2.page")
 	public String selectMenu(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs2 접속");
@@ -68,7 +67,79 @@ public class MemberController {
 		model.addAttribute("list",list);
 		return "tabs-2.tiles";
 	}
-
+	//메뉴삭제
+	@RequestMapping("/deleteMenu.page")
+	public String deleteMenu(T_Menu_FoodDTO dto,Model model, HttpServletRequest req) throws Exception{
+		System.out.println("deleteMenu 접속");
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dao.deleteMenu(dto.getFno());
+		dao.close();
+		return "forward:/Tabs2.page";
+	}
+	
+	//메뉴 수정폼으로 이동
+	@RequestMapping("/editMenu.page")
+	public String editMenu(T_Menu_FoodDTO dto, Model model, HttpServletRequest req) throws Exception{
+		System.out.println("editMenu 접속");
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		List<T_Menu_TypeDTO> list = dao.foodtype();
+		List<T_Menu_FoodDTO> dtos = dao.selectMenu(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		for(T_Menu_FoodDTO d: dtos) {
+			if(dto.getFno().equals(d.getFno())){
+					dto=d;
+					break;
+			}
+		}
+		dao.close();
+		model.addAttribute("list",list);
+		model.addAttribute("food", dto);
+		return "tabs-6_1.tiles";
+	}
+	
+	//메뉴 수정
+	@RequestMapping("/updateMenu.page")
+	public String updateMenu(T_Menu_FoodDTO dto,Model model, HttpServletRequest req) throws Exception{
+		System.out.println("updateMenu 접속");
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		/*-----이미지 경로에 등록-----*/
+		if(!(dto.getNewPicture().equals(dto.getPicture().getOriginalFilename()))) {
+			FileDelete("/MENU", dto.getNewPicture(), req);
+			dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
+		}
+		/*-----이미지 DB등록-----*/		
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dao.updateMenu(dto);
+		dao.close();
+		return "forward:/Tabs2.page";
+	}
+	
+	//메뉴 등록화면-----------------------------------------------------------------
+	@RequestMapping("/Tabs6.page")
+	public String MenuUpdate(Model model, HttpServletRequest req) throws Exception{
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		List<T_Menu_TypeDTO> list = dao.foodtype();
+		dao.close();
+		model.addAttribute("list",list);
+		return "tabs-6.tiles";
+	}
+	
+	//메뉴 등록
+	@RequestMapping("/Menu/Upload.page")
+	public String MenuUpload(T_Menu_FoodDTO dto, HttpServletRequest req) throws Exception{
+		System.out.println("MenuUpload");
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		/*-----이미지 경로에 등록-----*/
+		dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
+		
+		/*-----이미지 DB등록-----*/		
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dto.setSno(dao.getSellerNo(user));
+		dao.insertMenu(dto);	//변경되면 1 아니면 0
+		dao.close();
+		return "forward:/Member.page";
+	}
+		
+		
 	//
 	@RequestMapping("/Tabs3.page")
 	public String Tabs3(Model model, HttpServletRequest req) throws Exception{
@@ -93,32 +164,8 @@ public class MemberController {
 	}
 	
 
+
 	
-	//메뉴 수정-----------------------------------------------------------------
-	@RequestMapping("/Tabs6.page")
-	public String MenuUpdate(Model model, HttpServletRequest req) throws Exception{
-		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
-		List<T_Menu_TypeDTO> list = dao.foodtype();
-		dao.close();
-		model.addAttribute("list",list);
-		return "tabs-6.tiles";
-	}
-	
-	@RequestMapping("/Menu/Upload.page")
-	public String MenuUpload(T_Menu_FoodDTO dto, HttpServletRequest req) throws Exception{
-		
-		System.out.println(dto.getTno());
-		String user = req.getSession().getAttribute("USER_ID").toString();
-		/*-----이미지 경로에 등록-----*/
-		dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
-		
-		/*-----이미지 DB등록-----*/		
-		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
-		dto.setSno(dao.getSellerNo(user));
-		dao.insertMenu(dto);	//변경되면 1 아니면 0
-		dao.close();
-		return "forward:/Member.page";
-	}
 
 	//이벤트 수정------------------------------------------------------------------------
 	@RequestMapping("/Tabs7.page")
@@ -208,5 +255,21 @@ public class MemberController {
 		file.transferTo(f);
 		//5]변경된 이름 return
 		return newFileName;
+	}
+	
+
+	//이미지 파일 삭제 메소드------------------------------------------------------------------------*
+	public void FileDelete(String folder, String filename, HttpServletRequest req) throws IllegalStateException, IOException {
+		String path=req.getSession().getServletContext().getRealPath(
+						"/"+req.getSession().getAttribute("USER_TYPE").toString()+
+						"/"+req.getSession().getAttribute("USER_ID").toString()+folder+filename);
+		File file = new File(path);
+		if( file.exists() ){
+			if(file.delete())
+				System.out.println(filename+" 삭제 성공");
+			else
+		    System.out.println(filename + "삭제 실패");
+		}else
+		    System.out.println(filename + " 파일이 존재하지 않습니다.");
 	}
 }
