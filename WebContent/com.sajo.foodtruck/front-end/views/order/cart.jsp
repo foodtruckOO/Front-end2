@@ -172,9 +172,9 @@
 										 	
 											<td class="menu">
 														<!-- <a href="/menu/homeservice/detail/LB0082" class="thumb "></a> -->
-													<a href="/menu/homeservice/detail/LB0082" class="thumb ">
+													<a href="<c:url value='/detail.food?f_no=${dto.f_no}'/>" class="thumb ">
 														<span class=""></span><!-- Åµ¸¶ÀÌÄíÆù¸Þ´º Ç¥½Ã¾ÆÀÌÄÜ -->
-														<img src="<c:url value='/com.sajo.foodtruck/front-end/images/Kim/food/food_list1.jpg'/>" alt="¹ö°ÅÅ©´ß" />
+														<img src="<c:url value='/seller/${dto.s_id}/MENU/${dto.picture}'/>" alt="" width="170px" height="130px"/>
 													</a>
 														
 														

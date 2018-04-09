@@ -65,7 +65,7 @@
 				}
 			}
 		}
-		function cart(){
+		function take(){
 			var user = "${sessionScope.USER_ID}";
 			if(user==""){
 				alert("로그인 후 이용해주세요.");
@@ -175,7 +175,7 @@
 				<div class="cont_inner">
 						
 					<div class="menu_view">
-						<div class="img"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/${food.id}/food/${food.picture}'/>" alt="" /></div>
+						<div class="img"><img src="<c:url value='/seller/${food.id}/MENU/${food.picture}'/>" alt="" width="470px" height="400px"/></div>
 												
 						<div class="info menuinfo" idx="0">
 							<div>
@@ -198,7 +198,7 @@
 						
 								</div>
 								<div class="m_fixed_btn btn_wrap btn2">
-									<a href="javascript:cart()" class="button h50 btn_gray add_cart"><span>상품 담기<!-- 상품담기 --></span>	</a>
+									<a href="javascript:take()" class="button h50 btn_gray add_cart"><span>상품 담기<!-- 상품담기 --></span>	</a>
 									<a href="javascript:order()" class="button h50 btn_red btn_Order">바로주문<!-- 바로주문 --></a>
 								</div>
 							</div>

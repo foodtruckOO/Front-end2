@@ -54,7 +54,7 @@
 			
 			
 			<div class="col-md-8">
-				<img class ="img-responsive" src="/Back-end${dto.contentfile}"/>
+				<img class ="img-responsive" src="http://localhost:8080/Back-end/backend/img/admin/${dto.contentfile}"/>
 			</div>
 		
 		</div>

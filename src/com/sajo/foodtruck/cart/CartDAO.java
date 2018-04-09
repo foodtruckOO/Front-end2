@@ -256,7 +256,7 @@ public class CartDAO {
 		
 		
 		
-		sql =  "select f.fname,c.num,f.price,f.f_no from food f join cart c on f.f_no = c.f_no where c.g_no=?";
+		sql =  "select f.fname,c.num,f.price,f.f_no,f.picture,s.id from food f join cart c on f.f_no = c.f_no join seller s on s.s_no = f.s_no where c.g_no=?";
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, g_no);
@@ -267,6 +267,8 @@ public class CartDAO {
 					dto.setNum(rs.getString(2));
 					dto.setPrice(rs.getString(3));
 					dto.setF_no(rs.getString(4));
+					dto.setPicture(rs.getString(5));
+					dto.setS_id(rs.getString(6));
 					priceall = priceall + rs.getInt(2)*rs.getInt(3);
 					list.add(dto);
 				}

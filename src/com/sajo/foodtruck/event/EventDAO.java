@@ -91,8 +91,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
-				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
+				dto.setTitlefile(rs.getString(11)+"/"+rs.getString(5));
+				dto.setContentfile(rs.getString(11)+"/"+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -116,8 +116,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
-				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
+				dto.setTitlefile(rs.getString(11)+"/"+rs.getString(5));
+				dto.setContentfile(rs.getString(11)+"/"+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -142,8 +142,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
-				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
+				dto.setTitlefile(rs.getString(11)+"/"+rs.getString(5));
+				dto.setContentfile(rs.getString(11)+"/"+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
@@ -174,8 +174,8 @@ public class EventDAO {
 				dto.setEno(rs.getString(1));
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
-				dto.setTitlefile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(5));
-				dto.setContentfile("/backend/img/admin/"+rs.getString(11)+java.io.File.separator+rs.getString(6));
+				dto.setTitlefile(rs.getString(11)+"/"+rs.getString(5));
+				dto.setContentfile(rs.getString(11)+"/"+rs.getString(6));
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));

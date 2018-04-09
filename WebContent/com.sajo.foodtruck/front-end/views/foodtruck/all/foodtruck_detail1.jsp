@@ -104,6 +104,8 @@ img {
     margin-bottom: 1.0% }
     .preview-thumbnail.nav-tabs li img {
       max-width: 100%;
+      width:92px;
+      height:70px;
       display: block; }
     .preview-thumbnail.nav-tabs li a {
       padding: 0;
@@ -114,11 +116,14 @@ img {
 .tab-content {
   overflow: hidden; }
   .tab-content img {
-    width: 100%;
+    width: 600px;
+    height: 400px;
     -webkit-animation-name: opacity;
             animation-name: opacity;
     -webkit-animation-duration: .3s;
             animation-duration: .3s; }
+            
+
 
 .card {
   margin-top: 50px;
@@ -329,10 +334,10 @@ label.star:before {
 							<c:forEach items="${foodtruck}" var ="dto" varStatus="loop">
 								<c:choose>
 									<c:when test="${loop.first}">
-									<div class="tab-pane active" id="pic-${loop.count}"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"></div>
+									<div class="tab-pane active" id="pic-${loop.count}"><img src="<c:url value ='/seller/${dto.id}/FOODTRUCKS/${dto.img}'/>"></div>
 									</c:when>
 									<c:otherwise>
-									<div class="tab-pane" id="pic-${loop.count}"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto.id}/${dto.img}'/>"></div>
+									<div class="tab-pane" id="pic-${loop.count}"><img src="<c:url value ='/seller/${dto.id}/FOODTRUCKS/${dto.img}'/>"></div>
 									</c:otherwise>
 								</c:choose>
 						  </c:forEach>
@@ -342,10 +347,10 @@ label.star:before {
 							<c:forEach items="${foodtruck}" var ="dto2" varStatus="loop2">
 								<c:choose>
 									<c:when test="${loop2.first}">
-									<li class="active"><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto2.id}/${dto2.img}'/>"></a></li>
+									<li class="active"><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/seller/${dto2.id}/FOODTRUCKS/${dto2.img}'/>"></a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/com.sajo.foodtruck/front-end/images/${dto2.id}/${dto2.img}'/>"/></a></li>
+									<li><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/seller/${dto2.id}/FOODTRUCKS/${dto2.img}'/>"/></a></li>
 									</c:otherwise>
 								</c:choose>
 						  </c:forEach>
