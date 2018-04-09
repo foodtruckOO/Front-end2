@@ -26,7 +26,7 @@ body, html {
  
 .card-container.card {
     max-width: 381px;
-    padding: 40px 40px;
+    padding: 40px 33px;
 }
 
 .btn {
