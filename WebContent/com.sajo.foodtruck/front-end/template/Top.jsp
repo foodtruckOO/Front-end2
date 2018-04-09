@@ -4,7 +4,7 @@
 <script type="text/javascript">
 	function popupOpen(){
 	var windowW=400;
-	var windowH=580;
+	var windowH=670;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>";	//팝업창에 출력될 페이지 URL
@@ -13,9 +13,9 @@
 	}
 </script>
 <script type="text/javascript">
-	function popupOpen2(){
+	function popupOpen2(){ 
 	var windowW=650;
-	var windowH=500;
+	var windowH=470;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>";	//팝업창에 출력될 페이지 URL
