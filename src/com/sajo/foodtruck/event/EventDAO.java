@@ -122,9 +122,10 @@ public class EventDAO {
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
 				dto.setBoardtype(rs.getString(10));
+				
 			}
+			System.out.println(dto.getBoardtype());
 		} catch (Exception e) {e.printStackTrace();}
-		close();
 		return dto;
 	}/////////////////////////////////////////
 	public List<EventDTO> selectAll() {
@@ -151,7 +152,7 @@ public class EventDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		close();
+		
 		return list;
 	}
 	public List selectLList() {
@@ -183,7 +184,7 @@ public class EventDAO {
 			}////////////while
 		}///try
 		catch(Exception e) {e.printStackTrace();}
-		close();
+		
 		return list;
 	
 	}

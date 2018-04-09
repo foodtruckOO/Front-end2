@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
     <!-- Custom styles for this template -->    
 	<link href="<c:url value='/bootstrap/css/agency.css'/>" rel="stylesheet">
-	<link href="<c:url value='/bootstrap/css/flexslider.css'/>" rel="stylesheet">
+	<link href="<c:url value='/bootstrap/css/camera.css'/>" rel="stylesheet">
 	<!-- Custom fonts for this template -->
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,15 +28,17 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src ="<c:url value='/bootstrap/js/jquery.flexslider.js'/>"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script type='text/javascript' src='<c:url value="/bootstrap/js/jquery.min.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.mobile.customized.min.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.easing.1.3.js"/>'></script> 
+	<script src="<c:url value='/bootstrap/js/camera.js'/>"></script>
 <script>
-	var $j = jQuery.noConflict();
-	$j(function() {
-		var currentPosition = parseInt($j("#sidebox").css("top"));
-		$j(window).scroll(function() {
+	$(function() {
+		var currentPosition = parseInt($("#sidebox").css("top"));
+		$(window).scroll(function() {
 			var position = $j(window).scrollTop();
-			$j("#sidebox").stop().animate({
+			$("#sidebox").stop().animate({
 				"top" : position + currentPosition + "px"
 			}, 1000);
 		});
@@ -45,12 +47,15 @@
 </script>
 
 <script>
-	$j(function() {
-	  $j('.flexslider').flexslider({
-	    animation: "slide",
-	    controlNav: "thumbnails"
-	  });
+
+	$(function(){
+	
+	$('#camera_wrap_1').camera({
+		thumbnails: true
 	});
+
+	
+});
 </script>
 
 <style>
@@ -129,61 +134,26 @@
 	<!-- Header -->
 	<div id="body">
 	<header>
-		<div class="container">
+			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+		<c:forEach items="${events}" var="event">
+	            <div data-thumb="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" data-src="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" data-link="<c:url value='/Eventview.event?eno=${event.eno}'/>"></div>
+		</c:forEach>	
+			</div>		
+		<%-- <div class="container">
 			<div class="row">
 				<!-- The carousel -->
 				<div class="flexslider">
 					<ul class="slides">
 						<c:forEach items="${events}" var="event">
 						
-						<li data-thumb="/Back-end${event.titlefile}">
-							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}"/></a>
+						<li data-thumb="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}">
+							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" height="300px" width="1200px"/></a>
 						</li>
 					</c:forEach>
 					</ul>
 				</div>	
-				<%-- 	<ol class="carousel-indicators">
-						<li data-target="#transition-timer-carousel" data-slide-to="0"
-							class="active"></li>
-						<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
-					</ol>
-
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<c:forEach items="${events}" var="event" varStatus="loop">
-							<c:choose>
-									<c:when test="${loop.first}">
-										<div class="item active" style="width: 1200px;height: 500px" align="center">
-											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
-											width="100%" height="100%"/></a>
-												<div class="carousel-caption"></div>
-										</div>
-									</c:when>
-									
-									<c:otherwise>
-										<div class="item" style="width: 1200px;height: 500px" align="center">
-											<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="/Back-end${event.titlefile}" 
-											width="100%" height="100%"/></a>
-												<div class="carousel-caption"></div>
-										</div>
-									</c:otherwise>
-							</c:choose>			
-						</c:forEach>
-					</div> --%>
-
-					<!-- <!-- Controls -->
-					<!-- <a class="left carousel-control" href="#transition-timer-carousel"
-						data-slide="prev"> <span
-						class="glyphicon glyphicon-chevron-left"></span>
-					</a> <a class="right carousel-control"
-						href="#transition-timer-carousel" data-slide="next"> <span
-						class="glyphicon glyphicon-chevron-right"></span>
-					</a> --> 
-
-				</div>
-			</div>
-		
-
+			</div>			
+		</div> --%>
 	</header>
 
 	<!-- Services -->
@@ -337,8 +307,6 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 
 
