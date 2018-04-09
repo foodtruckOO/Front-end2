@@ -83,7 +83,7 @@
     </div>
 	
 	<!-- 내용 시작 -->
-	<section style="padding-top: 80px; margin-right: 80px; margin-left: 80px;">
+	<section style="padding-top: 80px;">
 		<article> 
 	  		<h2>푸드트럭찾기</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
 		</article>
@@ -104,14 +104,14 @@
 		
 	  	<!-- 지도호출 -->
     	<article style="margin-right:30px; margin-left: 30px">
-	        <div id="map" style="width:100%;height:500px;"></div>
+	        <div id="map" style="width:100%;height:600px;"></div>
 	        <!-- 지도 api 호출 -->
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07081f33b5c3c2dd65b5d5a0b0e85296&libraries=services"></script>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07081f33b5c3c2dd65b5d5a0b0e85296&libraries=services,clusterer"></script>
     	</article><br><br>
            
 	    <article>
-	      <h2>검색결과영역</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
-	    </article><br>
+	      <h2>전체푸트드럭</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
+	    </article>
 	      
 	    <article style="float: right; margin-right: 30px">		
 			<select class="form-control">
@@ -171,8 +171,8 @@
 	
 	var container = document.getElementById('map');
 	var options = {
-		center: new daum.maps.LatLng(37.47893444641687, 126.87900549310089),
-		level: 3
+		center: new daum.maps.LatLng(36.22163222243016, 127.94011969274358),
+		level: 13
 	};
 	var map = new daum.maps.Map(container, options);
 	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성
@@ -184,7 +184,16 @@
 	var zoomControl = new daum.maps.ZoomControl();
 	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
+  	//********************클러스터러사용*************************//	
 	
+	// 마커 클러스터러를 생성합니다 
+    var clusterer = new daum.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+    });
+
+   
   	//********************키워드로 마커찍기*************************//
 	
 	// 장소 검색 객체를 생성합니다
@@ -273,6 +282,8 @@
 	            position: coords,
 	            image : markerImage // 마커 이미지 
 	        });
+	     	// 클러스터러에 마커들을 추가합니다
+	        clusterer.addMarker(marker);
 
 	    	var overlay = new daum.maps.CustomOverlay({
 		        content: content,

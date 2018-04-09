@@ -115,7 +115,7 @@
 
 			</div>
 			<!--/.nav-collapse -->
-		</div>
+		</div><hr style="border: solid 1px #FE9A2E;">
 	</nav>
 </header>
 
