@@ -32,5 +32,6 @@
 		</ul>
 		<p>&emsp;&emsp;&emsp;© 2018 FOODTRUCK Korea Corporation All
 			Rights Reserved.</p>
+			<img src="<c:url value='/com.sajo.foodtruck/front-end/images/hidden.png'/>" onclick="javascript:location.href='http://localhost:8080/Back-end/backend/pages/Login.jsp';"></img>
 	</div>
 </footer>
