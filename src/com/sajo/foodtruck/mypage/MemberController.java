@@ -168,7 +168,7 @@ public class MemberController {
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		dto.setSno(dao.getSellerNo(user));
-		System.out.println("여기");
+		System.out.println("여기"); 
 		dto.setNewImg(FileUpload(dto.getImg(), "/FOODTRUCKS", req, false));
 		System.out.println("끝");
 		dao.insertFoodtruck(dto);
