@@ -41,6 +41,7 @@
 				$('#my_tab li').attr('class','');
 			});
 			
+			${error}
 		});
 	</script>
   

@@ -137,11 +137,6 @@ public class MemberController {
 		FileUpload(dto.getContentfile(), "/EVENT/CONTENT", req,true);		
 
 		/*-----이미지 DB등록-----*/		
-		System.out.println(dto.getTitle());
-		
-		System.out.println(dto.getSdate());
-		System.out.println(dto.getEdate());
-
 		T_EventDAO dao = new T_EventDAO(req.getServletContext());
 		dto.setS_no(dao.getSellerNo(user));
 		dao.insertEvent(dto);// 변경되면 1 아니면 0
@@ -164,15 +159,22 @@ public class MemberController {
 	//사진 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs10.page")
 	public String TruckImg() throws Exception{
-		
 		return "tabs-10.tiles";
 	}
 	
-	@RequestMapping("/FTImgUpload.page")
-	public String FTImgUpload(T_ImagesDTO dto) throws Exception{
-		System.out.println("FTImgUpload");
-		System.out.println(dto.getImg());
-		return "tabs-10.tiles";
+	@RequestMapping("/ImgUpload.page")
+	public String ImgUpload(T_ImgDTO dto,HttpServletRequest req,Model model) throws Exception{
+		System.out.println("ImgUpload");
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dto.setSno(dao.getSellerNo(user));
+		System.out.println("여기");
+		dto.setNewImg(FileUpload(dto.getImg(), "/FOODTRUCKS", req, false));
+		System.out.println("끝");
+		dao.insertFoodtruck(dto);
+		System.out.println("whdfy");
+		dao.close();
+		return "forward:/Member.page";
 	}
 	
 

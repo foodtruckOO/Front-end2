@@ -126,4 +126,22 @@ public class T_MenuDAO {
 		return list;
 	}
 
+	//푸드트럭 이미지 등록
+	public int insertFoodtruck(T_ImgDTO dto){
+		System.out.println("T_MenuDAO insertFoodtruck");
+		int affected = 0;
+		String sql="INSERT INTO IMAGES VALUES (?, ?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getSno());
+			psmt.setString(2, dto.getNewImg());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_MenuDAO insertFoodtruck error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
 }
