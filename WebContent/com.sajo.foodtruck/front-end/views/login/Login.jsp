@@ -6,9 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
+    <!-- Bootstrap theme -->
+<link href="<c:url value='/bootstrap/css/bootstrap-theme.min.css'/>" rel="stylesheet">
+
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <style type="text/css">
 body, html {
     height: 100%;
@@ -17,8 +25,8 @@ body, html {
 }  
  
 .card-container.card {
-    max-width: 350px;
-    padding: 40px 40px;
+    max-width: 381px;
+    padding: 40px 33px;
 }
 
 .btn {
@@ -158,6 +166,20 @@ body, html {
 		window.open(popUrl,"",popOption);
 		parent.close();
 	}
+	$(function(){
+		$("#trans").click(function(){
+		 	if(typeof(grecaptcha)!='undefiend'){
+				if(grecaptcha.getResponse()!=""){
+				$("#frm").submit();
+				}
+				else{
+				alert("인증을 확인하세요");
+				}
+			}
+		}); 
+			
+			
+	})
 </script>
 <body>
 	<div class="container">
@@ -166,19 +188,23 @@ body, html {
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="<c:url value='/com.sajo.foodtruck/front-end/images/user.png'/>" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="forSm-signin" method="post" action="LoginProcess.jsp">
+            <form class="forSm-signin" method="post" action="<c:url value='/com.sajo.foodtruck/front-end/views/login/LoginProcess.jsp'/>" id="frm">
                 <span id="reauth-email" class="reauth-email"></span>
                 <label>아이디</label>
                 <input name="user" type="text" id="inputid" class="form-control" placeholder="아이디를 입력해주세요" value="<%=request.getParameter("user") == null ? "" : request.getParameter("user")%>" required autofocus><br>
                 <label>비밀번호</label>
                 <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="비밀번호를 입력해주세요" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required>
+                
+                <!-- 리캡차 적용 부분 -->
+                <div style="padding-top: 15px"  id="grecaptcha" class="g-recaptcha" data-sitekey="6LfsmVAUAAAAACAOAuJ0UQKoN5E8V8Y66a9JSSD0"></div>
+                <!-- 적용 끝 -->
                 <!-- <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> 아이디저장
                     </label>
                 </div> -->
                 <br>
-                <input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="로그인"/>
+                <input class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="trans" value="로그인"/>
                 <p style="color: red; font-weight: bold"><%=request.getAttribute("ERROR") == null ? "":request.getAttribute("ERROR")%></p>
             </form><!-- /form -->
             <a href="javascript:popupOpen3();" class="forgot-password">아이디 또는 비밀번호를 잊어버리셨나요?</a>
@@ -188,7 +214,7 @@ body, html {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  
     <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
 </body>
 </html>
