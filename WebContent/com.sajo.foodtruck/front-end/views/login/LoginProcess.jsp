@@ -41,7 +41,7 @@
 		out.println("window.close();");
 		out.println("alert('판매자 로그인 성공!');");
 		out.println("</script>");
-		request.getRequestDispatcher("../index.jsp").forward(request, response);
+		request.getRequestDispatcher("../Index.jsp").forward(request, response);
 	}
 	else{//비회원-다시 로그인 페이지로 포워드
 		//out.println("<script>");

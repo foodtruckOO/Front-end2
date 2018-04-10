@@ -40,7 +40,7 @@
 				<div class="jumbotron" style="background-color: white !important;">
 					<img class="img-fluid"
 						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
-					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메뉴 보기</h1>
+					<h1 style="display: inline; line-height: 150%">메뉴 보기</h1>
 				</div>
 			
 			

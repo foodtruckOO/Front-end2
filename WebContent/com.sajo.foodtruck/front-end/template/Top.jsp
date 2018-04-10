@@ -17,7 +17,12 @@
 	} 
 
 </script>
+<style>
+@media screen and (max-width: 400px){
+		#top_bar{width: 95% !important}
+}
 
+</style>
 <script>
 	if("${sessionScope.USER_TYPE}"=="seller"){
 		timer = setInterval( function() {

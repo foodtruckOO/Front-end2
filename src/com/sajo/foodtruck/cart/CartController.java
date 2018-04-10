@@ -63,7 +63,7 @@ public class CartController {
 		java.util.List list = dao.order(user);
 		model.addAttribute("order",list);
 		dao.close();
-		return "/com.sajo.foodtruck/front-end/views/order/paymentready.jsp";
+		return "/com.sajo.foodtruck/front-end/views/order/Paymentready.jsp";
 	}
 	@RequestMapping("/cart.cart")
 	public String cart(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
@@ -72,7 +72,7 @@ public class CartController {
 		java.util.List<CartDTO> list = dao.order(user);
 		model.addAttribute("order",list);
 		dao.close();
-		return "/com.sajo.foodtruck/front-end/views/order/cart.jsp";
+		return "/com.sajo.foodtruck/front-end/views/order/Cart.jsp";
 	}
 	
 	
