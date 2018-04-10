@@ -56,7 +56,7 @@ if("${sessionScope.USER_TYPE}"=="seller"){
 				alert("30분 남은 주문이 있습니다 확인해주세요");
 				}
 				else if(data=="10"){
-				alert("10분 남은 주문이 있습니다 확인해주세요")
+				alert("10분 남은 주문이 있습니다 확인해주세요");
 				}
 			}
 		});		

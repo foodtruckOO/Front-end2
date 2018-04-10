@@ -67,6 +67,9 @@ public class OrderController {
 	@RequestMapping("/timecheck.order")
 	public String TimeCheck(Model model, HttpServletRequest req,@RequestParam Map map)throws Exception{
 		OrderDAO dao = new OrderDAO(req.getServletContext());
+		if(req.getSession().getAttribute("USER_ID")==null) {
+		return "N";	
+		}
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		String yn = dao.timecheck(user);
 		dao.close();
