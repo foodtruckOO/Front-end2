@@ -112,7 +112,7 @@ header .hd_flex div ul li{
 	}
 }
 
-@media screen and (min-width: 400px) and (max-width: 769px){
+@media screen and (min-width: 500px) and (max-width: 769px){
 	body  {
 		padding-top:80px;
 		margin-left:5%;
@@ -148,7 +148,7 @@ header .hd_flex div ul li{
 	}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 	body  {
 		padding-top:70px;
 		margin-left:3%;
@@ -184,6 +184,15 @@ header .hd_flex div ul li{
 	}
 	.page-header h5 a{
 	font-size: 80%;
+	}
+	
+	#footNotice{
+		width: 100% !important;
+		height: 20px !important;
+	}
+	
+	#footNotice span{
+		margin-top: 20% !important;
 	}
 }
 /**************************************************/

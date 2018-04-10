@@ -10,7 +10,7 @@
 				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 30px; height: 30px;">
 				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 30px; height: 30px;">
 		</div>
-		<div class="col-xs-6" style="background-color: #ffc253; float: left; width: 65%; height: 30px; margin-top: 1%; padding: 0.4%;">
+		<div id="footNotice" class="col-xs-6" style="background-color: #ffc253; float: left; width: 65%; height: 30px; margin-top: 1%; padding: 0.4%;">
 			<span style="border: 1px solid orange; font-weight: bold; margin-top: 30%">공지사항</span>&emsp;
 			<span style="font-weight: bold; margin-top: 30%">03/15(목) 도서문화상품권 결제 일시중단 안내</span>
 		</div>

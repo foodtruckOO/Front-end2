@@ -60,7 +60,7 @@
 	<div id=mypage style="height: 1200px">
 	
 		<!-- Mypage Left -->
-		<div style="float: left; width: 20%">
+		<div style="float: left; width: 20%" id="mypage_left">
 			<!-- 프로필 사진 -->
 			<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/main/my_main.png'/>" alt="이미지를 찾을 수 없습니다.." 
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
@@ -98,7 +98,7 @@
 		</div>
 		
 		<!-- Mypage Right -->
-		<div style="float: right;  width: 78%;">
+		<div style="float: right;  width: 78%;" id="mypage_right">
 			<!-- background -->
 			<div style="height: 300px; ">
 				<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/back/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
