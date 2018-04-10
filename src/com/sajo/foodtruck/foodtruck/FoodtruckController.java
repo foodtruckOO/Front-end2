@@ -36,7 +36,7 @@ public class FoodtruckController {
 		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
 		List list = dao.selectList();
 		model.addAttribute("foodtruck",list);
-	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";
+	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";
 	
 	}
 	
@@ -64,7 +64,7 @@ public class FoodtruckController {
 		model.addAttribute("foodtruck",list);
 		model.addAttribute("review",list2);
 		
-		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";	
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck_detail1.jsp";	
 		
 	}
 	
@@ -81,7 +81,7 @@ public class FoodtruckController {
 		model.addAttribute("area",area);
 		model.addAttribute("sort",sort);
 		model.addAttribute("foodtruck",list);
-		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";	
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";	
 	}
 		
 	@RequestMapping("/write.foodtruck")
@@ -121,7 +121,7 @@ public class FoodtruckController {
 		model.addAttribute("foodtruck",list);
 		model.addAttribute("review",list2);
 		
-		return "com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_detail1.jsp";
+		return "com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck_detail1.jsp";
 	}
 	
 	@RequestMapping("/rank.foodtruck")
@@ -136,7 +136,7 @@ public class FoodtruckController {
 		model.addAttribute("area",area);
 		model.addAttribute("foodtruck",list);
 		
-		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.jsp";
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";
 	}
 		
 	

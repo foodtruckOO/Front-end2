@@ -6,7 +6,7 @@
 	if(session.getAttribute("USER_ID") == null){
 		out.println("<script>");
 		out.println("alert('로그인후 이용하세요');");
-		out.println("location.replace('"+request.getContextPath()+"/com.sajo.foodtruck/front-end/views/index.jsp');");
+		out.println("location.replace('"+request.getContextPath()+"/com.sajo.foodtruck/front-end/views/Index.jsp');");
 		out.println("</script>");
 		return;
 	}

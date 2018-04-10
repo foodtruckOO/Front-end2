@@ -38,7 +38,7 @@ public class OrderController {
 		model.addAttribute("order",list);
 		dao.close();
 		
-		return "com.sajo.foodtruck/front-end/views/order/paymentComplete.jsp";
+		return "com.sajo.foodtruck/front-end/views/order/PaymentComplete.jsp";
 	}
 	@ResponseBody
 	@RequestMapping("/check.order")
@@ -60,7 +60,7 @@ public class OrderController {
 		dao.edit(user);
 		
 		dao.close();
-		return "com.sajo.foodtruck/front-end/views/index.jsp";
+		return "com.sajo.foodtruck/front-end/views/Index.jsp";
 	}
 	
 	@ResponseBody

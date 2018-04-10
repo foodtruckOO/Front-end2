@@ -94,12 +94,7 @@
       document.body.appendChild(css);
    };
 </script>
-<style>
-* {
-   color: orange;
-   text-decoration: none;
-}
-</style>
+
 </head>
 
 <body>
@@ -121,7 +116,7 @@
       style="background-color: white; text-align: center; color: orange; padding-top: 5px;">
       <h1>
          <a href="" class="typewrite" data-period="2000"
-            data-type='[ "We are challenging.", "We are creative.", "We are innovative.", "We are not giving up." ]'>
+            data-type='[ "We are challenging.", "We are creative.", "We are innovative.", "We are not giving up." ]' style="color: orange;">
             <span class="wrap"></span>
          </a>
       </h1>
@@ -143,7 +138,7 @@
          <div class="col-sm-6 col-md-6">
             <blockquote>
                <p>
-                  <strong>푸드트럭 소개</strong>
+                  <strong style="color: orange;">푸드트럭 소개</strong>
                </p>
                
                     <p style="color: black;">     
@@ -158,7 +153,7 @@
                               
 
                    
-               <p>
+               <p style="color: orange;">
                   <i class="glyphicon glyphicon-envelope"></i> jangsm0702@naver.com
                   <br /> <i class="glyphicon glyphicon-globe"></i>
                   www.bootsnipp.com <br /> <i class="glyphicon glyphicon-gift"></i>
@@ -174,14 +169,9 @@
    <div class="container"
       style="padding-top: 50px; padding-bottom: 30px; color: black;">
       <div class="row">
-         <div class="col-sm-6 col-md-6">
-            <img
-               src="http://post.phinf.naver.net/MjAxNzEyMjJfMTkx/MDAxNTEzOTI4MDEyOTYx.jjswE-DrILMkuVUtJ20aSXrCojpvlAyg9AZRu6TsNKgg.JpzEVVSmCHsmODwBf5nUV8gyUeGGXX6w8G91AITg3PAg.JPEG/IMIXiuoUtmMA-noucry_bQ9jIacw.jpg"
-               alt="" class="img-rounded img-responsive" style="position:absolute;left: 100%;padding-bottom: 200px"/>
-         </div>
-         <div class="col-sm-6 col-md-6" style="right: 50%">
+         <div class="col-sm-6 col-md-6" >
             <blockquote>
-               <p>
+               <p style="color: orange;">
                   <strong>푸드트럭 소개</strong>
                </p>
                
@@ -191,13 +181,7 @@
                             우리는 창의적인  사람이 되겠습니다<br/>
                             우리는 바른 사람이 되겠습니다
                     </p>  
-                         
-                              
-                              
-                              
-
-                   
-               <p>
+               <p style="color: orange;">
                   <i class="glyphicon glyphicon-envelope"></i> jangsm0702@naver.com
                   <br /> <i class="glyphicon glyphicon-globe"></i>
                   www.bootsnipp.com <br /> <i class="glyphicon glyphicon-gift"></i>
@@ -205,7 +189,11 @@
                </p>
             </blockquote> 
          </div>
-
+          <div class="col-sm-6 col-md-6">
+            <img
+               src="http://post.phinf.naver.net/MjAxNzEyMjJfMTkx/MDAxNTEzOTI4MDEyOTYx.jjswE-DrILMkuVUtJ20aSXrCojpvlAyg9AZRu6TsNKgg.JpzEVVSmCHsmODwBf5nUV8gyUeGGXX6w8G91AITg3PAg.JPEG/IMIXiuoUtmMA-noucry_bQ9jIacw.jpg"
+               alt="" class="img-rounded img-responsive"/>
+         </div>
       </div>
    </div>
 

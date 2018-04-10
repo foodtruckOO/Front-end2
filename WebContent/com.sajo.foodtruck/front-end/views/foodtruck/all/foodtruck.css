@@ -446,7 +446,6 @@ nav .navbar-tab li.on{border-bottom:5px solid #ef156b}
 
 
 html {
-    min-height: 100%;
     font-size: 16px !important;
 }
 
@@ -1233,7 +1232,6 @@ hr { border-color: #ffa6a6; border-width: 1px; margin: 16px 0 }
 
 
 html {
-    min-height: 100%;
     font-size: 16px !important;
 }
 
@@ -4860,7 +4858,7 @@ div#backtotop {
     .card_content .date .pin {
         font-size: 0.8333rem;
         padding-top: 0;
-        max-width: 50%;
+        max-width: 90%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
