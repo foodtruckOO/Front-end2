@@ -510,7 +510,7 @@ ul.inbox-pagination li {
 
 					</tr>
 
-					<c:forEach items="${board }" var="dto">
+					<c:forEach items="${board }" var="dto" varStatus="loop">
 						<tr>
 							<th>${dto.sb_no }</th>
 							<th><a
@@ -522,7 +522,7 @@ ul.inbox-pagination li {
 					</c:forEach>
 				</tbody>
 			</table>
-
+			<div class="row">${pagingString}</div>
 		</div>
 
 

@@ -74,10 +74,10 @@ public class SellerDAO {
 	 * 
 	 */
 
-	public List<SellerDTO> selectHList(){
+	public List<SellerDTO> selectHList(int start,int end){
 		List<SellerDTO> list = new Vector<SellerDTO>();
 		//페이징 미 적용
-		String sql="SELECT sb.*,s.name from s_board sb join seller s on sb.s_no = s.s_no order by sb_no desc";
+		String sql="SELECT SB.SB_NO,SB.S_NO,SB.TITLE,SB.CONTENT,SB.ATTACHEDFILE,SB.POSTDATE,S.NAME FROM (SELECT T.*,ROWNUM R FROM (SELECT * FROM S_BOARD ORDER BY POSTDATE DESC) T) SB JOIN SELLER S ON SB.S_NO = S.S_NO WHERE R BETWEEN ? AND ?";
 		//	+ "e.*,name FROM bbs b JOIN member m ON b.id=m.id ";
 
 		//페이징 적용-구간쿼리로 변경
@@ -85,10 +85,9 @@ public class SellerDAO {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
 			rs = psmt.executeQuery();
-
-
 			while(rs.next()) {
 				SellerDTO dto = new SellerDTO();
 				dto.setSb_no(rs.getString(1));
@@ -276,5 +275,16 @@ public class SellerDAO {
 
 	}
 	 */
+	public int getTotalRecordCount() {
+		int total=0;
+		String sql="SELECT COUNT(*) FROM S_BOARD";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs= psmt.executeQuery();
+			rs.next();
+			total = rs.getInt(1);
+		} catch (Exception e) {e.printStackTrace();}
+		return total;
+	}//////////////////
 
 }

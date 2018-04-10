@@ -39,7 +39,15 @@ public class boardController  extends HttpServlet{
 	//커스텀목록용]
 	@RequestMapping("/Customlist.board")
 	public void List(Model model, HttpServletRequest req,@RequestParam Map map,HttpServletResponse resp) throws Exception{
-
+		
+		String usertype = null;
+		if(req.getSession().getAttribute("USER_TYPE")!=null) {
+			usertype = req.getSession().getAttribute("USER_TYPE").toString();
+		}
+		if("seller".equals(usertype)) {
+			RequestDispatcher dispatcher=req.getRequestDispatcher("/com.sajo.foodtruck/front-end/views/board/customer/IdCheck.jsp");
+			dispatcher.forward(req, resp);
+		}
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		//페이징을 위한 로직 시작]		
 		//전체 레코드 수
@@ -91,14 +99,6 @@ public class boardController  extends HttpServlet{
 		*/
 	}
 
-
-
-
-
-
-
-
-
 	// 셀러목록용]
 	@RequestMapping("/Sellerlist.board")
 	public String Pizza(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
@@ -112,8 +112,32 @@ public class boardController  extends HttpServlet{
 		if("customer".equals(usertype)) {
 			return "/com.sajo.foodtruck/front-end/views/board/seller/IdCheck.jsp";
 		}
-		List list = dao.selectHList();
+		
+		int totalRecordCount = dao.getTotalRecordCount();
+		//페이지 사이즈
+		int pageSize=5;
+		//블락페이지
+		int blockPage=3;
+		//전체 페이지수] 
+		int totalPage =(int)Math.ceil((double)totalRecordCount/pageSize);
+		//현재 페이지를 파라미터로 받기]
+		int nowPage = req.getParameter("nowPage")==null ? 1 : Integer.parseInt(req.getParameter("nowPage"));
+		//시작 및 끝 ROWNUM구하기]
+		int start= (nowPage-1)*pageSize +1;
+		int end  = nowPage*pageSize;		
+				//페이징을 위한 로직 끝]	
+		
+		
+		List list = dao.selectHList(start,end);
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/Sellerlist.board?");
+		
 		dao.close();
+		model.addAttribute("active","Ceocom");
+		model.addAttribute("pagingString", pagingString);//페이징 문자열
+		//아래는 글번호 순서용
+		model.addAttribute("totalRecordCount", totalRecordCount);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("board",list);
 		return "/com.sajo.foodtruck/front-end/views/board/seller/Ceocom.jsp";
 	}
