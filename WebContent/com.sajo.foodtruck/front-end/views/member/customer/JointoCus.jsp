@@ -16,7 +16,7 @@
 <!-- 소재지 js 호출 -->
 <script src="<c:url value='/com.sajo.foodtruck/front-end/views/map/sojaeji.js'/>"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-  <head>
+  <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

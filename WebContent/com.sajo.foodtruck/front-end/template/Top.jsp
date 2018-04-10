@@ -33,7 +33,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="<c:url value='/Allevent.event'/>">FOODTRUCK</a>
-			</div>
+			</div> 
 			
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- mypage login join -->

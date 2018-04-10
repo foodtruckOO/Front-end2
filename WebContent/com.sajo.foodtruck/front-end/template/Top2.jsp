@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
 	function popupOpen(){
-	var windowW=600;
-	var windowH=580;
+	var windowW=400;
+	var windowH=670;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>";	//팝업창에 출력될 페이지 URL
@@ -13,9 +13,9 @@
 	}
 </script>
 <script type="text/javascript">
-	function popupOpen2(){
+	function popupOpen2(){ 
 	var windowW=650;
-	var windowH=500;
+	var windowH=470;
 	var left=Math.ceil((window.screen.width-windowW)/2);
 	var top=Math.ceil((window.screen.height-windowH)/2);
 	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>";	//팝업창에 출력될 페이지 URL
@@ -23,11 +23,29 @@
 		window.open(popUrl,"",popOption);
 	}
 </script>
+<script>
+	function cart(){
+	var user = "${sessionScope.USER_ID}";
+	if(user==""){
+		alert("로그인 후 이용해주세요.");
+	}	
+	else if("${sessionScope.USER_TYPE}"=="seller"){
+		alert("사업자는 이용할 수 없습니다.");
+	}
+	else
+		var order = confirm("장바구니로 이동하시겠습니까?");
+		if(order)
+		location.href="<c:url value='/cart.cart'/>";
+	}
+
+</script>
+
+
 <!-- Fixed navbar -->
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top" id="top_top"><!--  navbar-fixed-top -->
 		<!-- logo -->
-		<div class="container" id="top_bar">
+		<div class="container" id="top_bar" style="border-bottom: 2px orange solid; width: 70%;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -46,6 +64,7 @@
 				       <li><a href="javascript:popupOpen();">LOGIN</a></li>&emsp;
 				        <li><a href="javascript:popupOpen2();">JOIN</a></li>
 			        <%}else{ %>
+				        <li><a href="javascript:cart()">CART</a></li>&emsp;
 				        <li><a href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
 				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>
@@ -96,7 +115,7 @@
 
 			</div>
 			<!--/.nav-collapse -->
-		</div>
+		</div><!--<hr style="border: solid 1px #FE9A2E;"> -->
 	</nav>
 </header>
 

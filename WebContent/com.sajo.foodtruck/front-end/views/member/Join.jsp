@@ -13,7 +13,7 @@
 <html lang="ko">
 <!-- JQuery CDN 호출 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- 소재지 js 호출 -->
+<!-- 소재지 js 호출 --> 
 <script src="<c:url value='/com.sajo.foodtruck/front-end/views/map/sojaeji.js'/>"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
   <head>
