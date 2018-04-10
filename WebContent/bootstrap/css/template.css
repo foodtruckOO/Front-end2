@@ -256,6 +256,9 @@ header .hd_flex div ul li{
 	border: none;
 }
 
+.page-header {
+	border-bottom: none !important;
+}
 
 /*****************right********************/
 #sidebox{ 

@@ -124,7 +124,7 @@
 			</div>
 		</div>
 		
-		<!-- Mypage Right -->
+		<!-- Mypage Right2 -->
 		<div id="mypage_R2" style="float: right;  width: 100%;" >
 			<!-- background -->
 			<div style="height: 200px; ">
