@@ -24,7 +24,7 @@
 	href="<c:url value ='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.css'/>" />
 
 <!-- Custom styles for this template -->
-
+<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 <style>
 body {
 	padding-top: 70px;

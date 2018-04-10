@@ -20,7 +20,7 @@
     <!-- YangGeum template CSS -->    
     <link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-
+<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 	<!-- javascript -->
 	<!-- <script src="../resources/js/common/jquery-1.12.4.min.js"></script>
 	<script src="../resources/js/common/jquery-migrate-1.3.0.min.js"></script>

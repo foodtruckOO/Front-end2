@@ -26,6 +26,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 	<script>
 	$(function(){
 		if("${area}".length)
@@ -114,7 +115,7 @@
 			
 			
 				<div class="row taste_dropdown_wrap">
-					<div class="taste_dropdown">
+					<!-- <div class="taste_dropdown">
 						<button class="more_btn_span taste_dropbtn col-xs-12"
 							onclick="myFunction()">
 							<span class="more_btn_span">지역전체보기</span> <i
@@ -197,6 +198,8 @@
 							</div>
 						</div>
 					</div>
+					 -->
+					
 					<div class="dq_select_box">
 						<select class="dq_select form-control solo" name="_area1" id = "area"
 							onchange="viewFilter()">

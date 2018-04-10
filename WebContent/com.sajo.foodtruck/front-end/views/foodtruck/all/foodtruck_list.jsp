@@ -24,6 +24,7 @@
 	href="<c:url value ='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck.css'/>" />
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/restaurant.css'/>" />
+	<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 </head>
 <body>
 	<div id="TOP">

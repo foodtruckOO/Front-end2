@@ -33,6 +33,7 @@
     <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.mobile.customized.min.js"/>'></script>
     <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.easing.1.3.js"/>'></script> 
 	<script src="<c:url value='/bootstrap/js/camera.js'/>"></script>
+	<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 <script>
 	$(function() {
 		var currentPosition = parseInt($("#sidebox").css("top"));
