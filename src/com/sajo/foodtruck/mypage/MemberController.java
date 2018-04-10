@@ -290,7 +290,7 @@ public class MemberController {
 	//[JSON으로 응답할때]
 	@ResponseBody
 	@RequestMapping(value="/Img/Upload.page", method = RequestMethod.POST)
-	public Object Img(MultipartHttpServletRequest mf,HttpServletRequest req,Model model) throws Exception{
+	public String Img(MultipartHttpServletRequest mf,HttpServletRequest req) throws Exception{
 		System.out.println("ImgUpload");
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
@@ -307,9 +307,8 @@ public class MemberController {
 			 try { 
 				 	System.out.println("file length : " + mpf.getBytes().length); 
 				 	System.out.println("file name : " + mpf.getOriginalFilename());
-				 	json.put("length", mpf.getBytes().length);
-				 	json.put("name", mpf.getOriginalFilename());
-					dto.setNewImg(FileUpload(mpf, "/FOODTRUCKS", req, false));
+				 	json.put("length", (int)mpf.getBytes().length/1028);
+				 	json.put("name", FileUpload(mpf, "/FOODTRUCKS", req, false));
 					dao.insertFoodtruck(dto);
 					dao.close();
 			 } 
@@ -325,6 +324,7 @@ public class MemberController {
 			 return "x"; 
 		 }
 	}
+	
 	
 
 	//이미지 파일 업로드 메소드------------------------------------------------------------------------*
