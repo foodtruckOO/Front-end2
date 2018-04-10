@@ -83,7 +83,7 @@
     </div>
 	
 	<!-- 내용 시작 -->
-	<section style="padding-top: 30px; margin-left: 360px; margin-right: 360px">
+	<section style="padding-top: 30px;">
 		<article style="margin-right:30px; margin-left: 30px"> 
 	  		<h2>푸드트럭찾기</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
 		</article>
