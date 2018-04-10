@@ -20,8 +20,9 @@ public class EventDTO {
 	private String contentfile;
 	private Date s_date;
 	private Date e_date;
+	private String ip;
 	public EventDTO(String eno, String title, String content, String titlefile, String contentfile, Date s_date,
-			Date e_date, Date postdate, String boardtype) {
+			Date e_date, Date postdate, String boardtype, String ip) {
 		super();
 		this.eno = eno;
 		this.title = title;
@@ -32,8 +33,16 @@ public class EventDTO {
 		this.e_date = e_date;
 		this.postdate = postdate;
 		this.boardtype = boardtype;
+		this.ip = ip;
 	}
 	
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	private Date postdate;
 	private String boardtype;
 	public String getEno() {

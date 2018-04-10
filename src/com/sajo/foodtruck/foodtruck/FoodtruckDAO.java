@@ -5,6 +5,8 @@ package com.sajo.foodtruck.foodtruck;
  * 
  */
   
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
@@ -28,6 +30,7 @@ public class FoodtruckDAO {
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
+	private InetAddress ip;
 	
 	//생성자]
 	public FoodtruckDAO(ServletContext context) {
@@ -49,7 +52,8 @@ public class FoodtruckDAO {
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
-			} catch (SQLException e) {				
+				ip = InetAddress.getLocalHost();
+			} catch (SQLException | UnknownHostException e) {				
 				e.printStackTrace();
 			}		
 		} catch (NamingException e) {			
@@ -97,6 +101,7 @@ public class FoodtruckDAO {
 			dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 			dto.setRegidate(rs.getDate(10));
 			dto.setImg(rs.getString(11));
+			dto.setIp(ip.getHostAddress());
 			list.add(dto);
 			}////////////while
 		}///try
@@ -121,6 +126,7 @@ public class FoodtruckDAO {
 				dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 				dto.setImg(rs.getString(11));
 				dto.setIntro(rs.getString(12));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 			}
 			
@@ -139,6 +145,7 @@ public class FoodtruckDAO {
 				dto.setId(rs.getString(2));
 				dto.setTname(rs.getString(5));
 				dto.setImg(rs.getString(11));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 			}
 		
@@ -187,6 +194,7 @@ public class FoodtruckDAO {
 						dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 						dto.setRegidate(rs.getDate(10));
 						dto.setImg(rs.getString(11));
+						dto.setIp(ip.getHostAddress());
 						list.add(dto);
 					}
 				}catch(Exception e) {e.printStackTrace();}
@@ -217,6 +225,7 @@ public class FoodtruckDAO {
 						dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 						dto.setRegidate(rs.getDate(10));
 						dto.setImg(rs.getString(11));
+						dto.setIp(ip.getHostAddress());
 						list.add(dto);
 						
 					}
@@ -250,6 +259,7 @@ public class FoodtruckDAO {
 						dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 						dto.setRegidate(rs.getDate(10));
 						dto.setImg(rs.getString(11));
+						dto.setIp(ip.getHostAddress());
 						list.add(dto);
 						
 					}
@@ -273,6 +283,7 @@ public class FoodtruckDAO {
 				dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 				dto.setRegidate(rs.getDate(10));
 				dto.setImg(rs.getString(11));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 				
 			}
@@ -298,6 +309,7 @@ public class FoodtruckDAO {
 			dto.setAddr(rs.getString(6)+" "+rs.getString(7));
 			dto.setRegidate(rs.getDate(10));
 			dto.setImg(rs.getString(11));
+			dto.setIp(ip.getHostAddress());
 			list.add(dto);
 			}////////////while
 		}///try

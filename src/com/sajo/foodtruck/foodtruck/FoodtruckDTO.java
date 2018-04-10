@@ -21,12 +21,22 @@ public class FoodtruckDTO {
 	private String img;
 	private Date regidate;
 	private String intro;
-	
+	private String ip;
+	public String getIp() {
+		return ip;
+	}
+
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+
 	public FoodtruckDTO() {}
 	
 	
 	public FoodtruckDTO(String s_no, String id, String pwd, String name, String tname, String addr, String tel,
-			String coprorate_no, String img, String intro, Date regidate) {
+			String coprorate_no, String img, String intro, Date regidate,String ip) {
 		this.s_no = s_no;
 		this.id = id;
 		this.pwd = pwd;
@@ -38,6 +48,7 @@ public class FoodtruckDTO {
 		this.img = img;
 		this.intro = intro;
 		this.regidate = regidate;
+		this.ip = ip;
 		
 	}
 

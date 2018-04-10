@@ -5,6 +5,8 @@ package com.sajo.foodtruck.event;
  * 
  */
   
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +26,7 @@ public class EventDAO {
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
-	
+	private InetAddress ip; 
 	//생성자]
 	public EventDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
@@ -45,7 +47,11 @@ public class EventDAO {
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
-			} catch (SQLException e) {				
+				 
+			ip = InetAddress.getLocalHost();
+				
+				
+			} catch (SQLException | UnknownHostException e) {				
 				e.printStackTrace();
 			}		
 		} catch (NamingException e) {			
@@ -96,6 +102,7 @@ public class EventDAO {
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 			}////////////while
 		}///try
@@ -122,6 +129,7 @@ public class EventDAO {
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
 				dto.setBoardtype(rs.getString(10));
+				dto.setIp(ip.getHostAddress());
 				
 			}
 			System.out.println(dto.getBoardtype());
@@ -148,6 +156,7 @@ public class EventDAO {
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 			}////////////while
 		}///try
@@ -180,6 +189,7 @@ public class EventDAO {
 				dto.setS_date(rs.getDate(7));
 				dto.setE_date(rs.getDate(8));
 				dto.setPostdate(rs.getDate(9));
+				dto.setIp(ip.getHostAddress());
 				list.add(dto);
 			}////////////while
 		}///try

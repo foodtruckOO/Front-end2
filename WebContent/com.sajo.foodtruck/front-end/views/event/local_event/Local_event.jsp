@@ -97,7 +97,7 @@ table, table th {
 						<div class="card_img_wrap" style="position: relative;">
 							<div class="card_img_wrap_thumbnail a">
 								<a href="<c:url value='/Eventview.event?eno=${dto.eno}'/>"><img
-									src="http://localhost:8080/Back-end/backend/img/admin/${dto.titlefile}"
+									src="http://${dto.ip}:8080/Back-end/backend/img/admin/${dto.titlefile}"
 									width="100%" /> </a>
 							</div>
 						</div>

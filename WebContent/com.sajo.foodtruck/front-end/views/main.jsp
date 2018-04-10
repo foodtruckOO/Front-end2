@@ -136,7 +136,7 @@
 	<header>
 			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
 		<c:forEach items="${events}" var="event">
-	            <div data-thumb="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" data-src="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" data-link="<c:url value='/Eventview.event?eno=${event.eno}'/>"></div>
+	            <div data-thumb="http://${event.ip}:8080/Back-end/backend/img/admin/${event.titlefile}" data-src="http://${event.ip}:8080/Back-end/backend/img/admin/${event.titlefile}" data-link="<c:url value='/Eventview.event?eno=${event.eno}'/>"></div>
 		</c:forEach>	
 			</div>		
 		<%-- <div class="container">
