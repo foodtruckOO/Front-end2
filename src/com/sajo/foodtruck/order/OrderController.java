@@ -46,7 +46,6 @@ public class OrderController {
 		
 		OrderDAO dao = new OrderDAO(req.getServletContext());
 		String user = req.getSession().getAttribute("USER_ID").toString();
-				
 		String yn = dao.check(user);
 		dao.close();
 			
@@ -62,5 +61,17 @@ public class OrderController {
 		
 		dao.close();
 		return "com.sajo.foodtruck/front-end/views/index.jsp";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/timecheck.order")
+	public String TimeCheck(Model model, HttpServletRequest req,@RequestParam Map map)throws Exception{
+		OrderDAO dao = new OrderDAO(req.getServletContext());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		String yn = dao.timecheck(user);
+		dao.close();
+		
+		
+	return yn;
 	}
 }

@@ -21,7 +21,6 @@
 <script>
 	if("${sessionScope.USER_TYPE}"=="seller"){
 		timer = setInterval( function() {
-			//alert("5초에 한번 등장");	
 			$.ajax({
 				type:"POST",
 				url:"<c:url value='/check.order'/>",
@@ -33,12 +32,36 @@
 					}					
 				}
 			});		
-
+		
 
 			
 			
 		}, 30000); // 30초에 한번씩 받아온다.
 	}
+</script>
+<script>
+if("${sessionScope.USER_TYPE}"=="seller"){
+	timer = setInterval( function() {
+		$.ajax({
+			type:"POST",
+			url:"<c:url value='/timecheck.order'/>",
+			dataType:'text',
+			success:function(data){
+				if(data=="30"){
+				alert("30분 남은 주문이 있습니다 확인해주세요");
+				}
+				else if(data=="10"){
+				alert("10분 남은 주문이 있습니다 확인해주세요")
+				}
+			}
+		});		
+	
+
+		
+		
+	}, 20000); // 20초에 한번씩 받아온다.
+}
+
 </script>
 
 <!-- Fixed navbar -->

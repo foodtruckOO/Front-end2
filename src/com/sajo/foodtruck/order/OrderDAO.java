@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.naming.InitialContext;
@@ -197,7 +201,7 @@ public class OrderDAO {
 		psmt.setString(1, user);
 		rs = psmt.executeQuery();
 		if(rs.next()) {
-			count = rs.getInt(1);
+			count = rs.getInt("COUNT(*)");
 		}
 		}catch(Exception e) {e.printStackTrace();}
 		
@@ -216,6 +220,69 @@ public class OrderDAO {
 			psmt.setString(1, user);
 			psmt.executeUpdate();
 		}catch(Exception e) {e.printStackTrace();}
+	}
+	public String timecheck(String user) {
+		String postdate = null;
+		String time = null;
+		Date datetime = null;
+		Date currenttime = null;
+		String yn = "N" ;
+		String sql = "select o.* from orderform o join food f on o.f_no = f.f_no join seller s on f.s_no = s.s_no where s.id = ? and to_char(o.postdate,'yyyymmdd')=to_char(sysdate,'yyyymmdd')";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, user);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				postdate = rs.getString(7);
+				time = rs.getString(5);
+				if(time.contains("PM")) {
+					int inttime = Integer.parseInt(time.substring(0,2));
+					inttime = inttime + 12;
+					time = time.replace(time.substring(0, 2),String.valueOf(inttime));
+					time = time.replace("PM", "").trim();
+					postdate = postdate.split(" ")[0];
+					
+					//System.out.println(time);
+					//System.out.println(postdate);
+					SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd:hh:mm",Locale.KOREA);
+					datetime = sf.parse(postdate+":"+time,new ParsePosition(0));
+					//System.out.println(datetime);
+					long longdatetime = datetime.getTime();
+					Date today = new Date();
+					//System.out.println(today);
+					long longtoday = today.getTime();
+					long result = longtoday-longdatetime;
+					//System.out.println(result/1000/60);
+					if((result/1000/60)==-30) {
+						yn = "30";
+					}
+					else if((result/1000/60)==-10) {
+						yn = "10";
+					}
+				}
+				else {
+					time = time.replace("AM", "").trim();
+					postdate = postdate.split(" ")[0];
+					SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd:hh:mm",Locale.KOREA);
+					datetime = sf.parse(postdate+":"+time,new ParsePosition(0));
+					long longdatetime = datetime.getTime();
+					Date today = new Date();
+					long longtoday = today.getTime();
+					long result = longtoday-longdatetime;
+					if((result/1000/60)==-30) {
+						yn = "30";
+					}
+					else if((result/1000/60)==-10) {
+						yn = "10";
+					}
+					
+				}
+				
+			}
+			
+		}catch(Exception e) {e.printStackTrace();}
+		
+		return yn;
 	}
 	
 	
