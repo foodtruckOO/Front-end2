@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class T_EventDTO {
 	
+	private String eno;
 	private String s_no;
 	private String title;
 	private String content;
@@ -13,13 +14,29 @@ public class T_EventDTO {
 	private MultipartFile contentfile;
 	private String sdate;
 	private String edate;
+	private String newTitlefile;
+	private String newContentfile;
 	/*
 	private Date sdate;
 	private Date edate;
 	*/
 
+
+
+	public String getEno() {
+		return eno;
+	}
+
+	public void setEno(String eno) {
+		this.eno = eno;
+	}
+	
 	public String getS_no() {
 		return s_no;
+	}
+
+	public void setS_no(String s_no) {
+		this.s_no = s_no;
 	}
 
 	public String getSdate() {
@@ -37,11 +54,6 @@ public class T_EventDTO {
 	public void setEdate(String edate) {
 		this.edate = edate;
 	}
-
-	public void setS_no(String s_no) {
-		this.s_no = s_no;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -73,21 +85,20 @@ public class T_EventDTO {
 	public void setContentfile(MultipartFile contentfile) {
 		this.contentfile = contentfile;
 	}
-	/*
-	public Date getSdate() {
-		return sdate;
+
+	public String getNewTitlefile() {
+		return newTitlefile;
 	}
-	
-	public void setSdate(Date sdate) {
-		this.sdate = sdate;
+
+	public void setNewTitlefile(String newTitlefile) {
+		this.newTitlefile = newTitlefile;
 	}
-	
-	public Date getEdate() {
-		return edate;
+
+	public String getNewContentfile() {
+		return newContentfile;
 	}
-	
-	public void setEdate(Date edate) {
-		this.edate = edate;
+
+	public void setNewContentfile(String newContentfile) {
+		this.newContentfile = newContentfile;
 	}
-	*/
 }

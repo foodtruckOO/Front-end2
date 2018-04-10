@@ -67,10 +67,12 @@ public class MemberController {
 		model.addAttribute("list",list);
 		return "tabs-2.tiles";
 	}
+	
 	//메뉴삭제
 	@RequestMapping("/deleteMenu.page")
 	public String deleteMenu(T_Menu_FoodDTO dto,Model model, HttpServletRequest req) throws Exception{
 		System.out.println("deleteMenu 접속");
+		FileDelete("/MENU", dto.getNewPicture(), req);
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		dao.deleteMenu(dto.getFno());
 		dao.close();
@@ -103,7 +105,6 @@ public class MemberController {
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		/*-----이미지 경로에 등록-----*/
 		if(!(dto.getNewPicture().equals(dto.getPicture().getOriginalFilename()))) {
-			System.out.println("이미지 서로 다름");
 			FileDelete("/MENU", dto.getNewPicture(), req);
 			dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
 		}
@@ -147,12 +148,32 @@ public class MemberController {
 		System.out.println("tabs3 접속");
 		return "tabs-3.tiles";
 	}
-	
+
+	//이벤트 보기화면-----------------------------------------------------------------
 	@RequestMapping("/Tabs4.page")
 	public String Tabs4(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs4 접속");
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		List<T_EventDTO> list = dao.selectEvent(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		dao.close();
+		for(T_EventDTO dto : list) dto.setContent(dto.getContent().replaceAll("\r\n", "</br>"));
+		model.addAttribute("list",list);
 		return "tabs-4.tiles";
 	}
+	
+	//메뉴삭제
+	@RequestMapping("/deleteEvent.page")
+	public String deleteEvent(T_EventDTO dto,Model model, HttpServletRequest req) throws Exception{
+		System.out.println("deleteEvent 접속");
+		FileDelete("/EVENT/TITLE", dto.getNewTitlefile(), req);
+		FileDelete("/EVENT/CONTENT", dto.getNewContentfile(), req);
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		dao.deleteEvent(dto.getEno());
+		dao.close();
+		return "forward:/Tabs4.page";
+	}
+	
+	
 	
 	//개인정보 수정
 	@RequestMapping("/Tabs5.page")
