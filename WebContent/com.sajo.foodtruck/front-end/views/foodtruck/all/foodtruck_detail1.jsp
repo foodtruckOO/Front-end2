@@ -66,11 +66,7 @@
 
 	<style>
 	
-	body {
-  font-family: 'open sans';
-  overflow-x: hidden;
-  
-   }
+	
 
 img {
   max-width: 100%; }

@@ -92,7 +92,6 @@
 </script>
 		<style>
 			body {
-			min-height: 2000px;
 			padding-top: 100px;
 				}
 		</style>
