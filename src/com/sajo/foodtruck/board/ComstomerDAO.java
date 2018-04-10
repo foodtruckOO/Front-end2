@@ -81,7 +81,6 @@ public class ComstomerDAO {
 	public List<ComstomerDTO> selectList(int start,int end) {
 		List list = new Vector();
 
-		System.out.println("start ComstomerDAO selectList ");
 		String sql="SELECT * FROM (SELECT C.*,ROWNUM R FROM (SELECT * FROM C_BOARD ORDER BY POSTDATE DESC) C) WHERE R BETWEEN ? AND ?";
 		//													1.C_BOARD에있는 모든 값을 POSTDATE로 내림차순 정렬한다 이 테이블 T라고 부름
 		//							?와 ?에 해당하는 rownum값을 찾아 T테이블에 해당하는 모든 컬럼 + Rownum은 컬럼을 포함한 테이블을 검색
@@ -103,7 +102,6 @@ public class ComstomerDAO {
 				list.add(dto);				
 			}			
 		} catch (Exception e) {e.printStackTrace();}
-		System.out.println("end ComstomerDAO selectList ");
 		return list;
 	}////////////////////////////
 	
@@ -120,6 +118,7 @@ public class ComstomerDAO {
 			return total;
 		}//////////////////
 	
+		
 	public List<ComstomerDTO> selectHList(){
 		List<ComstomerDTO> list = new Vector<ComstomerDTO>();
 		//페이징 미 적용
@@ -151,6 +150,7 @@ public class ComstomerDAO {
 		
 		return list;
 	}//////////////////////////////
+	
 	//글등록
 	public void write(String title,String content, String file, String user) {
 		String sql ;

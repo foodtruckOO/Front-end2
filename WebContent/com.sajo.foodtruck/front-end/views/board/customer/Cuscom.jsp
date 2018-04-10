@@ -473,8 +473,15 @@ ul.inbox-pagination li {
 		width: 60px;
 	}
 }
-
-
+/* 페이지네이션 가운데 정렬 */	
+		.pagination{
+			display:block;
+			text-align:center;
+		}
+		.pagination >li > a{
+			float:none;
+			margin-left:-5px;
+		}
 </style>
 </head>
 
@@ -489,51 +496,53 @@ ul.inbox-pagination li {
 
 	<!-- 내용 시작 -->
 
-		<div class="container" style="padding-bottom: 20px;width: 100%;left: 20px;right: 20px">
-			<div class="inbox-head">
+	<div class="container"
+		style="padding-bottom: 20px; width: 100%; left: 20px; right: 20px">
+		<div class="inbox-head">
 
-				<h3>손님게시판</h3>
-				<form action="#" class="pull-right position">
-					<div class="input-append">
-						<a
-							href="<c:url value='/com.sajo.foodtruck/front-end/views/board/customer/Write.jsp'/>"><button
-								type="button" class="btn btn-success" >글등록</button></a>
-					</div>
-				</form>
-
-			</div>
-
-			<table class="table table-inbox table-hover">
-				<tbody>
-					<tr class="unread">
-						<th class="inbox-small-cells" style="width: 10%">번호</th>
-						<th class="view-message" style="width: 35%">제목</th>
-						<th class="view-message " style="width: 10%">작성자</th>
-						<th class="view-message" style="width: 15%">등록일</th>
-						<th class="view-message " style="width: 20%">첨부파일</th>
-
-					</tr>
-
-					<c:forEach items="${board }" var="dto">
-						<tr>
-							<th>${dto.cb_no }</th>
-							<th><a
-								href='<c:url value='/rice.board?cb_no=${dto.cb_no }'/>'>${dto.title }</a></th>
-							<th>${dto.name }</th>
-							<th>${dto.postdate }</th>
-							<th>${dto.attachedfile }</th>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+			<h3>손님게시판</h3>
+			<form action="#" class="pull-right position">
+				<div class="input-append">
+					<a
+						href="<c:url value='/com.sajo.foodtruck/front-end/views/board/customer/Write.jsp'/>"><button
+							type="button" class="btn btn-success">글등록</button></a>
+				</div>
+			</form>
 
 		</div>
 
+		<table class="table table-inbox table-hover">
+			<tbody>
+				<tr class="unread">
+					<th class="inbox-small-cells" style="width: 15%">번호</th>
+					<th class="view-message" style="width: 40%">제목</th>
+					<th class="view-message " style="width: 15%">작성자</th>
+					<th class="view-message" style="width: 20%">등록일</th>
 
-		<!-- footer -->
-		<article>
-			<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp" />
-		</article>
+
+				</tr>
+
+				<c:forEach items="${board }" var="dto" varStatus="loop">
+					<tr>
+						
+						<th>${dto.cb_no }</th>
+						<th><a
+							href='<c:url value='/rice.board?cb_no=${dto.cb_no }'/>'>${dto.title }</a></th>
+						<th>${dto.name }</th>
+						<th>${dto.postdate }</th>
+
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<div class="row">${pagingString}</div>
+	</div>
+
+
+	<!-- footer -->
+	<article>
+		<jsp:include page="/com.sajo.foodtruck/front-end/template/Footer.jsp" />
+	</article>
 
 
 	<!-- 내용 끝 -->

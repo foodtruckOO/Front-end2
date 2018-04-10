@@ -1,48 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
 
 	<display-name>Front-end_FoodTruckProj</display-name>
 	<context-param>
-    	<param-name>ORACLE_DRIVER</param-name>
-    	<param-value>oracle.jdbc.OracleDriver</param-value>
+		<param-name>ORACLE_DRIVER</param-name>
+		<param-value>oracle.jdbc.OracleDriver</param-value>
 	</context-param>
 	<context-param>
 		<param-name>ORACLE_URL</param-name>
 		<param-value>jdbc:oracle:thin://localhost:1521:orcl</param-value>
-	</context-param> 	
+	</context-param>
 	<context-param>
-    	<param-name>TOMCAT_JNDI_ROOT</param-name>
-    	<param-value>java:comp/env</param-value>
+		<param-name>PAGE_SIZE</param-name>
+		<param-value>2</param-value>
+	</context-param>
+	<context-param>
+		<param-name>BLOCK_PAGE</param-name>
+		<param-value>3</param-value>
+	</context-param>
+	<context-param>
+		<param-name>TOMCAT_JNDI_ROOT</param-name>
+		<param-value>java:comp/env</param-value>
 	</context-param>
 
 	<!-- 이벤트 컨트롤러 -->
 	<servlet>
-  		<servlet-name>EventController</servlet-name>
-  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  		<init-param>
+		<servlet-name>EventController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
 			<param-name>contextConfigLocation</param-name>
-  			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  		</init-param>
-  	</servlet>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>EventController</servlet-name>
 		<url-pattern>*.event</url-pattern>
 	</servlet-mapping>
-  
+
 	<!-- 푸드트럭 컨트롤러 -->
 	<servlet>
 		<servlet-name>FoodtruckController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FoodtruckController</servlet-name>
 		<url-pattern>*.foodtruck</url-pattern>
 	</servlet-mapping>
-  
+
 	<!-- 보드 컨트롤러 -->
 	<servlet>
 		<servlet-name>BoardController</servlet-name>
@@ -56,29 +67,31 @@
 		<servlet-name>BoardController</servlet-name>
 		<url-pattern>*.board</url-pattern>
 	</servlet-mapping>
-  
+	
+
+
 	<!-- info 컨트롤러 -->
 	<servlet>
 		<servlet-name>InfoController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>InfoController</servlet-name>
 		<url-pattern>*.info</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- order 컨트롤러 -->
 	<servlet>
 		<servlet-name>OrderController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OrderController</servlet-name>
@@ -88,49 +101,47 @@
 	<servlet>
 		<servlet-name>CartController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CartController</servlet-name>
 		<url-pattern>*.cart</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>FoodController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>/WEB-INF/config/foodtruck.xml</param-value>
-  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FoodController</servlet-name>
 		<url-pattern>*.food</url-pattern>
 	</servlet-mapping>
-	
+
 
 	<!-- 회원 컨트롤러 -->
 	<servlet>
 		<servlet-name>MemberController</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	  	<init-param>
-	  		<param-name>contextConfigLocation</param-name>
-	  		<param-value>/WEB-INF/config/member.xml</param-value>
-	  	</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/member.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberController</servlet-name>
 		<url-pattern>*.page</url-pattern>
 	</servlet-mapping>
-	
-	<!-- jsessionId 삭제 
-	<session-config>
-		<tracking-mode>COOKIE</tracking-mode>
-	</session-config>-->
-	
+
+	<!-- jsessionId 삭제 <session-config> <tracking-mode>COOKIE</tracking-mode> 
+		</session-config> -->
+
 	<!-- 한글 깨지는 거 방지 -->
 	<filter>
 		<filter-name>CharacterEncoding</filter-name> <!-- filter-name은 임의로 -->
@@ -145,25 +156,25 @@
 		<filter-name>CharacterEncoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-  
+
 	<jsp-config>
-	    <taglib>
+		<taglib>
 			<taglib-uri>/WEB-INF/tlds/mytaglib.tld</taglib-uri>
-			<taglib-location>	
-				/WEB-INF/tlds/mytaglib.tld
-			</taglib-location>
-	    </taglib>
-	</jsp-config>  
+			<taglib-location>/WEB-INF/tlds/mytaglib.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+
+
 	
-	 
-	
+
 	<welcome-file-list>
-	    <welcome-file>index.html</welcome-file>
-	    <welcome-file>/com.sajo.foodtruck/front-end/views/index.jsp</welcome-file>
-	    <welcome-file>index.htm</welcome-file>
-	    <welcome-file>index.jsp</welcome-file>
-	    <welcome-file>default.html</welcome-file>
-	    <welcome-file>default.htm</welcome-file>
-	    <welcome-file>default.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>/com.sajo.foodtruck/front-end/views/index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 </web-app> 

@@ -33,10 +33,9 @@ import com.sajo.foodtruck.LoginJoin.PBKDF2;
 import com.sajo.foodtruck.mypage.FileUpDownUtils;
 
 @Controller
-public class boardController  {
+public class boardController  extends HttpServlet{
 
-	public static final int PAGESIZE = 2;
-	public static final int BLOCKPAGE = 3;
+
 	//커스텀목록용]
 	@RequestMapping("/Com.board")
 	public void List(Model model, HttpServletRequest req,@RequestParam Map map,HttpServletResponse resp) throws Exception{
@@ -46,9 +45,9 @@ public class boardController  {
 		//전체 레코드 수
 		int totalRecordCount = dao.getTotalRecordCount();
 		//페이지 사이즈
-		int pageSize=Integer.valueOf(PAGESIZE);
+		int pageSize=Integer.valueOf(getInitParameter("PAGESIZE"));
 		//블락페이지
-		int blockPage=Integer.valueOf(BLOCKPAGE);
+		int blockPage=Integer.valueOf(getInitParameter("BLOCKPAGE"));
 		//전체 페이지수] 
 		int totalPage =(int)Math.ceil((double)totalRecordCount/pageSize);
 		//현재 페이지를 파라미터로 받기]
@@ -57,22 +56,20 @@ public class boardController  {
 		int start= (nowPage-1)*pageSize +1;
 		int end  = nowPage*pageSize;		
 		//페이징을 위한 로직 끝]	
-
-		System.out.println("페이징을 위한 로직 끝");
-		List<ComstomerDTO> page=dao.selectList(start,end);
+		List<ComstomerDTO> list=dao.selectList(start,end);
 		dao.close();
 		//라]결과값이 있으면 리퀘스트 영역에 저장
 		//페이지용 문자열 생성]
-		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/customer/Write.do?");
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/customer/Com.board?");
 
-		req.setAttribute("list", page);//글목록들
-		req.setAttribute("active","dataroom");//메뉴 활성화용
+		req.setAttribute("board", list);//글목록들
+		req.setAttribute("active","Cuscom");//메뉴 활성화용
 		req.setAttribute("pagingString", pagingString);//페이징 문자열
 		//아래는 글번호 순서용
 		req.setAttribute("totalRecordCount", totalRecordCount);
 		req.setAttribute("nowPage", nowPage);
 		req.setAttribute("pageSize", pageSize);
-
+		
 		//마]결과값을 뿌려주거나 이동할 뷰(JSP페이지) 선택후 포워딩
 		//뷰선택]
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp");
@@ -139,8 +136,8 @@ public class boardController  {
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
-		System.out.println(content);
-		System.out.println(file);
+		//System.out.println(content);
+		//System.out.println(file);
 		dao.write(title, content, file, user);
 		dao.close();
 		return "/Com.board";
