@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -80,5 +82,73 @@ public class T_EventDAO {
 		return affected;
 	}
 	
+	//이벤트 뿌리기
+	public List<T_EventDTO> selectEvent(String no){
+		System.out.println("T_EventDAO selectEvent");
+		List<T_EventDTO> list = new Vector<T_EventDTO>();
+		String sql = "SELECT title, content, titlefile, contentfile, s_date, e_date, eno FROM truck_event where s_no=? ORDER BY eno DESC";//내림차순(큰~작)
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				T_EventDTO dto = new T_EventDTO();
+				dto.setTitle(rs.getString(1));
+				dto.setContent(rs.getString(2));
+				dto.setNewTitlefile(rs.getString(3));
+				dto.setNewContentfile(rs.getString(4));
+				dto.setSdate(rs.getString(5).split(" ")[0]);
+				dto.setEdate(rs.getString(6).split(" ")[0]);
+				dto.setEno(rs.getString(7));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("T_EventDAO selectMenu error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return list;
+	}
 
+	//이벤트 삭제
+	public int deleteEvent(String eno) {
+		System.out.println("T_EventDAO deleteEvent");
+		int affected = 0;
+		String sql = "DELETE from truck_event where eno=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, eno);
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_EventDAO deleteMenu error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
+
+	//이벤트 수정
+	public int updateEvent(T_EventDTO dto) {
+		System.out.println("T_EventDAO updateEvent");
+		int affected = 0;
+		String sql = "UPDATE truck_event SET title=?,content=?, s_date=?, e_date=?, titlefile=?, contentfile=? where eno=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getSdate());
+			psmt.setString(4, dto.getEdate());
+			psmt.setString(5, dto.getNewTitlefile());
+			psmt.setString(6, dto.getNewContentfile());
+			psmt.setString(7, dto.getEno());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_EventDAO updateEvent error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
 }

@@ -38,6 +38,7 @@
 		<div class="col-md-4" style="margin-bottom: 20px;">
 			<form action="<c:url value='/deleteMenu.page'/>" method="POST">
 				<input type="hidden" name="fno" value="${list.fno}"/>
+				<input type="hidden" name="newPicture" value="${list.newPicture}"/>
 				<button style="position: relative; float: right; z-index: 1; color: black;">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true" /></button>
 			</form>

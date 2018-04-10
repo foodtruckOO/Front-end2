@@ -45,12 +45,23 @@ public class MemberController {
 		return "tabs-1.tiles";
 	}
 	
+	
 	@RequestMapping("/Info/Update.page")
 	public String Info(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs5 접속");
 		System.out.println(dto.getId());
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		dao.update(dto);
+		dao.close();
+		model.addAttribute("seller", dto);
+		return "tabs-5.tiles";
+	}
+	
+	//개인정보 수정
+	@RequestMapping("/Tabs5.page")
+	public String InfoUpdate(Model model, HttpServletRequest req) throws Exception{
+		SellerDAO dao = new SellerDAO(req.getServletContext());
+		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
 		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
@@ -67,10 +78,12 @@ public class MemberController {
 		model.addAttribute("list",list);
 		return "tabs-2.tiles";
 	}
+	
 	//메뉴삭제
 	@RequestMapping("/deleteMenu.page")
 	public String deleteMenu(T_Menu_FoodDTO dto,Model model, HttpServletRequest req) throws Exception{
 		System.out.println("deleteMenu 접속");
+		FileDelete("/MENU", dto.getNewPicture(), req);
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		dao.deleteMenu(dto.getFno());
 		dao.close();
@@ -103,7 +116,6 @@ public class MemberController {
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		/*-----이미지 경로에 등록-----*/
 		if(!(dto.getNewPicture().equals(dto.getPicture().getOriginalFilename()))) {
-			System.out.println("이미지 서로 다름");
 			FileDelete("/MENU", dto.getNewPicture(), req);
 			dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
 		}
@@ -147,34 +159,38 @@ public class MemberController {
 		System.out.println("tabs3 접속");
 		return "tabs-3.tiles";
 	}
-	
+
+	//이벤트 보기화면-----------------------------------------------------------------
 	@RequestMapping("/Tabs4.page")
 	public String Tabs4(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs4 접속");
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		List<T_EventDTO> list = dao.selectEvent(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		dao.close();
+		for(T_EventDTO dto : list) dto.setContent(dto.getContent().replaceAll("\r\n", "</br>"));
+		model.addAttribute("list",list);
 		return "tabs-4.tiles";
 	}
 	
-	//개인정보 수정
-	@RequestMapping("/Tabs5.page")
-	public String InfoUpdate(Model model, HttpServletRequest req) throws Exception{
-		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+	//이벤트 삭제
+	@RequestMapping("/deleteEvent.page")
+	public String deleteEvent(T_EventDTO dto,Model model, HttpServletRequest req) throws Exception{
+		System.out.println("deleteEvent 접속");
+		FileDelete("/EVENT/TITLE", dto.getNewTitlefile(), req);
+		FileDelete("/EVENT/CONTENT", dto.getNewContentfile(), req);
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		dao.deleteEvent(dto.getEno());
 		dao.close();
-		model.addAttribute("seller", dto);
-		return "tabs-5.tiles";
+		return "forward:/Tabs4.page";
 	}
 	
-
-
-	
-
-	//이벤트 수정------------------------------------------------------------------------
+	//이벤트 등롬폼으로 이동------------------------------------------------------------------------
 	@RequestMapping("/Tabs7.page")
 	public String EventUpdate() throws Exception{
-		
 		return "tabs-7.tiles";
 	}
 	
+	//이벤트 등록
 	@RequestMapping(value="/Event/Upload.page", method=RequestMethod.POST)
 	public String EventUpload(T_EventDTO dto, Model model, HttpServletRequest req) throws IllegalStateException, IOException {
 		
@@ -190,6 +206,47 @@ public class MemberController {
 		dao.insertEvent(dto);// 변경되면 1 아니면 0
 		return "forward:/Member.page";
 	}
+	
+	//이벤트 수정폼으로 이동
+	@RequestMapping("/editEvent.page")
+	public String editEvent(T_EventDTO dto, Model model, HttpServletRequest req) throws Exception{
+		System.out.println("editEvent 접속");
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		List<T_EventDTO> dtos = dao.selectEvent(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		for(T_EventDTO d: dtos) {
+			if(dto.getEno().equals(d.getEno())){
+					dto=d;
+					dto.setSdate(dto.getSdate().replaceAll("-", "/"));
+					dto.setEdate(dto.getEdate().replaceAll("-", "/"));
+					break;
+			}
+		}
+		dao.close();
+		model.addAttribute("event", dto);
+		return "tabs-7_1.tiles";
+	}
+	
+	//이벤트 수정
+	@RequestMapping("/updateEvent.page")
+	public String updateEvent(T_EventDTO dto,Model model, HttpServletRequest req) throws Exception{
+		System.out.println("updateEvent 접속");
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		/*-----이미지 경로에 등록-----*/
+		if(!(dto.getNewTitlefile().equals(dto.getTitlefile().getOriginalFilename()))) {
+			FileDelete("/EVENT/TITLE", dto.getNewTitlefile(), req);
+			dto.setNewTitlefile(FileUpload(dto.getTitlefile(), "/EVENT/TITLE", req,false));
+		}
+		if(!(dto.getNewContentfile().equals(dto.getContentfile().getOriginalFilename()))) {
+			FileDelete("/EVENT/CONTENT", dto.getNewContentfile(), req);
+			dto.setNewContentfile(FileUpload(dto.getContentfile(), "/EVENT/CONTENT", req,false));
+		}
+		/*-----이미지 DB등록-----*/		
+		T_EventDAO dao = new T_EventDAO(req.getServletContext());
+		dao.updateEvent(dto);
+		dao.close();
+		return "forward:/Tabs4.page";
+	}
+	
 	
 	//SNS 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs8.page")
