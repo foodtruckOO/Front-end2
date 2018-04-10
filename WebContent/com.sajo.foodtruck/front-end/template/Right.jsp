@@ -8,8 +8,8 @@
             
             <a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp' />" class="list-group-item">MAIN</a>
             <%if(session.getAttribute("USER_ID") ==null){ %>
-				<a href="javascript:popupOpen();" class="list-group-item">LOGIN</a>
-		        <a href="javascript:popupOpen2();" class="list-group-item">JOIN</a>
+				<a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>" class="list-group-item">LOGIN</a>
+		        <a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>" class="list-group-item">JOIN</a>
 	        <%}else{ %>
 		        <a href="<c:url value='/Member.page'/>" class="list-group-item">MYPAGE</a>
 		        <a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>" class="list-group-item">LOGOUT</a>
