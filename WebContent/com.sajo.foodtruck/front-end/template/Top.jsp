@@ -14,7 +14,7 @@
 		var order = confirm("장바구니로 이동하시겠습니까?");
 		if(order)
 		location.href="<c:url value='/cart.cart'/>";
-	}
+	} 
 
 </script>
 

@@ -93,8 +93,8 @@
 			<fieldset>
 			<br>
 			<div style="margin-left: 30px;">
-			<select class="form-control" name="sido" id="sido" style="width: 10%; float: left; margin-right: 5px"></select>
-			<select class="form-control" name="gugun" id="gugun" style="width: 10%; float: left; margin-right: 5px"></select>
+			<select class="form-control" name="sido" id="sido" style="width: 25%; float: left; margin-right: 5px"></select>
+			<select class="form-control" name="gugun" id="gugun" style="width: 28%; float: left; margin-right: 5px"></select>
 			<!-- <select class="form-control" name="dong" id="dong" style="width: 10%; float: left; margin-right: 5px"></select> -->
 			<!-- <input id="address" class="form-control" type="text" placeholder="상호명" style="width: 20%; float:left; margin-right: 5px"/> -->
 			<input id="submit" class="btn btn-primary" type="button" value="검색"/>
