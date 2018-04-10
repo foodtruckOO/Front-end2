@@ -581,6 +581,11 @@ label.star:before {
 				</table>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-offset-5 col-md-4 col-xs-offset-4 col-xs-5">
+			${pagingString}
+			</div>
+		</div>
 
 	</div>
 	

@@ -30,6 +30,15 @@
 			
 		});
 	</script>
+	
+	<script>
+	function re(){
+		location.href="<c:url value='/Localevent.event'/>";
+	}
+		
+	
+	</script>
+	
   </head>
 
 <body>
@@ -61,8 +70,8 @@
 		
 		<div class = "row" style = "padding-top:50px;padding-bottom: 50px">
 			<div class = "col-md-offset-4 col-md-3">
-				<a href="<c:url value='/Localevent.event'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
-								돌아가기</button></a>
+				<button class="btn btn-danger btn-lg btn-block" type="button" onclick="javascript:re()">
+								돌아가기</button>
 			</div>
 		</div>
 	</div>

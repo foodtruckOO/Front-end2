@@ -28,7 +28,18 @@
 				$("#sidebox").stop().animate({"top":position+currentPosition+"px"},1000);
 			});
 			
+			
+			
+			
 		});
+	</script>
+	
+	<script>
+	function re(){
+		location.href="<c:url value='/Homeevent.event'/>";
+		}
+	
+	
 	</script>
   </head>
 
@@ -61,8 +72,8 @@
 		
 		<div class = "row" style = "padding-top:50px;padding-bottom: 50px">
 			<div class = "col-md-offset-4 col-md-3">
-				<a href="<c:url value='/Homeevent.event'/>"><button class="btn btn-danger btn-lg btn-block" type="button">
-								돌아가기</button></a>
+				<button class="btn btn-danger btn-lg btn-block" type="button" id ="re" onclick="javascript:re()">
+								돌아가기</button>
 			</div>
 		</div>
 	</div>
@@ -81,7 +92,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<c:url value='/bootstrap/js/bootstrap.min.js'/>"></script>
     </body>
 </html>

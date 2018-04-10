@@ -63,7 +63,7 @@ table, table th {
 	</div>
 
 	<!-- 내용 시작 -->
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding-top: 30px">
 
 		<div class="row">
 
@@ -71,7 +71,7 @@ table, table th {
 				<div class="jumbotron" style="background-color: white !important;">
 					<img class="img-fluid"
 						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
-					<h1 style="display: inline; line-height: 150%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홈페이지 이벤트</h1>
+					<h2 style="display: inline; line-height: 150%">홈페이지 이벤트</h1>
 				</div>
 			</div>
 		</div>

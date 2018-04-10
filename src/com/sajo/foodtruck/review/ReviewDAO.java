@@ -76,17 +76,16 @@ public class ReviewDAO {
 	 * 
 	 * 
 	 */
-	public List<ReviewDTO> selectList(String s_no){
+	public List<ReviewDTO> selectList(String s_no,int start,int end){
 		List<ReviewDTO> list = new Vector<ReviewDTO>();
 		//페이징 미 적용
-		String sql="select star,onememo,c.name,postdate from review r join customer c on r.g_no=c.g_no where r.s_no=? order by r_no desc";
-		
+		String sql="select g.star,g.onememo,c.name,g.postdate from (select t.*,rownum r from (select * from review order by postdate desc) t) g join customer c on g.g_no = c.g_no   where r between ? and ? and s_no = ?";
 		//페이징 적용-구간쿼리로 변경
-		//검색용 쿼리 추가
-		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, s_no);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			psmt.setString(3, s_no);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 			ReviewDTO dto = new ReviewDTO();
@@ -163,6 +162,20 @@ public class ReviewDAO {
 			map.put("starsum", starsum);
 			
 		return map;
+	}
+	public int getTotalRecordCount(String s_no) {
+		int total = 0 ;
+		String sql = "SELECT COUNT(*) FROM REVIEW WHERE s_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, s_no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		return total;
 	}
 	
 	
