@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Foodtruck:: ver1.0</title>
-		
+	<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 	<!-- Bootstrap core CSS -->
 	<link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 	<!-- Bootstrap theme -->
@@ -123,34 +123,6 @@
 				</div>
 			</div>
 		</div>
-		
-		<!-- Mypage Right2 -->
-		<div id="mypage_R2" style="float: right;  width: 100%;" >
-			<!-- background -->
-			<div style="height: 200px; ">
-				<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/back/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
-				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
-			</div>
-			<!-- tap -->
-			<!-- 여기요 -->
-			<div style="width: 100%; height: 100%; ">
-				<!-- include -->
-				<ul class="nav nav-tabs" id="my_tab"style="background-color: #ffe9c1;">
-					<!--  data-toggle="tab" -->
-					<li class="active" id="acti"><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
-					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
-					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
-					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-					</button>
-				</ul>
-				<div  class="tab-content" style="padding: 1%; padding-top: 3%;">
-					<tiles:insertAttribute name="body"/>
-				</div>
-			</div>
-		</div>
-		
 		
 		<!-- 이하 부분 -->
 	</div>

@@ -20,6 +20,7 @@
 	        어노테이션을 공통으로 적용하기 위한
 	        태그 등록
 	 -->
+	<mvc:annotation-driven /><!-- 마지막 추가 -->
 	<context:annotation-config/>
 	<!-- 빈에서 사용할 키값이 있는 리소스파일을 사용하기 위한
 	       태그 등록
