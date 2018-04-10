@@ -15,7 +15,9 @@
 	//map생성
 	Map<String,Object> map = new HashMap<String,Object>();
 	//map을 담는 리스트 생성 ! dao.selectList(map)
-	List<mapDTO> list= dao.selectList(map);
+	
+	
+	//List<mapDTO> list= dao.selectList();
 	
 	//dao닫기
 	dao.close();

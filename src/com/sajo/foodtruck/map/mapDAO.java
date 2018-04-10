@@ -63,13 +63,15 @@ public class mapDAO {
 	 * 
 	 * 
 	 */
-	public List<mapDTO> selectList(Map<String,Object> map){
+	public List<mapDTO> selectList(int start,int end){
 		
 		List<mapDTO> list = new Vector<mapDTO>();
-		String sql="SELECT S_NO,TNAME,ADDR,TEL FROM SELLER";
+		String sql="select S.S_NO,S.TNAME,S.ADDR,S.TEL from (SELECT T.*,ROWNUM R FROM (SELECT * FROM SELLER ORDER BY REGIDATE DESC) T) S WHERE R BETWEEN ? AND ?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
 			rs = psmt.executeQuery();
 	
 			while(rs.next()) {
@@ -86,4 +88,20 @@ public class mapDAO {
 		
 		return list;
 	}//////////////////////////////	
+	
+	//전체 레코드수 얻기용
+	public int getTotalRecordCount() {
+		int total = 0 ;
+		
+		String sql = "SELECT COUNT(*) FROM SELLER";
+		try{
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		return total;
+	}
 }

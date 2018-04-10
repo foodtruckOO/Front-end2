@@ -1,3 +1,4 @@
+<%@page import="com.sajo.foodtruck.map.PagingUtil"%>
 <%@page import="com.sajo.foodtruck.map.mapDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -16,10 +17,26 @@
 	//map생성
 	Map<String,Object> map = new HashMap<String,Object>();
 	//map을 담는 리스트 생성 ! dao.selectList(map)
-	List<mapDTO> list= dao.selectList(map);
-	 
+	
+	//전체 칼럼 크기 수
+	int totalRecordCount = dao.getTotalRecordCount();
+	// 임의로 설정한 한페이지당 보일 푸드트럭 수 
+	int pageSize = 5 ;
+	// 임의로 설정한 블락 사이즈
+	int blockPage = 3;
+	// 전체 페이지 수 
+	int totalPage = (int)Math.ceil((double)totalRecordCount/pageSize);
+	// 현재 페이지를 파라미터로 받기
+	int nowPage = request.getParameter("nowPage")==null ? 1 : Integer.parseInt(request.getParameter("nowPage"));
+	// 시작 및 끝 ROWNUM구하기]
+	int start = (nowPage-1)*pageSize+1;
+	int end = nowPage*pageSize;
+	// 페이징을 위한 로직 끝
+	
+	List<mapDTO> list= dao.selectList(start,end); 
 	//dao닫기
 	dao.close();
+	String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, request.getContextPath()+"/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp?");
 %>
 
 <%-- <%@ include file="/com.sajo.foodtruck/front-end/Common/IsMember.jsp" %> --%>
@@ -134,21 +151,29 @@
 			<%	
 				//확장포문이용 리스트에서 각각의 컬럼뽑아내기
 				int loop2=0;
-				int num2=1;
+				
 				for(mapDTO record:list){
 			%> 
-				<th><%=num2%></th>
+				<th><%=totalRecordCount - (((nowPage -1) *pageSize) + loop2) %></th>
 				<th><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>"><%=record.getTname()%></a></th>
 				<th><%=record.getAddr()%></th>
 				<th>대표메뉴추가(0원)</th>
 				<th><%=record.getTel() %></th>
 			</tr>
 			<%		
-				num2++;
+				
 				loop2++;
 				}//for
 			%>
 		</table>
+		<!-- 페이징 처리 -->
+		<table width="100%">
+                <tr align="center">
+                   <td><%=pagingString %></td>
+               </tr>
+        </table>
+		
+		
 		</article>	
     </section><br><br>
     <section>
@@ -201,7 +226,7 @@
 	var ps = new daum.maps.services.Places();
 	// 키워드를 생성한다
 	var keyword="";
-	<!-- 검색한 주소값 keyword에 저장 -->
+	<!-- 검색한 주소값 keyword에 저장 --!>
 	$(function(){
 		$('#submit').click(function(){
 			var a=$('#sido').val();			
