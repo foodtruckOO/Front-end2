@@ -194,6 +194,15 @@ header .hd_flex div ul li{
 	#footNotice span{
 		margin-top: 20% !important;
 	}
+	
+	#top_my_small{
+		font-size: 0.2em !important;
+	}
+	
+	#im{
+		width: 20px !important;
+		height: 20px !important;
+	}
 }
 /**************************************************/
 

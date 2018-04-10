@@ -42,9 +42,9 @@
 				       <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>">LOGIN</a></li>&emsp;
 				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>">JOIN</a></li>
 			        <%}else{ %>
-				        <li><a href="javascript:cart()">CART</a></li>&emsp;
-				        <li><a href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
-				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
+				        <li><a id="top_my_small" href="javascript:cart()">CART</a></li>&emsp;
+				        <li><a id="top_my_small" href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
+				        <li><a id="top_my_small" href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>
 				</ul>
 				<!-- bar menu -->
