@@ -87,6 +87,12 @@
 	});
 </script>
 
+	<script>
+	function re(){
+		history.back();
+	}
+	
+	</script>
 <!-- <script>
 	function order() {
 		var order = confirm("결제하시겠습니까?")
@@ -285,9 +291,10 @@
 
 
 
-								<div class="m_fixed_btn button_wrap">
+								<div class="m_fixed_btn btn_wrap btn2">
 									<a href="javascript:order()" class="button h50 w200 btn_red"
 										id="btn_finishOrder">결제하기</a>
+									<a href="javascript:re()" class="button h50 btn_blue btn_re">돌아가기</a>
 								</div>
 
 							</div>

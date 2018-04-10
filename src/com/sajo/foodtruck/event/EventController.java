@@ -64,7 +64,7 @@ public class EventController {
 		List list = dao.selectAll();
 		dao.close();
 		model.addAttribute("events",list);
-		return "/com.sajo.foodtruck/front-end/views/main.jsp";
+		return "/com.sajo.foodtruck/front-end/views/Main.jsp";
 	}
 }
 	

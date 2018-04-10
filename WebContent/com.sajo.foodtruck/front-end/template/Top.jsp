@@ -116,7 +116,7 @@ if("${sessionScope.USER_TYPE}"=="seller"){
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="<c:url value='/list.foodtruck?area=all'/>">전체</a></li>
 							<!-- <li><a href="#">종류별</a></li> -->
-							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/foodtruck_list.jsp'/>">지역별</a></li>
+							<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck_list.jsp'/>">지역별</a></li>
 						</ul></li>
 
 					<li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp'/>">FINDTRUCK</a></li>

@@ -21,7 +21,7 @@ public class FoodController {
 	List list = dao.selectList(s_no);
 	dao.close();
 	model.addAttribute("food",list);
-	return "/com.sajo.foodtruck/front-end/views/order/order.jsp";
+	return "/com.sajo.foodtruck/front-end/views/order/Order.jsp";
 	}
 	
 	@RequestMapping("/detail.food")
@@ -32,7 +32,7 @@ public class FoodController {
 	FoodDTO dto = dao.selectOne(f_no);
 	dao.close();
 	model.addAttribute("food",dto);
-	return "/com.sajo.foodtruck/front-end/views/order/detail.jsp";
+	return "/com.sajo.foodtruck/front-end/views/order/Detail.jsp";
 	}
 	
 }

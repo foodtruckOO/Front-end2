@@ -130,6 +130,10 @@
 			
 			
 		}
+		function re(){
+			
+			history.back();
+		}
 	</script>
 	
 	
@@ -197,9 +201,10 @@
 								<input type="hidden" class="prod_unit_price"    	value="${food.price}" />
 						
 								</div>
-								<div class="m_fixed_btn btn_wrap btn2">
+								<div class="m_fixed_btn btn_wrap btn3">
 									<a href="javascript:take()" class="button h50 btn_gray add_cart"><span>상품 담기<!-- 상품담기 --></span>	</a>
 									<a href="javascript:order()" class="button h50 btn_red btn_Order">바로주문<!-- 바로주문 --></a>
+									<a href="javascript:re()" class="button h50 btn_blue btn_re">돌아가기</a>
 								</div>
 							</div>
 						</div>

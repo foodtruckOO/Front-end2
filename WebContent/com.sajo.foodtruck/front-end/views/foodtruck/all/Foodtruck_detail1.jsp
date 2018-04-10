@@ -244,7 +244,7 @@ input.star { display: none; }
 
 label.star { 
 
-  float: center; 
+  float: right; 
 
   padding: 3px; 
 
@@ -468,6 +468,7 @@ label.star:before {
 					<div class="stars1"> 
 					 
 					  <form action=""> 					 
+					    
 					    <input class="star star-5" id="star-5" type="radio" name="star" value="10"/> 
 
 					    <label class="star star-5" for="star-5"></label> 
@@ -505,10 +506,10 @@ label.star:before {
 			<div class="col-md-offset-1 col-md-9">
 				<table class="table table-bordered table-hover">
 					<tr>
-						<th style="width: 10%;">평점</th>
+						<th style="width: 15%;">평점</th>
 						<th>리뷰</th>
-						<th style="width: 10%">작성자</th>
-						<th style="width: 15%">등록일</th>
+						<th style="width: 18%">작성자</th>
+						<th style="width: 18%">등록일</th>
 
 
 					</tr>

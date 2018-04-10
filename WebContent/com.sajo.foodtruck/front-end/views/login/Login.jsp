@@ -154,6 +154,17 @@
 	    color: rgb(104, 145, 162);
 	}
 	</style>
+	
+	<style>
+	@media screen and (max-width: 400px){
+		#grecaptcha{margin-left: 18% !important;
+		
+		}
+		 
+	}
+	</style>
+	
+	
 
     <!-- Bootstrap core CSS -->    
     <link href="<c:url value='/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
@@ -221,8 +232,9 @@
                 <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="비밀번호를 입력해주세요" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required>
                 
                 <!-- 리캡차 적용 부분 -->
-                <div style="padding-top: 15px;" id="grecaptcha" data-size="compact" class="g-recaptcha" data-sitekey="6LfsmVAUAAAAACAOAuJ0UQKoN5E8V8Y66a9JSSD0"></div>
+                <div style="padding-top: 15px; margin-left: 89px"  id="grecaptcha"  class="g-recaptcha" data-sitekey="6LfsmVAUAAAAACAOAuJ0UQKoN5E8V8Y66a9JSSD0" data-size="compact"></div>
                 <!-- 적용 끝 -->
+                
                 <!-- <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> 아이디저장
