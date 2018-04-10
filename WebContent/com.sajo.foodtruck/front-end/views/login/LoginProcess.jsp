@@ -28,7 +28,7 @@
 		out.println("window.close();");
 		out.println("alert('일반회원 로그인 성공!');");
 		out.println("</script>");
-		//request.getRequestDispatcher("../main.jsp").forward(request, response);
+		request.getRequestDispatcher("../main.jsp").forward(request, response);
 	}
 	else if(flag2){
 		//1.로그인 처리]-세션영역에 속성(주로 식별자만) 저장
@@ -41,7 +41,7 @@
 		out.println("window.close();");
 		out.println("alert('판매자 로그인 성공!');");
 		out.println("</script>");
-		//request.getRequestDispatcher("../main.jsp").forward(request, response);
+		request.getRequestDispatcher("../main.jsp").forward(request, response);
 	}
 	else{//비회원-다시 로그인 페이지로 포워드
 		//out.println("<script>");

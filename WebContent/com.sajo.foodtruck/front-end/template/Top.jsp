@@ -1,28 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript">
-	function popupOpen(){
-	var windowW=400;
-	var windowH=670;
-	var left=Math.ceil((window.screen.width-windowW)/2);
-	var top=Math.ceil((window.screen.height-windowH)/2);
-	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
-		window.open(popUrl,"",popOption);
-	}
-</script>
-<script type="text/javascript">
-	function popupOpen2(){ 
-	var windowW=650;
-	var windowH=470;
-	var left=Math.ceil((window.screen.width-windowW)/2);
-	var top=Math.ceil((window.screen.height-windowH)/2);
-	var popUrl = "<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>";	//팝업창에 출력될 페이지 URL
-	var popOption = "width="+windowW+", height="+windowH+", resizable=no, scrollbars=no, status=no, left="+left+", top="+top+", location=no;";    //팝업창 옵션(optoin)
-		window.open(popUrl,"",popOption);
-	}
-</script>
 <script>
 	function cart(){
 	var user = "${sessionScope.USER_ID}";
@@ -61,8 +39,8 @@
 				<!-- mypage login join -->
 				<ul id="top_login" style="margin-bottom: 5px">
 					<%if(session.getAttribute("USER_ID") ==null){ %>
-				       <li><a href="javascript:popupOpen();">LOGIN</a></li>&emsp;
-				        <li><a href="javascript:popupOpen2();">JOIN</a></li>
+				       <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Login.jsp'/>">LOGIN</a></li>&emsp;
+				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>">JOIN</a></li>
 			        <%}else{ %>
 				        <li><a href="javascript:cart()">CART</a></li>&emsp;
 				        <li><a href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
