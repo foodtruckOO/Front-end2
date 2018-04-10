@@ -178,6 +178,13 @@ header .hd_flex div ul li{
 	#RIGHT{
 		visibility: hidden;
 	}
+	
+	#footer_footer{
+	font-size: 80%;
+	}
+	.page-header h5 a{
+	font-size: 80%;
+	}
 }
 /**************************************************/
 
@@ -253,5 +260,3 @@ div #side{
 	color: white;
 	font-weight: bold;
 }
-
-
