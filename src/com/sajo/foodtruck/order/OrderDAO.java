@@ -112,7 +112,7 @@ public class OrderDAO {
 			dto.setPrice(price);
 			dto.setFname(rs.getString(4));
 			list.add(dto);		
-			sql = "insert into orderform values(seq_o_no.nextval,?,?,?,?,?,sysdate)";
+			sql = "insert into orderform values(seq_o_no.nextval,?,?,?,?,?,sysdate,0)";
 			
 		    psmt2 = conn.prepareStatement(sql);
 			
@@ -135,7 +135,7 @@ public class OrderDAO {
 			dto.setPrice(price);
 			dto.setFname(rs.getString(4));
 			list.add(dto);	
-			sql = "insert into orderform values(seq_o_no.curval,?,?,?,?,?,sysdate)";
+			sql = "insert into orderform values(seq_o_no.curval,?,?,?,?,?,sysdate,0)";
 			psmt2.setString(1, g_no);
 			psmt2.setString(2, f_no);
 			psmt2.setString(3, num);
@@ -187,6 +187,35 @@ public class OrderDAO {
 		psmt.executeUpdate();
 		}catch(Exception e) {e.printStackTrace();}
 		return list;
+	}
+	public String check(String user) {
+		String sql = "select COUNT(*) from orderform o join food f on o.f_no = f.f_no join seller s on f.s_no = s.s_no where s.id = ? and o.confirm = 0";
+		int count = 0 ;
+		String ordercheck;
+		try {
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, user);
+		rs = psmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt(1);
+		}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		if(count!=0) {
+			ordercheck = "Y";
+		}
+		else ordercheck = "N";
+		
+		return ordercheck;
+	}
+	public void edit(String user) {
+		String sql = "update (select o.* from orderform o join food f on o.f_no = f.f_no join seller s on f.s_no = s.s_no where s.id = ? and o.confirm = 0) set confirm = 1";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, user);
+			psmt.executeUpdate();
+		}catch(Exception e) {e.printStackTrace();}
 	}
 	
 	

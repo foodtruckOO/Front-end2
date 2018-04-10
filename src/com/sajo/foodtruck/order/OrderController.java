@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sajo.foodtruck.cart.CartDAO;
+
 
 @Controller
 public class OrderController {
@@ -38,6 +40,27 @@ public class OrderController {
 		
 		return "com.sajo.foodtruck/front-end/views/order/paymentComplete.jsp";
 	}
-	
-	
+	@ResponseBody
+	@RequestMapping("/check.order")
+	public String OrderCheck(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		OrderDAO dao = new OrderDAO(req.getServletContext());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+				
+		String yn = dao.check(user);
+		dao.close();
+			
+		return yn;
+	}
+	@RequestMapping("/edit.order")
+	public String Edit(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		OrderDAO dao = new OrderDAO(req.getServletContext());
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		
+		dao.edit(user);
+		
+		dao.close();
+		return "com.sajo.foodtruck/front-end/views/index.jsp";
+	}
 }
