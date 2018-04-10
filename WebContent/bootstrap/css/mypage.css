@@ -50,14 +50,14 @@ label.star:before {
 		width:80%;
 		margin-left: 10%;
 	}
-	#mypage_R2{display: none;}
+	/*#mypage_R2{display: none;}*/
 }
 
 @media screen and (max-width: 500px) {
 	.cycle-slideshow {display: none;}
-	#mypage_left{display: none;}
+	/*#mypage_left{display: none;}
 	#mypage_R{display:none;}
-	#mypage_R2{display: block;}
+	#mypage_R2{display: block;}*/
 }
 
 /********************************** M E D I A * E N D ***************************************/

@@ -2,6 +2,7 @@ package com.sajo.foodtruck.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -9,14 +10,17 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 public class MemberController {
@@ -280,6 +284,46 @@ public class MemberController {
 		System.out.println("whdfy");  
 		dao.close();
 		return "forward:/Member.page";
+	}
+	
+
+	//[JSON으로 응답할때]
+	@ResponseBody
+	@RequestMapping(value="/Img/Upload.page", method = RequestMethod.POST)
+	public Object Img(MultipartHttpServletRequest mf,HttpServletRequest req,Model model) throws Exception{
+		System.out.println("ImgUpload");
+		String user = req.getSession().getAttribute("USER_ID").toString();
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		T_ImgDTO dto = new T_ImgDTO();
+		dto.setSno(dao.getSellerNo(user));
+
+		//JSON데이타 타입으로 반환하기위해 JSONObject객체 생성
+		JSONObject json = new JSONObject();
+
+		Iterator<String> itr = mf.getFileNames();
+		 if(itr.hasNext()) {
+			 MultipartFile mpf = mf.getFile(itr.next());
+			 System.out.println(mpf.getOriginalFilename() +" uploaded!"); 
+			 try { 
+				 	System.out.println("file length : " + mpf.getBytes().length); 
+				 	System.out.println("file name : " + mpf.getOriginalFilename());
+				 	json.put("length", mpf.getBytes().length);
+				 	json.put("name", mpf.getOriginalFilename());
+					dto.setNewImg(FileUpload(mpf, "/FOODTRUCKS", req, false));
+					dao.insertFoodtruck(dto);
+					dao.close();
+			 } 
+			 catch (IOException e) { 
+				 System.out.println("catch 에러남 왜남"); 
+				 e.printStackTrace(); 
+			 } 
+			System.out.println(json.toJSONString());
+			return json.toJSONString();
+		} 
+		 else { 
+			 System.out.println("else 에러남 끝에서남"); 
+			 return "x"; 
+		 }
 	}
 	
 
