@@ -1,8 +1,4 @@
 
-#mypage{
-	width:80%;
-	margin-left: 10%;
-}
 
 /* tabs-2 menu*/
 
@@ -49,12 +45,19 @@ label.star:before {
 /********************************** M E D I A * S T A R T ***************************************/
 @media screen and (min-width:501px) {
 	
+	
+	#mypage{
+		width:80%;
+		margin-left: 10%;
+	}
+	#mypage_R2{display: none;}
 }
 
 @media screen and (max-width: 500px) {
 	.cycle-slideshow {display: none;}
 	#mypage_left{display: none;}
-	#mypage_right{width: 100%; !important}
+	#mypage_R{display:none;}
+	#mypage_R2{display: block;}
 }
 
 /********************************** M E D I A * E N D ***************************************/
