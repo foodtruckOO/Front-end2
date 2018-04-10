@@ -36,12 +36,12 @@
 	<c:forEach var="list" items="${list}" varStatus="loop">
 		<!-- 메뉴 -->
 		<div class="col-md-4" style="margin-bottom: 20px;">
-			<form action="<c:url value='/deleteMenu.page'/>">
+			<form action="<c:url value='/deleteMenu.page'/>" method="POST">
 				<input type="hidden" name="fno" value="${list.fno}"/>
 				<button style="position: relative; float: right; z-index: 1; color: black;">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true" /></button>
 			</form>
-			<form action="<c:url value='/editMenu.page'/>">
+			<form action="<c:url value='/editMenu.page'/>"  method="POST">
 				<input type="hidden" name="fno" value="${list.fno}"/>
 				<button style="position: relative; float: right; z-index: 1; color: black;">
 				<span class="glyphicon glyphicon-edit" aria-hidden="true" /></button>

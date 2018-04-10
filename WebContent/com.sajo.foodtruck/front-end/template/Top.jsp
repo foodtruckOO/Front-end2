@@ -45,7 +45,7 @@
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top" id="top_top"><!--  navbar-fixed-top -->
 		<!-- logo -->
-		<div class="container" id="top_bar">
+		<div class="container" id="top_bar" style="border-bottom: 2px orange solid; width: 70%;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -115,7 +115,7 @@
 
 			</div>
 			<!--/.nav-collapse -->
-		</div><hr style="border: solid 1px #FE9A2E;">
+		</div><!--<hr style="border: solid 1px #FE9A2E;"> -->
 	</nav>
 </header>
 

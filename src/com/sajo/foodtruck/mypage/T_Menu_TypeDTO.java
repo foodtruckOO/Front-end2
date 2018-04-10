@@ -1,9 +1,5 @@
 package com.sajo.foodtruck.mypage;
 
-import java.sql.Date;
-
-import org.springframework.web.multipart.MultipartFile;
-
 public class T_Menu_TypeDTO {
 	
 	private String tno;

@@ -18,11 +18,10 @@
 			</c:if>
 			<c:if test="${not flag}">
 				<c:forEach var="list" items="${list}" varStatus="loop">
-					<option value="${list.no}">${list.type}</option>
+					<option value="${list.tno}">${list.type}</option>
 				</c:forEach>
 			</c:if>
 		</select>
-		<script>$("#selectBox").val("${list.no}");</script>
     </div>
     <div class="form-group">
 		<label for="">가격</label>
@@ -40,7 +39,7 @@
 		<input type="file" name="picture" /><p>현재 첨부파일 : ${food.newPicture}</p>
 	</div>
 	<input type="hidden" value="${food.fno}" name="fno"/>
-	<input type="hidden" value="${food.newPicture}}" name="newPicture"/>
+	<input type="hidden" value="${food.newPicture}" name="newPicture"/>
 	<button type="submit" class="btn btn-default" >등록</button>
 </form>
 

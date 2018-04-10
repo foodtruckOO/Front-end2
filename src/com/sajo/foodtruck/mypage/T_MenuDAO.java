@@ -119,7 +119,7 @@ public class T_MenuDAO {
 				dto.setFno(rs.getString(5));
 				list.add(dto);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("T_MenuDAO selectMenu error");
 			e.printStackTrace();
 		}

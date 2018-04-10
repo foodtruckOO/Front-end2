@@ -103,6 +103,7 @@ public class MemberController {
 		String user = req.getSession().getAttribute("USER_ID").toString();
 		/*-----이미지 경로에 등록-----*/
 		if(!(dto.getNewPicture().equals(dto.getPicture().getOriginalFilename()))) {
+			System.out.println("이미지 서로 다름");
 			FileDelete("/MENU", dto.getNewPicture(), req);
 			dto.setNewPicture(FileUpload(dto.getPicture(), "/MENU", req,false));
 		}
@@ -262,7 +263,7 @@ public class MemberController {
 	public void FileDelete(String folder, String filename, HttpServletRequest req) throws IllegalStateException, IOException {
 		String path=req.getSession().getServletContext().getRealPath(
 						"/"+req.getSession().getAttribute("USER_TYPE").toString()+
-						"/"+req.getSession().getAttribute("USER_ID").toString()+folder+filename);
+						"/"+req.getSession().getAttribute("USER_ID").toString()+folder+File.separator+filename);
 		File file = new File(path);
 		if( file.exists() ){
 			if(file.delete())
