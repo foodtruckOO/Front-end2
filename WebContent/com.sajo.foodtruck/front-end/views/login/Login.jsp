@@ -221,7 +221,7 @@
                 <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="비밀번호를 입력해주세요" value="<%=request.getParameter("pass") == null ? "" : request.getParameter("pass")%>" required>
                 
                 <!-- 리캡차 적용 부분 -->
-                <div style="padding-top: 15px; width: 300px" id="grecaptcha" class="g-recaptcha" data-sitekey="6LfsmVAUAAAAACAOAuJ0UQKoN5E8V8Y66a9JSSD0"></div>
+                <div style="padding-top: 15px;" id="grecaptcha" data-size="compact" class="g-recaptcha" data-sitekey="6LfsmVAUAAAAACAOAuJ0UQKoN5E8V8Y66a9JSSD0"></div>
                 <!-- 적용 끝 -->
                 <!-- <div id="remember" class="checkbox">
                     <label>

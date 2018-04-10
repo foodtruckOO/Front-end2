@@ -123,6 +123,20 @@
 		<servlet-name>FoodController</servlet-name>
 		<url-pattern>*.food</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 로그인 컨트롤러 -->
+	<servlet>
+		<servlet-name>LoginController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/foodtruck.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginController</servlet-name>
+		<url-pattern>*.login</url-pattern>
+	</servlet-mapping>
 
 
 	<!-- 회원 컨트롤러 -->
@@ -138,6 +152,9 @@
 		<servlet-name>MemberController</servlet-name>
 		<url-pattern>*.page</url-pattern>
 	</servlet-mapping>
+	
+	
+	
 
 	<!-- jsessionId 삭제 <session-config> <tracking-mode>COOKIE</tracking-mode> 
 		</session-config> -->
