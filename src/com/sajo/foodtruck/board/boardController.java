@@ -37,7 +37,7 @@ public class boardController  extends HttpServlet{
 
 
 	//커스텀목록용]
-	@RequestMapping("/Com.board")
+	@RequestMapping("/Customlist.board")
 	public void List(Model model, HttpServletRequest req,@RequestParam Map map,HttpServletResponse resp) throws Exception{
 
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
@@ -45,9 +45,9 @@ public class boardController  extends HttpServlet{
 		//전체 레코드 수
 		int totalRecordCount = dao.getTotalRecordCount();
 		//페이지 사이즈
-		int pageSize=Integer.valueOf(getInitParameter("PAGESIZE"));
+		int pageSize=5;
 		//블락페이지
-		int blockPage=Integer.valueOf(getInitParameter("BLOCKPAGE"));
+		int blockPage=3;
 		//전체 페이지수] 
 		int totalPage =(int)Math.ceil((double)totalRecordCount/pageSize);
 		//현재 페이지를 파라미터로 받기]
@@ -99,16 +99,8 @@ public class boardController  extends HttpServlet{
 
 
 
-
-
-
-
-
-
-
-
 	// 셀러목록용]
-	@RequestMapping("/Pizza.board")
+	@RequestMapping("/Sellerlist.board")
 	public String Pizza(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 
 		SellerDAO dao = new SellerDAO(req.getServletContext());
@@ -126,7 +118,7 @@ public class boardController  extends HttpServlet{
 		return "/com.sajo.foodtruck/front-end/views/board/seller/Ceocom.jsp";
 	}
 	//커스텀 작성하기
-	@RequestMapping("/ktx.board")
+	@RequestMapping("/CustomWrite.board")
 	public String Write(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -140,10 +132,10 @@ public class boardController  extends HttpServlet{
 		//System.out.println(file);
 		dao.write(title, content, file, user);
 		dao.close();
-		return "/Com.board";
+		return "/Customlist.board";
 	}
 	//셀러 작성하기
-	@RequestMapping("/lte.board")
+	@RequestMapping("/SellerWrite.board")
 	public String Swrite(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -155,10 +147,10 @@ public class boardController  extends HttpServlet{
 		String user = (String)req.getSession().getAttribute("USER_ID");
 		dao.swrite(title, content, file, user);
 		dao.close();
-		return "/Pizza.board";
+		return "/Sellerlist.board";
 	}
 	//커스텀 상세보기용
-	@RequestMapping("/rice.board")
+	@RequestMapping("/CustomView.board")
 	public String View(Model model,HttpServletRequest req) throws Exception{
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -172,7 +164,7 @@ public class boardController  extends HttpServlet{
 		return "/com.sajo.foodtruck/front-end/views/board/customer/View.jsp";
 	}
 	//셀러 상세보기용
-	@RequestMapping("/nice.board")
+	@RequestMapping("/SellerView.board")
 	public String Viw(Model model,HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -187,7 +179,7 @@ public class boardController  extends HttpServlet{
 	}/////
 
 	//커스텀 수정
-	@RequestMapping("/sujung.board")
+	@RequestMapping("CustomEdit.board")
 	public String update(Model model,HttpServletRequest req) throws Exception{
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -201,7 +193,7 @@ public class boardController  extends HttpServlet{
 		return "/com.sajo.foodtruck/front-end/views/board/customer/Edit.jsp";
 	}/////
 	//커스텀 수정
-	@RequestMapping("/sujin.board")
+	@RequestMapping("/CustomEditCheck.board")
 	public String date(Model model,HttpServletRequest req) throws Exception{
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -215,11 +207,11 @@ public class boardController  extends HttpServlet{
 		dao.update(cb_no,title, content, file, user);
 		dao.close();
 
-		return "/rice.board?cb_no="+cb_no;
+		return "/CustomView.board?cb_no="+cb_no;
 	}/////
 
 	//셀러 수정
-	@RequestMapping("/seller.board")
+	@RequestMapping("/SellerEdit.board")
 	public String up(Model model,HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -233,7 +225,7 @@ public class boardController  extends HttpServlet{
 		return "/com.sajo.foodtruck/front-end/views/board/seller/Edit.jsp";
 	}/////
 	//셀러 수정
-	@RequestMapping("/sale.board")
+	@RequestMapping("/SellerEditCheck.board")
 	public String down(Model model,HttpServletRequest req) throws Exception{
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		req.setCharacterEncoding("UTF-8");
@@ -247,11 +239,11 @@ public class boardController  extends HttpServlet{
 		dao.update(sb_no,title, content, file, user);
 		dao.close();
 
-		return "/nice.board?sb_no="+sb_no;
+		return "/SellerView.board?sb_no="+sb_no;
 	}/////
 
 	//커스텀 삭제
-	@RequestMapping("/delete.board")
+	@RequestMapping("/CustomDelete.board")
 	public String delete(Model model,HttpServletRequest req) throws Exception{
 
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
@@ -259,11 +251,11 @@ public class boardController  extends HttpServlet{
 		System.out.println(cb_no);
 		dao.delete(cb_no);
 		dao.close();  
-		return "/Com.board";
+		return "/Customlist.board";
 	}
 
 	//셀러 삭제
-	@RequestMapping("/delet.board")
+	@RequestMapping("/SellerDelete.board")
 	public String delet(Model model,HttpServletRequest req) throws Exception{
 
 		SellerDAO dao = new SellerDAO(req.getServletContext());
@@ -271,7 +263,7 @@ public class boardController  extends HttpServlet{
 		System.out.println(sb_no);
 		dao.delete(sb_no);
 		dao.close();  
-		return "/Pizza.board";
+		return "/Sellerlist.board";
 	}///////////////////////////////  
 
 	//커스텀 파일 업로드!!
@@ -289,7 +281,7 @@ public class boardController  extends HttpServlet{
 		dao.updateDownCount(key);
 		dao.close();
 
-		return "/ktx.board";
+		return "/CustomWrite.board";
 	} /////////////////////////////////// 
 
 	//커스텀 파일 업로드

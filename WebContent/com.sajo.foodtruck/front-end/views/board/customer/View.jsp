@@ -40,7 +40,7 @@
 		function isDelete(){
 		    var con= confirm("삭제하시겠습니까??");	
 		    if(con==true)
-		       location.href= "<c:url value='delete.board?cb_no=${rice.cb_no }'/>";
+		       location.href= "<c:url value='CustomDelete.board?cb_no=${rice.cb_no }'/>";
 		       
 		}
 		
@@ -93,9 +93,9 @@
 							<ul style="width: 35%;" class="nav nav-pills center-block"
 								role="tablist">
 								<li role="presentation"><a
-									href="<c:url value='/sujung.board?cb_no=${rice.cb_no }'/>">수정</a></li>
+									href="<c:url value='/CustomEdit.board?cb_no=${rice.cb_no }'/>">수정</a></li>
 								<li role="presentation"><a href="#" onclick="isDelete()">삭제</a></li>
-								<li role="presentation"><a href="<c:url value='/Com.board'/>">목록</a></li>
+								<li role="presentation"><a href="<c:url value='/Customlist.board'/>">목록</a></li>
 							</ul>
 
 						</td>

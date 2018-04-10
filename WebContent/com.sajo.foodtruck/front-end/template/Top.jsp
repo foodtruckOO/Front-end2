@@ -135,8 +135,8 @@ if("${sessionScope.USER_TYPE}"=="seller"){
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-						<li><a href="<c:url value='/Com.board'/>">손님용 게시판</a></li>
-						<li><a href="<c:url value='/Pizza.board'/>">사장님용 게시판</a></li>
+						<li><a href="<c:url value='/Customlist.board'/>">손님용 게시판</a></li>
+						<li><a href="<c:url value='/Sellerlist.board'/>">사장님용 게시판</a></li>
 						</ul>
 					</li>
 				</ul>

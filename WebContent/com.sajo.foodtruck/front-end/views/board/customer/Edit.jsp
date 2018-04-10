@@ -70,7 +70,7 @@
 						<div class="page-header">
 							<h2 style="color: orange;">게시글 작성</h2>
 							</div>
-							<form action="<c:url value='/sujin.board?cb_no=${nike.cb_no }'/>" method="post">
+							<form action="<c:url value='/CustomEditCheck.board?cb_no=${nike.cb_no }'/>" method="post">
 								<table width="75%" bgcolor="gray" cellspacing="1">
 									<tr bgcolor="white">
 										<td width="30%" align="center">제목</td>

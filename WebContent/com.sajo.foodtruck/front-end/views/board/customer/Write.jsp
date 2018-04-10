@@ -59,7 +59,7 @@ $(function(){
 			$.ajax({
 				data: data,
 				type: "POST",
-				url: "/ktx.board",
+				url: "/CustomWrite.board",
 				enctype: 'multipart/form-data',
 				cache: false,
 				contentType: false,
@@ -115,7 +115,7 @@ function save(){
 						</div>
 						<fieldset style="padding: 20px 0 50px 20px; padding-right: 250px">
 
-							<form action="<c:url value='/ktx.board'/>" method="post">
+							<form action="<c:url value='/CustomWrite.board'/>" method="post">
 								<table width="100%" bgcolor="gray" cellspacing="1">
 									<tr bgcolor="white">
 										<td width="30%" align="center"><strong>제목</strong></td>

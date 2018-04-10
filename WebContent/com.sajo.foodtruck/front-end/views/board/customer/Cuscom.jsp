@@ -527,7 +527,7 @@ ul.inbox-pagination li {
 						
 						<th>${dto.cb_no }</th>
 						<th><a
-							href='<c:url value='/rice.board?cb_no=${dto.cb_no }'/>'>${dto.title }</a></th>
+							href='<c:url value='/CustomView.board?cb_no=${dto.cb_no }'/>'>${dto.title }</a></th>
 						<th>${dto.name }</th>
 						<th>${dto.postdate }</th>
 
