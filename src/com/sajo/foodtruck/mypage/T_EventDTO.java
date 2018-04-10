@@ -16,12 +16,6 @@ public class T_EventDTO {
 	private String edate;
 	private String newTitlefile;
 	private String newContentfile;
-	/*
-	private Date sdate;
-	private Date edate;
-	*/
-
-
 
 	public String getEno() {
 		return eno;

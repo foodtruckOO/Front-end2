@@ -43,8 +43,10 @@
 				<button style="position: relative; float: right; z-index: 1; color: black;">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true" /></button>
 			</form>
-			<form action="<c:url value='/editMenu.page'/>"  method="POST">
+			<form action="<c:url value='/editEvent.page'/>"  method="POST">
 				<input type="hidden" name="eno" value="${list.eno}"/>
+				<input type="hidden" name="newTitlefile" value="${list.newTitlefile}"/>
+				<input type="hidden" name="newContentfile" value="${list.newContentfile}"/>
 				<button style="position: relative; float: right; z-index: 1; color: black;">
 				<span class="glyphicon glyphicon-edit" aria-hidden="true" /></button>
 			</form>

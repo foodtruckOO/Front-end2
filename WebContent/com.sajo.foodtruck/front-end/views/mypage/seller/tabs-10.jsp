@@ -133,8 +133,10 @@ $(function(){
 	<input type="file" name="img" />
 	<input type="submit" value="OK" /> 
 </form>
-
-
+<form action="<c:url value='/ImgUpload.page'/>" method="POST" enctype="multipart/form-data">
+	<input type="file" name="img" />
+	<input type="submit" value="OK" /> 
+</form>
 
 <!-- 
 <script type="text/javascript"> 

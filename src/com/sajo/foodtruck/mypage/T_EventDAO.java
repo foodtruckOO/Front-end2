@@ -128,4 +128,27 @@ public class T_EventDAO {
 		return affected;
 	}
 
+	//이벤트 수정
+	public int updateEvent(T_EventDTO dto) {
+		System.out.println("T_EventDAO updateEvent");
+		int affected = 0;
+		String sql = "UPDATE truck_event SET title=?,content=?, s_date=?, e_date=?, titlefile=?, contentfile=? where eno=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getSdate());
+			psmt.setString(4, dto.getEdate());
+			psmt.setString(5, dto.getNewTitlefile());
+			psmt.setString(6, dto.getNewContentfile());
+			psmt.setString(7, dto.getEno());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_EventDAO updateEvent error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
 }
