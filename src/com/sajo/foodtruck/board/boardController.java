@@ -60,7 +60,7 @@ public class boardController  extends HttpServlet{
 		dao.close();
 		//라]결과값이 있으면 리퀘스트 영역에 저장
 		//페이지용 문자열 생성]
-		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/customer/Com.board?");
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+"/Customlist.board?");
 
 		req.setAttribute("board", list);//글목록들
 		req.setAttribute("active","Cuscom");//메뉴 활성화용

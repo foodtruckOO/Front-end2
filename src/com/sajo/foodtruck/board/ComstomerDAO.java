@@ -81,7 +81,7 @@ public class ComstomerDAO {
 	public List<ComstomerDTO> selectList(int start,int end) {
 		List list = new Vector();
 
-		String sql="SELECT * FROM (SELECT C.*,ROWNUM R FROM (SELECT * FROM C_BOARD ORDER BY POSTDATE DESC) C) WHERE R BETWEEN ? AND ?";
+		String sql="SELECT cb.*,c.name FROM (SELECT C.*,ROWNUM R FROM (SELECT * FROM C_BOARD ORDER BY POSTDATE DESC) C) cb join customer c on cb.g_no = c.g_no WHERE R BETWEEN ? AND ?";
 		//													1.C_BOARD에있는 모든 값을 POSTDATE로 내림차순 정렬한다 이 테이블 T라고 부름
 		//							?와 ?에 해당하는 rownum값을 찾아 T테이블에 해당하는 모든 컬럼 + Rownum은 컬럼을 포함한 테이블을 검색
 		try {
@@ -98,7 +98,7 @@ public class ComstomerDAO {
 				dto.setContent(rs.getString(4));
 				dto.setAttachedfile(rs.getString(5));
 				dto.setPostdate(rs.getDate(6));
-				dto.setName(rs.getString(7));
+				dto.setName(rs.getString(8));
 				list.add(dto);				
 			}			
 		} catch (Exception e) {e.printStackTrace();}
