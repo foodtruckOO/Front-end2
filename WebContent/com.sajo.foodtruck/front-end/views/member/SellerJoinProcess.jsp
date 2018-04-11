@@ -58,6 +58,7 @@
 		out.println("window.close();");
 		out.println("alert('회원가입 성공!');");
 		out.println("</script>");
+		request.getRequestDispatcher("../Main.jsp").forward(request, response);
 	} catch (Exception e) {
 		e.printStackTrace();
 		out.println(e.getMessage());
