@@ -337,10 +337,7 @@ public class MemberController {
 	@RequestMapping("/Img/Delete.page")
 	public String TruckImgDelete(HttpServletRequest req,Model model) throws Exception{
 		System.out.println("Tabs10 접속");
-		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
-		List<T_ImgDTO> list = dao.selectSubImage(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
-		dao.close();
-		model.addAttribute("list",list);
+		
 		return "tabs-10.tiles";
 	}
 	

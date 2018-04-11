@@ -54,7 +54,7 @@ var start=function(data){
 		" style='width: 80px; height: 50px; margin-top: 4px' />"+
 	"</td>"+
 	"<td>"+
-		"<p class='name'>"+(count++)+(data['list'][i])+"</p>"+
+		"<p class='name'>"+(data['list'][i])+"</p>"+
 	"</td>"+
 	"<td>"+
 		"<div class='progress'>"+
@@ -65,7 +65,7 @@ var start=function(data){
 		"</div>"+
 	"</td>"+
 	"<td>"+
-		"<button class='btn btn-danger delete'>"+
+		"<button id='btn"+(count++)+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+
 			"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
 		"</button>"+
 	"</td>"+
@@ -73,6 +73,24 @@ var start=function(data){
 	$("#subTable").append(row); 
 	}
 };
+
+	function deleteFunc(test){
+		var delFrm = new FormData(document.getElementById('delFrm'));
+		console.log($(this).attr('id'));
+		$.ajax({ 
+			url: '<c:url value="/Img/Delete.page"/>', 
+			data: delFrm,
+			dataType: 'json',
+			type: 'POST', 
+			contentType: false,
+			processData: false,
+			success: console.log("good"), 
+			error: function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+		});
+		$(test).parent().parent().hide();
+	}
 </script>
 <script>
     function getImg2(evt){
@@ -204,34 +222,4 @@ var start=function(data){
 		<i class="glyphicon glyphicon-trash"></i> <span>삭제</span>
 	</button>
 	<table id="subTable" style="width: 100%; margin-top: 20px;">
-	<c:if test="${empty requestScope.list}" var="flag"></c:if>
-	<c:if test="${not flag}">
-		<c:forEach var="list" items="${list}" varStatus="loop">
-		<tr>
-			<td>
-				<div class='checkbox'><label><input type='checkbox'></label></div>
-			</td>	
-			<td>
-				<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/${list.newImg }' alt='이미지를 찾을 수 없습니다..'
-						style='width: 80px; height: 50px; margin-top: 4px' />
-			</td>
-			<td>
-				<p class='name'>${list.newImg }</p>
-			</td>
-			<td>
-				<div class='progress'><div class='progress-bar progress-bar-striped active' role='progressbar'
-						aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100px'>data['length']+"KB"+</div>
-				</div>
-			</td>
-			<td>
-				<form action="<c:url value='/Img/Delete.page'/>" method="POST">
-					<input type="hidden" name="newImg" value="${list.newImg}">
-					<button class='btn btn-danger delete' onclick="">
-						<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>
-					</button>
-				</form>
-			</td>
-		</tr>
-		</c:forEach>
-	</c:if>
 	</table>
