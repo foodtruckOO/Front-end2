@@ -52,12 +52,12 @@
 		e.printStackTrace();
 		out.println(e.getMessage());
 	} finally {
-		if (pstmt != null)
+		if (pstmt != null) 
 			try {
 				pstmt.close();
 			} catch (SQLException ex) {
 			}
-		if (conn != null)
+		if (conn != null) 
 			try {
 				conn.close();
 			} catch (SQLException ex) {
