@@ -193,7 +193,9 @@ CREATE TABLE ORDERFORM
 	NUM number DEFAULT 1 NOT NULL,
 	timeOfReceipt varchar2(10) NOT NULL,
 	CONTENT nvarchar2(500),
-	POSTDATE date DEFAULT SYSDATE NOT NULL
+	POSTDATE date DEFAULT SYSDATE NOT NULL,
+	-- 판매자가 주문 들어온것을 확인했는지 여부
+	CONFIRM number DEFAULT 0
 );
 
 
@@ -415,6 +417,7 @@ ALTER TABLE TRUCKPAGE
 ALTER TABLE TRUCK_EVENT
 	ADD FOREIGN KEY (S_NO)
 	REFERENCES SELLER (S_NO)
+	ON DELETE CASCADE
 ;
 
 
@@ -441,6 +444,7 @@ COMMENT ON TABLE EVENT IS '지역 행사
 COMMENT ON COLUMN EVENT.ENO IS '이벤트 게시물 no';
 COMMENT ON COLUMN EVENT.BOARDTYPE IS '1=메인
 2=지역';
+COMMENT ON COLUMN ORDERFORM.CONFIRM IS '판매자가 주문 들어온것을 확인했는지 여부';
 COMMENT ON COLUMN PAYMENT.O_NO IS '주문(ORDER) TABLE에서 같은 주문번호키만 가져와
 주문의 총 금액을 계산한다
 
@@ -449,8 +453,10 @@ COMMENT ON COLUMN REVIEW.POSTDATE IS '작성일';
 COMMENT ON COLUMN SELLER.ADDR2 IS '상세주소';
 COMMENT ON COLUMN TRUCK_EVENT.ENO IS '이벤트 게시물 no';
 
-	
 
+
+
+	
 insert into foodtype values(1,'한식');
 insert into foodtype values(2,'일식');
 insert into foodtype values(3,'중식');
@@ -458,3 +464,4 @@ insert into foodtype values(4,'양식');
 insert into foodtype values(5,'퓨전');
 insert into foodtype values(6,'기타');
 insert into foodtype values(7,'음료');
+
