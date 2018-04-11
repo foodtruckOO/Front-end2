@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 메뉴 등록 -->
-<div style="font-size: 2em; color: gray">푸드트럭 이미지 등록</div>
+<div style="font-size: 2em; color: gray">푸드트럭 정보 등록</div>
 <hr>
 
 <style>                                         
@@ -28,7 +28,7 @@ $(function(){
 });
 </script>
 <script>
-    function getImg(evt){
+    function getImg2(evt){
     	var ext = $("#btn-main").val().split(".").pop().toLowerCase();
 		if(ext.length > 0){
 			if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
@@ -67,7 +67,7 @@ $(function(){
 		"<td>"+
 			"<div class='progress'>"+
 				"<div class='progress-bar progress-bar-striped active' role='progressbar' "+
-				"aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100px'>"+
+				"aria-valuenow='100' aria-valuemin='0' aria-valuemax='10' style='width: 100%'>"+
 				+data['length']+"KB"+
 				"</div>"+
 			"</div>"+
@@ -87,6 +87,7 @@ $(function(){
 			}                  
 		}		
 		var form = new FormData(document.getElementById('fileupload'));
+		console.log(form.file);
 		$.ajax({ 
 			url: '<c:url value="/Img/Upload.page"/>', 
 			data: form,
@@ -137,8 +138,8 @@ $(function(){
 	};
 </script>
 
-<form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data">
-	<input type='file' id='fileMain' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)' style="display: none">
+<form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">
+	<input type='file' id='fileMain' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)2' style="display: none">
 	<button id='btn-main' type="submit" class="btn btn-primary start">
 		<i class="glyphicon glyphicon-upload"></i> <span>메인이미지 등록</span>
 	</button>
@@ -146,14 +147,44 @@ $(function(){
 	</table>
 </form>
 			
-<form id="fileupload" action="#"method="POST" enctype="multipart/form-data">
+<form id="fileupload" action="#" method="POST" enctype="multipart/form-data" style="display: inline;">
 	<input type='file' id='fileSub' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)' style="display: none">
 	<button id='btn-sub' class="btn btn-success fileinput-button" onfocus="this.blur();">
 		<i class="glyphicon glyphicon-upload"></i> <span>서브이미지 등록</span> 
 	</button>
+</form>
 	<button type="button" class="btn btn-danger delete" > 
 		<i class="glyphicon glyphicon-trash"></i> <span>삭제</span>
 	</button>
 	<table id="subTable" style="width: 100%; margin-top: 20px;">
+	<c:if test="${empty requestScope.list}" var="flag"></c:if>
+	<c:if test="${not flag}">
+		<c:forEach var="list" items="${list}" varStatus="loop">
+		<tr>
+			<td>
+				<div class='checkbox'><label><input type='checkbox'></label></div>
+			</td>	
+			<td>
+				<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/${list.newImg }' alt='이미지를 찾을 수 없습니다..'
+						style='width: 80px; height: 50px; margin-top: 4px' />
+			</td>
+			<td>
+				<p class='name'>${list.newImg }</p>
+			</td>
+			<td>
+				<div class='progress'><div class='progress-bar progress-bar-striped active' role='progressbar'
+						aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100px'>data['length']+"KB"+</div>
+				</div>
+			</td>
+			<td>
+				<form action="<c:url value='/Img/Delete.page'/>" method="POST">
+					<input type="hidden" name="newImg" value="${list.newImg}">
+					<button class='btn btn-danger delete' onclick="">
+						<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>
+					</button>
+				</form>
+			</td>
+		</tr>
+		</c:forEach>
+	</c:if>
 	</table>
-</form>

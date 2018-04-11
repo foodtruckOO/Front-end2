@@ -71,7 +71,7 @@
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
 	            <a href="<c:url value='/Tabs5.page'/>" class="list-group-item" id="a1">개인정보수정</a>
-	            <a href="<c:url value='/Tabs10.page'/>" class="list-group-item" id="a2">사진 등록</a>
+	            <a href="<c:url value='/Tabs10.page'/>" class="list-group-item" id="a2">트럭정보 등록</a>
 	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id="a3">메뉴 등록</a>
 	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id="a4">이벤트 등록</a>
 	            <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a5">SNS 등록</a>

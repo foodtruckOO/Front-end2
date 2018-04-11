@@ -168,8 +168,50 @@ public class T_MenuDAO {
 		return affected;
 	}
 
-	//푸드트럭 이미지 등록
-	public int insertFoodtruck(T_ImgDTO dto){
+	//푸드트럭 메인 이미지 등록
+	/*
+	public int insertMainFoodtruck(T_ImgTruckpageDTO dto){
+		System.out.println("T_MenuDAO insertFoodtruck");
+		int affected = 0;
+		String sql="INSERT INTO IMAGES VALUES (?, ?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getSno());
+			psmt.setString(2, dto.getNewImg());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_MenuDAO insertFoodtruck error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}*/
+	
+	
+	//푸드트럭 서브 이미지 뿌리기
+	public List<T_ImgDTO> selectSubImage(String no){
+		System.out.println("T_MenuDAO selectSubImage");
+		List<T_ImgDTO> list = new Vector<T_ImgDTO>();
+		String sql = "SELECT img FROM images where s_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				T_ImgDTO dto = new T_ImgDTO();
+				dto.setNewImg(rs.getString(1));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("T_MenuDAO selectSubImage error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return list;
+	}
+	//푸드트럭 서브 이미지 등록
+	public int insertSubFoodtruck(T_ImgDTO dto){
 		System.out.println("T_MenuDAO insertFoodtruck");
 		int affected = 0;
 		String sql="INSERT INTO IMAGES VALUES (?, ?)";
