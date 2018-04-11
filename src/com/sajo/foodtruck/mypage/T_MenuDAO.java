@@ -207,7 +207,7 @@ public class T_MenuDAO {
 			System.out.println("T_MenuDAO selectSubImage error");
 			e.printStackTrace();
 		}
-		finally {close();}				
+		finally {close();}		
 		return list;
 	}
 	//푸드트럭 서브 이미지 등록

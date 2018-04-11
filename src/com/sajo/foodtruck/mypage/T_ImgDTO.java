@@ -7,7 +7,7 @@ public class T_ImgDTO {
 	private String sno;
 	private MultipartFile img;
 	private String newImg;
-	
+	private String kilobyte;
 	public String getSno() {
 		return sno;
 	}
@@ -25,5 +25,11 @@ public class T_ImgDTO {
 	}
 	public void setNewImg(String newImg) {
 		this.newImg = newImg;
+	}
+	public String getKilobyte() {
+		return kilobyte;
+	}
+	public void setKilobyte(String kilobyte) {
+		this.kilobyte = kilobyte;
 	}
 }
