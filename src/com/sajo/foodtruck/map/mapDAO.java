@@ -23,7 +23,7 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
  
 public class mapDAO {
-	//멤버변수]
+	//멤버변수] 
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;

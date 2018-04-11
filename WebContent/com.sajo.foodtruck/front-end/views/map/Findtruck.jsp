@@ -16,7 +16,7 @@
 	mapDAO dao= new mapDAO(application);
 	//map생성
 	Map<String,Object> map = new HashMap<String,Object>();
-	
+	 
 	//전체 칼럼 크기 수
 	int totalRecordCount = dao.getTotalRecordCount();
 	// 임의로 설정한 한페이지당 보일 푸드트럭 수 
