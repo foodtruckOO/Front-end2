@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -269,11 +270,29 @@ public class MemberController {
 	@RequestMapping("/Tabs10.page")
 	public String TruckImg(HttpServletRequest req,Model model) throws Exception{
 		System.out.println("Tabs10 접속");
+		/*
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		List<T_ImgDTO> list = dao.selectSubImage(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
 		dao.close();
-		model.addAttribute("list",list);
+		model.addAttribute("list",list);*/
 		return "tabs-10.tiles";
+	}
+
+	@ResponseBody
+	@RequestMapping("/selectSubImg.page")
+	public String selectSubImg(HttpServletRequest req,Model model) throws Exception{
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		List<T_ImgDTO> list = dao.selectSubImage(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		List<String> result = new Vector<String>();
+		for(T_ImgDTO li : list) {
+			result.add(li.getNewImg());
+		}
+		
+		//JSON데이타 타입으로 반환하기위해 JSONObject객체 생성
+		JSONObject json = new JSONObject();
+		json.put("list", result);
+		System.out.println(list);
+		return json.toJSONString();
 	}
 	
 	//SUB[JSON으로 응답할때]
@@ -295,6 +314,7 @@ public class MemberController {
 			 System.out.println(mpf.getOriginalFilename() +" uploaded!"); 
 			 try { 
 				 	json.put("length", (int)mpf.getBytes().length/1028);
+				 	dto.setKilobyte(String.valueOf(mpf.getBytes().length/1028));
 				 	dto.setNewImg(FileUpload(mpf, "/FOODTRUCKS", req, false));
 				 	json.put("name", dto.getNewImg());
 					dao.insertSubFoodtruck(dto);

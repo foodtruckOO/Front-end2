@@ -249,6 +249,28 @@
 							</div>
 						</div>
 					</c:forEach>
+					<c:forEach items="${NoRegiFoodtruck}" var = "dto2">
+						<div class="taste_card col-sm-3 col-xs-6 ">
+							<div class="card_img_wrap" style="position: relative;">
+								<div class="card_img_wrap_thumbnail a">
+									<a href="<c:url value='/detailNoRegi.foodtruck?f_no=${dto2.f_no}'/>">
+									<img src="http://${dto2.ip}:8080/Back-end/backend/img/noMember/${dto2.attachedfile}" width="100%" /> </a>
+								</div>
+							</div>
+							<div class="card_content">
+								<div class="title_main title clearfix">${dto2.tname}</div>
+								<div class="date">
+									<span class="pin a"><i class="fa fa-map-marker"
+										aria-hidden="true"></i>&nbsp;
+											<c:set var ="addrs2" value='${fn:split(dto2.addr," ")}'/>
+												<c:forEach var = "addr2" items="${addrs2}" end="1">
+													${addr2}&nbsp;
+												</c:forEach>
+									</span>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 

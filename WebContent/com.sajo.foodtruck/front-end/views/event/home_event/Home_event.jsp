@@ -66,12 +66,11 @@ table, table th {
 	<div class="container-fluid" style="padding-top: 30px">
 
 		<div class="row">
-
 			<div class="col-xs-12 col-sm-12">
 				<div class="jumbotron" style="background-color: white !important;">
-					<img class="img-fluid"
+					<img class="img-fluid" 
 						src="<c:url value= '/com.sajo.foodtruck/front-end/images/logo.jpg'/>" />
-					<h2 style="display: inline; line-height: 150%">홈페이지 이벤트</h1>
+					<h2 style="display: inline; line-height: 150%">홈페이지 이벤트</h2>
 				</div>
 			</div>
 		</div>
@@ -102,8 +101,8 @@ table, table th {
 							</div>
 						</div>
 						<div class="card_content" align="center">
-							<h3 style="text-indent: 45px">${dto.title}</h3>
-							<p style="text-indent: 45px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
+							<h3 style="text-align: center;">${dto.title}</h3>
+							<p style="font-size: 11px">기간 : ${dto.s_date} ~ ${dto.e_date}</p>
 							
 						</div>
 			</div>

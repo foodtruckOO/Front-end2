@@ -63,7 +63,11 @@
 		}
 	}
 	</script>
-
+	<script>
+	function re(){
+		history.back();
+	}
+	</script>
 	<style>
 	
 	
@@ -456,7 +460,7 @@ label.star:before {
 						<p class="product-description">${intro}</p>
 						<div class="action">
 							<a href ="<c:url value='/menu.food?s_no=${s_no}'/>"><button class="add-to-cart btn btn-default" type="button">메뉴보기</button></a>
-							
+							<a href ="javascript:re()"><button style="background-color: red; !important" class="add-to-cart btn btn-default" type="button">돌아가기</button></a></a>
 						</div>
 					</div>
 				</div>

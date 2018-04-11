@@ -12,6 +12,19 @@
 <script>
 var count = 1;
 $(function(){
+	$.ajax({ 
+		url: '<c:url value="/selectSubImg.page"/>', 
+		dataType: 'json', 
+		type: 'POST', 
+		contentType: false,
+		processData: false,
+		success: start, 
+		error: function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+	});
+	
+	
 	$('#btn-main').click(function(e){
 		//파일선택 버튼 큰버튼에 씌우기
 		e.preventDefault();             
@@ -26,6 +39,40 @@ $(function(){
 		$("#fileSub").val().toLowerCase();
 	});
 });
+
+var start=function(data){
+	for(var i=0; i<data['list'].length; i++){	
+	var row = "<tr>"+
+	"<td><div class='checkbox'>"+
+    "<label>"+
+      "<input type='checkbox'>"+
+    "</label>"+
+	"</div>"+
+	"</td>"+
+	"<td>"+
+		"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/"+(data['list'][i])+"' alt='이미지를 찾을 수 없습니다..'"+
+		" style='width: 80px; height: 50px; margin-top: 4px' />"+
+	"</td>"+
+	"<td>"+
+		"<p class='name'>"+(count++)+(data['list'][i])+"</p>"+
+	"</td>"+
+	"<td>"+
+		"<div class='progress'>"+
+			"<div class='progress-bar progress-bar-striped active' role='progressbar' "+
+			"aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100px'>"+
+			+"업로드 된 이미지"+
+			"</div>"+
+		"</div>"+
+	"</td>"+
+	"<td>"+
+		"<button class='btn btn-danger delete'>"+
+			"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
+		"</button>"+
+	"</td>"+
+	"</tr>";
+	$("#subTable").append(row); 
+	}
+};
 </script>
 <script>
     function getImg2(evt){
@@ -118,7 +165,7 @@ $(function(){
 			" style='width: 80px; height: 50px; margin-top: 4px' />"+
 		"</td>"+
 		"<td>"+
-			"<p class='name'>"+data['name']+(count++)+"</p>"+
+			"<p class='name'>"+(count++)+data['name']+"</p>"+
 		"</td>"+
 		"<td>"+
 			"<div class='progress'>"+
