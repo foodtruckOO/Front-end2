@@ -305,10 +305,9 @@ public class MemberController {
 			 MultipartFile mpf = mf.getFile(itr.next());
 			 System.out.println(mpf.getOriginalFilename() +" uploaded!"); 
 			 try { 
-				 	System.out.println("file length : " + mpf.getBytes().length); 
-				 	System.out.println("file name : " + mpf.getOriginalFilename());
 				 	json.put("length", (int)mpf.getBytes().length/1028);
-				 	json.put("name", FileUpload(mpf, "/FOODTRUCKS", req, false));
+				 	dto.setNewImg(FileUpload(mpf, "/FOODTRUCKS", req, false));
+				 	json.put("name", dto.getNewImg());
 					dao.insertFoodtruck(dto);
 					dao.close();
 			 } 
