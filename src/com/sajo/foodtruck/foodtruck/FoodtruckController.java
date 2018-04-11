@@ -34,8 +34,13 @@ public class FoodtruckController {
 	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
+		NoRegisterTruckDAO dao2 = new NoRegisterTruckDAO(req.getServletContext());
 		List list = dao.selectList();
+		List list2 = dao2.selectList();
+		dao.close();
+		dao2.close();
 		model.addAttribute("foodtruck",list);
+		model.addAttribute("NoRegiFoodtruck",list2);
 	return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";
 	
 	}
@@ -87,20 +92,33 @@ public class FoodtruckController {
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck_detail1.jsp";	
 		
 	}
+	@RequestMapping("/detailNoRegi.foodtruck")
+	public String detailNoRegi(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		NoRegisterTruckDAO dao = new NoRegisterTruckDAO(req.getServletContext());
+		String f_no = req.getParameter("f_no");
+		NoRegisterTruckDTO dto = dao.selectOne(f_no);
+		model.addAttribute("foodtruck",dto);
+		dao.close();
+		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/NoRegiFoodTruck.jsp";
+	}
 	
 	@RequestMapping("/area.foodtruck")
 	public String areaList(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 		
 		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
-		
+		NoRegisterTruckDAO dao2 = new NoRegisterTruckDAO(req.getServletContext());
 		String area = req.getParameter("area");
 		String sort = req.getParameter("sort");
 		List list = dao.selectArea(area,sort);
-		
+		List list2 = dao2.selectArea(area);
 		dao.close();
+		dao2.close();
+
 		model.addAttribute("area",area);
 		model.addAttribute("sort",sort);
 		model.addAttribute("foodtruck",list);
+		model.addAttribute("NoRegiFoodtruck",list2);
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";	
 	}
 		
@@ -164,14 +182,18 @@ public class FoodtruckController {
 	public String rank(Model model, HttpServletRequest req,@RequestParam Map map, HttpServletResponse resp) throws Exception{
 		
 		FoodtruckDAO dao = new FoodtruckDAO(req.getServletContext());
+		NoRegisterTruckDAO dao2 = new NoRegisterTruckDAO(req.getServletContext());
+		
 		String area = req.getParameter("area");
 		List list = dao.selectRank(area);
+		List list2 = dao2.selectArea(area);
 		
 		dao.close();
+		dao2.close();
 		model.addAttribute("sort","rank");
 		model.addAttribute("area",area);
 		model.addAttribute("foodtruck",list);
-		
+		model.addAttribute("NoRegiFoodtruck",list2);
 		return "/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck.jsp";
 	}
 		

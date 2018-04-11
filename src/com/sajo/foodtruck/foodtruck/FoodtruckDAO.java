@@ -83,7 +83,7 @@ public class FoodtruckDAO {
 	public List<FoodtruckDTO> selectList(){
 		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		//페이징 미 적용
-		String sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";
+		String sql="SELECT S.*, t.MAIN from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no";
 		
 		//페이징 적용-구간쿼리로 변경
 		//검색용 쿼리 추가
@@ -113,7 +113,7 @@ public class FoodtruckDAO {
 	public List<FoodtruckDTO> selectImg(String key) {
 		
 		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
-		String sql = "SELECT S.*, t.MAIN_IMG,t.INTRO from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where s.s_no =? " ;
+		String sql = "SELECT S.*, t.MAIN,t.INTRO from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where s.s_no =? " ;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, key);			
@@ -178,10 +178,10 @@ public class FoodtruckDAO {
 		List<FoodtruckDTO> list = new Vector<FoodtruckDTO>();
 		if(area.equals("all")) {
 			if(sort.equals("new")) {
-			sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no order by s.regidate desc";	
+			sql="SELECT S.*, t.MAIN from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no order by s.regidate desc";	
 			}
 			else {
-				sql ="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no order by num desc";
+				sql ="select s.*, t.MAIN, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no order by num desc";
 				
 				try {
 					psmt = conn.prepareStatement(sql);
@@ -199,18 +199,18 @@ public class FoodtruckDAO {
 					}
 				}catch(Exception e) {e.printStackTrace();}
 				
-				sql = "select s.*,t.Main_IMG from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL";
+				sql = "select s.*,t.Main from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL";
 				
 			}
 		}
 		
 		else if(area.equals("gita")) {
 			if(sort.equals("new")) {
-			sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' " + 
+			sql="SELECT S.*, t.MAIN from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' " + 
 			   " and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%' order by s.regidate desc"; 
 			}
 			else {
-				sql = "select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' "+
+				sql = "select s.*, t.MAIN, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%' "+
 						" and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%' order by num desc";
 				
 				try {
@@ -233,7 +233,7 @@ public class FoodtruckDAO {
 				}
 				catch(Exception e) {e.printStackTrace();}
 				
-				sql = "select s.*,t.Main_IMG from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL and S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%'"+ 
+				sql = "select s.*,t.Main from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL and S.addr not like '서울%' and S.addr not like '인천%' and S.addr not like '경기%'"+ 
 						" and S.addr not like '대전%' and S.addr not like '대구%' and S.addr not like '부산%'";
 			
 			
@@ -242,10 +242,10 @@ public class FoodtruckDAO {
 		}	
 		else {
 			if(sort.equals("new")) {
-				sql="SELECT S.*, t.MAIN_IMG from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%' order by s.regidate desc";
+				sql="SELECT S.*, t.MAIN from SELLER s JOIN TRUCKPAGE t on s.s_no=t.s_no where S.addr like '"+area+"%' order by s.regidate desc";
 			}
 			else {
-				sql ="select s.*, t.MAIN_IMG, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where s.addr like'"+area+"%' order by num desc";
+				sql ="select s.*, t.MAIN, num from seller s join (select s_no, avg(star) num from review group by s_no) avge on s.s_no = avge.s_no join TRUCKPAGE t on s.s_no = t.s_no where s.addr like'"+area+"%' order by num desc";
 				
 				try {
 					psmt = conn.prepareStatement(sql);
@@ -266,7 +266,7 @@ public class FoodtruckDAO {
 				
 				}
 				catch(Exception e) {e.printStackTrace();}
-				sql = "select s.*,t.Main_IMG from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL and s.addr like'"+area+"%'";
+				sql = "select s.*,t.Main from review r right outer join seller s on r.S_NO=s.s_no join TruckPage t on s.s_no = t.s_no where r.S_NO IS NULL and s.addr like'"+area+"%'";
 				
 			}
 		}
