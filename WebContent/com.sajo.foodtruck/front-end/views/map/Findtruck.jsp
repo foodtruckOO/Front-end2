@@ -292,7 +292,7 @@
             '				 <div style="font-size:4px;">' +
             '					예약문의 : <%=record.getTel()%>'+
             '				 </div>' +
-            '                <div style=""><a href="<c:url value='/com.sajo.foodtruck/front-end/views/main.jsp'/>" target="_blank" class="link">상세보기</a></div>' + 
+            '                <div style=""><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>" target="_blank" class="link">상세보기</a></div>' + 
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
