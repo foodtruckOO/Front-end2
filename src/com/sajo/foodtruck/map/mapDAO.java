@@ -87,6 +87,31 @@ public class mapDAO {
 		catch(Exception e) {e.printStackTrace();}
 		
 		return list;
+	}//////////////////////////////
+	
+	
+	public List<mapDTO> selectAllList(){
+		
+		List<mapDTO> list = new Vector<mapDTO>();
+		String sql="select S_NO,TNAME,ADDR,TEL FROM SELLER";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+	
+			while(rs.next()) {
+				mapDTO dto = new mapDTO();
+				dto.setS_no(rs.getString(1));
+				dto.setTname(rs.getString(2));
+				dto.setAddr(rs.getString(3));
+				dto.setTel(rs.getString(4));
+				
+				list.add(dto);
+			}////////////while
+		}///try
+		catch(Exception e) {e.printStackTrace();}
+		
+		return list;
 	}//////////////////////////////	
 	
 	//전체 레코드수 얻기용

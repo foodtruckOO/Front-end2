@@ -16,7 +16,6 @@
 	mapDAO dao= new mapDAO(application);
 	//map생성
 	Map<String,Object> map = new HashMap<String,Object>();
-	//map을 담는 리스트 생성 ! dao.selectList(map)
 	
 	//전체 칼럼 크기 수
 	int totalRecordCount = dao.getTotalRecordCount();
@@ -34,6 +33,7 @@
 	// 페이징을 위한 로직 끝
 	
 	List<mapDTO> list= dao.selectList(start,end); 
+	List<mapDTO> listAll = dao.selectAllList();
 	//dao닫기
 	dao.close();
 	String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, request.getContextPath()+"/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp?");
@@ -266,7 +266,7 @@
 	//확장포문이용 리스트에서 각각의 컬럼뽑아내기
 	int num=0;
 	 
-	for(mapDTO record:list){
+	for(mapDTO record:listAll){
 	%>
 	console.log("인덱스:<%=num%>"+",이름:<%=record.getTname()%>");
 	// 주소로 좌표를 검색합니다
