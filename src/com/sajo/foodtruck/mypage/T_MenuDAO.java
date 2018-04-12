@@ -185,7 +185,26 @@ public class T_MenuDAO {
 		}
 		return false;
 	}
-	
+	//푸드트럭 메인 이미지가 있니?
+	public T_ImgTruckpageDTO selectMainImg(String sno) {
+		System.out.println("T_MenuDAO isSnoMain");
+		T_ImgTruckpageDTO dto = new T_ImgTruckpageDTO();
+		String sql = "SELECT * FROM truckpage where s_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, sno);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dto.setIntro(rs.getString(2));
+				dto.setNewMain(rs.getString(3));
+			}
+		} catch (Exception e) {
+			System.out.println("T_MenuDAO isSnoMain error");
+			e.printStackTrace();
+		}
+		return dto;
+	}
+		
 	//푸드트럭 메인 이미지 등록
 	public int insertMainFoodtruck(T_ImgTruckpageDTO dto){
 		System.out.println("T_MenuDAO insertMainFoodtruck");

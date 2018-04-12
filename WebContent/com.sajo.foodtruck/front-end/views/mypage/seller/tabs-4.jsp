@@ -53,7 +53,7 @@
 			<div data-toggle="modal" data-target="#menuModal${loop.count }" style="cursor: pointer;">
 				<!-- 메뉴 이미지 -->
 				<div style="display: block; padding-top: 100%; position: relative;">
-					<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/api/EVENT/TITLE/${list.newTitlefile }" alt="이미지를 찾을 수 없습니다.."
+					<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/EVENT/TITLE/${list.newTitlefile }" alt="이미지를 찾을 수 없습니다.."
 							 style="width: 100%; height:100%; top: 0px; position: absolute;">
 				</div>
 			  	<!-- 가격 -->	
@@ -75,7 +75,7 @@
 		      </div>
 		      <div class="modal-body">
 		        <!-- 모달안의 내용 -->
-		        <img src="http://localhost:8080/Front-end_FoodTruckProj/seller/api/EVENT/CONTENT/${list.newContentfile}"
+		        <img src="http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/EVENT/CONTENT/${list.newContentfile}"
 		         alt="이미지를 찾을 수 없습니다.." style="width: 100%;top: 0px; position: relative;"/>
 				<p>${list.content }</p>
 		        <!-- 모달안의 내용끝 -->

@@ -11,6 +11,7 @@
        <!-- 지도 api 호출 -->
 </div>
 
+${img.intro }
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faebfb3e90eb274180e0b284b0f3e3a3&libraries=services"></script>	
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

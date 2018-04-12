@@ -2,6 +2,7 @@ package com.sajo.foodtruck.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,23 +31,34 @@ public class MemberController {
 	@RequestMapping("/Member.page")
 	public String Member(Model model, HttpServletRequest req) throws Exception{
 		//seller
+		String user = (String)req.getSession().getAttribute("USER_ID");
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		SellerDTO dto = dao.selectOne(user);
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
 		dao.close();
+		daoImg.close();
 		model.addAttribute("seller", dto);
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-1.tiles";
-		
-		//customer
 	}	
 
 	/**********Seller page**********/
 	//회원정보 수정-----------------------------------------------------------------
 	@RequestMapping("/Tabs1.page")
 	public String Tabs1(Model model, HttpServletRequest req) throws Exception{
+		//seller
+		String user = (String)req.getSession().getAttribute("USER_ID");
 		SellerDAO dao = new SellerDAO(req.getServletContext());
-		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		SellerDTO dto = dao.selectOne(user);
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
 		dao.close();
+		daoImg.close();
 		model.addAttribute("seller", dto);
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-1.tiles";
 	}
 	
@@ -54,10 +66,16 @@ public class MemberController {
 	@RequestMapping("/Info/Update.page")
 	public String Info(SellerDTO dto, Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs5 접속");
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		System.out.println(dto.getId());
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		dao.update(dto);
 		dao.close();
+		daoImg.close();
 		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
 	}
@@ -65,9 +83,15 @@ public class MemberController {
 	//개인정보 수정
 	@RequestMapping("/Tabs5.page")
 	public String InfoUpdate(Model model, HttpServletRequest req) throws Exception{
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
+		daoImg.close();
 		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
 	}
@@ -81,6 +105,14 @@ public class MemberController {
 		dao.close();
 		for(T_Menu_FoodDTO dto : list) dto.setContent(dto.getContent().replaceAll("\r\n", "</br>"));
 		model.addAttribute("list",list);
+		
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		daoImg.close();
 		return "tabs-2.tiles";
 	}
 	
@@ -109,8 +141,15 @@ public class MemberController {
 			}
 		}
 		dao.close();
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		model.addAttribute("list",list);
 		model.addAttribute("food", dto);
+		daoImg.close();
 		return "tabs-6_1.tiles";
 	}
 	
@@ -138,6 +177,13 @@ public class MemberController {
 		List<T_Menu_TypeDTO> list = dao.foodtype();
 		dao.close();
 		model.addAttribute("list",list);
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-6.tiles";
 	}
 	
@@ -162,6 +208,13 @@ public class MemberController {
 	@RequestMapping("/Tabs3.page")
 	public String Tabs3(Model model, HttpServletRequest req) throws Exception{
 		System.out.println("tabs3 접속");
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-3.tiles";
 	}
 
@@ -174,6 +227,13 @@ public class MemberController {
 		dao.close();
 		for(T_EventDTO dto : list) dto.setContent(dto.getContent().replaceAll("\r\n", "</br>"));
 		model.addAttribute("list",list);
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-4.tiles";
 	}
 	
@@ -191,7 +251,14 @@ public class MemberController {
 	
 	//이벤트 등롬폼으로 이동------------------------------------------------------------------------
 	@RequestMapping("/Tabs7.page")
-	public String EventUpdate() throws Exception{
+	public String EventUpdate(HttpServletRequest req, Model model) throws Exception{
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-7.tiles";
 	}
 	
@@ -209,6 +276,7 @@ public class MemberController {
 		T_EventDAO dao = new T_EventDAO(req.getServletContext());
 		dto.setS_no(dao.getSellerNo(user));
 		dao.insertEvent(dto);// 변경되면 1 아니면 0
+		
 		return "forward:/Member.page";
 	}
 	
@@ -228,6 +296,13 @@ public class MemberController {
 		}
 		dao.close();
 		model.addAttribute("event", dto);
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-7_1.tiles";
 	}
 	
@@ -249,14 +324,21 @@ public class MemberController {
 		T_EventDAO dao = new T_EventDAO(req.getServletContext());
 		dao.updateEvent(dto);
 		dao.close();
+		
 		return "forward:/Tabs4.page";
 	}
 	
 	
 	//SNS 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs8.page")
-	public String SnsInsert() throws Exception{
-		
+	public String SnsInsert(HttpServletRequest req, Model model) throws Exception{
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-8.tiles";
 	}	
 	
@@ -276,6 +358,13 @@ public class MemberController {
 		/****************************************************************************************/
 		model.addAttribute("list", list);
 		System.out.println(list);
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO dd = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", dd);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-9.tiles";
 	}
 	//푸드트럭사진 등록------------------------------------------------------------------------
@@ -287,6 +376,14 @@ public class MemberController {
 		List<T_ImgDTO> list = dao.selectSubImage(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
 		dao.close();
 		model.addAttribute("list",list);*/
+		
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO result = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		daoImg.close();
+		model.addAttribute("img", result);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-10.tiles";
 	}
 
@@ -304,6 +401,13 @@ public class MemberController {
 		JSONObject json = new JSONObject();
 		json.put("list", result);
 		System.out.println(list);
+		
+
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
+		T_ImgTruckpageDTO dd = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
+		model.addAttribute("img", dd);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return json.toJSONString();
 	}
 	
@@ -352,6 +456,7 @@ public class MemberController {
 		System.out.println(map.get("id"));
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		dao.deleteSubFoodtruck(map.get("id").toString());
+		FileDelete("/FOODTRUCKS", map.get("id").toString(), req);
 		return "true";
 	}
 	
@@ -378,7 +483,7 @@ public class MemberController {
 				 	dto.setNewMain(FileUpload(mpf, "/FOODTRUCKS/MAIN", req, true));
 				 	json.put("name", dto.getNewMain());
 				 	json.put("intro", mf.getParameter("intro").replaceAll("\r\n", "<br/>"));
-				 	dto.setIntro(mf.getParameter("intro"));
+				 	dto.setIntro(mf.getParameter("intro")+" ");
 				 	if(dao.isSnoMain(dto.getSno())) dao.updateMain(dto);
 				 	else dao.insertMainFoodtruck(dto);
 					dao.close();

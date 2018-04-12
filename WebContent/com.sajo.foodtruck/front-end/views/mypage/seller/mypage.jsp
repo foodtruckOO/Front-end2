@@ -42,6 +42,18 @@
 			});
 			
 			${error}
+			
+			$(window).resize(function(){
+			     console.log($(window).width());
+			     if($(window).width()<500){
+			    	 $('#mypage_left').hide();
+			    	 $('#mypage_R').css({"width":"100%"});
+			     }
+			     else{
+			    	 $('#mypage_left').show();
+			    	 $('#mypage_R').css({"width":"78%"});
+			     }
+			}).resize();
 		});
 	</script>
   
@@ -62,7 +74,7 @@
 		<!-- Mypage Left -->
 		<div style="float: left; width: 20%" id="mypage_left">
 			<!-- 프로필 사진 -->
-			<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/main/my_main.png'/>" alt="이미지를 찾을 수 없습니다.." 
+			<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}" alt="이미지를 찾을 수 없습니다.." 
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
 			<!-- ID -->
 			<div>
@@ -99,11 +111,11 @@
 		
 		<!-- Mypage Right -->
 		<div id="mypage_R" style="float: right;  width: 78%;" >
-			<!-- background -->
+			<!-- background
 			<div style="height: 300px; ">
 				<img src="<c:url value='/com.sajo.foodtruck/front-end/membership/api/back/my_back.png'/>" alt="이미지를 찾을 수 없습니다.."
 				 			style="width: 100%; height: 100%; border: 2px solid #ffe9c1">				
-			</div>
+			</div> -->
 			<!-- tap -->
 			<!-- 여기요 -->
 			<div style="width: 100%; height: 100%; ">
@@ -114,9 +126,9 @@
 					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
 					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
 					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
-					<button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
+					<!-- <button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
-					</button>
+					</button> -->
 				</ul>
 				<div  class="tab-content" style="padding: 1%; padding-top: 3%;">
 					<tiles:insertAttribute name="body"/>
