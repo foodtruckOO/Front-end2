@@ -226,6 +226,7 @@ public class OrderDAO {
 		String time = null;
 		Date datetime = null;
 		Date currenttime = null;
+		int inttime = 0 ;
 		String yn = "N" ;
 		String sql = "select o.* from orderform o join food f on o.f_no = f.f_no join seller s on f.s_no = s.s_no where s.id = ? and to_char(o.postdate,'yyyymmdd')=to_char(sysdate,'yyyymmdd')";
 		try {
@@ -236,12 +237,20 @@ public class OrderDAO {
 				postdate = rs.getString(7);
 				time = rs.getString(5);
 				if(time.contains("PM")) {
-					int inttime = Integer.parseInt(time.substring(0,2));
+					if(time.length()==8) {
+					inttime = Integer.parseInt(time.substring(0,2));
 					inttime = inttime + 12;
 					time = time.replace(time.substring(0, 2),String.valueOf(inttime));
 					time = time.replace("PM", "").trim();
 					postdate = postdate.split(" ")[0];
-					
+					}
+					else {
+					inttime = Integer.parseInt(time.substring(0,1));
+					inttime = inttime + 12;
+					time = time.replace(time.substring(0,1), String.valueOf(inttime));
+					time = time.replace("PM", "").trim();
+					postdate = postdate.split(" ")[0];
+					}
 					//System.out.println(time);
 					//System.out.println(postdate);
 					SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd:hh:mm",Locale.KOREA);

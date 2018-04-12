@@ -38,15 +38,14 @@ public class boardController  extends HttpServlet{
 
 	//커스텀목록용]
 	@RequestMapping("/Customlist.board")
-	public void List(Model model, HttpServletRequest req,@RequestParam Map map,HttpServletResponse resp) throws Exception{
+	public String List(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
 		
 		String usertype = null;
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
 			usertype = req.getSession().getAttribute("USER_TYPE").toString();
 		}
 		if("seller".equals(usertype)) {
-			RequestDispatcher dispatcher=req.getRequestDispatcher("/com.sajo.foodtruck/front-end/views/board/customer/IdCheck.jsp");
-			dispatcher.forward(req, resp);
+			return "/com.sajo.foodtruck/front-end/views/board/customer/IdCheck.jsp";
 		}
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		//페이징을 위한 로직 시작]		
@@ -78,12 +77,12 @@ public class boardController  extends HttpServlet{
 		req.setAttribute("nowPage", nowPage);
 		req.setAttribute("pageSize", pageSize);
 		
+		
+		return "/com.sajo.foodtruck/front-end/views/board/cutomer/Cuscom.jsp";
 		//마]결과값을 뿌려주거나 이동할 뷰(JSP페이지) 선택후 포워딩
 		//뷰선택]
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp");
 		//포워딩]
-		dispatcher.forward(req, resp);
-
+		
 			/*
 		String usertype = null;
 		if(req.getSession().getAttribute("USER_TYPE")!=null) {
