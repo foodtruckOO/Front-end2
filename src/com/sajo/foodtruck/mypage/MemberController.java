@@ -267,7 +267,15 @@ public class MemberController {
 		T_OderDTO dto =  new T_OderDTO();
 		List<T_OderDTO> list = new Vector<T_OderDTO>();
 		list = dao.orderList(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+
+		/********************List<Map<String, String>>*/
+		
+		int total = 0;
+		String name="", time="";
+		List<Map> result = new Vector<Map>();
+		/****************************************************************************************/
 		model.addAttribute("list", list);
+		System.out.println(list);
 		return "tabs-9.tiles";
 	}
 	//푸드트럭사진 등록------------------------------------------------------------------------
@@ -371,7 +379,8 @@ public class MemberController {
 				 	json.put("name", dto.getNewMain());
 				 	json.put("intro", mf.getParameter("intro").replaceAll("\r\n", "<br/>"));
 				 	dto.setIntro(mf.getParameter("intro"));
-					dao.insertMainFoodtruck(dto);
+				 	if(dao.isSnoMain(dto.getSno())) dao.updateMain(dto);
+				 	else dao.insertMainFoodtruck(dto);
 					dao.close();
 			 } 
 			 catch (IOException e) { 

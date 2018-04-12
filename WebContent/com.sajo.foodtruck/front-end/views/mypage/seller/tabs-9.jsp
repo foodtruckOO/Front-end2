@@ -18,9 +18,9 @@
 			<div class="panel-body">
 				<table style="width: 100%">
 					<tr>
-						<td><strong>햄버거</strong></td>
-						<td>2000원</td>
-						<td>1개</td>
+						<td><strong>${list.fname }</strong></td>
+						<td>${list.num }</td>
+						<td>${list.price }</td>
 					</tr>
 					<tr>
 						<td><strong>치킨</strong></td>
@@ -50,7 +50,7 @@
 				</table>
 			</div>
 			<div class="panel-footer">
-				<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
+				<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">${list.total }</h3>
 				<button class="btn btn-lg">Sign Up</button>
 			</div>
 		</div>      

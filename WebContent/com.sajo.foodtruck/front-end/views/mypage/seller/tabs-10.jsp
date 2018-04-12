@@ -123,7 +123,7 @@ var start=function(data){
 		"</td>"+
 		"<td>"+
 			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/MAIN/"+data['name']+"' alt='이미지를 찾을 수 없습니다..'"+
-			" style='width: 80px; height: 50px; margin-top: 4px' />"+
+			" style='width: 200px; height: 160px; margin-top: 4px' />"+
 		"</td>"+
 		"<td>"+
 			"<p class='name'>"+data['name']+(count++)+"</p>"+
@@ -132,6 +132,7 @@ var start=function(data){
 				data['intro']+
 			"</td>"+
 			"</tr>"; 
+		$("#mainTable").empty();
 		$("#mainTable").append(row); 
 	};
 </script>
@@ -165,12 +166,6 @@ var start=function(data){
 		console.log(data['name']);
     	
     	var row = "<tr>"+
-    	"<td><div class='checkbox'>"+
-        "<label>"+
-          "<input type='checkbox'>"+
-        "</label>"+
-		"</div>"+
-		"</td>"+
 		"<td>"+
 			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/"+data['name']+"' alt='이미지를 찾을 수 없습니다..'"+
 			" style='width: 80px; height: 50px; margin-top: 4px' />"+
@@ -202,10 +197,9 @@ var start=function(data){
 	<button id='btn-main' type="submit" class="btn btn-primary start">
 		<i class="glyphicon glyphicon-upload"></i> <span>메인이미지 등록</span>
 	</button>
-	<table id="mainTable" style="width: 100%; margin-top: 20px;">
+	<table id="mainTable" style="width: 100%; margin-top: 20px; margin-bottom: 30px;">
 	</table>
 </form>
-			
 <form id="fileupload" action="#" method="POST" enctype="multipart/form-data" style="display: inline;">
 	<input type='file' id='fileSub' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)' style="display: none">
 	<button id='btn-sub' class="btn btn-success fileinput-button" onfocus="this.blur();">

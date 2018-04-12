@@ -1,5 +1,8 @@
 package com.sajo.foodtruck.mypage;
 
+import java.util.List;
+import java.util.Map;
+
 public class T_OderDTO {
 	
 	private String cname;				//손님번호
@@ -11,6 +14,24 @@ public class T_OderDTO {
 	private String content;			//요청사항
 	private String postdate;		//주문날짜
 	private String confirm;			//확인여부
+	private String total;			//총합
+	private List<Map<String, String>> list;
+	
+	
+	
+	public List<Map<String, String>> getList() {
+		return list;
+	}
+	public void setList(List<Map<String, String>> list) {
+		this.list = list;
+	}
+	
+	public String getTotal() {
+		return total;
+	}
+	public void setTotal(String total) {
+		this.total = total;
+	}
 	public String getCname() {
 		return cname;
 	}

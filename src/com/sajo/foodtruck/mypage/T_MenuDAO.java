@@ -167,7 +167,25 @@ public class T_MenuDAO {
 		finally {close();}				
 		return affected;
 	}
-
+	
+	//푸드트럭 메인 이미지가 있니?
+	public Boolean isSnoMain(String sno) {
+		System.out.println("T_MenuDAO isSnoMain");
+		String sql = "SELECT * FROM truckpage where s_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, sno);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println("T_MenuDAO isSnoMain error");
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	//푸드트럭 메인 이미지 등록
 	public int insertMainFoodtruck(T_ImgTruckpageDTO dto){
 		System.out.println("T_MenuDAO insertMainFoodtruck");
@@ -187,7 +205,25 @@ public class T_MenuDAO {
 		finally {close();}
 		return affected;
 	}
-	
+
+	public int updateMain(T_ImgTruckpageDTO dto) {
+		System.out.println("T_MenuDAO updateMain");
+		int affected = 0;
+		String sql = "UPDATE truckpage SET intro=?, main=? where s_no=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getIntro());
+			psmt.setString(2, dto.getNewMain());
+			psmt.setString(3, dto.getSno());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_MenuDAO updateMain error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
 	
 	//푸드트럭 서브 이미지 뿌리기
 	public List<T_ImgDTO> selectSubImage(String no){

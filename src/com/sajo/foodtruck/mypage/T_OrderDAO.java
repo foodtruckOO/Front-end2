@@ -81,6 +81,7 @@ public class T_OrderDAO {
 				dto.setFname(rs.getString(5));
 				dto.setPrice(rs.getString(6));
 				dto.setContent(rs.getString(7));
+				list.add(dto);
 			}
 		}
 		catch (Exception e) {System.out.println("T_MenuDAO foodtype");e.printStackTrace();}
