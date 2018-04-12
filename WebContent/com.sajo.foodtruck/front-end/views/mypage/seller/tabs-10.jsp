@@ -69,8 +69,8 @@ var start=function(data){
 			"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
 		"</button>"+
 	"</td>"+
-	"</tr>";
-	$("#subTable").append(row); 
+	"</tr>"; 
+	$("#subTable").append(row);  
 	}
 };
 
