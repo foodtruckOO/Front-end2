@@ -59,67 +59,6 @@
 });
 </script>
 
-<style>
- /* @media screen and (min-width: 1501px) {
-	body  {
-	margin: 0 auto !important;
-	}
- }
- 
- @media screen and (min-width: 1221px) and (max-width: 1500px){
-	body{
-	margin:0 auto;
-	} 
-	
-	#body{
-	margin: 0 auto !important; 
-	}
-	
-	}
-}
-@media screen and (max-width: 1220px) and (min-width: 770px){
-	body{
-	margin:0 auto !important;
-	}
-	
-	#body  {
-	margin: 0 auto ;
-	} 
-}
- */
-@media screen and (min-width: 1501px) {
-	body  {
-		margin-right:15%;
-	}
-}
-
-@media screen and (min-width: 1221px) and (max-width: 1500px){
-	body  {
-		margin-right:10%;
-	}
-}
-@media screen and (min-width: 770px) and (max-width: 1220px){
-	body  {
-		padding-top:100px;
-		margin-right:10%;
-		width: 80%;
-	}
-}
-
-@media screen and (min-width: 400px) and (max-width: 769px){
-	body  {
-		padding-top:80px;
-		margin-right:5%;
-	}
-}
-@media screen and (max-width: 400px) {
-	body  {
-		margin-right:3%;
-	}
-}
-
-</style>
-
 </head>
 
 
@@ -162,9 +101,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">가즈아</h2>
-					<h3 class="section-subheading text-muted">
-						푸드 트럭의 새 시대를 열다.</h3>
+					<h2 class="section-heading text-uppercase">Sajo Food Trcuk</h2>
+					<!-- <h3 class="section-subheading text-muted">푸드 트럭의 새 시대를 열다.</h3> -->
 				</div>
 			</div>
 			<div class="row text-center">
@@ -173,31 +111,31 @@
 						class="fa fa-circle fa-stack-2x text-primary"></i> <i
 						class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">쉽고 빠른 구매</h4>
-					<p class="text-muted">원하는 푸드트럭 음식을 쉽고 빠르게 구매합니다</p>
+					<h4 class="service-heading">보다 쉽고 빠른 구매</h4>
+					<!-- <p class="text-muted">원하는 푸드트럭 음식을 쉽고 빠르게 구매합니다</p> -->
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fa fa-circle fa-stack-2x text-primary"></i> <i
 						class="fa fa-handshake fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">신뢰</h4>
-					<p class="text-muted">사업자와 구매자를 매칭시켜드립니다.</p>
+					<h4 class="service-heading">사업자 고객 모두의 서비스</h4>
+					<!-- <p class="text-muted">사업자와 구매자를 매칭시켜드립니다.</p> -->
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fa fa-circle fa-stack-2x text-primary"></i> <i
 						class="fa fa-map-marker-alt fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="service-heading">지도</h4>
-					<p class="text-muted">푸드트럭의 위치를 실시간으로 제공합니다</p>
+					<h4 class="service-heading">실시간 위치제공</h4>
+					<!-- <p class="text-muted">푸드트럭의 위치를 실시간으로 제공합니다</p> -->
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Portfolio Grid -->
-	<section class="bg-light" id="portfolio">
+<%-- 	<section class="bg-light" id="portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -297,7 +235,74 @@
 				</div>
 			</div>
 		</div>
+	</section> --%>
+	<section style="width: 100%; margin-top: 30px;">
+	<%-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1" ></li>
+			<li data-target="#myCarousel" data-slide-to="2" ></li>
+		</ol>
+		<div class="carousel-inner">
+			<div style="margin-left: 85px" class="item active">
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/1.png'/>">
+			</div>
+			<div style="margin-left: 85px" class="item">
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/2.png'/>">
+			</div>
+			<div style="margin-left: 85px" class="item">
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/3.png'/>">
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div> --%>
+	<div class="row">
+		<div class="col-lg-12 text-center">
+			<h2 class="section-heading text-uppercase">Sajo Food Trcuk</h2>
+		</div>
+	</div>
+	
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner" >
+			<div class="item active">
+				<img  src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+			</div>
+			<div class="item">
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+			</div>
+			<div class="item">
+				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
 	</section>
+	<%-- <section>
+	<div>
+		<video width="100%" height="50%" autoplay="autoplay" loop="loop">
+		  <source src="<c:url value='/com.sajo.foodtruck/front-end/images/Wildlife.mp4'/>" type="video/mp4">
+		  <source src="movie.ogg" type="video/ogg">
+		</video>
+	</div>
+	</section> --%>
+	
 </div>
 	<!-- Footer -->
 
