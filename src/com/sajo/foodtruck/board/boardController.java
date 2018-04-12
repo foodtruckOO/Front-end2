@@ -78,7 +78,7 @@ public class boardController  extends HttpServlet{
 		req.setAttribute("pageSize", pageSize);
 		
 		
-		return "/com.sajo.foodtruck/front-end/views/board/cutomer/Cuscom.jsp";
+		return "/com.sajo.foodtruck/front-end/views/board/customer/Cuscom.jsp";
 		//마]결과값을 뿌려주거나 이동할 뷰(JSP페이지) 선택후 포워딩
 		//뷰선택]
 		//포워딩]
