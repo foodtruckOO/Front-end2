@@ -198,7 +198,7 @@ var start=function(data){
 
 <form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">
 	<input type='file' id='fileMain' name='fileMain' accept="image/gif, image/jpeg, image/png" onchange='getImg2(event)' style="display: none">
-	<textarea class="form-control" rows="5" name="intro"></textarea>
+	<textarea class="form-control" rows="5" name="intro" style="resize: none;"></textarea>
 	<button id='btn-main' type="submit" class="btn btn-primary start">
 		<i class="glyphicon glyphicon-upload"></i> <span>메인이미지 등록</span>
 	</button>

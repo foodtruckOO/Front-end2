@@ -31,7 +31,7 @@
 	</div>
 	<div class="form-group">
 		<label for="">설명</label>
-		<textarea class="form-control" rows="5" name="content"></textarea>
+		<textarea class="form-control" rows="5" name="content" style="resize: none;"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="exampleInputFile">첨부 이미지</label>
