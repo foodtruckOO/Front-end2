@@ -263,7 +263,7 @@
 	</div> --%>
 	<div class="row">
 		<div class="col-lg-12 text-center">
-			<h2 class="section-heading text-uppercase">Sajo Food Trcuk</h2>
+			<h2 class="section-heading text-uppercase">Quick Button</h2>
 		</div>
 	</div>
 	
@@ -275,13 +275,13 @@
 		</ol>
 		<div class="carousel-inner" >
 			<div class="item active">
-				<img  src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+				<a href="<c:url value='/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp'/>"><img  src="<c:url value='/com.sajo.foodtruck/front-end/images/11.jpg'/>"></a>
 			</div>
 			<div class="item">
-				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+				<a href="<c:url value='/com.sajo.foodtruck/front-end/views/event/home_event/Home_event.jsp'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/22.jpg'/>"></a>
 			</div>
 			<div class="item">
-				<img src="<c:url value='/com.sajo.foodtruck/front-end/images/10.jpg'/>">
+				<a href="<c:url value='/com.sajo.foodtruck/front-end/views/foodtruck/all/Foodtruck_list.jsp'/>"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/33.jpg'/>"></a>
 			</div>
 		</div>
 		<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
