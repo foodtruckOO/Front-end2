@@ -262,10 +262,14 @@ public class MemberController {
 	
 	//주문 현황------------------------------------------------------------------------
 	@RequestMapping("/Tabs9.page")
-	public String OrderList() throws Exception{
-		
+	public String OrderList(HttpServletRequest req,Model model) throws Exception{
+		T_OrderDAO dao = new T_OrderDAO(req.getServletContext());
+		T_OderDTO dto =  new T_OderDTO();
+		List<T_OderDTO> list = new Vector<T_OderDTO>();
+		list = dao.orderList(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		model.addAttribute("list", list);
 		return "tabs-9.tiles";
-	}	
+	}
 	//푸드트럭사진 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs10.page")
 	public String TruckImg(HttpServletRequest req,Model model) throws Exception{

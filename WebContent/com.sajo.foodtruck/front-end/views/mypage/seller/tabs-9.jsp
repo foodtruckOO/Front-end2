@@ -4,64 +4,56 @@
 <div style="font-size: 2em; color: gray">주문 현황</div>
 <hr>
 
+<c:if test="${empty requestScope.list}" var="flag">
+	<h2>주문이 없습니다.</h2>
+</c:if>
 
-<div class="col-sm-4 col-xs-12">
-	<div class="panel panel-default text-center">
-		<div class="panel-heading">
-			<h1>KIM</h1>
-        </div>
-		<div class="panel-body">
-			<p><strong>20</strong> Lorem</p>
-			<p><strong>15</strong> Ipsum</p>
-			<p><strong>5</strong> Dolor</p>
-			<p><strong>2</strong> Sit</p>
-			<p><strong>Endless</strong> Amet</p>
-		</div>
-		<div class="panel-footer">
-			<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
-			<h4>per month</h4>
-			<button class="btn btn-lg">Sign Up</button>
-		</div>
-	</div>      
-</div>
-    
-<div class="col-sm-4 col-xs-12">
-	<div class="panel panel-default text-center">
-		<div class="panel-heading">
-			<h1>KIM</h1>
-        </div>
-		<div class="panel-body">
-			<p><strong>20</strong> Lorem</p>
-			<p><strong>15</strong> Ipsum</p>
-			<p><strong>5</strong> Dolor</p>
-			<p><strong>2</strong> Sit</p>
-			<p><strong>Endless</strong> Amet</p>
-		</div>
-		<div class="panel-footer">
-			<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
-			<h4>per month</h4>
-			<button class="btn btn-lg">Sign Up</button>
-		</div>
-	</div>      
-</div>
-
-
-<div class="col-sm-4 col-xs-12">
-	<div class="panel panel-default text-center">
-		<div class="panel-heading">
-			<h1>KIM</h1>
-        </div>
-		<div class="panel-body">
-			<p><strong>20</strong> Lorem</p>
-			<p><strong>15</strong> Ipsum</p>
-			<p><strong>5</strong> Dolor</p>
-			<p><strong>2</strong> Sit</p>
-			<p><strong>Endless</strong> Amet</p>
-		</div>
-		<div class="panel-footer">
-			<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
-			<h4>per month</h4>
-			<button class="btn btn-lg">Sign Up</button>
-		</div>
-	</div>      
-</div>
+<c:if test="${not flag}">
+	<c:forEach var="list" items="${list}" varStatus="loop">
+	<div class="col-sm-4 col-xs-12">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h1>${list.cname}</h1>
+	        </div>
+			<div class="panel-body">
+				<table style="width: 100%">
+					<tr>
+						<td><strong>햄버거</strong></td>
+						<td>2000원</td>
+						<td>1개</td>
+					</tr>
+					<tr>
+						<td><strong>치킨</strong></td>
+						<td>2000원</td>
+						<td>3개</td>
+					</tr>
+					<tr>
+						<td><strong>고기</strong></td>
+						<td>2000원</td>
+						<td>2개</td>
+					</tr>
+				</table>
+				<hr/>
+				<table style="width: 100%">
+					<tr>
+						<td><strong>구매자</strong></td>
+						<td>콩순이</td>
+					</tr>
+					<tr>
+						<td><strong>전화</strong></td>
+						<td>${list.tel}</td>
+					</tr>
+					<tr>
+						<td><strong>요청사항</strong></td>
+						<td colspan="2">${list.content }</td>
+					</tr>
+				</table>
+			</div>
+			<div class="panel-footer">
+				<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">9900</h3>
+				<button class="btn btn-lg">Sign Up</button>
+			</div>
+		</div>      
+	</div>
+	</c:forEach>
+</c:if>
