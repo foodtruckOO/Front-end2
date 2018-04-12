@@ -128,6 +128,7 @@ if("${sessionScope.USER_TYPE}"=="seller"){
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="<c:url value='/Homeevent.event'/>">홈페이지 이벤트</a></li>
 							<li><a href="<c:url value='/Localevent.event'/>">지역 이벤트</a></li>
+							<li><a href="<c:url value='/SellerEvent.event'/>">푸드트럭별 이벤트</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

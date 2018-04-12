@@ -198,5 +198,59 @@ public class EventDAO {
 		return list;
 	
 	}
+	public List selectSList() {
+		List<EventDTO> list = new Vector<EventDTO>();
+		//페이징 미 적용
+		String sql="SELECT t.*,s.id FROM TRUCK_EVENT t join seller s on t.s_no = s.s_no";
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				EventDTO dto = new EventDTO();
+				dto.setEno(rs.getString(1));
+				dto.setS_no(rs.getString(2));;
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setTitlefile(rs.getString(5));
+				dto.setContentfile(rs.getString(6));
+				dto.setS_date(rs.getDate(7));
+				dto.setE_date(rs.getDate(8));
+				dto.setPostdate(rs.getDate(9));
+				dto.setIp(ip.getHostAddress());
+				dto.setId(rs.getString(10));
+				list.add(dto);
+			}////////////while
+		}///try
+		catch(Exception e) {e.printStackTrace();}
+		return list;
+		
+	}
+	public EventDTO selectSOne(String s_no) {
+		EventDTO dto=null;
+		String sql="select t.*,s.id from truck_event t join seller s on t.s_no = s.s_no where t.s_no = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, s_no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dto = new EventDTO();
+				dto.setEno(rs.getString(1));
+				dto.setS_no(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setTitlefile(rs.getString(5));
+				dto.setContentfile(rs.getString(6));
+				dto.setS_date(rs.getDate(7));
+				dto.setE_date(rs.getDate(8));
+				dto.setPostdate(rs.getDate(9));
+				dto.setId(rs.getString(10));
+				dto.setIp(ip.getHostAddress());
+				
+			}
+		} catch (Exception e) {e.printStackTrace();}
+		return dto;
+		
+	}
 
 }

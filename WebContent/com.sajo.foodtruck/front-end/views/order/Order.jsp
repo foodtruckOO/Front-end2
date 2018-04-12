@@ -283,6 +283,10 @@
 							</div>
 						</div>
 					</div>
+					
+				<!-- 	<div style="float: right;" class="m_fixed_btn btn_wrap btn">
+									<a href="javascript:re()" class="button h50 btn_Order btn_red ">돌아가기</a>
+					</div> -->
 			</section>
 			<!-- //contents -->
 

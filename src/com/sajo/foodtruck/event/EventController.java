@@ -66,5 +66,27 @@ public class EventController {
 		model.addAttribute("events",list);
 		return "/com.sajo.foodtruck/front-end/views/Main.jsp";
 	}
+	@RequestMapping("/SellerEvent.event")
+	public String SellerList(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
+		
+		EventDAO dao = new EventDAO(req.getServletContext());
+		List list = dao.selectSList();
+		dao.close();
+		model.addAttribute("event",list);
+		
+		return "/com.sajo.foodtruck/front-end/views/event/seller_event/Seller_event.jsp";
+	}
+	
+	@RequestMapping("/SellerEventview.event")
+	public String SellerView(Model model,HttpServletRequest req,@RequestParam Map map) throws Exception{
+		String s_no = req.getParameter("s_no");
+		EventDAO dao = new EventDAO(req.getServletContext());
+		EventDTO dto = dao.selectSOne(s_no);
+		dao.close();
+		model.addAttribute("dto",dto);
+		return  "/com.sajo.foodtruck/front-end/views/event/seller_event/Seller_event_detail.jsp";
+	}
+	
+	
 }
 	
