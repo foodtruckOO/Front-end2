@@ -132,7 +132,6 @@ public class EventDAO {
 				dto.setIp(ip.getHostAddress());
 				
 			}
-			System.out.println(dto.getBoardtype());
 		} catch (Exception e) {e.printStackTrace();}
 		return dto;
 	}/////////////////////////////////////////

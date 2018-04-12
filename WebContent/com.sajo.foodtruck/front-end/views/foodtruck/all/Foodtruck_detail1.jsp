@@ -531,7 +531,7 @@ label.star:before {
 					<c:if test="${not flag }">
 						<c:forEach var="reviews" items="${review}" varStatus="loop">
 							<tr>
-								<td align="left">
+								<td align="center">
 								<c:choose>
 										<c:when test="${reviews.star eq '2'}">
 										<div class="stars">
