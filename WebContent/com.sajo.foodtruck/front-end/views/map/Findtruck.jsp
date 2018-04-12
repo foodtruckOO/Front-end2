@@ -34,6 +34,7 @@
 	
 	List<mapDTO> list= dao.selectList(start,end); 
 	List<mapDTO> listAll = dao.selectAllList();
+	List<mapDTO> listpage = dao.selectTruckPage();
 	//dao닫기
 	dao.close();
 	String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, request.getContextPath()+"/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp?");
@@ -129,23 +130,14 @@
 	    <article style="margin-right:30px; margin-left: 30px">
 	      <h2>전체푸트드럭</h2><hr align="left" style="border: solid 1px #FE9A2E; width: 20%">
 	    </article>
-	      
-	    <article style="float: right; margin-right: 30px">		
-			<select class="form-control">
-				<option value="거리">거리순</option>
-				<option value="추천">추천순</option>
-				<option value="신규" selected="selected">신규순</option>
-			</select>
-		</article><br><br>
       	
 		<article style="margin-right:30px; margin-left: 30px">
 		<table class="table table-bordered table-hover">
 			<tr style="text-align: center; background-color:#FE9A2E ">
 				<th style="width:10%;">번호</th>
-				<th style="width:20%">업소명</th>
-				<th style="width:25%">주소</th>
-				<th style="width:20%">대표메뉴</th>
-				<th style="width:15%">연락처</th>
+				<th style="width:30%">업소명</th>
+				<th style="width:30%">주소</th>
+				<th style="width:20%">연락처</th>
 			</tr>
 			<tr class="a">
 			<%	
@@ -157,7 +149,6 @@
 				<th><%=totalRecordCount - (((nowPage -1) *pageSize) + loop2) %></th>
 				<th><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>"><%=record.getTname()%></a></th>
 				<th><%=record.getAddr()%></th>
-				<th>대표메뉴추가(0원)</th>
 				<th><%=record.getTel() %></th>
 			</tr>
 			<%		
@@ -286,13 +277,15 @@
             '                <img src="<c:url value='/com.sajo.foodtruck/front-end/images/KakaoTalk_20180308_190036939.png'/>" width="73" height="70">' +
             '           </div>' + 
             '            <div class="desc">' + 
-            '                <div style="font-weight:bold; font-size:9px;">' +        
-            '					<%=record.getAddr()%><br><br>' +
-            '				 </div>' +
-            '				 <div style="font-size:4px;">' +
-            '					예약문의 : <%=record.getTel()%>'+
-            '				 </div>' +
-            '                <div style=""><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>" target="_blank" class="link">상세보기</a></div>' + 
+            '                	 <div style="color:orange; font-weight:bold; font-size:10px; line-height:2.3em">' +        
+            '						<%=record.getAddr()%>' +
+            '					 </div>' +
+            '					 <div style="color:gray; font-weight:bold; font-size:10px;">' +
+            '						☎ <%=record.getTel()%>'+
+            '				 	 </div>' +
+            '				 	 <div style="font-size:5px; line-height:2.3em">' +
+            '				 		<a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>" target="_blank" class="link">주문하기</a>' +
+            '				 	 </div>' + 
             '            </div>' + 
             '        </div>' + 
             '    </div>' +    
@@ -315,10 +308,8 @@
 		        content: content,
 		        position: coords
 		    });
-		   
 		   	overlays['<%=num%>']=overlay;
-		    daum.maps.event.addListener(marker, 'click', openOverlay(map, marker, overlay)); 
-		   
+		    daum.maps.event.addListener(marker, 'click', openOverlay(map, marker, overlay)); 	   
 	    } 
 	}); 
 	<%
@@ -332,12 +323,8 @@
 	}
 	// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
 	
-	function closeOverlay(index) {
-		
-     	
-		overlays[index.toString()].setMap(null);  
-     	
-     		
+	function closeOverlay(index) {	
+		overlays[index.toString()].setMap(null);  		
 	}
 	
 	</script>
