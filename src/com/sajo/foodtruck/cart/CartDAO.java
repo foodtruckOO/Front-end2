@@ -1,5 +1,7 @@
 package com.sajo.foodtruck.cart;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +19,7 @@ public class CartDAO {
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
+	private InetAddress ip;
 	
 	//생성자]
 	public CartDAO(ServletContext context) {
@@ -38,7 +41,9 @@ public class CartDAO {
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
-			} catch (SQLException e) {				
+				ip = InetAddress.getLocalHost();
+				
+			} catch (SQLException | UnknownHostException e) {				
 				e.printStackTrace();
 			}		
 		} catch (NamingException e) {			
@@ -218,6 +223,7 @@ public class CartDAO {
 				g_no = rs.getString(1);
 				dto.setName(rs.getString(2));
 				dto.setTel(rs.getString(3));
+				dto.setIp(ip.getHostAddress());
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		
@@ -249,6 +255,7 @@ public class CartDAO {
 			if(rs.next()) {
 				dto.setTname(rs.getString(1));
 				dto.setAddr(rs.getString(2)+" "+rs.getString(3));
+				dto.setIp(ip.getHostAddress());
 			}
 		}catch(Exception e) {e.printStackTrace();}
 			
@@ -269,6 +276,7 @@ public class CartDAO {
 					dto.setF_no(rs.getString(4));
 					dto.setPicture(rs.getString(5));
 					dto.setS_id(rs.getString(6));
+					dto.setIp(ip.getHostAddress());
 					priceall = priceall + rs.getInt(2)*rs.getInt(3);
 					list.add(dto);
 				}

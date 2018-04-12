@@ -1,5 +1,7 @@
 package com.sajo.foodtruck.food;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +23,7 @@ public class FoodDAO {
 	private Connection conn;
 	private ResultSet rs;
 	private PreparedStatement psmt;
-	
+	private InetAddress ip;
 	//생성자]
 	public FoodDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
@@ -42,7 +44,8 @@ public class FoodDAO {
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
 			try {
 				conn = source.getConnection();
-			} catch (SQLException e) {				
+				ip = InetAddress.getLocalHost();
+			} catch (SQLException | UnknownHostException e) {				
 				e.printStackTrace();
 			}		
 		} catch (NamingException e) {			
@@ -79,6 +82,7 @@ public class FoodDAO {
 			dto.setfName(rs.getString(5));
 			dto.setPicture(rs.getString(7));
 			dto.setPrice(rs.getString(8));
+			dto.setIp(ip.getHostAddress());
 			list.add(dto);
 			}////////////while
 		}///try
@@ -103,6 +107,7 @@ public class FoodDAO {
 				dto.setContent(rs.getString(6));
 				dto.setPicture(rs.getString(7));
 				dto.setPrice(rs.getString(8));
+				dto.setIp(ip.getHostAddress());
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		

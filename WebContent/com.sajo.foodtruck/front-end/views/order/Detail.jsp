@@ -179,7 +179,7 @@
 				<div class="cont_inner">
 						
 					<div class="menu_view">
-						<div class="img"><img src="<c:url value='/seller/${food.id}/MENU/${food.picture}'/>" alt="" width="470px" height="400px"/></div>
+						<div class="img"><img src="http://${food.ip}:8080/Front-end_FoodTruckProj/seller/${food.id}/MENU/${food.picture}" alt="" width="470px" height="400px"/></div>
 												
 						<div class="info menuinfo" idx="0">
 							<div>

@@ -334,10 +334,10 @@ label.star:before {
 							<c:forEach items="${foodtruck}" var ="dto" varStatus="loop">
 								<c:choose>
 									<c:when test="${loop.first}">
-									<div class="tab-pane active" id="pic-${loop.count}"><img src="<c:url value ='/seller/${dto.id}/FOODTRUCKS/${dto.img}'/>"></div>
+									<div class="tab-pane active" id="pic-${loop.count}"><img src="http://${dto.ip}:8080/Front-end_FoodTruckProj/seller/${dto.id}/FOODTRUCKS/MAIN/${dto.img}"></div>
 									</c:when>
 									<c:otherwise>
-									<div class="tab-pane" id="pic-${loop.count}"><img src="<c:url value ='/seller/${dto.id}/FOODTRUCKS/${dto.img}'/>"></div>
+									<div class="tab-pane" id="pic-${loop.count}"><img src="http://${dto.ip}:8080/Front-end_FoodTruckProj/seller/${dto.id}/FOODTRUCKS/${dto.img}"></div>
 									</c:otherwise>
 								</c:choose>
 						  </c:forEach>
@@ -347,10 +347,10 @@ label.star:before {
 							<c:forEach items="${foodtruck}" var ="dto2" varStatus="loop2">
 								<c:choose>
 									<c:when test="${loop2.first}">
-									<li class="active"><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/seller/${dto2.id}/FOODTRUCKS/${dto2.img}'/>"></a></li>
+									<li class="active"><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="http://${dto2.ip}:8080/Front-end_FoodTruckProj/seller/${dto2.id}/FOODTRUCKS/MAIN/${dto2.img}"></a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="<c:url value ='/seller/${dto2.id}/FOODTRUCKS/${dto2.img}'/>"/></a></li>
+									<li><a data-target="#pic-${loop2.count}" data-toggle="tab"><img src="http://${dto2.ip}:8080/Front-end_FoodTruckProj/seller/${dto2.id}/FOODTRUCKS/${dto2.img}"/></a></li>
 									</c:otherwise>
 								</c:choose>
 						  </c:forEach>

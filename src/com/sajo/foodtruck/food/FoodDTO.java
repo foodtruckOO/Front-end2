@@ -11,6 +11,13 @@ public class FoodDTO {
 	private String price;
 	private String id;
 	private String content;
+	private String ip;
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -27,6 +34,7 @@ public class FoodDTO {
 		this.price = price;
 		this.id = id;
 		this.content = content;
+		this.ip = ip;
 		
 	}
 	public String getId() {

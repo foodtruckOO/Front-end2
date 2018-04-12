@@ -16,7 +16,14 @@ public class CartDTO {
 	private String name;
 	private String picture;
 	private String s_id;
+	private String ip;
 	
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	public String getPicture() {
 		return picture;
 	}
@@ -96,7 +103,7 @@ public class CartDTO {
 		this.price = price;
 	}
 	public CartDTO(String s_no, String f_no, String num, String tname, String id, String tel, String fname,
-			String price,String addr,String priceall,String name,String s_id,String picture){
+			String price,String addr,String priceall,String name,String s_id,String picture, String ip){
 		super();
 		this.s_no = s_no;
 		this.f_no = f_no;
@@ -111,6 +118,7 @@ public class CartDTO {
 		this.name = name;
 		this.s_id = id;
 		this.picture = picture;
+		this.ip = ip;
 	}
 	public CartDTO() {
 		super();

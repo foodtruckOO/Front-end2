@@ -174,7 +174,7 @@
 														<!-- <a href="/menu/homeservice/detail/LB0082" class="thumb "></a> -->
 													<a href="<c:url value='/detail.food?f_no=${dto.f_no}'/>" class="thumb ">
 														<span class=""></span><!-- 킵마이쿠폰메뉴 표시아이콘 -->
-														<img src="<c:url value='/seller/${dto.s_id}/MENU/${dto.picture}'/>" alt="" width="170px" height="130px"/>
+														<img src="http://${dto.ip}:8080/Front-end_FoodTruckProj/seller/${dto.id}/MENU/${dto.img}" alt="" width="170px" height="130px"/>
 													</a>
 														
 														

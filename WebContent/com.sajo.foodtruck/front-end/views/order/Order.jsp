@@ -204,7 +204,7 @@
 											<div>
 												<a href="<c:url value='/detail.food?f_no=${dto.f_no}'/>" class="img"> 
 														<%-- <img src="<c:url value='/com.sajo.foodtruck/front-end/images/${dto.id}/food/${dto.picture}'/>" data-animation="zoomIn" width="" height=""/> --%>
-														<img src="<c:url value='/seller/${dto.id}/MENU/${dto.picture}'/>" data-animation="zoomIn" width="222px" height="146px"/>
+														<img src="http://${dto.ip}:8080/Front-end_FoodTruckProj/seller/${dto.id}/MENU/${dto.picture}" data-animation="zoomIn" width="222px" height="146px"/>
 												</a> 
 													<p class="menu_name" title="${dto.fName}">${dto.fName}</p>
 												<p class="menu_price"><strong><fmt:formatNumber value="${dto.price}" pattern="#,###"/>원</strong></p>

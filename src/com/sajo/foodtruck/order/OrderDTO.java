@@ -17,6 +17,13 @@ public class OrderDTO {
 	private String price;
 	private String priceall;
 	private String ordertype;
+	private String ip;
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	public String getO_no() {
 		return o_no;
 	}
@@ -108,7 +115,7 @@ public class OrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 	public OrderDTO(String o_no, String g_no, String f_no, String num, String time, String tname, String addr,
-			String id, String tel, String contents, String fname, String price, String priceall, String ordertype) {
+			String id, String tel, String contents, String fname, String price, String priceall, String ordertype, String ip) {
 		super();
 		this.o_no = o_no;
 		this.g_no = g_no;
@@ -124,6 +131,7 @@ public class OrderDTO {
 		this.price = price;
 		this.priceall = priceall;
 		this.ordertype = ordertype;
+		this.ip= ip;
 	}
 	
 	

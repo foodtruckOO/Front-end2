@@ -1,5 +1,7 @@
 package com.sajo.foodtruck.order;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +25,7 @@ public class OrderDAO {
 	private ResultSet rs2;
 	private PreparedStatement psmt;
 	private PreparedStatement psmt2;
+	private InetAddress ip;
 	//생성자]
 	public OrderDAO(ServletContext context) {
 		//커넥션 풀 미 사용-커넥션 객체 메모리에 직접 생성 코드
@@ -41,12 +44,13 @@ public class OrderDAO {
 		try {
 			InitialContext ctx = new InitialContext();
 			DataSource source=(DataSource)ctx.lookup(context.getInitParameter("TOMCAT_JNDI_ROOT")+"/jndi/ft");
+			ip = InetAddress.getLocalHost();
 			try {
 				conn = source.getConnection();
 			} catch (SQLException e) {				
 				e.printStackTrace();
 			}		
-		} catch (NamingException e) {			
+		} catch (NamingException | UnknownHostException e) {			
 			e.printStackTrace();
 		}
 		
@@ -138,6 +142,7 @@ public class OrderDAO {
 			price = rs.getString(3);
 			dto.setPrice(price);
 			dto.setFname(rs.getString(4));
+			dto.setIp(ip.getHostAddress());
 			list.add(dto);	
 			sql = "insert into orderform values(seq_o_no.curval,?,?,?,?,?,sysdate,0)";
 			psmt2.setString(1, g_no);
@@ -155,7 +160,7 @@ public class OrderDAO {
 		dto.setContents(text);
 		dto.setOrdertype(((Integer)type).toString());
 		dto.setPriceall(((Integer)priceall).toString());
-		
+		dto.setIp(ip.getHostAddress());
 		sql ="select s.s_no from seller s join food f on s.s_no = f.s_no where f.f_no = ?";
 		psmt = conn.prepareStatement(sql);
 		psmt.setString(1, f_no);
@@ -171,6 +176,7 @@ public class OrderDAO {
 			if(rs.next()) {
 				dto.setTname(rs.getString(1));
 				dto.setAddr(rs.getString(2)+" "+rs.getString(3));
+				dto.setIp(ip.getHostAddress());
 			}
 			
 		sql = "select tel from customer where id = ?";
@@ -179,6 +185,7 @@ public class OrderDAO {
 		rs = psmt.executeQuery();
 			if(rs.next()) {
 				dto.setTel(rs.getString(1));
+				dto.setIp(ip.getHostAddress());
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		
