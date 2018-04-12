@@ -124,7 +124,7 @@ public class ReviewDAO {
 			psmt.setString(4, commen);
 			
 			psmt.executeUpdate();
-		} catch (Exception e) {	e.printStackTrace();}
+		} catch (Exception e) {}
 		
 		
 	}

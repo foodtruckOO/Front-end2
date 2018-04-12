@@ -44,7 +44,7 @@
 
 	<script>
 	
-	function click(){
+	function click2(){
 		
 		
 		if(!"${sessionScope.USER_ID}".length){
@@ -54,12 +54,18 @@
 		else if("${sessionScope.USER_TYPE}"=="seller"){ 
 			alert("푸드트럭 사업주는 리뷰를 달수 없어요 ㅜㅜ");
 		}
+		
+		
 		else{
 		var star = $(":radio:checked").val();
 		var commen = $('#review').val();
 		var s_no = "${s_no}";
-		alert("등록이 성공했어요");
-		location.href="<c:url value='/write.foodtruck'/>?star="+star+"&s_no="+s_no+"&commen="+commen; 
+			if(commen==""){
+			alert("리뷰를 입력해주세요");	
+			}
+			else
+			alert("등록이 성공했어요");
+			location.href="<c:url value='/write.foodtruck'/>?star="+star+"&s_no="+s_no+"&commen="+commen; 
 		}
 	}
 	</script>
@@ -501,7 +507,7 @@ label.star:before {
 					<input id="review" class="form-control" type="text"  style="float:left; margin-right: 10px"/>
 				</div>
 				<div class="col-md-2">	
-					<a href="javascript:click()"><button class="btn btn-primary">등록</button></a>
+					<a href="javascript:click2()"><button class="btn btn-primary">등록</button></a>
 				</div>
 				
 			</div>

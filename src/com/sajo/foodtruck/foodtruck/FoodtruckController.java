@@ -135,8 +135,10 @@ public class FoodtruckController {
 		String commen = req.getParameter("commen");
 		String star = req.getParameter("star");
 		String s_no = req.getParameter("s_no");
+		//System.out.println("user"+user+"commen"+commen+"star"+star+"s_no"+s_no);
+		try {
 		dao2.write(s_no,star,commen,user);
-		
+		}catch(Exception e) {}
 		Map map2 = dao2.count(req.getParameter("s_no"));
 		String count = map2.get("count").toString();
 		String starsum = map2.get("starsum").toString();
