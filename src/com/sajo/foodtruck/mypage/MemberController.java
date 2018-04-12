@@ -334,15 +334,16 @@ public class MemberController {
 	}
 	
 	//
+	@ResponseBody
 	@RequestMapping("/Img/Delete.page")
-	public String TruckImgDelete(HttpServletRequest req,Model model) throws Exception{
-		System.out.println("Tabs10 접속");
-		
-		return "tabs-10.tiles";
+	public String TruckImgDelete(@RequestParam Map map, HttpServletRequest req,Model model) throws Exception{
+		System.out.println(map.get("id"));
+		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+		dao.deleteSubFoodtruck(map.get("id").toString());
+		return "true";
 	}
 	
 	
-	/*
 	//[JSON으로 응답할때]
 	@ResponseBody
 	@RequestMapping(value="/Img/Main/Upload.page", method = RequestMethod.POST)
@@ -359,11 +360,13 @@ public class MemberController {
 		Iterator<String> itr = mf.getFileNames();
 		 if(itr.hasNext()) {
 			 MultipartFile mpf = mf.getFile(itr.next());
-			 System.out.println(mpf.getOriginalFilename() +" uploaded!"); 
+			 System.out.println(mpf.getOriginalFilename() +" Main uploaded!"); 
 			 try { 
 				 	json.put("length", (int)mpf.getBytes().length/1028);
-				 	dto.setNewMain(FileUpload(mpf, "/FOODTRUCKS", req, true));
+				 	dto.setNewMain(FileUpload(mpf, "/FOODTRUCKS/MAIN", req, true));
 				 	json.put("name", dto.getNewMain());
+				 	json.put("intro", mf.getParameter("intro").replaceAll("\r\n", "<br/>"));
+				 	dto.setIntro(mf.getParameter("intro"));
 					dao.insertMainFoodtruck(dto);
 					dao.close();
 			 } 
@@ -378,7 +381,7 @@ public class MemberController {
 			 System.out.println("else 에러남 끝에서남"); 
 			 return "x"; 
 		 }
-	}*/
+	}
 
 	//이미지 파일 업로드 메소드------------------------------------------------------------------------*
 	public String FileUpload(MultipartFile mf, String folder, HttpServletRequest req, Boolean flag) throws IllegalStateException, IOException {

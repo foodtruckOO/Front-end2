@@ -278,8 +278,7 @@ CREATE TABLE TRUCKPAGE
 (
 	S_NO number NOT NULL,
 	INTRO nvarchar2(500) NOT NULL,
-	MAIN varchar2(100) NOT NULL,
-	BACK varchar2(100) NOT NULL
+	MAIN varchar2(100) NOT NULL
 );
 
 

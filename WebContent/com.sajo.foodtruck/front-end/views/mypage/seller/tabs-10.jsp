@@ -57,15 +57,10 @@ var start=function(data){
 		"<p class='name'>"+(data['list'][i])+"</p>"+
 	"</td>"+
 	"<td>"+
-		"<div class='progress'>"+
-			"<div class='progress-bar progress-bar-striped active' role='progressbar' "+
-			"aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100px'>"+
-			+"업로드 된 이미지"+
-			"</div>"+
-		"</div>"+
+		"이미지 업로드 됨"+
 	"</td>"+
 	"<td>"+
-		"<button id='btn"+(count++)+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+
+		"<button id='"+(data['list'][i])+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+
 			"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
 		"</button>"+
 	"</td>"+
@@ -75,15 +70,12 @@ var start=function(data){
 };
 
 	function deleteFunc(test){
-		var delFrm = new FormData(document.getElementById('delFrm'));
-		console.log($(this).attr('id'));
+		console.log($(test).attr('id'));
 		$.ajax({ 
 			url: '<c:url value="/Img/Delete.page"/>', 
-			data: delFrm,
+			data: {"id":$(test).attr('id')},
 			dataType: 'json',
 			type: 'POST', 
-			contentType: false,
-			processData: false,
 			success: console.log("good"), 
 			error: function(request,status,error){
 				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -94,17 +86,19 @@ var start=function(data){
 </script>
 <script>
     function getImg2(evt){
-    	var ext = $("#btn-main").val().split(".").pop().toLowerCase();
-		if(ext.length > 0){
-			if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+    	var ext2 = $("#btn-main").val().split(".").pop().toLowerCase();
+		if(ext2.length > 0){
+			if($.inArray(ext2, ["gif","png","jpg","jpeg"]) == -1) { 
 				alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
 				return false;  
 			}                  
 		}		
-		var form = new FormData(document.getElementById('fileuploadMain'));
+		console.log("hi");
+
+		var formData = new FormData($("#fileuploadMain")[0]);
 		$.ajax({ 
 			url: '<c:url value="/Img/Main/Upload.page"/>', 
-			data: form,
+			data: formData,
 			dataType: 'json', 
 			type: 'POST', 
 			contentType: false,
@@ -121,24 +115,23 @@ var start=function(data){
 		console.log(data['name']);
     	
     	var row = "<tr>"+
-    	"<td> </td>"+
+    	"<td><div class='checkbox'>"+
+        "<label hidden>"+
+          "<input type='checkbox'>"+
+        "</label>"+
+		"</div>"+
+		"</td>"+
 		"<td>"+
 			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/api/FOODTRUCKS/MAIN/"+data['name']+"' alt='이미지를 찾을 수 없습니다..'"+
 			" style='width: 80px; height: 50px; margin-top: 4px' />"+
 		"</td>"+
 		"<td>"+
 			"<p class='name'>"+data['name']+(count++)+"</p>"+
-		"</td>"+
-		"<td>"+
-			"<div class='progress'>"+
-				"<div class='progress-bar progress-bar-striped active' role='progressbar' "+
-				"aria-valuenow='100' aria-valuemin='0' aria-valuemax='10' style='width: 100%'>"+
-				+data['length']+"KB"+
-				"</div>"+
-			"</div>"+
-		"</td>"+
-		"<td> </td>"+
-		"</tr>";
+			"</td>"+
+			"<td  colspan='3'>"+
+				data['intro']+
+			"</td>"+
+			"</tr>"; 
 		$("#mainTable").append(row); 
 	};
 </script>
@@ -194,7 +187,7 @@ var start=function(data){
 			"</div>"+
 		"</td>"+
 		"<td>"+
-			"<button class='btn btn-danger delete'>"+
+			"<button id='"+data['name']+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+
 				"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
 			"</button>"+
 		"</td>"+
@@ -204,7 +197,8 @@ var start=function(data){
 </script>
 
 <form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">
-	<input type='file' id='fileMain' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)2' style="display: none">
+	<input type='file' id='fileMain' name='fileMain' accept="image/gif, image/jpeg, image/png" onchange='getImg2(event)' style="display: none">
+	<textarea class="form-control" rows="5" name="intro"></textarea>
 	<button id='btn-main' type="submit" class="btn btn-primary start">
 		<i class="glyphicon glyphicon-upload"></i> <span>메인이미지 등록</span>
 	</button>

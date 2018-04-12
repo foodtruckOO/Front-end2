@@ -169,24 +169,24 @@ public class T_MenuDAO {
 	}
 
 	//푸드트럭 메인 이미지 등록
-	/*
 	public int insertMainFoodtruck(T_ImgTruckpageDTO dto){
-		System.out.println("T_MenuDAO insertFoodtruck");
+		System.out.println("T_MenuDAO insertMainFoodtruck");
 		int affected = 0;
-		String sql="INSERT INTO IMAGES VALUES (?, ?)";
+		String sql="INSERT INTO truckpage VALUES (?, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getSno());
-			psmt.setString(2, dto.getNewImg());
+			psmt.setString(2, dto.getIntro());
+			psmt.setString(3, dto.getNewMain());
 			affected = psmt.executeUpdate();
 		}
 		catch (Exception e) {
-			System.out.println("T_MenuDAO insertFoodtruck error");
+			System.out.println("T_MenuDAO insertMainFoodtruck error");
 			e.printStackTrace();
 		}
-		finally {close();}				
+		finally {close();}
 		return affected;
-	}*/
+	}
 	
 	
 	//푸드트럭 서브 이미지 뿌리기
@@ -219,6 +219,24 @@ public class T_MenuDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getSno());
 			psmt.setString(2, dto.getNewImg());
+			affected = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("T_MenuDAO insertFoodtruck error");
+			e.printStackTrace();
+		}
+		finally {close();}				
+		return affected;
+	}
+	
+	//푸드트럭 서브 이미지 삭제
+	public int deleteSubFoodtruck(String id){
+		System.out.println("T_MenuDAO deleteSubFoodtruck");
+		int affected = 0;
+		String sql="DELETE FROM IMAGES WHERE img=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			affected = psmt.executeUpdate();
 		}
 		catch (Exception e) {
