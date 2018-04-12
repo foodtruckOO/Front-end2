@@ -64,7 +64,7 @@
 
 <body id="page-top">
 
-	<div id="TOP">
+	<div id="TOP"> 
 		<jsp:include page="/com.sajo.foodtruck/front-end/template/Top.jsp" />
 	</div>
 	<div id="RIGHT">
@@ -263,7 +263,7 @@
 	</div> --%>
 	<div class="row">
 		<div class="col-lg-12 text-center">
-			<h2 class="section-heading text-uppercase">Quick Button</h2>
+			<h2 class="section-heading text-uppercase">Quick MENU</h2>
 		</div>
 	</div>
 	
