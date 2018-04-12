@@ -74,6 +74,7 @@ public class OrderDAO {
 		String num = null ;
 		String f_no = null;
 		String s_no = null;
+		String o_no = null;
 		int priceall = 0 ;
 		
 		OrderDTO dto = new OrderDTO();
@@ -133,6 +134,15 @@ public class OrderDAO {
 			
 			priceall = priceall + Integer.parseInt(num) * Integer.parseInt(price);
 		}
+		sql = "SELECT o_no FROM (select * from orderform order by o_no desc) where rownum = 1";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs2 = psmt.executeQuery();
+			if(rs2.next()) {
+				o_no = rs2.getString(1);
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		
 		while(rs.next()) {
 			dto = new OrderDTO();
 			f_no = rs.getString(1);
@@ -144,12 +154,14 @@ public class OrderDAO {
 			dto.setFname(rs.getString(4));
 			dto.setIp(ip.getHostAddress());
 			list.add(dto);	
-			sql = "insert into orderform values(seq_o_no.curval,?,?,?,?,?,sysdate,0)";
-			psmt2.setString(1, g_no);
-			psmt2.setString(2, f_no);
-			psmt2.setString(3, num);
-			psmt2.setString(4, time);
-			psmt2.setString(5, text);
+			sql = "insert into orderform values(?,?,?,?,?,?,sysdate,0)";
+			psmt2 = conn.prepareStatement(sql);
+			psmt2.setString(1, o_no);
+			psmt2.setString(2, g_no);
+			psmt2.setString(3, f_no);
+			psmt2.setString(4, num);
+			psmt2.setString(5, time);
+			psmt2.setString(6, text);
 			psmt2.executeUpdate();
 			priceall = priceall + Integer.parseInt(num) * Integer.parseInt(price);
 		}

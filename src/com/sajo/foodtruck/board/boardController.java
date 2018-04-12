@@ -147,7 +147,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String title= req.getParameter("title");
-		System.out.println(title);
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
@@ -164,7 +163,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String title= req.getParameter("title");
-		System.out.println(title);
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
@@ -179,7 +177,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String cb_no= req.getParameter("cb_no");
-		System.out.println(cb_no);
 		ComstomerDTO dto = dao.selectOne(cb_no);
 		model.addAttribute("rice", dto);
 		dao.close();
@@ -193,7 +190,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String sb_no= req.getParameter("sb_no");
-		System.out.println(sb_no);
 		SellerDTO dto = dao.selectOne(sb_no);
 		model.addAttribute("nice", dto);
 		dao.close();
@@ -208,7 +204,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String cb_no= req.getParameter("cb_no");
-		System.out.println(cb_no);
 		ComstomerDTO dto = dao.selectOne(cb_no);
 		model.addAttribute("nike", dto);
 		dao.close();
@@ -223,7 +218,6 @@ public class boardController  extends HttpServlet{
 
 		String cb_no= req.getParameter("cb_no");
 		String title= req.getParameter("title");
-		System.out.println(title);
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
@@ -240,7 +234,6 @@ public class boardController  extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 
 		String sb_no= req.getParameter("sb_no");
-		System.out.println(sb_no);
 		SellerDTO dto = dao.selectOne(sb_no);
 		model.addAttribute("adidas", dto);
 		dao.close();
@@ -255,7 +248,6 @@ public class boardController  extends HttpServlet{
 
 		String sb_no= req.getParameter("sb_no");
 		String title= req.getParameter("title");
-		System.out.println(title);
 		String content= req.getParameter("content");
 		String file= req.getParameter("file");
 		String user = (String)req.getSession().getAttribute("USER_ID");
@@ -271,7 +263,6 @@ public class boardController  extends HttpServlet{
 
 		ComstomerDAO dao = new ComstomerDAO(req.getServletContext());
 		String cb_no= req.getParameter("cb_no");
-		System.out.println(cb_no);
 		dao.delete(cb_no);
 		dao.close();  
 		return "/Customlist.board";
@@ -283,7 +274,6 @@ public class boardController  extends HttpServlet{
 
 		SellerDAO dao = new SellerDAO(req.getServletContext());
 		String sb_no= req.getParameter("sb_no");
-		System.out.println(sb_no);
 		dao.delete(sb_no);
 		dao.close();  
 		return "/Sellerlist.board";
@@ -294,7 +284,6 @@ public class boardController  extends HttpServlet{
 	public String summerNote(HttpServletResponse resp, HttpServletRequest req) throws Exception{
 		//파라미터 받기]
 		String filename = req.getParameter("filename");
-		System.out.println("filename="+filename);
 		String key      = req.getParameter("key");
 		//다운로드 관련 모델 호출]
 		//1.파일 다운로드 로직 호출]
@@ -311,7 +300,6 @@ public class boardController  extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//파라미터 받기]
 		String filename = req.getParameter("filename");
-		System.out.println("filename="+filename);
 		String key      = req.getParameter("key");
 		//다운로드 관련 모델 호출]
 		//1.파일 다운로드 로직 호출]
@@ -342,7 +330,6 @@ public class boardController  extends HttpServlet{
 		}else{
 			//있다면 현재 디렉토리 파일을 삭제 
 			if(flag) {
-				System.out.println("폴더1 있어 기존거 삭제할게");
 				File[] destroy = f.listFiles(); 
 				for(File des : destroy) des.delete();
 			}
