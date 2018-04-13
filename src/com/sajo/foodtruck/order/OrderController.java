@@ -43,10 +43,13 @@ public class OrderController {
 	@ResponseBody
 	@RequestMapping("/check.order")
 	public String OrderCheck(Model model, HttpServletRequest req,@RequestParam Map map) throws Exception{
-		
+		String user = "" ; 
+		String yn = "";
 		OrderDAO dao = new OrderDAO(req.getServletContext());
-		String user = req.getSession().getAttribute("USER_ID").toString();
-		String yn = dao.check(user);
+		try {
+		user = req.getSession().getAttribute("USER_ID").toString();
+		yn = dao.check(user);
+		}catch(Exception e) {}
 		dao.close();
 			
 		return yn;
