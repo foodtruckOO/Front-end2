@@ -195,7 +195,7 @@ var start=function(data){
 				"<i class='glyphicon glyphicon-trash'></i> <span>삭제</span>"+
 			"</button>"+
 		"</td>"+
-		"</tr>";
+		"</tr>"; 
 		//var plus = $("#subTable");
 		//$("#subTable").empty(); 
 		$("#subTable").prepend(row); 
