@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/com.sajo.foodtruck/front-end/Common/IsMember.jsp" %>
 <%
-	//한글깨짐방지
+	//한글깨짐방지  
 	request.setCharacterEncoding("UTF-8");
 	//dao 소환!	
 	mapDAO dao= new mapDAO(application);
@@ -34,7 +34,6 @@
 	
 	List<mapDTO> list= dao.selectList(start,end); 
 	List<mapDTO> listAll = dao.selectAllList();
-	List<mapDTO> listpage = dao.selectTruckPage();
 	//dao닫기
 	dao.close();
 	String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, request.getContextPath()+"/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp?");

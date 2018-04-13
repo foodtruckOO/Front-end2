@@ -370,7 +370,7 @@ public class MemberController {
 	//푸드트럭사진 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs10.page")
 	public String TruckImg(HttpServletRequest req,Model model) throws Exception{
-		System.out.println("Tabs10 접속");
+		System.out.println("Tabs10 접속"); 
 		/*
 		T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
 		List<T_ImgDTO> list = dao.selectSubImage(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
