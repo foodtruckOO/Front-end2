@@ -76,13 +76,13 @@ public class LoginController {
 		session.setAttribute("USER_ID",id);
 		session.setAttribute("USER_PWD",pwd);
 		session.setAttribute("USER_TYPE","customer");
-		return "/com.sajo.foodtruck/front-end/views/Main.jsp";	
+		return "/com.sajo.foodtruck/front-end/views/index.jsp";	
 		}
 		else {
 		session.setAttribute("USER_ID",id);
 		session.setAttribute("USER_PWD",pwd);
 		session.setAttribute("USER_TYPE","seller");
-		return "/com.sajo.foodtruck/front-end/views/Main.jsp";	
+		return "/com.sajo.foodtruck/front-end/views/index.jsp";	
 		}
 		
 		
