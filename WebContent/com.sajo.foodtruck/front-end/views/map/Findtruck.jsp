@@ -34,7 +34,6 @@
 	
 	List<mapDTO> list= dao.selectList(start,end); 
 	List<mapDTO> listAll = dao.selectAllList();
-	List<mapDTO> listpage = dao.selectTruckPage();
 	//dao닫기
 	dao.close();
 	String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, request.getContextPath()+"/com.sajo.foodtruck/front-end/views/map/Findtruck.jsp?");

@@ -74,7 +74,7 @@
 		<!-- Mypage Left -->
 		<div style="float: left; width: 20%" id="mypage_left">
 			<!-- 프로필 사진 -->
-			<img src="http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}" alt="이미지를 찾을 수 없습니다.." 
+			<img src="http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}" alt="이미지를 찾을 수 없습니다.." 
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
 			<!-- ID -->
 			<div>

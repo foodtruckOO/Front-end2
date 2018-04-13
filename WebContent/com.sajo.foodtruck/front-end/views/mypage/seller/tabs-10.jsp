@@ -179,14 +179,14 @@ var start=function(data){
     var successCallback=function(data){
 		console.log(data['name']);
     	
-    	var row = "<tr>"+"<tr>"+
+    	var row = "<tr>"+
     	"<td>&emsp;</td>"+
 		"<td>"+
-			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+data['name']+"' alt='이미지를 찾을 수 없습니다..'"+
-			" style='width: 80px; height: 50px; margin-top: 4px' />"+
+			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+data['name']+
+			"' alt='이미지를 찾을 수 없습니다..' style='width: 80px; height: 50px; margin-top: 4px' />"+
 		"</td>"+
 		"<td>"+
-			"<p class='name'>"+(count++)+data['name']+"</p>"+
+			"<p class='name'>"+data['name']+"</p>"+
 		"</td>"+
 		"<td>최신 이미지 업로드!!"+
 		"</td>"+
@@ -196,19 +196,25 @@ var start=function(data){
 			"</button>"+
 		"</td>"+
 		"</tr>";
-		var plus = $("#subTable");
-		$("#subTable").empty(); 
-		$("#subTable").append(row); 
-		$("#subTable").append(plus); 
+		//var plus = $("#subTable");
+		//$("#subTable").empty(); 
+		$("#subTable").prepend(row); 
+		//$("#subTable").append(plus); 
 		
 	};
 </script>
-
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 소개글을 작성한 뒤, <kbd style="background-color: #3175b0">메인이미지 등록</kbd>버튼을 눌러주세요.</span><br/>
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 이미지를 선택하시면 자동으로 업로드 됩니다.</span><br/>
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 그 외, 서브이미지를 선택하시면 자동으로 업로드 됩니다.</span>
+<hr/>
 <form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">
-	<div style="background-color: red; width: 22%; float: left; padding-bottom: 22%; margin-left: 2%;" id="mainDiv"></div>
+	<div style="background-color: red; width: 22%; float: left; padding-bottom: 22%; margin-left: 2%;" id="mainDiv">
+	<img src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.main}"+
+					"' alt='이미지를 찾을 수 없습니다..' style='width: 100%; height: 100%; top:0px' />
+	</div>
 	<input type='file' id='fileMain' name='fileMain' accept="image/gif, image/jpeg, image/png" onchange='getImg2(event)' style="display: none">
-	<textarea class="form-control" rows="5" name="intro" style="resize: none; width: 72%; float: right;" id="mainArea" p></textarea>
-	<br/><br/><br/><br/><br/><br/><br/><span>&emsp;안녕</span>
+	<textarea class="form-control" rows="5" name="intro" style="resize: none; width: 72%; float: right;" id="mainArea" p>${img.intro}</textarea>
+	<br/><br/><br/><br/><br/><br/><br/><span>&emsp;</span>
 	<button id='btn-main' type="submit" class="btn btn-primary start" style="float: right; margin-top: 10px;">
 		<i class="glyphicon glyphicon-upload"></i> <span>메인이미지 등록</span>
 	</button>
