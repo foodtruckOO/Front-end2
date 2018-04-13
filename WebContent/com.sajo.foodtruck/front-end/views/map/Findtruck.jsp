@@ -1,3 +1,4 @@
+<%@page import="java.net.InetAddress"%>
 <%@page import="com.sajo.foodtruck.map.PagingUtil"%>
 <%@page import="com.sajo.foodtruck.map.mapDTO"%>
 <%@page import="java.util.List"%>
@@ -16,7 +17,13 @@
 	mapDAO dao= new mapDAO(application);
 	//map생성
 	Map<String,Object> map = new HashMap<String,Object>();
-	 
+	InetAddress ip;
+	ip = InetAddress.getLocalHost();
+	String stringip = null;
+	try{
+		stringip = ip.getHostAddress();
+		}
+	catch(Exception e){e.printStackTrace();}
 	//전체 칼럼 크기 수
 	int totalRecordCount = dao.getTotalRecordCount();
 	// 임의로 설정한 한페이지당 보일 푸드트럭 수 
@@ -146,7 +153,7 @@
 				for(mapDTO record:list){
 			%> 
 				<th><%=totalRecordCount - (((nowPage -1) *pageSize) + loop2) %></th>
-				<th><a href="http://localhost:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>"><%=record.getTname()%></a></th>
+				<th><a href="http://<%=stringip%>:8080/Front-end_FoodTruckProj/detail1.foodtruck?s_no=<%=record.getS_no()%>"><%=record.getTname()%></a></th>
 				<th><%=record.getAddr()%></th>
 				<th><%=record.getTel() %></th>
 			</tr>
@@ -210,7 +217,7 @@
     });
 
    
-  	//********************키워드로 마커찍기*************************//
+  //********************키워드로 마커찍기*************************//
 	
 	// 장소 검색 객체를 생성합니다
 	var ps = new daum.maps.services.Places();
