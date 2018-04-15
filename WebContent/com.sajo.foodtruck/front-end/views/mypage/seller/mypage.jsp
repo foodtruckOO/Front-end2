@@ -36,12 +36,12 @@
 				}, 1000);
 			});
 			
+			//$('.list-group a').click(function(){
+			//	$('#my_tab li').attr('class','');
+			//});
 			
-			$('.list-group a').click(function(){
-				$('#my_tab li').attr('class','');
-			});
-			
-			${error}
+			//${error}
+			$("#${tab}").addClass('active');
 			
 			$(window).resize(function(){
 			     console.log($(window).width());
@@ -70,24 +70,30 @@
 	
 	<!-- mypage start -->
 	<div id=mypage style="height: 1200px">
-	
 		<!-- Mypage Left -->
 		<div style="float: left; width: 20%" id="mypage_left">
-			<!-- 프로필 사진 -->
-			<img src="http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}" alt="이미지를 찾을 수 없습니다.." 
+			<c:if test="${empty requestScope.img.intro}" var="flag">
+				<img src="<c:url value='com.sajo.foodtruck/front-end/images/image-not-found.jpg'/>" alt="이미지를 찾을 수 없습니다.." 
 										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
+			</c:if>
+			<c:if test="${not flag}">
+			<!-- 프로필 사진 -->
+				<img src="http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}" alt="이미지를 찾을 수 없습니다.." 
+										class="img-square"style="width: 100%; height: 100%; border: 2px solid #ffe9c1">
+			
+			</c:if>
 			<!-- ID -->
 			<div>
 				<h4 style="font-weight: bold; text-align: center;">${seller.tname}</h4>
 			</div>
 			<!-- Left menu -->
 		   	<div class="list-group" style="text-align: center;" >
-	            <a href="<c:url value='/Tabs5.page'/>" class="list-group-item" id="a1">개인정보수정</a>
-	            <a href="<c:url value='/Tabs10.page'/>" class="list-group-item" id="a2">트럭정보 등록</a>
-	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id="a3">메뉴 등록</a>
-	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id="a4">이벤트 등록</a>
+	            <a href="<c:url value='/Tabs5.page'/>" class="list-group-item" id='tabs5'>개인정보수정</a>
+	            <a href="<c:url value='/Tabs10.page'/>" class="list-group-item" id='tabs10'>트럭정보 등록</a>
+	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id='tabs6'>메뉴 등록</a>
+	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id='tabs7'>이벤트 등록</a>
 	            <!-- <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a5">SNS 등록</a> -->
-	            <a href="<c:url value='/Tabs9.page'/>" class="list-group-item" id="a6">주문 현황</a>
+	            <a href="<c:url value='/Tabs9.page'/>" class="list-group-item" id='tabs9'>주문 현황</a>
          	</div> 
          	
 			<!-- sns -->
@@ -118,14 +124,14 @@
 			</div> -->
 			<!-- tap -->
 			<!-- 여기요 -->
-			<div style="width: 100%; height: 100%; ">
+			<div id="tabs" style="width: 100%; height: 100%; ">
 				<!-- include -->
-				<ul class="nav nav-tabs" id="my_tab"style="background-color: #ffe9c1;">
+				<ul class="nav nav-tabs" style="background-color: #ffe9c1;">
 					<!--  data-toggle="tab" -->
-					<li class="active" id="acti"><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
-					<li><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
-					<li><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
-					<li><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
+					<li role="presentation" id='tabs1'><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
+					<li role="presentation" id='tabs2'><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
+					<li role="presentation" id='tabs3'><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
+					<li role="presentation" id='tabs4'><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
 					<!-- <button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
 					</button> -->

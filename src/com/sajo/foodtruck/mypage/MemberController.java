@@ -40,6 +40,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("seller", dto);
 		model.addAttribute("img", result);
+		model.addAttribute("tab", "tabs1");
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-1.tiles";
 	}	
@@ -58,6 +59,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("seller", dto);
 		model.addAttribute("img", result);
+		model.addAttribute("tab", "tabs1");
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		return "tabs-1.tiles";
 	}
@@ -76,6 +78,7 @@ public class MemberController {
 		dao.update(dto);
 		dao.close();
 		daoImg.close();
+		model.addAttribute("tab", "tabs5");
 		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
 	}
@@ -92,6 +95,7 @@ public class MemberController {
 		SellerDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		dao.close();
 		daoImg.close();
+		model.addAttribute("tab", "tabs5");
 		model.addAttribute("seller", dto);
 		return "tabs-5.tiles";
 	}
@@ -113,6 +117,7 @@ public class MemberController {
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
 		daoImg.close();
+		model.addAttribute("tab", "tabs2");
 		return "tabs-2.tiles";
 	}
 	
@@ -150,6 +155,7 @@ public class MemberController {
 		model.addAttribute("list",list);
 		model.addAttribute("food", dto);
 		daoImg.close();
+		model.addAttribute("tab", "tabs6");
 		return "tabs-6_1.tiles";
 	}
 	
@@ -184,6 +190,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs6");
 		return "tabs-6.tiles";
 	}
 	
@@ -215,6 +222,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs3");
 		return "tabs-3.tiles";
 	}
 
@@ -234,6 +242,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs4");
 		return "tabs-4.tiles";
 	}
 	
@@ -259,6 +268,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs7");
 		return "tabs-7.tiles";
 	}
 	
@@ -303,6 +313,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs7");
 		return "tabs-7_1.tiles";
 	}
 	
@@ -339,6 +350,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs8");
 		return "tabs-8.tiles";
 	}	
 	
@@ -365,6 +377,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", dd);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs9");
 		return "tabs-9.tiles";
 	}
 	//푸드트럭사진 등록------------------------------------------------------------------------
@@ -384,6 +397,7 @@ public class MemberController {
 		daoImg.close();
 		model.addAttribute("img", result);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		model.addAttribute("tab", "tabs10");
 		return "tabs-10.tiles";
 	}
 

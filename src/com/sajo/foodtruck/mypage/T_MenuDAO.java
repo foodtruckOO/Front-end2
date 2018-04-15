@@ -197,6 +197,7 @@ public class T_MenuDAO {
 			if(rs.next()) {
 				dto.setIntro(rs.getString(2));
 				dto.setNewMain(rs.getString(3));
+				System.out.println();
 			}
 		} catch (Exception e) {
 			System.out.println("T_MenuDAO isSnoMain error");

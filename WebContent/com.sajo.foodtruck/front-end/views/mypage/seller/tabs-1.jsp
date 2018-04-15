@@ -10,7 +10,6 @@
 <div class="col-xs-6 col-md-4" id="map" style="width:40%;height:200px;"></div>
        <!-- 지도 api 호출 -->
 </div>
-
 ${img.intro }
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faebfb3e90eb274180e0b284b0f3e3a3&libraries=services"></script>	
 <script>
