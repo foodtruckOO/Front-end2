@@ -22,16 +22,6 @@
 						<td>${list.num }</td>
 						<td>${list.price }</td>
 					</tr>
-					<tr>
-						<td><strong>치킨</strong></td>
-						<td>2000원</td>
-						<td>3개</td>
-					</tr>
-					<tr>
-						<td><strong>고기</strong></td>
-						<td>2000원</td>
-						<td>2개</td>
-					</tr>
 				</table>
 				<hr/>
 				<table style="width: 100%">

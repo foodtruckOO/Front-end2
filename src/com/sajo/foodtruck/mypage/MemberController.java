@@ -3,6 +3,7 @@ package com.sajo.foodtruck.mypage;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -362,11 +363,11 @@ public class MemberController {
 		List<T_OderDTO> list = new Vector<T_OderDTO>();
 		list = dao.orderList(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
 
+		List<T_OderDTO> newList = new Vector<T_OderDTO>();
+		String cName = "";
+		String timeofreceipt = "";
+		List<Map<String, String>> stack = null;
 		/********************List<Map<String, String>>*/
-		
-		int total = 0;
-		String name="", time="";
-		List<Map> result = new Vector<Map>();
 		/****************************************************************************************/
 		model.addAttribute("list", list);
 		System.out.println(list);

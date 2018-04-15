@@ -48,10 +48,12 @@
 			     if($(window).width()<500){
 			    	 $('#mypage_left').hide();
 			    	 $('#mypage_R').css({"width":"100%"});
+			    	 $('.dropdown').show();
 			     }
 			     else{
 			    	 $('#mypage_left').show();
 			    	 $('#mypage_R').css({"width":"78%"});
+			    	 $('.dropdown').hide();
 			     }
 			}).resize();
 		});
@@ -93,9 +95,9 @@
 	            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id='tabs6'>메뉴 등록</a>
 	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id='tabs7'>이벤트 등록</a>
 	            <!-- <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a5">SNS 등록</a> -->
-	            <a href="<c:url value='/Tabs9.page'/>" class="list-group-item" id='tabs9'>주문 현황</a>
          	</div> 
          	
+
 			<!-- sns -->
 			<div style="text-align: center;">
 				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 50px; height: auto;">
@@ -127,11 +129,25 @@
 			<div id="tabs" style="width: 100%; height: 100%; ">
 				<!-- include -->
 				<ul class="nav nav-tabs" style="background-color: #ffe9c1;">
+					<li role="presentation" class="dropdown">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+					      Edit <span class="caret"></span>
+					    </a>
+					    <ul class="dropdown-menu" role="menu">
+							<a href="<c:url value='/Tabs5.page'/>" class="list-group-item" id='tabs5'>개인정보수정</a>
+				            <a href="<c:url value='/Tabs10.page'/>" class="list-group-item" id='tabs10'>트럭정보 등록</a>
+				            <a href="<c:url value='/Tabs6.page'/>" class="list-group-item" id='tabs6'>메뉴 등록</a>
+				            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id='tabs7'>이벤트 등록</a>
+				            <!-- <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a5">SNS 등록</a> -->
+				            <!-- <a href="<c:url value='/Tabs9.page'/>" class="list-group-item" id='tabs9'>주문 현황</a> -->
+					    </ul>
+					</li>
 					<!--  data-toggle="tab" -->
 					<li role="presentation" id='tabs1'><a href="<c:url value='/Tabs1.page'/>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
 					<li role="presentation" id='tabs2'><a href="<c:url value='/Tabs2.page'/>"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 메뉴</a></li>
 					<li role="presentation" id='tabs3'><a href="<c:url value='/Tabs3.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 리뷰 </a></li>
 					<li role="presentation" id='tabs4'><a href="<c:url value='/Tabs4.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 이벤트 </a></li>
+					<li role="presentation" id='tabs4'><a href="<c:url value='/Tabs9.page'/>"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
 					<!-- <button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
 					</button> -->

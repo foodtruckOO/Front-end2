@@ -64,8 +64,7 @@ var start=function(data){
 	"<td>"+
 		"<p class='name'>"+(data['list'][i])+"</p>"+
 	"</td>"+
-	"<td>"+
-		"이미지 업로드 됨!"+
+	"<td><span style='color:white'>기존 이미지</span>"+
 	"</td>"+
 	"<td>"+
 		"<button id='"+(data['list'][i])+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+
@@ -188,7 +187,7 @@ var start=function(data){
 		"<td>"+
 			"<p class='name'>"+data['name']+"</p>"+
 		"</td>"+
-		"<td>최신 이미지 업로드!!"+
+		"<td><span class='label label-warning'>new</span>"+
 		"</td>"+
 		"<td>"+
 			"<button id='"+data['name']+"' class='btn btn-danger delete' onclick='deleteFunc(this)'>"+

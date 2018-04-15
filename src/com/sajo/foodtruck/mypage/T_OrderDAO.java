@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.naming.InitialContext;
@@ -63,8 +65,10 @@ public class T_OrderDAO {
 	
 	//푸드타입 가져오기
 	public List<T_OderDTO> orderList (String sno){
+	//public List<Map<String, Object>> orderList (String sno){
 		System.out.println("T_OderDAO orderList");
 		List<T_OderDTO> list = new Vector<T_OderDTO>();
+		//List<Map<String, Object>> listMap = new Vector<>();
 		try {
 			String sql="select o.name,o.tel, o.timeofreceipt, o.num, f.fname, f.price, o.content from\r\n" + 
 					"(select e.*,c.id name, c.tel tel from orderform e JOIN customer c ON e.g_no=c.g_no) o\r\n" + 
@@ -73,6 +77,7 @@ public class T_OrderDAO {
 			psmt.setString(1, sno);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
+				
 				T_OderDTO dto = new T_OderDTO();
 				dto.setCname(rs.getString(1));
 				dto.setTel(rs.getString(2));
@@ -82,6 +87,23 @@ public class T_OrderDAO {
 				dto.setPrice(rs.getString(6));
 				dto.setContent(rs.getString(7));
 				list.add(dto);
+				
+				/*
+				T_OrderfoodDTO food = new T_OrderfoodDTO();
+				T_OrderListDTO list = new T_OrderListDTO();
+
+				list.setCname(rs.getString(1));
+				list.setTel(rs.getString(2));
+				list.setTimeofreceipt(rs.getString(3));
+				food.setNum(rs.getString(4));
+				food.setFname(rs.getString(5));
+				food.setPrice(rs.getString(6));
+				list.setContent(rs.getString(7));
+				
+				Map<String, Object> map = new HashMap<>();
+				map.put("list", list);
+				map.put("food", food);
+				listMap.add(map);*/
 			}
 		}
 		catch (Exception e) {System.out.println("T_MenuDAO foodtype");e.printStackTrace();}
