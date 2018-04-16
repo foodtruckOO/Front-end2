@@ -25,7 +25,91 @@ $(function(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			}
 	});
+
+
+	var obj = $("#subDiv");
+    obj.on('dragenter', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px solid #5272A0');
+    });
+    obj.on('dragleave', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+    });
+    obj.on('dragover', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+    });
+    obj.on('drop', function (e) {
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+         var files = e.originalEvent.dataTransfer.files;
+         if(files.length < 1)
+              return;
+         dragNdropSub(files);
+    });    
+    function dragNdropSub(files){
+    	  var data = new FormData();
+          for (var i = 0; i < files.length; i++) {
+             data.append('file', files[i]);
+          }
+		$.ajax({ 
+			url: '<c:url value="/Img/dragNdrop.page"/>',
+			data: data,
+			dataType: 'json', 
+			type: 'POST', 
+			contentType: false,
+			processData: false,
+			success: successCallback, 
+			error: function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+		});
+    }
 	
+	var obj2 = $("#mainDiv");
+    obj2.on('dragenter', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px solid #5272A0');
+    });
+    obj2.on('dragleave', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+    });
+    obj2.on('dragover', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+    });
+    obj2.on('drop', function (e) {
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+         var files2 = e.originalEvent.dataTransfer.files;
+         if(files2.length < 1)
+              return;
+         dragNdropMain(files2);
+    });    
+    function dragNdropMain(files2){
+    	  var data2 = new FormData();
+          for (var i = 0; i < files2.length; i++) {
+             data2.append('file', files2[i]);
+          }
+		$.ajax({ 
+			url: '<c:url value="/Img/dragNdropMain.page"/>',
+			data: data2,
+			dataType: 'json', 
+			type: 'POST', 
+			contentType: false,
+			processData: false,
+			success:successCallback2, 
+			error: function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+		});
+    }
 	
 	$('#btn-main').click(function(e){
 		var flagMain = confirm("푸드트럭 소개를 작성하셨나요?\r\n");
@@ -120,33 +204,12 @@ var start=function(data){
     
     var successCallback2=function(data){
 		console.log(data['name']);
-    	
-    	var row = "<tr>"+
-    	"<td><div class='checkbox'>"+
-        "<label hidden>"+
-          "<input type='checkbox'>"+
-        "</label>"+
-		"</div>"+
-		"</td>"+
-		"<td>"+
-			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']+"' alt='이미지를 찾을 수 없습니다..'"+
-			" style='width: 200px; height: 160px; margin-top: 4px' />"+
-		"</td>"+
-		"<td>"+
-			"<p class='name'>"+data['name']+(count++)+"</p>"+
-			"</td>"+
-			"<td  colspan='3'>"+
-				data['intro']+
-			"</td>"+
-			"</tr>"; 
-		//$("#mainTable").empty();
-		//$("#mainTable").append(row);
 		var im = "<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']+
 					"' alt='이미지를 찾을 수 없습니다..' style='width: 100%; height: 100%; top:0px' />";
-    	$("#mainDiv").empty();
+    	
     	$("#mainDiv").css("padding-bottom","0px");
-    	$("#mainDiv").append(im);
-		
+    	$('#mainmain').attr("src","http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
+    	$("#mypageMainImg").attr("src","http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
 	};
 </script>
 <script>
@@ -206,14 +269,15 @@ var start=function(data){
 <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 이미지를 선택하시면 자동으로 업로드 됩니다.</span><br/>
 <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 그 외, 서브이미지를 선택하시면 자동으로 업로드 됩니다.</span>
 <hr/>
+<div id="mainDiv" style="border: dotted #3175b0 2px;">
 <form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">
 	<div style=" border: 2px solid #ffe9c1; width: 22%; float: left; margin-left: 2%;" id="mainDiv">
 	<c:if test="${empty requestScope.img.intro}" var="flag">
-		<img src="<c:url value='com.sajo.foodtruck/front-end/images/image-not-found.jpg'/>" alt="이미지를 찾을 수 없습니다.." 
+		<img id="mainmain" src="<c:url value='com.sajo.foodtruck/front-end/images/image-not-found.jpg'/>" alt="이미지를 찾을 수 없습니다.." 
 				class="img-square" style="width: 100%; height: 100%;">
 	</c:if>
 	<c:if test="${not flag}">
-		<img src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}' alt='이미지를 찾을 수 없습니다..' style='width: 100%; height: 100%; top:0px' />
+		<img id="mainmain" src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/${img.newMain}' alt='이미지를 찾을 수 없습니다..' style='width: 100%; height: 100%; top:0px' />
 	</c:if>
 	</div>
 	<input type='file' id='fileMain' name='fileMain' accept="image/gif, image/jpeg, image/png" onchange='getImg2(event)' style="display: none">
@@ -225,6 +289,8 @@ var start=function(data){
 	<table id="mainTable" style="width: 100%; margin-top: 20px; margin-bottom: 30px;">
 	</table>
 </form>
+</div>
+<div id="subDiv" style="border: dotted #499f49 2px; margin-top: 10px">
 <form id="fileupload" action="#" method="POST" enctype="multipart/form-data" style="display: inline; float: right;">
 	<input type='file' id='fileSub' name='file' accept="image/gif, image/jpeg, image/png" onchange='getImg(event)' style="display: none">
 	<button id='btn-sub' class="btn btn-success fileinput-button" onfocus="this.blur();">
@@ -233,3 +299,4 @@ var start=function(data){
 </form>
 <table id="subTable" style="width: 100%; margin-top: 20px;">
 </table>
+</div>
