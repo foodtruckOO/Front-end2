@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="<c:url value='/bootstrap/css/template.css'/>" type="text/css" />
     <!-- Custom styles for this template -->    
 	<link href="<c:url value='/bootstrap/css/agency.css'/>" rel="stylesheet">
-	<link href="<c:url value='/bootstrap/css/camera.css'/>" rel="stylesheet">
 	<!-- Custom fonts for this template -->
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -32,7 +31,6 @@
 	<script type='text/javascript' src='<c:url value="/bootstrap/js/jquery.min.js"/>'></script>
     <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.mobile.customized.min.js"/>'></script>
     <script type='text/javascript' src='<c:url value="bootstrap/js/jquery.easing.1.3.js"/>'></script> 
-	<script src="<c:url value='/bootstrap/js/camera.js'/>"></script>
 	<link rel="icon" href="<c:url value='/com.sajo.foodtruck/front-end/images/Webpage-Icon.png'/>" type="image/gif" >
 <script>
 	$(function() {
@@ -47,17 +45,6 @@
 	});
 </script>
 
-<script>
-
-	$(function(){
-	
-	$('#camera_wrap_1').camera({
-		thumbnails: true
-	});
-
-	
-});
-</script>
 
 </head>
 
@@ -74,26 +61,49 @@
 	<!-- Header -->
 	<div id="body">
 	<header>
-			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
-		<c:forEach items="${events}" var="event">
-	            <div data-thumb="http://${event.ip}:8080/Back-end/backend/img/admin/${event.titlefile}" data-src="http://${event.ip}:8080/Back-end/backend/img/admin/${event.titlefile}" data-link="<c:url value='/Eventview.event?eno=${event.eno}'/>"></div>
-		</c:forEach>	
-			</div>		
-		<%-- <div class="container">
-			<div class="row">
-				<!-- The carousel -->
-				<div class="flexslider">
-					<ul class="slides">
-						<c:forEach items="${events}" var="event">
-						
-						<li data-thumb="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}">
-							<a href="<c:url value='/Eventview.event?eno=${event.eno}'/>"><img src="http://localhost:8080/Back-end/backend/img/admin/${event.titlefile}" height="300px" width="1200px"/></a>
-						</li>
+		<section style="width: 100%; margin-top: 30px;">	
+	
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+				<ol class="carousel-indicators">
+					<c:forEach items="${events}" var="event" varStatus="loop">
+						<c:choose>
+							<c:when test="${loop.index==0}">
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						    </c:when>
+							<c:otherwise>	
+								<li data-target="#myCarousel" data-slide-to="${loop.index}"></li>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
-					</ul>
-				</div>	
-			</div>			
-		</div> --%>
+				</ol>
+					
+				<div class="carousel-inner" >
+					<c:forEach items="${events}" var="event2" varStatus="loop2">
+						<c:choose>
+							<c:when test="${loop2.index==0}">
+								<div class="item active">
+									<a href="<c:url value='/Eventview.event?eno=${event2.eno}'/>"><img  src="http://${event2.ip}:8080/Back-end/backend/img/admin/${event2.titlefile}"></a>
+								</div>
+							</c:when>
+							<c:otherwise>	
+								<div class="item">
+									<a href="<c:url value='/Eventview.event?eno=${event2.eno}'/>"><img src="http://${event2.ip}:8080/Back-end/backend/img/admin/${event2.titlefile}"></a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+				<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</section>
+		
 	</header>
 
 	<!-- Services -->
