@@ -96,24 +96,195 @@
 	            <a href="<c:url value='/Tabs7.page'/>" class="list-group-item" id='tabs7'>이벤트 등록</a>
 	            <!-- <a href="<c:url value='/Tabs8.page'/>" class="list-group-item" id="a5">SNS 등록</a> -->
          	</div> 
-         	
-
-			<!-- sns -->
-			<div style="text-align: center;">
-				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 50px; height: auto;">
-				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 50px; height: auto;">
-				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 50px; height: auto;">
-			</div>
+			
+			
+			<!-- 워드클라우드 -->
+			
+				<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+				<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+				<script src="<c:url value='/bootstrap/js/tagcloud.jquery.js'/>"></script>
+				
+					<!-- Google Analytics -->
+				    <script>
+				            (function (i, s, o, g, r, a, m) {
+				                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				                    (i[r].q = i[r].q || []).push(arguments)
+				                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+				                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+				            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+				            ga('create', 'UA-110902214-1', 'auto');
+				            ga('send', 'pageview');
+				    </script>
+				    <!-- End Google Analytics -->
+				
+				<style>
+				
+					#tagcloud ul li a:hover{
+						color: white !important;
+						background-color: GREEN;
+						font-size: 5em;
+					}
+					#tagcloud ul li a {
+						/*resize: none;*/
+						border: none;
+						outline: none;
+						text-decoration: none;
+						padding: 0px;
+						margin: 0px;
+						list-style-type: none;
+						color: #ffa500;
+					}
+				</style>
+				
+				<script type="text/javascript">
+					var settings = {
+						//height of sphere container
+						height : 240,
+						//width of sphere container
+						width : 220,
+						//radius of sphere
+						radius : 75,
+						//rotation speed
+						speed : 3,
+						//sphere rotations slower
+						slower : 0.9,
+						//delay between update position
+						timer : 5,
+						//dependence of a font size on axis Z
+						fontMultiplier : 5,
+						//tag css stylies on mouse over
+						hoverStyle : {
+							border : 'none',
+							color : 'red'
+						},
+						//tag css stylies on mouse out
+						mouseOutStyle : {
+							border : '',
+							color : ''
+						}
+					};
+				
+					$(document).ready(function() {
+						$('#tagcloud').tagoSphere(settings);
+					});
+				</script>
+				
+				<div id="tagcloud">
+					<ul>
+						<li><a href="#">amianthoidal</a></li>
+						<li><a href="#">piperide</a></li>
+						<li><a href="#">cleavelandite</a></li>
+						<li><a href="#">Otomian</a></li>
+						<li><a href="#">censureship</a></li>
+						<li><a href="#">nonapostatizing</a></li>
+						<li><a href="#">nonflowing</a></li>
+						<li><a href="#">songwright</a></li>
+						<li><a href="#">andalusite</a></li>
+						<li><a href="#">doorstop</a></li>
+						<li><a href="#">subnatural</a></li>
+						<li><a href="#">nicolayite</a></li>
+						<li><a href="#">integrifolious</a></li>
+						<li><a href="#">uncurricularized</a></li>
+						<li><a href="#">ericeticolous</a></li>
+						<li><a href="#">yellowwood</a></li>
+						<li><a href="#">Sumdum</a></li>
+						<li><a href="#">hysteroscope</a></li>
+						<li><a href="#">simony</a></li>
+						<li><a href="#">overrestore</a></li>
+						<li><a href="#">firearmed</a></li>
+						<li><a href="#">doctorfish</a></li>
+						<li><a href="#">Costaea</a></li>
+						<li><a href="#">consentingly</a></li>
+						<li><a href="#">Angoumian</a></li>
+						<li><a href="#">bumbleberry</a></li>
+						<li><a href="#">tunnelmaking</a></li>
+						<li><a href="#">overtenderly</a></li>
+						<li><a href="#">expergefaction</a></li>
+						<li><a href="#">intraventricular</a></li>
+						<li><a href="#">unsignificancy</a></li>
+						<li><a href="#">deflector</a></li>
+						<li><a href="#">truism</a></li>
+						<li><a href="#">otosalpinx</a></li>
+						<li><a href="#">chamberletted</a></li>
+						<li><a href="#">unbeauteous</a></li>
+						<li><a href="#">Jugulares</a></li>
+						<li><a href="#">pith</a></li>
+						<li><a href="#">outhear</a></li>
+						<li><a href="#">immaculateness</a></li>
+						<li><a href="#">bonnibel</a></li>
+						<li><a href="#">xerotherm</a></li>
+						<li><a href="#">onrush</a></li>
+						<li><a href="#">binocularly</a></li>
+						<li><a href="#">insignia</a></li>
+						<li><a href="#">Baloskionaceae</a></li>
+						<li><a href="#">vapulatory</a></li>
+						<li><a href="#">stoechas</a></li>
+						<li><a href="#">spurtle</a></li>
+						<li><a href="#">speedily</a></li>
+						<li><a href="#">intermittedly</a></li>
+						<li><a href="#">pie</a></li>
+						<li><a href="#">urohematin</a></li>
+						<li><a href="#">pervertedness</a></li>
+						<li><a href="#">summability</a></li>
+						<li><a href="#">unspinsterlike</a></li>
+						<li><a href="#">guilty</a></li>
+						<li><a href="#">equivalence</a></li>
+						<li><a href="#">ovaloid</a></li>
+						<li><a href="#">goodliness</a></li>
+						<li><a href="#">dainteth</a></li>
+						<li><a href="#">umiak</a></li>
+						<li><a href="#">faunistically</a></li>
+						<li><a href="#">spumose</a></li>
+						<li><a href="#">supercrowned</a></li>
+						<li><a href="#">preludial</a></li>
+						<li><a href="#">unbusied</a></li>
+						<li><a href="#">sleeting</a></li>
+						<li><a href="#">traitor</a></li>
+						<li><a href="#">professionalism</a></li>
+						<li><a href="#">auntlike</a></li>
+						<li><a href="#">shieldtail</a></li>
+						<li><a href="#">cheapen</a></li>
+						<li><a href="#">platycoria</a></li>
+						<li><a href="#">mesorectal</a></li>
+						<li><a href="#">polylithic</a></li>
+						<li><a href="#">Parasuchia</a></li>
+						<li><a href="#">bronchia</a></li>
+						<li><a href="#">hypochnose</a></li>
+						<li><a href="#">causticization</a></li>
+						<li><a href="#">chroococcaceous</a></li>
+						<li><a href="#">colonist</a></li>
+						<li><a href="#">antilogous</a></li>
+						<li><a href="#">Erpetoichthys</a></li>
+						<li><a href="#">lactoproteid</a></li>
+						<li><a href="#">appetite</a></li>
+						<li><a href="#">delineate</a></li>
+						<li><a href="#">polytomous</a></li>
+						<li><a href="#">parheliacal</a></li>
+						<li><a href="#">loweringness</a></li>
+						<li><a href="#">dragontail</a></li>
+						<li><a href="#">filching</a></li>
+						<li><a href="#">unavoidably</a></li>
+						<li><a href="#">szlachta</a></li>
+						<li><a href="#">azotoluene</a></li>
+						<li><a href="#">gadding</a></li>
+					</ul>
+				</div>
+			<!-- 워드클라우드 -->
 			
 			<!-- 광고 -->			
-			<div class="cycle-slideshow"  data-cycle-fx=scrollHorz  data-cycle-timeout=2000 style="margin-top: 20%;">
+			<div class="cycle-slideshow"  data-cycle-fx=scrollHorz  data-cycle-timeout=2000 style="margin-top: 20px;">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_1.jpg'/>" style="width: 100%; height: 100px">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_2.jpg'/>" style="width: 100%; height: 100px">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_3.jpg'/>" style="width: 100%; height: 100px">
 			    <img src="<c:url value='/com.sajo.foodtruck/front-end/images/ad_4.jpg'/>" style="width: 100%; height: 100px">
 			</div>
-			
 			<hr>
+         	<!-- sns -->
+			<div style="text-align: center; style="margin-top: 20px;">
+				<img alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 50px; height: auto;">
+				<img alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 50px; height: auto;">
+				<img alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 50px; height: auto;">
+			</div>
 			
 		</div>
 		

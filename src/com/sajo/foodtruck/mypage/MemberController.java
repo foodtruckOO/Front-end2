@@ -381,6 +381,7 @@ public class MemberController {
 		model.addAttribute("tab", "tabs9");
 		return "tabs-9.tiles";
 	}
+	
 	//푸드트럭사진 등록------------------------------------------------------------------------
 	@RequestMapping("/Tabs10.page")
 	public String TruckImg(HttpServletRequest req,Model model) throws Exception{
@@ -463,7 +464,42 @@ public class MemberController {
 			 return "x"; 
 		 }
 	}
-	
+	//SUB[JSON으로 응답할때]
+		@ResponseBody
+		@RequestMapping(value="/Img/dragNdrop.page", method = RequestMethod.POST)
+		public String dragNdrop(MultipartHttpServletRequest mf,HttpServletRequest req) throws Exception{
+			System.out.println("ImgUpload");
+			String user = req.getSession().getAttribute("USER_ID").toString();
+			T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+			T_ImgDTO dto = new T_ImgDTO();
+			dto.setSno(dao.getSellerNo(user));
+
+			//JSON데이타 타입으로 반환하기위해 JSONObject객체 생성
+			JSONObject json = new JSONObject();
+
+			Iterator<String> itr = mf.getFileNames();
+			int  num = 1;
+			
+			 while(itr.hasNext()) {
+				 System.out.println(num++);
+				 MultipartFile mpf = mf.getFile(itr.next());
+				 System.out.println(mpf.getOriginalFilename() +" uploaded!"); 
+				 try { 
+					 	json.put("length", (int)mpf.getBytes().length/1028);
+					 	dto.setKilobyte(String.valueOf(mpf.getBytes().length/1028));
+					 	dto.setNewImg(FileUpload(mpf, "/FOODTRUCKS", req, false));
+					 	json.put("name", dto.getNewImg());
+						dao.insertSubFoodtruck(dto);
+						dao.close();
+				 } 
+				 catch (IOException e) { 
+					 System.out.println("catch 에러남 왜남"); 
+					 e.printStackTrace(); 
+				 } 
+				System.out.println(json.toJSONString());
+			}
+			return json.toJSONString();
+		}
 	//
 	@ResponseBody
 	@RequestMapping("/Img/Delete.page")
@@ -475,7 +511,46 @@ public class MemberController {
 		return "true";
 	}
 	
-	
+	//[JSON으로 응답할때]
+		@ResponseBody
+		@RequestMapping(value="/Img/dragNdropMain.page", method = RequestMethod.POST)
+		public String dragNdropMain(MultipartHttpServletRequest mf,HttpServletRequest req) throws Exception{
+			System.out.println("Main drag ImgUpload");
+			String user = req.getSession().getAttribute("USER_ID").toString();
+			T_MenuDAO dao = new T_MenuDAO(req.getServletContext());
+			T_ImgTruckpageDTO dto = new T_ImgTruckpageDTO();
+			dto.setSno(dao.getSellerNo(user));
+
+			//JSON데이타 타입으로 반환하기위해 JSONObject객체 생성
+			JSONObject json = new JSONObject();
+
+			Iterator<String> itr = mf.getFileNames();
+			 if(itr.hasNext()) {
+				 MultipartFile mpf = mf.getFile(itr.next());
+				 System.out.println(mpf.getOriginalFilename() +" Main uploaded!"); 
+				 try { 
+					 	json.put("length", (int)mpf.getBytes().length/1028);
+					 	dto.setNewMain(FileUpload(mpf, "/FOODTRUCKS/MAIN", req, true));
+					 	json.put("name", dto.getNewMain());
+					 	dto.setIntro(mf.getParameter("intro")+" ");
+					 	if(dao.isSnoMain(dto.getSno())) dao.updateMain(dto);
+					 	else dao.insertMainFoodtruck(dto);
+						dao.close();
+				 } 
+				 catch (IOException e) { 
+					 System.out.println("catch 에러남 왜남"); 
+					 e.printStackTrace(); 
+				 } 
+				System.out.println(json.toJSONString());
+				return json.toJSONString();
+			} 
+			 else { 
+				 System.out.println("else 에러남 끝에서남"); 
+				 return "x"; 
+			 }
+		}
+		
+		
 	//[JSON으로 응답할때]
 	@ResponseBody
 	@RequestMapping(value="/Img/Main/Upload.page", method = RequestMethod.POST)
