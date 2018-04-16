@@ -8,7 +8,7 @@
 		<div style="float: right; padding-top: 10px">푸드트럭소식을 만날 수 있는 공식 SNS 채널
 				<img id="im" alt="facebook" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_f.png'/>" style="width: 30px; height: 30px;">
 				<img id="im" alt="instagram" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_i.png'/>" style="width: 30px; height: 30px;">
-				<img id="im" alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" style="width: 30px; height: 30px;">
+				<img id="im" alt="twitter" src="<c:url value='/com.sajo.foodtruck/front-end/images/sns_t.png'/>" onclick="javascript:location.href='http://localhost:8080/Back-end/backend/pages/Login.jsp';" style="width: 30px; height: 30px;">
 		</div>
 		<div id="footNotice" class="col-xs-6" style="background-color: #ffc253; float: left; width: 65%; height: 30px; margin-top: 1%; padding: 0.4%;">
 			<span style="border: 1px solid orange; font-weight: bold; margin-top: 30%">공지사항</span>&emsp;
@@ -31,6 +31,5 @@
 			<li>통신판매업 신고번호 : 제2018-경기성남-1111호 사업자정보확인</li>
 		</ul>
 		<p class="col-xs-12">&emsp;&emsp;&emsp;© 2018 FOODTRUCK Korea Corporation AllRights Reserved.</p>
-		<img src="<c:url value='/com.sajo.foodtruck/front-end/images/hidden.png'/>" onclick="javascript:location.href='http://localhost:8080/Back-end/backend/pages/Login.jsp';"></img>
 	</div>
 </footer>
