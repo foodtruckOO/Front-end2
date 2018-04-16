@@ -31,12 +31,12 @@ $(function(){
     obj.on('dragenter', function (e) {
          e.stopPropagation();
          e.preventDefault();
-         $(this).css('border', '2px solid #5272A0');
+         $(this).css('border', '2px solid #499f49');
     });
     obj.on('dragleave', function (e) {
          e.stopPropagation();
          e.preventDefault();
-         $(this).css('border', '2px dotted #8296C2');
+         $(this).css('border', '2px dotted #499f49');
     });
     obj.on('dragover', function (e) {
          e.stopPropagation();
@@ -44,7 +44,7 @@ $(function(){
     });
     obj.on('drop', function (e) {
          e.preventDefault();
-         $(this).css('border', '2px dotted #8296C2');
+         $(this).css('border', '2px dotted #499f49');
          var files = e.originalEvent.dataTransfer.files;
          if(files.length < 1)
               return;
@@ -73,12 +73,12 @@ $(function(){
     obj2.on('dragenter', function (e) {
          e.stopPropagation();
          e.preventDefault();
-         $(this).css('border', '2px solid #5272A0');
+         $(this).css('border', '2px solid #3175b0');
     });
     obj2.on('dragleave', function (e) {
          e.stopPropagation();
          e.preventDefault();
-         $(this).css('border', '2px dotted #8296C2');
+         $(this).css('border', '2px dotted #3175b0');
     });
     obj2.on('dragover', function (e) {
          e.stopPropagation();
@@ -86,17 +86,18 @@ $(function(){
     });
     obj2.on('drop', function (e) {
          e.preventDefault();
-         $(this).css('border', '2px dotted #8296C2');
+         $(this).css('border', '2px dotted #3175b0');
          var files2 = e.originalEvent.dataTransfer.files;
          if(files2.length < 1)
               return;
          dragNdropMain(files2);
     });    
     function dragNdropMain(files2){
-    	  var data2 = new FormData();
-          for (var i = 0; i < files2.length; i++) {
-             data2.append('file', files2[i]);
-          }
+		var data2 = new FormData();
+		for (var i = 0; i < files2.length; i++) {
+			data2.append('file', files2[i]);
+		}
+		data2.append('intro',$("#mainArea").val());
 		$.ajax({ 
 			url: '<c:url value="/Img/dragNdropMain.page"/>',
 			data: data2,
@@ -107,7 +108,7 @@ $(function(){
 			success:successCallback2, 
 			error: function(request,status,error){
 				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
+			}
 		});
     }
 	
@@ -265,9 +266,10 @@ var start=function(data){
 		
 	};
 </script>
-<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 소개글을 작성한 뒤, <kbd style="background-color: #3175b0">메인이미지 등록</kbd>버튼을 눌러주세요.</span><br/>
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 브라우저 밖에서 원하는 이미지를 드래그 하셔도 됩니다</span><br/>
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 소개글을 작성한 뒤, <kbd style="background-color: #3175b0">트럭 메인 등록</kbd>버튼을 눌러주세요.</span><br/>
 <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 이미지를 선택하시면 자동으로 업로드 됩니다.</span><br/>
-<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 그 외, 서브이미지를 선택하시면 자동으로 업로드 됩니다.</span>
+<span class="glyphicon glyphicon-plus" aria-hidden="true" style="color: gray"> 그 외, <kbd style="background-color: #499f49">서브이미지 등록</kbd>을 선택하시면 자동으로 업로드 됩니다.</span>
 <hr/>
 <div id="mainDiv" style="border: dotted #3175b0 2px;">
 <form id="fileuploadMain" action="#"method="POST" enctype="multipart/form-data" style="display: inline;">

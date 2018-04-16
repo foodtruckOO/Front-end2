@@ -532,7 +532,7 @@ public class MemberController {
 					 	json.put("length", (int)mpf.getBytes().length/1028);
 					 	dto.setNewMain(FileUpload(mpf, "/FOODTRUCKS/MAIN", req, true));
 					 	json.put("name", dto.getNewMain());
-					 	dto.setIntro(mf.getParameter("intro")+" ");
+					 	dto.setIntro(mf.getParameter("intro").replaceAll("\r\n", "<br/>")+" ");			 	
 					 	if(dao.isSnoMain(dto.getSno())) dao.updateMain(dto);
 					 	else dao.insertMainFoodtruck(dto);
 						dao.close();
