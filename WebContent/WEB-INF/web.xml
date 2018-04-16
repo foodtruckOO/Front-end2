@@ -182,7 +182,17 @@
 	</jsp-config>
 
 
-
+ <!--  에러 처리 -->
+  <error-page>
+  	<error-code>500</error-code>
+	<location>/com.sajo.foodtruck/front-end/views/error/Error.jsp</location>  
+  </error-page>
+  
+    <error-page>
+  	<error-code>404</error-code>
+	<location>/com.sajo.foodtruck/front-end/views/error/Error.jsp</location>  
+  </error-page>
+	
 	
 
 	<welcome-file-list>
