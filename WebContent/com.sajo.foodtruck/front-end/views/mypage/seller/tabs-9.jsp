@@ -24,11 +24,6 @@
 							<td>${food.price}</td>
 						</tr>
 					</c:forEach>
-						<tr>
-							<td>층 금액</td>
-							<td>-</td>
-							<td>${list.sum}</td>
-						</tr>
 				</table>
 				<hr/>
 				<table style="width: 100%">
@@ -47,7 +42,7 @@
 				</table>
 			</div>
 			<div class="panel-footer">
-				<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">${list.total }</h3>
+				<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">${list.sum}</h3>
 				<button class="btn btn-lg">Sign Up</button>
 			</div>
 		</div>      
