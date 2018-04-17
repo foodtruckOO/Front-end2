@@ -29,6 +29,19 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class MemberController {
 	
+	// Customer
+	@RequestMapping("/Customer.page")
+	public String Customer(Model model, HttpServletRequest req) throws Exception{
+		CusDAO dao = new CusDAO(req.getServletContext());
+		CusDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
+		
+		List<T_OderformDTO> list =  dao.order(dto.getCno());
+		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
+		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+		return "mypage";
+	}	
+	
 	// Seller or Customer
 	@RequestMapping("/Member.page")
 	public String Member(Model model, HttpServletRequest req) throws Exception{
