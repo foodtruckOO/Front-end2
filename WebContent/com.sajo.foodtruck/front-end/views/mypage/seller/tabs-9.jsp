@@ -17,17 +17,24 @@
 	        </div>
 			<div class="panel-body">
 				<table style="width: 100%">
-					<tr>
-						<td><strong>${list.fname }</strong></td>
-						<td>${list.num }</td>
-						<td>${list.price }</td>
-					</tr>
+					<c:forEach var="food" items="${list.foods}">
+						<tr>
+							<td><strong>${food.fname }</strong></td>
+							<td>${food.num}</td>
+							<td>${food.price}</td>
+						</tr>
+					</c:forEach>
+						<tr>
+							<td>층 금액</td>
+							<td>-</td>
+							<td>${list.sum}</td>
+						</tr>
 				</table>
 				<hr/>
 				<table style="width: 100%">
 					<tr>
 						<td><strong>구매자</strong></td>
-						<td>콩순이</td>
+						<td>${list.cname}</td>
 					</tr>
 					<tr>
 						<td><strong>전화</strong></td>
@@ -35,7 +42,7 @@
 					</tr>
 					<tr>
 						<td><strong>요청사항</strong></td>
-						<td colspan="2">${list.content }</td>
+						<td colspan="2">${list.content}</td>
 					</tr>
 				</table>
 			</div>

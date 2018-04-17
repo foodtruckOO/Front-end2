@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class T_OderDTO {
-	
+	private String o_no;
 	private String cname;				//손님번호
 	private String tel;
 	private String fname;			//음식이름
@@ -25,7 +25,12 @@ public class T_OderDTO {
 	public void setList(List<Map<String, String>> list) {
 		this.list = list;
 	}
-	
+	public String getO_no() {
+		return o_no;
+	}
+	public void setO_no(String o_no) {
+		this.o_no = o_no;
+	}
 	public String getTotal() {
 		return total;
 	}

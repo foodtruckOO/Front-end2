@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -361,18 +362,19 @@ public class MemberController {
 		T_OrderDAO dao = new T_OrderDAO(req.getServletContext());
 		T_OderDTO dto =  new T_OderDTO();
 		List<T_OderDTO> list = new Vector<T_OderDTO>();
-		list = dao.orderList(dao.getSellerNo(req.getSession().getAttribute("USER_ID").toString()));
+		String user = (String)req.getSession().getAttribute("USER_ID");
+		list = dao.orderList(user);
 
-		List<T_OderDTO> newList = new Vector<T_OderDTO>();
+		List<Map> newList = orderMigrator(list);
+		System.out.println(JSONArray.toJSONString(newList));
 		String cName = "";
 		String timeofreceipt = "";
 		List<Map<String, String>> stack = null;
 		/********************List<Map<String, String>>*/
 		/****************************************************************************************/
-		model.addAttribute("list", list);
+		model.addAttribute("list", newList);
 		System.out.println(list);
-
-		String user = (String)req.getSession().getAttribute("USER_ID");
+		
 		T_MenuDAO daoImg = new T_MenuDAO(req.getServletContext());
 		T_ImgTruckpageDTO dd = daoImg.selectMainImg(daoImg.getSellerNo(user).toString());
 		daoImg.close();
@@ -637,5 +639,43 @@ public class MemberController {
 		    System.out.println(filename + "삭제 실패");
 		}else
 		    System.out.println(filename + " 파일이 존재하지 않습니다.");
+	}
+	
+	public List<Map> orderMigrator(List<T_OderDTO> list){
+		List<Map> newList = new Vector();//전체 담는 거
+		Map map = null;//전체에 담기는 각각의 주문덩어리
+		List<T_OderDTO> foods = null;//map에 넣을 음식리스트
+		T_OderDTO innerDto = null;//각각의 음식데이터 담은녀석들
+		int currentNo=0;
+		int sum=0;
+		for(T_OderDTO dto : list) {
+			if(Integer.parseInt(dto.getO_no())!=currentNo) {//다음 주문으로 넘어감
+				currentNo = Integer.parseInt(dto.getO_no());
+				if(map!=null) {
+					map.put("foods", foods);
+					map.put("sum", sum);
+					sum=0;
+					newList.add(map);
+				}
+				map = new HashMap();
+				foods = new Vector();
+				map.put("orderNo", dto.getO_no());
+				map.put("cname", dto.getCname());
+				map.put("tel", dto.getTel());
+				map.put("content", dto.getContent());
+			}
+			innerDto = new T_OderDTO();
+			innerDto.setFname(dto.getFname());
+			System.out.println(dto.getFname());
+			innerDto.setNum(dto.getNum());
+			int price = Integer.parseInt(dto.getPrice())*Integer.parseInt(dto.getNum());
+			sum+=price;
+			innerDto.setPrice(Integer.toString(price));
+			foods.add(innerDto);
+		}
+		map.put("foods", foods);
+		map.put("sum", sum);
+		newList.add(map);
+		return newList;
 	}
 }

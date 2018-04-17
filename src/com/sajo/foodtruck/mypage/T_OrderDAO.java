@@ -70,24 +70,22 @@ public class T_OrderDAO {
 		List<T_OderDTO> list = new Vector<T_OderDTO>();
 		//List<Map<String, Object>> listMap = new Vector<>();
 		try {
-			String sql="select o.name,o.tel, o.timeofreceipt, o.num, f.fname, f.price, o.content from\r\n" + 
-					"(select e.*,c.id name, c.tel tel from orderform e JOIN customer c ON e.g_no=c.g_no) o\r\n" + 
-					"JOIN food f ON f.f_no=o.f_no where f.s_no=?";
+			String sql="select ord.o_no, cus.name cname, cus.tel tel, food.fname fname, food.price, ord.num, ord.content from "+ 
+					"food join seller sel on food.s_no=sel.s_no join orderform ord on food.f_no=ord.f_no "+ 
+					"join customer cus on ord.g_no=cus.g_no where sel.id = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, sno);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				
 				T_OderDTO dto = new T_OderDTO();
-				dto.setCname(rs.getString(1));
-				dto.setTel(rs.getString(2));
-				dto.setTimeofreceipt(rs.getString(3));
-				dto.setNum(rs.getString(4));
-				dto.setFname(rs.getString(5));
-				dto.setPrice(rs.getString(6));
+				dto.setO_no(rs.getString(1));
+				dto.setCname(rs.getString(2));
+				dto.setTel(rs.getString(3));
+				dto.setFname(rs.getString(4));
+				dto.setPrice(rs.getString(5));
+				dto.setNum(rs.getString(6));
 				dto.setContent(rs.getString(7));
 				list.add(dto);
-				
 				/*
 				T_OrderfoodDTO food = new T_OrderfoodDTO();
 				T_OrderListDTO list = new T_OrderListDTO();
