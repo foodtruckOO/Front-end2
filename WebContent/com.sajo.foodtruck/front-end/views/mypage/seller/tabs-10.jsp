@@ -143,7 +143,7 @@ var start=function(data){
 	var row = "<tr>"+
 	"<td>&emsp;</td>"+
 	"<td>"+
-		"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+(data['list'][i])+"' alt='이미지를 찾을 수 없습니다..'"+
+		"<img src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+(data['list'][i])+"' alt='이미지를 찾을 수 없습니다..'"+
 		" style='width: 80px; height: 50px; margin-top: 4px' />"+
 	"</td>"+
 	"<td>"+
@@ -205,12 +205,12 @@ var start=function(data){
     
     var successCallback2=function(data){
 		console.log(data['name']);
-		var im = "<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']+
+		var im = "<img src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']+
 					"' alt='이미지를 찾을 수 없습니다..' style='width: 100%; height: 100%; top:0px' />";
     	
     	$("#mainDiv").css("padding-bottom","0px");
-    	$('#mainmain').attr("src","http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
-    	$("#mypageMainImg").attr("src","http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
+    	$('#mainmain').attr("src","http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
+    	$("#mypageMainImg").attr("src","http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/MAIN/"+data['name']);
 	};
 </script>
 <script>
@@ -245,7 +245,7 @@ var start=function(data){
     	var row = "<tr>"+
     	"<td>&emsp;</td>"+
 		"<td>"+
-			"<img src='http://localhost:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+data['name']+
+			"<img src='http://${ip}:8080/Front-end_FoodTruckProj/seller/<%=request.getSession().getAttribute("USER_ID")%>/FOODTRUCKS/"+data['name']+
 			"' alt='이미지를 찾을 수 없습니다..' style='width: 80px; height: 50px; margin-top: 4px' />"+
 		"</td>"+
 		"<td>"+

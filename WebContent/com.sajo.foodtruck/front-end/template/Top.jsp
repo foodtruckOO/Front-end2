@@ -97,7 +97,11 @@ Gitple('boot');
 				        <li><a href="<c:url value='/com.sajo.foodtruck/front-end/views/member/Join.jsp'/>">JOIN</a></li>
 			        <%}else{ %>
 				        <li><a id="top_my_small" href="javascript:cart()">CART</a></li>&emsp;
+						<%if(session.getAttribute("USER_TYPE")=="seller".toString()){ %>
 				        <li><a id="top_my_small" href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
+				        <%}else{ %>
+			        	<li><a id="top_my_small" href="<c:url value='/Customer.page'/>">MYPAGE</a></li>&emsp;
+				        <% } %>
 				        <li><a id="top_my_small" href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>
 				</ul>
