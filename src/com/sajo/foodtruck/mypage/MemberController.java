@@ -683,6 +683,7 @@ public class MemberController {
 			innerDto.setPrice(Integer.toString(price));
 			foods.add(innerDto);
 		}
+		if(foods==null) return null;
 		map.put("foods", foods);
 		map.put("sum", sum);
 		newList.add(map);
@@ -723,6 +724,7 @@ public class MemberController {
 			innerDto.setPrice(Integer.toString(price));
 			foods.add(innerDto);
 		}
+		if(foods==null)return null;
 		map.put("foods", foods);
 		map.put("sum", sum);
 		newList.add(map);
