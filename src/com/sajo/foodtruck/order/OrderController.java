@@ -63,7 +63,7 @@ public class OrderController {
 		dao.edit(user);
 		
 		dao.close();
-		return "com.sajo.foodtruck/front-end/views/index.jsp";
+		return "/Tabs9.page";
 	}
 	
 	@ResponseBody
