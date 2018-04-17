@@ -2,6 +2,7 @@ package com.sajo.foodtruck.mypage;
 
 public class T_OderformDTO {
 
+	private String ono;
 	private String tname;			//트럭이름
 	private String tel;				//트럭전화
 	private String fname;			//음식이름
@@ -14,6 +15,13 @@ public class T_OderformDTO {
 	private String total;			//총합
 
 
+	
+	public String getOno() {
+		return ono;
+	}
+	public void setOno(String ono) {
+		this.ono = ono;
+	}
 	public String getTname() {
 		return tname;
 	}

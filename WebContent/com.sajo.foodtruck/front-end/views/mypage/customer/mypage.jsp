@@ -28,10 +28,10 @@
 	
 	<script>
 		$(function() {
-			$("#cust1").addClass('active');
-			$('#cus1').show();
+			$("#cust3").addClass('active');
+			$('#cus1').hide();
 			$('#cus2').hide();
-			$('#cus3').hide();
+			$('#cus3').show();
 			var currentPosition = parseInt($("#sidebox").css("top"));
 			$(window).scroll(function() {
 				var position = $(window).scrollTop();
@@ -103,15 +103,16 @@
 					</button> -->
 				</ul>
 				<!-- HOME -->
-				<div id = "cus1" style="width: 100%; height: 100%; background-color: red;">
+				<div id = "cus1" style="width: 100%; height: 100%;">
 					
 				</div>
 				<!-- 개인정보수정 -->
-				<div id = "cus2" style="width: 100%; height: 100%; background-color: red;">
+				<div id = "cus2" style="width: 100%; height: 100%;">
 					
 				</div>
 				<!-- 주문현황 -->
-				<div id = "cus3" style="width: 100%; height: 100%; background-color: red;">
+				<div id = "cus3" style="width: 100%; height: 100%;">
+					<br/>
 					<c:if test="${empty requestScope.list}" var="flag">
 						<h2>주문이 없습니다.</h2>
 					</c:if>
@@ -126,17 +127,19 @@
 						        </div>
 								<div class="panel-body">
 									<table style="width: 100%">
+									<c:forEach var="food" items="${list.foods}">
 										<tr>
-											<td><strong>${list.fname }</strong></td>
-											<td>${list.num }</td>
-											<td>${list.price }</td>
+											<td><strong>${food.fname }</strong></td>
+											<td>${food.num }</td>
+											<td>${food.price }</td>
 										</tr>
+									</c:forEach>
 									</table>
 									<hr/>
 									<table style="width: 100%">
 										<tr>
-											<td><strong>구매자</strong></td>
-											<td>콩순이</td>
+											<td><strong>판매트럭</strong></td>
+											<td>${list.tname}</td>
 										</tr>
 										<tr>
 											<td><strong>요청시간</strong></td>
@@ -149,7 +152,7 @@
 									</table>
 								</div>
 								<div class="panel-footer">
-									<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">${list.total}</h3>
+									<h3 style="font-weight: bold; font-size: 2em"><img src="<c:url value='/com.sajo.foodtruck/front-end/images/won.png'/>" alt="￦">${list.sum}</h3>
 									<button class="btn btn-lg">Sign Up</button>
 								</div>
 							</div>      

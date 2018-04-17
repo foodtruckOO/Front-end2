@@ -74,6 +74,7 @@ public class CusDAO {
 			
 			while(rs.next()) {
 				T_OderformDTO dto = new T_OderformDTO();
+				dto.setOno(rs.getString(1));
 				dto.setTname(rs.getString(12));
 				dto.setTel(rs.getString(13));
 				dto.setFname(rs.getString(9));

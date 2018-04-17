@@ -35,7 +35,7 @@ public class MemberController {
 		CusDAO dao = new CusDAO(req.getServletContext());
 		CusDTO dto = dao.selectOne((String)req.getSession().getAttribute("USER_ID"));
 		
-		List<T_OderformDTO> list =  dao.order(dto.getCno());
+		List<Map> list = orderCusMigrator(dao.order(dto.getCno()));
 		model.addAttribute("list", list);
 		model.addAttribute("dto", dto);
 		model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
@@ -380,9 +380,6 @@ public class MemberController {
 
 		List<Map> newList = orderMigrator(list);
 		System.out.println(JSONArray.toJSONString(newList));
-		String cName = "";
-		String timeofreceipt = "";
-		List<Map<String, String>> stack = null;
 		/********************List<Map<String, String>>*/
 		/****************************************************************************************/
 		model.addAttribute("list", newList);
@@ -680,6 +677,46 @@ public class MemberController {
 			innerDto = new T_OderDTO();
 			innerDto.setFname(dto.getFname());
 			System.out.println(dto.getFname());
+			innerDto.setNum(dto.getNum());
+			int price = Integer.parseInt(dto.getPrice())*Integer.parseInt(dto.getNum());
+			sum+=price;
+			innerDto.setPrice(Integer.toString(price));
+			foods.add(innerDto);
+		}
+		map.put("foods", foods);
+		map.put("sum", sum);
+		newList.add(map);
+		return newList;
+	}
+	
+
+	public List<Map> orderCusMigrator(List<T_OderformDTO> list){
+		List<Map> newList = new Vector();//전체 담는 거
+		Map map = null;//전체에 담기는 각각의 주문덩어리
+		List<T_OderformDTO> foods = null;//map에 넣을 음식리스트
+		T_OderformDTO innerDto = null;//각각의 음식데이터 담은녀석들
+		int currentNo=0;
+		int sum=0;
+		for(T_OderformDTO dto : list) {
+			if(Integer.parseInt(dto.getOno())!=currentNo) {//다음 주문으로 넘어감
+				currentNo = Integer.parseInt(dto.getOno());
+				if(map!=null) {
+					map.put("foods", foods);
+					map.put("sum", sum);
+					sum=0;
+					newList.add(map);
+				}
+				map = new HashMap();
+				foods = new Vector();
+				map.put("ono", dto.getOno());
+				map.put("tname", dto.getTname());
+				map.put("tel", dto.getTel());
+				map.put("content", dto.getContent());
+				map.put("postdate", dto.getPostdate());
+				map.put("timeofreceipt", dto.getTimeofreceipt());
+			}
+			innerDto = new T_OderformDTO();
+			innerDto.setFname(dto.getFname());
 			innerDto.setNum(dto.getNum());
 			int price = Integer.parseInt(dto.getPrice())*Integer.parseInt(dto.getNum());
 			sum+=price;
