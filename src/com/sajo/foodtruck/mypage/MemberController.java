@@ -712,7 +712,7 @@ public class MemberController {
 				map.put("tname", dto.getTname());
 				map.put("tel", dto.getTel());
 				map.put("content", dto.getContent());
-				map.put("postdate", dto.getPostdate());
+				map.put("postdate", dto.getPostdate().split(" ")[0]);
 				map.put("timeofreceipt", dto.getTimeofreceipt());
 			}
 			innerDto = new T_OderformDTO();
