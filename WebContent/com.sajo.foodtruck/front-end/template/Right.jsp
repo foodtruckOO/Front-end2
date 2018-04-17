@@ -14,7 +14,7 @@
 					<%if(session.getAttribute("USER_TYPE")=="seller".toString()){ %>
 	        		<a href="<c:url value='/Member.page'/>" class="list-group-item">MYPAGE</a>
 			        <%}else{ %>
-	       			<a href="<c:url value='/Customer.page'/>" class="list-group-item">MYPAGE</a>
+	       			<a href="<c:url value='/Customer.page'/>" class="list-group-item">주문현황</a>
 			        <% } %>
 		        <a href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>" class="list-group-item">LOGOUT</a>
 	        <% } %>

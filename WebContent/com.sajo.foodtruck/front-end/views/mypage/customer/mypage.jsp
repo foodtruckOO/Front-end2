@@ -28,10 +28,6 @@
 	
 	<script>
 		$(function() {
-			$("#cust3").addClass('active');
-			$('#cus1').hide();
-			$('#cus2').hide();
-			$('#cus3').show();
 			var currentPosition = parseInt($("#sidebox").css("top"));
 			$(window).scroll(function() {
 				var position = $(window).scrollTop();
@@ -40,32 +36,6 @@
 				}, 1000);
 			});
 			
-			$('#cust1').on('click', function() {
-				$("#cust1").attr('class','active');
-				$("#cust2").attr('class','');
-				$("#cust3").attr('class','');
-				$('#cus1').show();
-				$('#cus2').hide();
-				$('#cus3').hide();
-			});
-
-			$('#cust2').on('click', function() {
-				$("#cust1").attr('class','');
-				$("#cust2").attr('class','active');
-				$("#cust3").attr('class','');
-				$('#cus1').hide();
-				$('#cus2').show();
-				$('#cus3').hide();
-			});
-
-			$('#cust3').on('click', function() {
-				$("#cust1").attr('class','');
-				$("#cust2").attr('class','');
-				$("#cust3").attr('class','active');
-				$('#cus1').hide();
-				$('#cus2').hide();
-				$('#cus3').show();
-			});
 		});
 	</script>
   
@@ -92,26 +62,7 @@
 			<!-- tap -->
 			<!-- 여기요 -->
 			<div id="tabs" style="width: 100%; height: 100%; ">
-				<!-- include -->
-				<ul class="nav nav-tabs" style="background-color: #ffe9c1;">
-					<!--  data-toggle="tab" -->
-					<li role="presentation" id='cust1'><a ><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> HOME </a></li>
-					<li role="presentation" id='cust2'><a ><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 개인정보수정</a></li>
-					<li role="presentation" id='cust3'><a ><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 주문현황 </a></li>
-					<!-- <button type="button" class="btn btn-warning" style="float: right; width: 15%; height: 100; margin-right: 1%">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 즐겨찾기 
-					</button> -->
-				</ul>
-				<!-- HOME -->
-				<div id = "cus1" style="width: 100%; height: 100%;">
-					
-				</div>
-				<!-- 개인정보수정 -->
-				<div id = "cus2" style="width: 100%; height: 100%;">
-					
-				</div>
-				<!-- 주문현황 -->
-				<div id = "cus3" style="width: 100%; height: 100%;">
+				
 					<br/>
 					<c:if test="${empty requestScope.list}" var="flag">
 						<h2>주문이 없습니다.</h2>
@@ -159,7 +110,6 @@
 						</div>
 						</c:forEach>
 					</c:if>
-				</div>
 				<!-- div끝 -->
 			</div>
 		</div>

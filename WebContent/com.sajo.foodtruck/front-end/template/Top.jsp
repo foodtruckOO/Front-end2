@@ -100,7 +100,7 @@ Gitple('boot');
 						<%if(session.getAttribute("USER_TYPE")=="seller".toString()){ %>
 				        <li><a id="top_my_small" href="<c:url value='/Member.page'/>">MYPAGE</a></li>&emsp;
 				        <%}else{ %>
-			        	<li><a id="top_my_small" href="<c:url value='/Customer.page'/>">MYPAGE</a></li>&emsp;
+			        	<li><a id="top_my_small" href="<c:url value='/Customer.page'/>">주문현황</a></li>&emsp;
 				        <% } %>
 				        <li><a id="top_my_small" href="<c:url value='/com.sajo.foodtruck/front-end/views/login/Logout.jsp'/>">LOGOUT</a></li>&emsp;
 			        <% } %>
